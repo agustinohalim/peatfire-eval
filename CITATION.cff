@@ -14,7 +14,7 @@ authors:
     family-names: Halim
     affiliation: "Information Systems and Technology, Universitas OSO, Pontianak, Indonesia"
     email: "agustinohalim@oso.ac.id"
-    # orcid: "https://orcid.org/0000-0000-0000-0000"   # buka setelah ORCID iD dibuat
+    orcid: "https://orcid.org/0009-0008-4388-1174"
 keywords:
   - evaluation protocol
   - class imbalance

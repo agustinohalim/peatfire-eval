@@ -9,7 +9,8 @@
   "creators": [
     {
       "name": "Halim, Agustino",
-      "affiliation": "Information Systems and Technology, Universitas OSO, Pontianak, Indonesia"
+      "affiliation": "Information Systems and Technology, Universitas OSO, Pontianak, Indonesia",
+      "orcid": "0009-0008-4388-1174"
     }
   ],
   "keywords": [
@@ -40,5 +41,5 @@
       "scheme": "url"
     }
   ],
-  "notes": "Bila ORCID iD sudah dibuat, tambahkan ruas \"orcid\" pada creators. Setelah artikel diterima, tambahkan related_identifier bertipe isSupplementTo dengan DOI artikelnya."
+  "notes": "Setelah artikel diterima, tambahkan related_identifier bertipe isSupplementTo dengan DOI artikelnya."
 }
