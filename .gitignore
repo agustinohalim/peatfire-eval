@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+# unduhan mentah tidak boleh masuk repo publik
+fire_archive_*.csv
+fire_nrt_*.csv
+gadm*.json

@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: "If you use this software or the derived panel, please cite both the software and the accompanying article."
+title: "peatfire-eval: panel construction and evaluation-protocol experiments for district-month fire severity forecasting in West Kalimantan"
+abstract: >-
+  Code and derived data for a study of how evaluation-protocol choices affect model
+  rankings in fire hotspot prediction. Builds a district-month panel of VIIRS S-NPP
+  active fire detections for the 14 districts of West Kalimantan, Indonesia, and
+  evaluates seven forecasting models under a 2x2 design crossing the test distribution
+  with the discrimination metric.
+type: software
+license: MIT
+authors:
+  - given-names: Agustino
+    family-names: Halim
+    affiliation: "Information Systems and Technology, Universitas OSO, Pontianak, Indonesia"
+    email: "agustinohalim@oso.ac.id"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"   # buka setelah ORCID iD dibuat
+keywords:
+  - evaluation protocol
+  - class imbalance
+  - precision-recall
+  - calibration
+  - peatland fire
+  - model comparison
+  - threshold sensitivity
+  - VIIRS
+  - Indonesia
+repository-code: "https://github.com/agustinohalim/peatfire-eval"
+version: "1.0.0"
+date-released: "2026-08-27"
+
+# Artikel yang menyertainya. Isi doi dan journal setelah diterima; sebelum itu,
+# biarkan sebagai preferred-citation tanpa doi atau hapus blok ini.
+preferred-citation:
+  type: article
+  title: "Evaluation protocol choices determine model rankings in fire hotspot prediction: evidence from West Kalimantan, Indonesia"
+  authors:
+    - given-names: Agustino
+      family-names: Halim
+  year: 2026
+  # journal: "ISI_SETELAH_DITERIMA"
+  # doi: "ISI_SETELAH_DITERIMA"
