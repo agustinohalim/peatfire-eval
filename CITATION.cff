@@ -28,6 +28,11 @@ keywords:
 repository-code: "https://github.com/agustinohalim/peatfire-eval"
 version: "1.0.0"
 date-released: "2026-08-27"
+doi: "10.5281/zenodo.22125225"          # version DOI, v1.0.0 — dipakai di naskah
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22125224"
+    description: "Concept DOI, selalu menunjuk versi terbaru"
 
 # Artikel yang menyertainya. Isi doi dan journal setelah diterima; sebelum itu,
 # biarkan sebagai preferred-citation tanpa doi atau hapus blok ini.
