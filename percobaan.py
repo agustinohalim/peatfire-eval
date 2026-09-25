@@ -124,6 +124,27 @@ def skor_model(latih, uji):
     return out
 
 
+def kalibrator_oof(df, th, nama, tahun_dalam=3):
+    """Isotonik per model, dipasang pada prediksi out-of-fold tahun th-3..th-1.
+
+    Tiap tahun dalam diprediksi oleh model yang dilatih pada tahun-tahun sebelumnya. Memasang
+    isotonik pada skor data latih sendiri, seperti versi awal, membuat model lentur seperti
+    XGBoost tampak terlalu yakin: skor latihnya hampir memisahkan kelas, jadi pemetaan isotonik
+    mendorong prediksi uji ke 0 dan 1 (lihat Hasil_Percobaan5.md bagian A).
+    """
+    s_oof = {n: [] for n in nama}
+    y_oof = []
+    for dalam in range(th - tahun_dalam, th):
+        latih, uji = df[df["tahun"] < dalam], df[df["tahun"] == dalam]
+        s = skor_model(latih, uji)
+        for n in nama:
+            s_oof[n].append(s[n][1])
+        y_oof.append(uji["y"].to_numpy())
+    y_oof = np.concatenate(y_oof)
+    return {n: IsotonicRegression(out_of_bounds="clip", y_min=0.0, y_max=1.0)
+            .fit(np.concatenate(s_oof[n]), y_oof) for n in nama}
+
+
 # ---------------------------------------------------------------- metrik
 
 def ece(y, p, bins=10):
@@ -158,9 +179,9 @@ def jalankan(df, tahun_uji_list, label):
         if len(latih) < 100 or len(uji) == 0:
             continue
         skor = skor_model(latih, uji)
+        kal = kalibrator_oof(df, uji_th, nama)
         for n, (sl, su) in skor.items():
-            iso = IsotonicRegression(out_of_bounds="clip", y_min=0.0, y_max=1.0)
-            iso.fit(sl, latih["y"].to_numpy())
+            iso = kal[n]
             kum[n]["y"].append(uji["y"].to_numpy())
             kum[n]["raw"].append(su)
             kum[n]["cal"].append(iso.predict(su))

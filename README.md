@@ -12,10 +12,12 @@ every number, table, and figure in the paper.
 
 | Claim | Script |
 |---|---|
-| A bounding box instead of administrative boundaries discards 50.5% of filtered detections and changes which year is most severe | `bangun_panel.js` |
+| A bounding box instead of administrative boundaries admits 50.5% of detections from outside the province and changes a reported ENSO-fire correlation | `bangun_panel.js` |
 | ROC-AUC and AUC-PR rank identical predictions differently; balancing adds variance without reordering | `percobaan4_matriks2x2.py` |
-| Aggregate metrics conceal that no model wins consistently across years | `percobaan.py` |
-| Reversals persist at the 80th, 90th, and 95th percentile thresholds; the 90th is the only one where the two protocols agree | `percobaan3_dmi_ambang.py` |
+| Calibration metrics with the calibrator fitted on out-of-fold predictions (Table 7) | `percobaan.py` |
+| Neither protocol separates the two leading models: bootstrap intervals, per-year intervals, out-of-fold calibration against in-sample calibration | `percobaan5_ulasan.py` |
+| A per-district severity threshold changes the leading model and shrinks the metric effect (Section 5.6, Table 9) | `percobaan6_kabupaten.py` |
+| Reversals persist at the 80th, 90th, and 95th percentile thresholds | `percobaan3_dmi_ambang.py` |
 | The Indian Ocean Dipole carries no forecastable annual signal and degrades the monthly model | `percobaan3_dmi_ambang.py` |
 | All five figures | `gambar.py` |
 | Every reference in the manuscript resolves on Crossref or arXiv | `verifikasi_rujukan.py` |
@@ -78,12 +80,20 @@ python percobaan3_dmi_ambang.py data/panel_bulanan.csv data/oni.ascii.txt \
 # Experiment 4: the 2x2 design separating test distribution from metric
 python percobaan4_matriks2x2.py data/panel_bulanan.csv data/oni.ascii.txt
 
+# Experiment 5: bootstrap and per-year intervals, calibration procedures
+python percobaan5_ulasan.py data/panel_bulanan.csv data/oni.ascii.txt
+
+# Experiment 6: within-district metrics and per-district severity threshold
+python percobaan6_kabupaten.py data/panel_bulanan.csv data/oni.ascii.txt
+
 # Figures 1 to 5
 python gambar.py data/panel_bulanan.csv data/oni.ascii.txt
 ```
 
 Every experiment seeds its random number generator explicitly, so the balancing draws are
-reproducible. Isotonic calibration is fitted on training-fold scores only, never on test data.
+reproducible. Since version 1.1.0 isotonic calibration is fitted on out-of-fold predictions
+within the training years (`kalibrator_oof` in `percobaan.py`), never on test data or on
+in-sample training scores; version 1.0.0 fitted it on in-sample training scores.
 
 ## Reference checking
 

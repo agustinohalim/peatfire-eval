@@ -72,7 +72,11 @@ def musim(nilai, th, bulan_pusat):
 # --------------------------------------------------------------- A. tahunan
 
 df, ambang90 = muat(panel_path, oni_path)
-tahunan = df.groupby("tahun", observed=True)["titik_panas"].sum()
+# Jumlah tahunan dari panel mentah 2012-2025 (n = 14), bukan dari df: muat() membuang 2012
+# karena lag 12 bulan, yang tak berlaku untuk jumlah tahunan. Dengan begini angka tahunan
+# sama dengan Bagian 3.4 dan Tabel 2 naskah.
+_mentah = pd.read_csv(panel_path)
+tahunan = _mentah[_mentah["tahun"] <= 2025].groupby("tahun")["titik_panas"].sum()
 
 oni_map = {}
 SEASONS = ["DJF", "JFM", "FMA", "MAM", "AMJ", "MJJ", "JJA", "JAS", "ASO", "SON", "OND", "NDJ"]
@@ -120,8 +124,9 @@ for nama, kol in [
     ("ONI + DMI MJJ (dapat diramalkan)", ["oni_mjj", "dmi_mjj"]),
 ]:
     R2, koef = r2(T[kol].to_numpy(), T["tp"].to_numpy())
+    adj = 1 - (1 - R2) * (len(T) - 1) / (len(T) - len(kol) - 1)
     k = ", ".join(f"{c}={v:+,.0f}" for c, v in zip(kol, koef))
-    print(f"  {nama:<34} R2 = {R2:.3f}   ({k})")
+    print(f"  {nama:<34} R2 = {R2:.3f}  R2-adj = {adj:.3f}   ({k})")
 
 kor = T[["tp", "oni_aso", "dmi_aso", "oni_mjj", "dmi_mjj"]].corr()["tp"]
 print("\n  korelasi Pearson dengan titik panas tahunan:")
@@ -214,7 +219,7 @@ for kuantil in (0.80, 0.90, 0.95):
           f"prevalensi uji {prev * 100:.1f}% ---")
     print(f"  pembalikan pasangan : median {int(np.median(balik))} dari {npair}, "
           f"rentang {balik.min()}–{balik.max()}, "
-          f"nol pembalikan pada {(balik == 0).mean() * 100:.0f}% undian")
+          f"nol pembalikan pada {(balik == 0).sum()} dari {len(balik)} undian")
     print(f"  teratas AUC-PR      : {ur_o[0]} ({hasil[ur_o[0]]['pr']:.3f})")
     print(f"  teratas ROC-AUC     : {terbaik_roc} ({roc_r[terbaik_roc]:.3f})")
     print(f"  sepakat?            : {'ya' if ur_o[0] == terbaik_roc else 'TIDAK'}")
@@ -252,8 +257,3 @@ for nama, kol in [("ASO", ["oni_aso", "dmi_aso"]), ("MJJ", ["oni_mjj", "dmi_mjj"
     gabung = LinearRegression().fit(T[kol], T["tp"]).coef_[1]
     print(f"  koefisien DMI {nama}: sendiri {tunggal:+,.0f}  bersama ONI {gabung:+,.0f}"
           f"  {'BERBALIK TANDA' if tunggal * gabung < 0 else 'tanda tetap'}")
-n = len(T)
-print("\n  R2 terkoreksi (n = 13, hukuman untuk jumlah prediktor):")
-for nama, R2, p in [("ONI ASO", 0.496, 1), ("ONI+DMI ASO", 0.528, 2),
-                    ("ONI MJJ", 0.410, 1), ("ONI+DMI MJJ", 0.554, 2)]:
-    print(f"    {nama:<14} R2 = {R2:.3f}   R2-adj = {1 - (1 - R2) * (n - 1) / (n - p - 1):.3f}")

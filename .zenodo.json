@@ -1,11 +1,11 @@
 {
   "title": "peatfire-eval: panel construction and evaluation-protocol experiments for district-month fire severity forecasting in West Kalimantan",
-  "description": "<p>Code and derived data accompanying the manuscript <em>Evaluation protocol choices determine model rankings in fire hotspot prediction: evidence from West Kalimantan, Indonesia</em>.</p><p>Builds a district-month panel of VIIRS S-NPP active fire detections for the 14 districts of West Kalimantan, Indonesia, 2012 to 2026, using GADM 4.1 administrative boundaries rather than a bounding box, and evaluates seven forecasting models under a 2x2 design crossing the test distribution (balanced or natural prevalence) with the discrimination metric (ROC-AUC or AUC-PR). Includes severity-threshold sensitivity at the 80th, 90th, and 95th percentiles, an extreme-year holdout, isotonic calibration fitted on training folds only, and a negative result for the Indian Ocean Dipole.</p><p>The derived panel of 2,464 district-months is included. Raw FIRMS detections and GADM boundaries are not redistributed; both are free to obtain and the README documents how.</p>",
+  "description": "<p>Code and derived data accompanying the manuscript <em>Evaluation protocol choices determine model rankings in fire hotspot prediction: evidence from West Kalimantan, Indonesia</em>.</p><p>Builds a district-month panel of VIIRS S-NPP active fire detections for the 14 districts of West Kalimantan, Indonesia, 2012 to 2026, using GADM 4.1 administrative boundaries rather than a bounding box, and evaluates seven forecasting models under a 2x2 design crossing the test distribution (balanced or natural prevalence) with the discrimination metric (ROC-AUC or AUC-PR). Includes severity-threshold sensitivity at the 80th, 90th, and 95th percentiles, an extreme-year holdout, isotonic calibration fitted on out-of-fold predictions within the training years, bootstrap and per-year uncertainty intervals, a per-district severity threshold, and a negative result for the Indian Ocean Dipole.</p><p>Version 1.1.0 changes the calibration procedure (version 1.0.0 fitted it on in-sample training scores) and adds experiments 5 and 6.</p><p>The derived panel of 2,464 district-months is included. Raw FIRMS detections and GADM boundaries are not redistributed; both are free to obtain and the README documents how.</p>",
   "upload_type": "software",
   "license": "MIT",
   "access_right": "open",
   "language": "eng",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "creators": [
     {
       "name": "Halim, Agustino",

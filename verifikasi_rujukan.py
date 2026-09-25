@@ -97,7 +97,8 @@ for no, s in entri:
 
     try:
         if arx:
-            url = f"http://export.arxiv.org/api/query?id_list={arx}&max_results=1"
+            # tanpa &max_results: arXiv kini menjawab 406 bila parameter itu ada
+            url = f"http://export.arxiv.org/api/query?id_list={arx}"
             xml = ambil(url)
             root = ET.fromstring(xml)
             ns = {"a": "http://www.w3.org/2005/Atom"}

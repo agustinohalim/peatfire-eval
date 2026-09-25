@@ -10,6 +10,10 @@ Aturan yang dipatuhi:
 
 Pakai:
     python gambar.py DL_FIRE_SV-C2_792597/panel_bulanan.csv DL_FIRE_SV-C2_792597/oni.ascii.txt
+
+JISEBI meminta PNG minimal 330 ppi. Untuk versi itu, arahkan keluaran ke folder lain supaya
+Gambar/ yang dipakai naskah EMS tidak tertimpa:
+    GAMBAR_DPI=400 GAMBAR_OUT=Kirim_JISEBI/gambar python gambar.py <panel> <oni>
 """
 
 import sys
@@ -29,8 +33,14 @@ KELABU, KELABU_MUDA = "#6B7280", "#B8BCC4"
 TINTA, TINTA_2 = "#1F2328", "#5A6169"
 SOROT = {"klimatologi": MERAH, "gradient-boosting": BIRU}
 
+# Nama tampilan mengikuti tabel naskah (bahasa Inggris); kunci internal tetap nama di percobaan.py.
+LABEL = {"klimatologi": "Climatology", "gradient-boosting": "Gradient boosting",
+         "persistence": "Persistence", "seasonal-naive": "Seasonal naive",
+         "rasio-analog": "Ratio scaling", "regresi-ONI": "Logistic, ONI",
+         "regresi-penuh": "Logistic, full"}
+
 plt.rcParams.update({
-    "figure.dpi": 120, "savefig.dpi": 300, "savefig.bbox": "tight",
+    "figure.dpi": 120, "savefig.dpi": int(os.environ.get("GAMBAR_DPI", 300)), "savefig.bbox": "tight",
     "font.family": "DejaVu Sans", "font.size": 9,
     "axes.edgecolor": KELABU_MUDA, "axes.linewidth": 0.8, "axes.labelcolor": TINTA,
     "axes.titlesize": 10, "axes.titleweight": "bold", "axes.titlecolor": TINTA,
@@ -40,7 +50,14 @@ plt.rcParams.update({
     "legend.frameon": False, "legend.fontsize": 8,
 })
 
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Gambar")
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), os.environ.get("GAMBAR_OUT", "Gambar"))
+# GAMBAR_SKALA < 1 memperkecil kanvas dengan ukuran huruf tetap, jadi huruf relatif membesar.
+# Dipakai untuk JIKI (dua kolom, huruf gambar 6-8 pt): GAMBAR_SKALA=0.8.
+SKALA = float(os.environ.get("GAMBAR_SKALA", 1.0))
+
+
+def uk(w, h):
+    return (w * SKALA, h * SKALA)
 os.makedirs(OUT, exist_ok=True)
 
 
@@ -48,7 +65,7 @@ def simpan(fig, nama):
     for ext in ("png", "pdf"):
         fig.savefig(os.path.join(OUT, f"{nama}.{ext}"))
     plt.close(fig)
-    print(f"  tersimpan: Gambar/{nama}.png dan .pdf")
+    print(f"  tersimpan: {os.path.relpath(OUT)}/{nama}.png dan .pdf")
 
 
 def bersih(ax, kisi="y"):
@@ -71,9 +88,9 @@ per_tahun = {n: {} for n in nama_model}
 for th in range(2019, 2026):
     latih, uji = df[df["tahun"] < th], df[df["tahun"] == th]
     skor = skor_model(latih, uji)
+    kal = kalibrator_oof(df, th, nama_model)
     for n, (sl, su) in skor.items():
-        iso = IsotonicRegression(out_of_bounds="clip", y_min=0.0, y_max=1.0)
-        iso.fit(sl, latih["y"].to_numpy())
+        iso = kal[n]
         y = uji["y"].to_numpy()
         kum[n]["y"].append(y); kum[n]["raw"].append(su); kum[n]["cal"].append(iso.predict(su))
         if y.sum() > 0:
@@ -111,12 +128,12 @@ bulanan["t"] = pd.PeriodIndex(bulanan["bulan"], freq="M").to_timestamp()
 oni_ser = df.groupby("bulan", observed=True)["oni_lag1"].first().reset_index()
 oni_ser["t"] = pd.PeriodIndex(oni_ser["bulan"], freq="M").to_timestamp()
 
-fig, (a1, a2) = plt.subplots(2, 1, figsize=(7.2, 4.4), sharex=True,
+fig, (a1, a2) = plt.subplots(2, 1, figsize=uk(7.2, 4.4), sharex=True,
                              gridspec_kw={"height_ratios": [2.2, 1], "hspace": 0.12})
 a1.fill_between(bulanan["t"], bulanan["tp"], color=MERAH, alpha=0.18, zorder=2)
 a1.plot(bulanan["t"], bulanan["tp"], color=MERAH, lw=1.6, zorder=3)
-a1.set_ylabel("Titik panas per bulan")
-a1.set_title("(a) Titik panas VIIRS S-NPP, 14 kabupaten Kalimantan Barat", loc="left")
+a1.set_ylabel("Hotspots per month")
+a1.set_title("(a) VIIRS S-NPP hotspots, 14 districts of West Kalimantan", loc="left")
 bersih(a1)
 for th, lbl in ((2014, "2014"), (2015, "2015"), (2019, "2019")):
     m = bulanan[bulanan["bulan"].str.startswith(str(th))]
@@ -164,7 +181,7 @@ ur_o = metrik.sort_values("pr_op", ascending=False)["model"].tolist()
 
 urut_rerata = sorted(nama_model, key=lambda n: peringkat_boot[n].mean())
 
-fig, (pa, pb) = plt.subplots(1, 2, figsize=(9.6, 4.3), gridspec_kw={"width_ratios": [1.15, 1]})
+fig, (pa, pb) = plt.subplots(1, 2, figsize=uk(9.6, 4.3), gridspec_kw={"width_ratios": [1.15, 1]})
 
 # --- (a) sebaran peringkat 300 undian ---
 rj = np.random.default_rng(11)
@@ -179,14 +196,14 @@ for i, n in enumerate(urut_rerata):
     pa.plot([pbk.mean()], [i], "o", color=c, ms=7 if n in SOROT else 5.5, zorder=4,
             markeredgecolor="white", markeredgewidth=1.0)
 pa.set_yticks(range(len(urut_rerata)))
-pa.set_yticklabels(urut_rerata, fontsize=8.5)
+pa.set_yticklabels([LABEL[n] for n in urut_rerata], fontsize=8.5)
 for lbl, n in zip(pa.get_yticklabels(), urut_rerata):
     if n in SOROT:
         lbl.set_color(SOROT[n]); lbl.set_weight("bold")
 pa.set_xlim(0.4, 7.6); pa.set_xticks(range(1, 8))
 pa.set_ylim(len(urut_rerata) - 0.5, -0.5)
-pa.set_xlabel("Peringkat pada protokol lazim")
-pa.set_title("(a) Peringkat berpindah antar undian penyeimbangan", loc="left")
+pa.set_xlabel("Rank under the prevailing protocol")
+pa.set_title("(a) Rank across balancing draws", loc="left")
 pa.grid(axis="x", alpha=0.9, zorder=0); pa.set_axisbelow(True)
 for s in ("top", "right", "left"):
     pa.spines[s].set_visible(False)
@@ -205,27 +222,23 @@ for n in nama_model:
 for n in nama_model:
     y2 = ur_o.index(n) + 1
     c = SOROT.get(n, KELABU_MUDA)
-    pb.text(1.06, y2, n, ha="left", va="center", fontsize=8.5,
+    pb.text(1.06, y2, LABEL[n], ha="left", va="center", fontsize=8.5,
             color=c if n in SOROT else TINTA_2,
             weight="bold" if n in SOROT else "normal")
 
 pb.set_xlim(-0.12, 1.62); pb.set_ylim(7.6, 0.4)
 pb.set_xticks([0, 1])
-pb.set_xticklabels(["lazim\n(rerata 300 undian)", "operasional\n(prevalensi asli)"],
+pb.set_xticklabels(["prevailing\n(mean of 300 draws)", "operational\n(natural prevalence)"],
                    fontsize=8.5, color=TINTA)
-pb.set_yticks(range(1, 8)); pb.set_ylabel("Peringkat")
-pb.set_title("(b) Perpindahan peringkat antar protokol", loc="left")
+pb.set_yticks(range(1, 8)); pb.set_ylabel("Rank")
+pb.set_title("(b) Rank change between protocols", loc="left")
 for s in ("top", "right", "bottom", "left"):
     pb.spines[s].set_visible(False)
 pb.tick_params(length=0)
 
-fig.suptitle("Protokol lazim tidak menghasilkan peringkat yang dapat diulang",
-             x=0.008, ha="left", fontsize=11, fontweight="bold", color=TINTA)
-fig.text(0.008, -0.02,
-         "Titik pucat = 300 undian penyeimbangan. Batang = rentang persentil 5–95. "
-         "Titik bertepi putih = rerata.",
-         ha="left", fontsize=7.5, color=TINTA_2)
-fig.tight_layout(rect=[0, 0.02, 1, 0.93])
+# Judul dan keterangan titik tidak digambar di kanvas: pedoman Elsevier (RSASE) meminta judul
+# dan penjelasan simbol berada di keterangan gambar, bukan di gambar.
+fig.tight_layout()
 simpan(fig, "gambar2_peringkat_berbalik")
 
 # ringkasan ketidakstabilan untuk dikutip di artikel
@@ -242,14 +255,14 @@ for b in range(B):
 balik_dist = np.array(balik_dist)
 print(f"  pasangan berbalik atas {B} undian: median {int(np.median(balik_dist))}, "
       f"rentang {balik_dist.min()}-{balik_dist.max()}, "
-      f"nol pembalikan pada {(balik_dist == 0).mean() * 100:.0f}% undian")
+      f"nol pembalikan pada {(balik_dist == 0).sum()} dari {B} undian")
 for n in nama_model:
     pb = peringkat_boot[n]
     print(f"    {n:<20} peringkat rerata {pb.mean():.2f}  rentang {pb.min()}-{pb.max()}")
 
 # ============================================================ Gambar 3
 
-fig, (a1, a2) = plt.subplots(1, 2, figsize=(7.4, 3.4))
+fig, (a1, a2) = plt.subplots(1, 2, figsize=uk(7.4, 3.4))
 for n in nama_model:
     c = SOROT.get(n, KELABU_MUDA); lw = 2.0 if n in SOROT else 1.0
     z = 4 if n in SOROT else 2
@@ -259,22 +272,22 @@ for n in nama_model:
     a2.plot(rc, pr, color=c, lw=lw, zorder=z)
 a1.plot([0, 1], [0, 1], ls=(0, (3, 3)), color=KELABU_MUDA, lw=0.9)
 a2.axhline(Y.mean(), ls=(0, (3, 3)), color=KELABU_MUDA, lw=0.9)
-a2.text(0.98, Y.mean() + 0.02, f"dasar acak {Y.mean():.3f}", ha="right", fontsize=7.5, color=TINTA_2)
-a1.set_xlabel("Laju positif palsu"); a1.set_ylabel("Laju positif benar")
-a1.set_title("(a) Kurva ROC, data uji diseimbangkan", loc="left")
-a2.set_xlabel("Recall"); a2.set_ylabel("Presisi")
-a2.set_title("(b) Kurva presisi-recall, prevalensi asli", loc="left")
+a2.text(0.98, Y.mean() + 0.02, f"random baseline {Y.mean():.3f}", ha="right", fontsize=7.5, color=TINTA_2)
+a1.set_xlabel("False positive rate"); a1.set_ylabel("True positive rate")
+a1.set_title("(a) ROC curves, balanced test set", loc="left")
+a2.set_xlabel("Recall"); a2.set_ylabel("Precision")
+a2.set_title("(b) Precision-recall curves, natural prevalence", loc="left")
 for a in (a1, a2):
     bersih(a, kisi="both")
 for n, c in SOROT.items():
-    a2.plot([], [], color=c, lw=2.0, label=n)
-a2.plot([], [], color=KELABU_MUDA, lw=1.0, label="lima model lain")
+    a2.plot([], [], color=c, lw=2.0, label=LABEL[n])
+a2.plot([], [], color=KELABU_MUDA, lw=1.0, label="five other models")
 a2.legend(loc="upper right")
 simpan(fig, "gambar3_kurva_roc_pr")
 
 # ============================================================ Gambar 4
 
-fig, ax = plt.subplots(figsize=(4.6, 4.2))
+fig, ax = plt.subplots(figsize=uk(4.6, 4.2))
 ax.plot([0, 1], [0, 1], ls=(0, (3, 3)), color=KELABU_MUDA, lw=0.9, zorder=1)
 tepi = np.linspace(0, 1, 11)
 for n in nama_model:
@@ -287,39 +300,37 @@ for n in nama_model:
     c = SOROT.get(n, KELABU_MUDA); lw = 2.0 if n in SOROT else 1.0
     ax.plot(xs, ys, "-o", color=c, lw=lw, ms=5 if n in SOROT else 3.5,
             zorder=4 if n in SOROT else 2)
-ax.set_xlabel("Peluang terprediksi (setelah kalibrasi isotonik)")
-ax.set_ylabel("Frekuensi teramati")
-ax.set_title("Diagram reliabilitas", loc="left")
+ax.set_xlabel("Predicted probability (after isotonic calibration)")
+ax.set_ylabel("Observed frequency")
 bersih(ax, kisi="both")
 e = dict(zip(metrik["model"], metrik["ece"]))
-ax.text(0.03, 0.95, f"ECE  klimatologi {e['klimatologi']:.4f}\n"
-                    f"        gradient-boosting {e['gradient-boosting']:.4f}",
+ax.text(0.03, 0.95, f"ECE  Climatology {e['klimatologi']:.4f}\n"
+                    f"        Gradient boosting {e['gradient-boosting']:.4f}",
         transform=ax.transAxes, va="top", fontsize=8, color=TINTA_2)
 simpan(fig, "gambar4_reliabilitas")
 
 # ============================================================ Gambar 5
 
 tahun = sorted(per_tahun["klimatologi"].keys())
-fig, ax = plt.subplots(figsize=(7.0, 3.6))
+fig, ax = plt.subplots(figsize=uk(7.0, 3.6))
 x = np.arange(len(tahun) + 2)
 lbl = [str(t) for t in tahun] + ["2014*", "2015*"]
 for n, c in SOROT.items():
     v = [per_tahun[n][t] for t in tahun] + [ekstrem[2014][n], ekstrem[2015][n]]
-    ax.plot(x, v, "-o", color=c, lw=1.8, ms=6, label=n, zorder=4)
+    ax.plot(x, v, "-o", color=c, lw=1.8, ms=6, label=LABEL[n], zorder=4)
 for n in nama_model:
     if n in SOROT:
         continue
     v = [per_tahun[n][t] for t in tahun] + [ekstrem[2014][n], ekstrem[2015][n]]
     ax.plot(x, v, color=KELABU_MUDA, lw=0.9, zorder=2)
 ax.axvspan(len(tahun) - 0.5, len(tahun) + 1.5, color="#F3F4F6", zorder=0)
-ax.text(len(tahun) + 0.5, ax.get_ylim()[1], "tahun ekstrem\ndisisihkan dari pelatihan",
+ax.text(len(tahun) + 0.5, ax.get_ylim()[1], "extreme years\nwithheld from training",
         ha="center", va="top", fontsize=8, color=TINTA_2)
 ax.set_xticks(x); ax.set_xticklabels(lbl)
-ax.set_ylabel("Skill AUC-PR ternormalisasi")
-ax.set_xlabel("Tahun uji")
-ax.set_title("Tidak ada model yang unggul konsisten antar tahun", loc="left", pad=18)
+ax.set_ylabel("Normalised AUC-PR skill")
+ax.set_xlabel("Test year")
 bersih(ax)
-ax.plot([], [], color=KELABU_MUDA, lw=0.9, label="lima model lain")
+ax.plot([], [], color=KELABU_MUDA, lw=0.9, label="five other models")
 ax.legend(loc="lower left", ncol=3)
 simpan(fig, "gambar5_kinerja_per_tahun")
 
