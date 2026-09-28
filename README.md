@@ -1,12 +1,14 @@
 # peatfire-eval
 
 Panel construction and evaluation-protocol experiments for district-month fire severity
-forecasting in West Kalimantan, Indonesia.
+forecasting in Indonesian Kalimantan: West Kalimantan on its own, and all five provinces.
 
-This repository accompanies the manuscript *Evaluation protocol choices determine model
-rankings in fire hotspot prediction: evidence from West Kalimantan, Indonesia*. It contains
-everything needed to rebuild the derived panel from raw satellite detections and to reproduce
-every number, table, and figure in the paper.
+This repository accompanies the manuscript *Evaluation choices decide fire-prediction model
+rankings and whether they transfer between provinces: evidence from Indonesian Kalimantan*.
+Versions 1.0.0 and 1.1.0 covered the West Kalimantan analysis only, then prepared as a separate
+manuscript; version 1.2.0 adds the five-province analysis with which it was merged. The
+repository contains everything needed to rebuild the derived panels from raw satellite
+detections and to reproduce every number, table, and figure in the paper.
 
 ## What the paper claims, and which script produces it
 
@@ -19,7 +21,13 @@ every number, table, and figure in the paper.
 | A per-district severity threshold changes the leading model and shrinks the metric effect (Section 5.6, Table 9) | `percobaan6_kabupaten.py` |
 | Reversals persist at the 80th, 90th, and 95th percentile thresholds | `percobaan3_dmi_ambang.py` |
 | The Indian Ocean Dipole carries no forecastable annual signal and degrades the monthly model | `percobaan3_dmi_ambang.py` |
-| All five figures | `gambar.py` |
+| Figures 2 and 3 (West Kalimantan) | `gambar.py` |
+| **Five provinces:** the 2x2 design across Kalimantan under pooled and per-district thresholds; per-province rankings | `percobaan_kalimantan.py` |
+| **Five provinces:** learned models trained without the test province, and on the province alone | `percobaan_kalimantan_transfer.py`, `percobaan_kalimantan3.py` |
+| **Five provinces:** province identity and district mean count as features (mechanism test) | `percobaan_kalimantan4.py` |
+| **Five provinces:** all predictions saved once; bootstrap intervals for the mechanism test | `kalimantan_prediksi.py`, `kalimantan_selang.py` |
+| **Five provinces:** Figures 1, 4 and 5 | `gambar_kalimantan.py` |
+| Thresholds computed from training years only (sensitivity analysis in the Limitations) | `kalimantan_kepekaan_ambang.py`, `kalimantan_banding_kepekaan.py`, `kalbar_kepekaan_ambang.py` |
 | Every reference in the manuscript resolves on Crossref or arXiv | `verifikasi_rujukan.py` |
 
 ## Requirements
@@ -40,7 +48,8 @@ reasons, not for convenience, and both are free to obtain.
 
 | Input | Included | Source |
 |---|---|---|
-| Derived district-month panel, 2,464 rows | **yes** — `data/panel_bulanan.csv` | produced by `bangun_panel.js` |
+| Derived district-month panel, West Kalimantan, 2,464 rows | **yes** — `data/panel_bulanan.csv` | produced by `bangun_panel.js` |
+| Derived district-month panel, five Kalimantan provinces, 9,240 rows (2012–2025) | **yes** — `data/panel_kalimantan.csv` | Kalimantan rows of the national panel produced by `bangun_panel_nasional.js` |
 | Oceanic Niño Index | **yes** — `data/oni.ascii.txt` | [NOAA Climate Prediction Center](https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php), US Government work, public domain |
 | Dipole Mode Index, HadISST-based | **yes** — `data/dmi.had.long.data` | [NOAA Physical Sciences Laboratory](https://psl.noaa.gov/gcos_wgsp/Timeseries/DMI/), US Government work, public domain |
 | VIIRS S-NPP active fire detections, 2012-2026 | no | [NASA FIRMS](https://firms.modaps.eosdis.nasa.gov/download/) — FIRMS terms require retrieval from source |
@@ -86,9 +95,36 @@ python percobaan5_ulasan.py data/panel_bulanan.csv data/oni.ascii.txt
 # Experiment 6: within-district metrics and per-district severity threshold
 python percobaan6_kabupaten.py data/panel_bulanan.csv data/oni.ascii.txt
 
-# Figures 1 to 5
+# Figures 1 to 5 of the West Kalimantan analysis
 python gambar.py data/panel_bulanan.csv data/oni.ascii.txt
 ```
+
+### Five provinces (version 1.2.0)
+
+```bash
+# The 2x2 design and per-province rankings (writes data/panel_kalimantan.csv again, unchanged)
+python percobaan_kalimantan.py data/panel_kalimantan.csv data/oni.ascii.txt
+
+# Transfer between provinces, training scope, and the mechanism test
+python percobaan_kalimantan_transfer.py data/panel_kalimantan.csv data/oni.ascii.txt
+python percobaan_kalimantan3.py data/panel_kalimantan.csv data/oni.ascii.txt
+python percobaan_kalimantan4.py data/panel_kalimantan.csv data/oni.ascii.txt
+
+# All predictions once (about 15 minutes), bootstrap intervals, and figures
+python kalimantan_prediksi.py data/panel_kalimantan.csv data/oni.ascii.txt
+python kalimantan_selang.py data/prediksi_kalimantan.csv
+python gambar_kalimantan.py data/prediksi_kalimantan.csv data/panel_kalimantan.csv gadm41_IDN_2.json
+
+# Sensitivity: severity thresholds computed from each fold's training years only
+python kalimantan_kepekaan_ambang.py data/panel_kalimantan.csv data/oni.ascii.txt
+python kalimantan_banding_kepekaan.py data
+python kalbar_kepekaan_ambang.py data/panel_bulanan.csv data/oni.ascii.txt
+```
+
+To rebuild the national panel from raw detections, request a VIIRS S-NPP 375 m Collection 2
+archive for Indonesia from NASA FIRMS and run
+`node bangun_panel_nasional.js gadm41_IDN_2.json panel_nasional.csv <directory of CSV files>`;
+the Kalimantan panel is its rows whose province starts with "Kalimantan", 2012–2025.
 
 Every experiment seeds its random number generator explicitly, so the balancing draws are
 reproducible. Since version 1.1.0 isotonic calibration is fitted on out-of-fold predictions
@@ -104,7 +140,7 @@ way during preparation: two incorrect DOIs and one incorrect arXiv identifier.
 
 ## Notes on scope
 
-This is analysis code for one province and thirteen complete years. It is not a fire warning
+This is analysis code for five provinces and thirteen complete years. It is not a fire warning
 system and should not be used as one. Hotspot counts are a proxy for fire activity, not a
 measurement of burned area.
 

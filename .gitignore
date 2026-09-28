@@ -5,3 +5,6 @@ __pycache__/
 fire_archive_*.csv
 fire_nrt_*.csv
 gadm*.json
+
+# keluaran analisis Kalimantan (dibuat ulang dari skrip)
+data/prediksi_kalimantan*.csv

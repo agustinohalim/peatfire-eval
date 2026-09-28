@@ -1,12 +1,13 @@
 cff-version: 1.2.0
 message: "If you use this software or the derived panel, please cite both the software and the accompanying article."
-title: "peatfire-eval: panel construction and evaluation-protocol experiments for district-month fire severity forecasting in West Kalimantan"
+title: "peatfire-eval: panel construction and evaluation-protocol experiments for district-month fire severity forecasting in Indonesian Kalimantan"
 abstract: >-
   Code and derived data for a study of how evaluation-protocol choices affect model
   rankings in fire hotspot prediction. Builds a district-month panel of VIIRS S-NPP
-  active fire detections for the 14 districts of West Kalimantan, Indonesia, and
-  evaluates seven forecasting models under a 2x2 design crossing the test distribution
-  with the discrimination metric.
+  active fire detections for the 14 districts of West Kalimantan and the 55 districts of
+  Indonesian Kalimantan, evaluates seven forecasting models under a 2x2 design crossing
+  the test distribution with the discrimination metric, and tests whether models and
+  their rankings transfer between provinces under two severity targets.
 type: software
 license: MIT
 authors:
@@ -25,10 +26,11 @@ keywords:
   - threshold sensitivity
   - VIIRS
   - Indonesia
+  - spatial transfer
 repository-code: "https://github.com/agustinohalim/peatfire-eval"
-version: "1.1.0"
-date-released: "2026-09-25"
-doi: "10.5281/zenodo.22949480"          # DOI v1.1.0 (v1.0.0: 22125225; konsep: 22125224)
+version: "1.2.0"
+date-released: "2026-09-28"
+# doi v1.2.0: isi sesudah rilis Zenodo (v1.1.0: 22949480; v1.0.0: 22125225; konsep: 22125224)
 identifiers:
   - type: doi
     value: "10.5281/zenodo.22125224"
@@ -38,7 +40,7 @@ identifiers:
 # biarkan sebagai preferred-citation tanpa doi atau hapus blok ini.
 preferred-citation:
   type: article
-  title: "Evaluation protocol choices determine model rankings in fire hotspot prediction: evidence from West Kalimantan, Indonesia"
+  title: "Evaluation choices decide fire-prediction model rankings and whether they transfer between provinces: evidence from Indonesian Kalimantan"
   authors:
     - given-names: Agustino
       family-names: Halim
