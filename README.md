@@ -116,6 +116,7 @@ python patokan_tabel_naskah.py                     # Tables 2, 3, 5
 python patokan_ablasi.py && python patokan_ablasi_analisis.py   # Table 4 (feature groups)
 python patokan_provinsi.py                         # Section 6.7, provinces
 python patokan_uji_panel.py                        # headroom-normalised contrast, permutation null
+python patokan_uji_tahun.py                        # extreme-year contrast on the defined S2 years, lag baselines, jackknife
 python patokan_kepekaan_ambang.py                  # thresholds from training years only
 python gambar_patokan.py                           # Figures 1-5
 ```
