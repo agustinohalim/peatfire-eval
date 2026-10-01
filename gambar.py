@@ -324,8 +324,8 @@ for n in nama_model:
     v = [per_tahun[n][t] for t in tahun] + [ekstrem[2014][n], ekstrem[2015][n]]
     ax.plot(x, v, color=KELABU_MUDA, lw=0.9, zorder=2)
 ax.axvspan(len(tahun) - 0.5, len(tahun) + 1.5, color="#F3F4F6", zorder=0)
-ax.text(len(tahun) + 0.5, ax.get_ylim()[1], "extreme years\nwithheld from training",
-        ha="center", va="top", fontsize=8, color=TINTA_2)
+ax.text(len(tahun) + 0.5, 0.25, "extreme years\nwithheld from training",
+        ha="center", va="center", fontsize=8, color=TINTA_2)
 ax.set_xticks(x); ax.set_xticklabels(lbl)
 ax.set_ylabel("Normalised AUC-PR skill")
 ax.set_xlabel("Test year")

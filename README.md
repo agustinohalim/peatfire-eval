@@ -76,6 +76,16 @@ district polygon. On the archive used in the paper this reads 833,208 detections
 low-confidence and 785 non-vegetation records, discards 404,060 that fall outside the province,
 and retains 396,699.
 
+## Correction in version 1.3.0: ONI timing
+
+Versions 1.0.0 to 1.2.0 assigned each three-month Oceanic Niño Index season (for example DJF) to
+its central month. The lag-1 ONI value used to forecast month *t* therefore covered months *t*−2 to
+*t*, including the target month, and was not available at forecast time. Since 1.3.0 each season is
+assigned to its last month (DJF to February, NDJ to January of the following year), so that lag 1 ends
+in month *t*−1 (`muat` in `percobaan.py`). Every result changes slightly; results in any document
+built on 1.0.0–1.2.0 should be replaced by those from 1.3.0. The derived panels in `data/` are
+unaffected, because ONI lags are computed when the panel is loaded.
+
 ## Reproducing the results
 
 ```bash
@@ -114,6 +124,12 @@ python percobaan_kalimantan4.py data/panel_kalimantan.csv data/oni.ascii.txt
 python kalimantan_prediksi.py data/panel_kalimantan.csv data/oni.ascii.txt
 python kalimantan_selang.py data/prediksi_kalimantan.csv
 python gambar_kalimantan.py data/prediksi_kalimantan.csv data/panel_kalimantan.csv gadm41_IDN_2.json
+
+# Decision-level analyses and robustness checks (version 1.3.0): regret of choosing a model from
+# another province, warning-budget hit rates, prevalence matching, province-identity decomposition,
+# training scope, fair baselines, district bootstrap of the regret, temporal split
+python kalimantan_keputusan.py data/prediksi_kalimantan.csv
+python kalimantan_uji_tajam.py data/panel_kalimantan.csv data/oni.ascii.txt
 
 # Sensitivity: severity thresholds computed from each fold's training years only
 python kalimantan_kepekaan_ambang.py data/panel_kalimantan.csv data/oni.ascii.txt

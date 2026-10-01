@@ -45,7 +45,13 @@ def muat(panel_path, oni_path):
             p = line.split()
             if len(p) < 4 or p[0] not in SEASONS:
                 continue
-            oni_rows.append((int(p[1]), SEASONS.index(p[0]) + 1, float(p[3])))
+            # Musim tiga bulan ditaruh pada bulan TERAKHIRNYA, saat nilainya paling cepat bisa
+            # diketahui (DJF -> Februari, NDJ -> Januari tahun berikutnya). Sebelum 1 Okt 2026 musim
+            # ditaruh pada bulan tengahnya, sehingga oni_lag1 untuk bulan t memuat SST bulan t sendiri.
+            th, bl = int(p[1]), SEASONS.index(p[0]) + 2
+            if bl > 12:
+                th, bl = th + 1, bl - 12
+            oni_rows.append((th, bl, float(p[3])))
     oni = pd.DataFrame(oni_rows, columns=["tahun", "bulan_ke", "oni"])
     oni["periode"] = pd.PeriodIndex(
         oni["tahun"].astype(str) + "-" + oni["bulan_ke"].astype(str).str.zfill(2), freq="M"
