@@ -1,5 +1,9 @@
 # peatfire-eval
 
+**Version 2.0.0 adds PeatFireBench**, a district-month benchmark for fire forecasting in all of
+Indonesia (498 districts and cities, 2012–2025). See the section *PeatFireBench* below; the
+West Kalimantan and Kalimantan analyses of earlier versions are kept unchanged.
+
 Panel construction and evaluation-protocol experiments for district-month fire severity
 forecasting in Indonesian Kalimantan: West Kalimantan on its own, and all five provinces.
 
@@ -75,6 +79,56 @@ paper: `confidence != l`, `type == 0`, and the detection must fall inside a West
 district polygon. On the archive used in the paper this reads 833,208 detections, drops 31,664
 low-confidence and 785 non-vegetation records, discards 404,060 that fall outside the province,
 and retains 396,699.
+
+## PeatFireBench (version 2.0.0)
+
+### Files
+
+| Path | Content |
+|---|---|
+| `DL_FIRE_NASIONAL/panel_nasional.csv` | Raw district-month VIIRS S-NPP detection counts, 502 GADM 4.1 level-2 units, 2012-01 to 2025-12 (from `bangun_panel_nasional.js`) |
+| `DL_FIRE_NASIONAL/chirps_bulanan_kabupaten_2012_2025.csv` | Monthly CHIRPS rainfall per district (from `Skrip_CHIRPS_Earth_Engine.js`) |
+| `DL_FIRE_NASIONAL/statis_kabupaten.csv`, `tutupan_tahunan.csv`, `hilang_hutan_tahunan_v2.csv` | Terrain, population, MODIS land cover and Hansen forest loss per district (from `Skrip_Statis_Earth_Engine.js`) |
+| `data/oni.ascii.txt`, `data/dmi.had.long.data` | ENSO (ONI) and Indian Ocean Dipole (DMI) indices, NOAA |
+
+### Build the benchmark panel (seconds)
+
+```bash
+python gabung_indeks_nasional.py DL_FIRE_NASIONAL/panel_nasional.csv data/oni.ascii.txt \
+    data/dmi.had.long.data DL_FIRE_NASIONAL/panel_nasional_fitur.csv
+python bersihkan_panel_nasional.py      # removes 4 water bodies, adds both severity targets
+python gabung_chirps_nasional.py        # rainfall features
+python gabung_lahan_nasional.py         # land and population features -> panel_nasional_fitur_lengkap.csv
+```
+
+The resulting `panel_nasional_fitur_lengkap.csv` (77,688 rows, 2013–2025) is byte-identical to
+the one used in the paper. Columns: `gid` (GADM identifier), `provinsi`, `kabupaten`, `tahun`,
+`bulan`, `titik_panas` (detections), `y_kabupaten` (per-district target, primary), `y_gabungan`
+(pooled target), `ada_positif` (district has at least one per-district positive), and the
+feature groups listed in `kelompok_fitur.py` (`api` fire history, `musim` season, `iklim`
+climate indices, `hujan` rainfall, `lahan` land, `manusia` population).
+
+### Run the baselines and reproduce the paper
+
+```bash
+PATOKAN_FITUR=lengkap python patokan_prediksi.py   # 8 baselines x splits S1/S2/S3 x 2 targets (~15 min)
+python patokan_tabel_naskah.py                     # Tables 2, 3, 5
+python patokan_ablasi.py && python patokan_ablasi_analisis.py   # Table 4 (feature groups)
+python patokan_provinsi.py                         # Section 6.7, provinces
+python patokan_uji_panel.py                        # headroom-normalised contrast, permutation null
+python patokan_kepekaan_ambang.py                  # thresholds from training years only
+python gambar_patokan.py                           # Figures 1-5
+```
+
+Splits: **S1** chronological (test 2019–2025, train on earlier years); **S2** extreme year
+withheld (2015, 2014, 2019); **S3** island transfer (train without the test island group).
+Score a new model by writing its predictions in the same layout as `patokan_prediksi_lengkap.csv`
+(one row per test district-month, one column per model) and passing it to
+`patokan_tabel_naskah.py` with `PATOKAN_BERKAS=<file>`.
+
+Raw FIRMS detections and GADM polygons are not redistributed: `unduh_firms_nasional.py`
+downloads the detections (set `FIRMS_MAP_KEY` in the environment), and GADM 4.1 is free from
+gadm.org. The Earth Engine scripts contain a placeholder project path to replace with your own.
 
 ## Correction in version 1.3.0: ONI timing
 

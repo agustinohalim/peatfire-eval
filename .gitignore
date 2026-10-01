@@ -8,3 +8,9 @@ gadm*.json
 
 # keluaran analisis Kalimantan (dibuat ulang dari skrip)
 data/prediksi_kalimantan*.csv
+
+# PeatFireBench: berkas turunan yang dibuat ulang oleh skrip (v2.0.0)
+DL_FIRE_NASIONAL/panel_nasional_fitur*.csv
+DL_FIRE_NASIONAL/panel_nasional_bersih.csv
+DL_FIRE_NASIONAL/patokan_*.csv
+DL_FIRE_NASIONAL/*.log
