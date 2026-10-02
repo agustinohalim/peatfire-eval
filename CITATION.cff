@@ -28,22 +28,29 @@ keywords:
   - Indonesia
   - spatial transfer
 repository-code: "https://github.com/agustinohalim/peatfire-eval"
-version: "2.1.0"
+version: "2.1.1"
 date-released: "2026-10-02"
-doi: "10.5281/zenodo.22125224"          # DOI konsep (selalu versi terbaru); v2.0.1: 23081324; v2.0.0: 23081230; v1.3.0: 23081229; v1.2.0: 23008148; v1.1.0: 22949480; v1.0.0: 22125225; konsep: 22125224)
+doi: "10.5281/zenodo.22125224"          # DOI konsep (selalu versi terbaru); v2.1.0: 23095825; v2.0.1: 23081324; v2.0.0: 23081230; v1.3.0: 23081229; v1.2.0: 23008148; v1.1.0: 22949480; v1.0.0: 22125225; konsep: 22125224)
 identifiers:
   - type: doi
     value: "10.5281/zenodo.22125224"
     description: "Concept DOI, selalu menunjuk versi terbaru"
 
-# Artikel yang menyertainya. Isi doi dan journal setelah diterima; sebelum itu,
-# biarkan sebagai preferred-citation tanpa doi atau hapus blok ini.
+# Artikel yang menyertainya. Isi doi dan journal setelah diterima.
 preferred-citation:
   type: article
-  title: "Evaluation choices decide fire-prediction model rankings and whether they transfer between provinces: evidence from Indonesian Kalimantan"
+  title: "PeatFireBench: a district-month benchmark for Indonesian fire forecasting, and five evaluation choices that change its conclusions"
   authors:
     - given-names: Agustino
       family-names: Halim
+      orcid: "https://orcid.org/0009-0008-4388-1174"
+    - given-names: Apriyaldi
+      family-names: Lukman
+    - given-names: Roy
+      family-names: Andika
+    - given-names: Bobby Donald
+      family-names: Macnamara
+    - family-names: Erwin
   year: 2026
   # journal: "ISI_SETELAH_DITERIMA"
   # doi: "ISI_SETELAH_DITERIMA"

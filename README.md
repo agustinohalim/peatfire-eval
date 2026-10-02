@@ -1,91 +1,41 @@
 # peatfire-eval
 
-**Version 2.0.0 adds PeatFireBench**, a district-month benchmark for fire forecasting in all of
-Indonesia (498 districts and cities, 2012–2025). See the section *PeatFireBench* below; the
-West Kalimantan and Kalimantan analyses of earlier versions are kept unchanged.
+**PeatFireBench**: a district-month benchmark for fire forecasting in Indonesia (498 districts and
+cities, 2012–2025), built from VIIRS active fire detections with the national peat map, GFWED fire
+weather, ENSO and IOD indices, CHIRPS rainfall, land cover, forest loss, terrain and population,
+with twelve baselines, three splits and two severity targets; and the evaluation-protocol
+experiments behind it.
 
-**Version 2.1.0 adds a peat layer and fire weather to PeatFireBench**: peat fraction per district
-from the Ministry of Agriculture's 2019 peat map (via Trase, CC BY 4.0), monthly Fire Weather
-Index from GFWED, and two FWI baselines. The paper's runs now use this "penuh" (full) set; the
-2.0.x results are reproduced with `PATOKAN_PUTARAN=lengkap`.
+This repository accompanies the manuscript *PeatFireBench: a district-month benchmark for
+Indonesian fire forecasting, and five evaluation choices that change its conclusions* (Halim,
+Lukman, Andika, Macnamara and Erwin, in review). Everything needed to rebuild the panel from the
+included tables and to reproduce every number, table and figure of that paper is in the section
+**PeatFireBench** below.
 
-Panel construction and evaluation-protocol experiments for district-month fire severity
-forecasting in Indonesian Kalimantan: West Kalimantan on its own, and all five provinces.
-
-This repository accompanies the manuscript *Evaluation choices decide fire-prediction model
-rankings and whether they transfer between provinces: evidence from Indonesian Kalimantan*.
-Versions 1.0.0 and 1.1.0 covered the West Kalimantan analysis only, then prepared as a separate
-manuscript; version 1.2.0 adds the five-province analysis with which it was merged. The
-repository contains everything needed to rebuild the derived panels from raw satellite
-detections and to reproduce every number, table, and figure in the paper.
-
-## What the paper claims, and which script produces it
-
-| Claim | Script |
-|---|---|
-| A bounding box instead of administrative boundaries admits 50.5% of detections from outside the province and changes a reported ENSO-fire correlation | `bangun_panel.js` |
-| ROC-AUC and AUC-PR rank identical predictions differently; balancing adds variance without reordering | `percobaan4_matriks2x2.py` |
-| Calibration metrics with the calibrator fitted on out-of-fold predictions (Table 7) | `percobaan.py` |
-| Neither protocol separates the two leading models: bootstrap intervals, per-year intervals, out-of-fold calibration against in-sample calibration | `percobaan5_ulasan.py` |
-| A per-district severity threshold changes the leading model and shrinks the metric effect (Section 5.6, Table 9) | `percobaan6_kabupaten.py` |
-| Reversals persist at the 80th, 90th, and 95th percentile thresholds | `percobaan3_dmi_ambang.py` |
-| The Indian Ocean Dipole carries no forecastable annual signal and degrades the monthly model | `percobaan3_dmi_ambang.py` |
-| Figures 2 and 3 (West Kalimantan) | `gambar.py` |
-| **Five provinces:** the 2x2 design across Kalimantan under pooled and per-district thresholds; per-province rankings | `percobaan_kalimantan.py` |
-| **Five provinces:** learned models trained without the test province, and on the province alone | `percobaan_kalimantan_transfer.py`, `percobaan_kalimantan3.py` |
-| **Five provinces:** province identity and district mean count as features (mechanism test) | `percobaan_kalimantan4.py` |
-| **Five provinces:** all predictions saved once; bootstrap intervals for the mechanism test | `kalimantan_prediksi.py`, `kalimantan_selang.py` |
-| **Five provinces:** Figures 1, 4 and 5 | `gambar_kalimantan.py` |
-| Thresholds computed from training years only (sensitivity analysis in the Limitations) | `kalimantan_kepekaan_ambang.py`, `kalimantan_banding_kepekaan.py`, `kalbar_kepekaan_ambang.py` |
-| Every reference in the manuscript resolves on Crossref or arXiv | `verifikasi_rujukan.py` |
+Version history: 2.0.0 added PeatFireBench; 2.1.0 added the peat layer, fire weather and the FWI
+baselines (the 2.0.x results are reproduced with `PATOKAN_PUTARAN=lengkap`); 2.1.1 adds the
+analyses requested in review (district-relative FWI baselines, seed sensitivity, per-year
+calibration, peat checks, peat and non-peat districts). Versions 1.0.0–1.3.0 hold earlier
+analyses of West Kalimantan and of the five Kalimantan provinces. Those manuscripts were withdrawn
+and their questions folded into PeatFireBench; the code is kept below, unchanged, because its
+Zenodo versions are cited.
 
 ## Requirements
 
 - Python 3.12 with the packages in `requirements.txt`
-- Node.js 20 or later, for `bangun_panel.js` only — it uses no third-party packages
+- Node.js 20 or later, for `bangun_panel.js` and `bangun_panel_nasional.js` only — no third-party packages
+- Google Earth Engine (Code Editor) only to regenerate the covariate tables, which are included
 
-The full pipeline completes in under ten minutes on a laptop. No GPU is used.
+The paper's results were produced with Python 3.12, pandas 3.0.5, NumPy 2.5.2, scikit-learn
+1.9.0, XGBoost 3.4.1 and matplotlib 3.11.1. The PeatFireBench baselines take about 30 minutes on
+a laptop, the ablation about an hour, and the seed sensitivity about four hours; the archived
+analyses take under ten minutes. No GPU is used.
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Data
-
-Three of the four inputs are included. The two that are not are excluded for licensing
-reasons, not for convenience, and both are free to obtain.
-
-| Input | Included | Source |
-|---|---|---|
-| Derived district-month panel, West Kalimantan, 2,464 rows | **yes** — `data/panel_bulanan.csv` | produced by `bangun_panel.js` |
-| Derived district-month panel, five Kalimantan provinces, 9,240 rows (2012–2025) | **yes** — `data/panel_kalimantan.csv` | Kalimantan rows of the national panel produced by `bangun_panel_nasional.js` |
-| Oceanic Niño Index | **yes** — `data/oni.ascii.txt` | [NOAA Climate Prediction Center](https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php), US Government work, public domain |
-| Dipole Mode Index, HadISST-based | **yes** — `data/dmi.had.long.data` | [NOAA Physical Sciences Laboratory](https://psl.noaa.gov/gcos_wgsp/Timeseries/DMI/), US Government work, public domain |
-| VIIRS S-NPP active fire detections, 2012-2026 | no | [NASA FIRMS](https://firms.modaps.eosdis.nasa.gov/download/) — FIRMS terms require retrieval from source |
-| District boundaries, GADM 4.1 level 2, Indonesia | no | [GADM](https://gadm.org/download_country.html) — licence permits academic use but not redistribution |
-
-### Rebuilding the panel from raw detections
-
-The included panel is the output of this step, so it can be skipped unless you want to verify
-the construction itself.
-
-1. Request a VIIRS S-NPP 375 m Collection 2 archive download from NASA FIRMS covering
-   longitude 108.8 to 114.3 and latitude −3.3 to 2.1, January 2012 to the present. Place the
-   CSV files in a directory of your choice.
-2. Download `gadm41_IDN_2.json` from GADM.
-3. Run:
-
-```bash
-node bangun_panel.js gadm41_IDN_2.json data/panel_bulanan.csv fire_archive_*.csv
-```
-
-The filters are fixed and must not be changed if you intend to compare results with the
-paper: `confidence != l`, `type == 0`, and the detection must fall inside a West Kalimantan
-district polygon. On the archive used in the paper this reads 833,208 detections, drops 31,664
-low-confidence and 785 non-vegetation records, discards 404,060 that fall outside the province,
-and retains 396,699.
-
-## PeatFireBench (version 2.1.0)
+## PeatFireBench (version 2.1.1)
 
 ### Files
 
@@ -123,13 +73,19 @@ fire weather). `fwi_kini`, the same-month FWI, is a reference column, not a fore
 
 ```bash
 python patokan_prediksi.py                         # 10 baselines x splits S1/S2/S3 x 2 targets (~30 min)
-python patokan_tabel_naskah.py                     # Tables 2, 3, 5
+python patokan_tabel_naskah.py                     # Tables 2, 3 and island transfer (S2)
 python patokan_ablasi.py && python patokan_ablasi_analisis.py   # Table 4 (feature groups)
 python patokan_provinsi.py                         # Section 6.7, provinces
 python patokan_uji_panel.py                        # headroom-normalised contrast, permutation null
 python patokan_uji_tahun.py                        # extreme-year contrast on the defined S2 years, lag baselines, jackknife
 python patokan_kepekaan_ambang.py                  # thresholds from training years only
 python gambar_patokan.py                           # Figures 1-5
+# added in 2.1.1, from the third review round (Supplementary S1-S7 of the paper)
+python cek_gambut_provinsi.py                      # S1: peat crosswalk against provincial totals
+python patokan_fwi_adil.py                         # Table 2 and S3: FWI percentile, climatology + FWI
+python patokan_ece.py                              # S4: calibration per year with intervals
+python patokan_benih.py && python patokan_benih_analisis.py   # S5: five more seeds, seed-averaged provincial ranking (~1 h + ~3 h)
+python patokan_gambut_bagi.py                      # S7: districts with and without peat
 ```
 
 Splits: **S1** chronological (test 2019–2025, train on earlier years); **S2** extreme year
@@ -144,7 +100,64 @@ Raw FIRMS detections and GADM polygons are not redistributed: `unduh_firms_nasio
 downloads the detections (set `FIRMS_MAP_KEY` in the environment), and GADM 4.1 is free from
 gadm.org. The Earth Engine scripts contain a placeholder project path to replace with your own.
 
-## Correction in version 1.3.0: ONI timing
+## Archived: West Kalimantan and Kalimantan analyses (versions 1.x)
+
+### What those analyses claimed, and which script produces it
+
+| Claim | Script |
+|---|---|
+| A bounding box instead of administrative boundaries admits 50.5% of detections from outside the province and changes a reported ENSO-fire correlation | `bangun_panel.js` |
+| ROC-AUC and AUC-PR rank identical predictions differently; balancing adds variance without reordering | `percobaan4_matriks2x2.py` |
+| Calibration metrics with the calibrator fitted on out-of-fold predictions (Table 7) | `percobaan.py` |
+| Neither protocol separates the two leading models: bootstrap intervals, per-year intervals, out-of-fold calibration against in-sample calibration | `percobaan5_ulasan.py` |
+| A per-district severity threshold changes the leading model and shrinks the metric effect (Section 5.6, Table 9) | `percobaan6_kabupaten.py` |
+| Reversals persist at the 80th, 90th, and 95th percentile thresholds | `percobaan3_dmi_ambang.py` |
+| The Indian Ocean Dipole carries no forecastable annual signal and degrades the monthly model | `percobaan3_dmi_ambang.py` |
+| Figures 2 and 3 (West Kalimantan) | `gambar.py` |
+| **Five provinces:** the 2x2 design across Kalimantan under pooled and per-district thresholds; per-province rankings | `percobaan_kalimantan.py` |
+| **Five provinces:** learned models trained without the test province, and on the province alone | `percobaan_kalimantan_transfer.py`, `percobaan_kalimantan3.py` |
+| **Five provinces:** province identity and district mean count as features (mechanism test) | `percobaan_kalimantan4.py` |
+| **Five provinces:** all predictions saved once; bootstrap intervals for the mechanism test | `kalimantan_prediksi.py`, `kalimantan_selang.py` |
+| **Five provinces:** Figures 1, 4 and 5 | `gambar_kalimantan.py` |
+| Thresholds computed from training years only (sensitivity analysis in the Limitations) | `kalimantan_kepekaan_ambang.py`, `kalimantan_banding_kepekaan.py`, `kalbar_kepekaan_ambang.py` |
+| Every reference in the manuscript resolves on Crossref or arXiv | `verifikasi_rujukan.py` |
+
+### Data (archived analyses)
+
+Three of the four inputs are included. The two that are not are excluded for licensing
+reasons, not for convenience, and both are free to obtain.
+
+| Input | Included | Source |
+|---|---|---|
+| Derived district-month panel, West Kalimantan, 2,464 rows | **yes** — `data/panel_bulanan.csv` | produced by `bangun_panel.js` |
+| Derived district-month panel, five Kalimantan provinces, 9,240 rows (2012–2025) | **yes** — `data/panel_kalimantan.csv` | Kalimantan rows of the national panel produced by `bangun_panel_nasional.js` |
+| Oceanic Niño Index | **yes** — `data/oni.ascii.txt` | [NOAA Climate Prediction Center](https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php), US Government work, public domain |
+| Dipole Mode Index, HadISST-based | **yes** — `data/dmi.had.long.data` | [NOAA Physical Sciences Laboratory](https://psl.noaa.gov/gcos_wgsp/Timeseries/DMI/), US Government work, public domain |
+| VIIRS S-NPP active fire detections, 2012-2026 | no | [NASA FIRMS](https://firms.modaps.eosdis.nasa.gov/download/) — FIRMS terms require retrieval from source |
+| District boundaries, GADM 4.1 level 2, Indonesia | no | [GADM](https://gadm.org/download_country.html) — licence permits academic use but not redistribution |
+
+### Rebuilding the panel from raw detections
+
+The included panel is the output of this step, so it can be skipped unless you want to verify
+the construction itself.
+
+1. Request a VIIRS S-NPP 375 m Collection 2 archive download from NASA FIRMS covering
+   longitude 108.8 to 114.3 and latitude −3.3 to 2.1, January 2012 to the present. Place the
+   CSV files in a directory of your choice.
+2. Download `gadm41_IDN_2.json` from GADM.
+3. Run:
+
+```bash
+node bangun_panel.js gadm41_IDN_2.json data/panel_bulanan.csv fire_archive_*.csv
+```
+
+The filters are fixed and must not be changed if you intend to compare results with the
+paper: `confidence != l`, `type == 0`, and the detection must fall inside a West Kalimantan
+district polygon. On the archive used in the paper this reads 833,208 detections, drops 31,664
+low-confidence and 785 non-vegetation records, discards 404,060 that fall outside the province,
+and retains 396,699.
+
+### Correction in version 1.3.0: ONI timing
 
 Versions 1.0.0 to 1.2.0 assigned each three-month Oceanic Niño Index season (for example DJF) to
 its central month. The lag-1 ONI value used to forecast month *t* therefore covered months *t*−2 to
@@ -154,7 +167,7 @@ in month *t*−1 (`muat` in `percobaan.py`). Every result changes slightly; resu
 built on 1.0.0–1.2.0 should be replaced by those from 1.3.0. The derived panels in `data/` are
 unaffected, because ONI lags are computed when the panel is loaded.
 
-## Reproducing the results
+### Reproducing the archived results
 
 ```bash
 # Experiments 1 and 2: the two protocols, and the extreme-year holdout
@@ -224,8 +237,8 @@ way during preparation: two incorrect DOIs and one incorrect arXiv identifier.
 
 ## Notes on scope
 
-This is analysis code for five provinces and thirteen complete years. It is not a fire warning
-system and should not be used as one. Hotspot counts are a proxy for fire activity, not a
+This is benchmark and analysis code. It is not a fire warning system and should not be used as
+one; the models are poorly calibrated in withheld extreme years. Hotspot counts are a proxy for fire activity, not a
 measurement of burned area.
 
 The code comments are in Indonesian; identifiers, filenames, and this README are in English.
@@ -233,7 +246,10 @@ The code comments are in Indonesian; identifiers, filenames, and this README are
 ## Licence
 
 MIT — see `LICENSE`. The included NOAA index files are US Government works in the public
-domain. The derived panel is released under CC0.
+domain. The PeatFireBench panel and covariate tables are released under CC BY 4.0, because they
+derive from CC BY 4.0 sources (Hansen Global Forest Change, WorldPop, Trase); please cite the
+sources listed in the paper's dataset card. The West Kalimantan and Kalimantan panels of versions
+1.x remain under CC0.
 
 ## Citation
 

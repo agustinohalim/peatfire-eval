@@ -44,7 +44,7 @@ BASE = os.path.dirname(os.path.abspath(__file__))
 D = os.path.join(BASE, "DL_FIRE_NASIONAL")
 OUT = os.path.join(BASE, "Gambar_Patokan")
 os.makedirs(OUT, exist_ok=True)
-SASARAN = [("y_gabungan", "(a) Pooled threshold"), ("y_kabupaten", "(b) Per-district threshold")]
+SASARAN = [("y_gabungan", "(a) National threshold"), ("y_kabupaten", "(b) Per-district threshold")]
 EKSTREM = ("2015", "2014", "2019")
 
 
