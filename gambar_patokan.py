@@ -27,7 +27,7 @@ from matplotlib.collections import PatchCollection
 from matplotlib.colors import LogNorm, LinearSegmentedColormap
 from matplotlib.patches import Patch, Polygon
 from sklearn.metrics import average_precision_score as ap
-from kelompok_fitur import KELOMPOK
+from kelompok_fitur import ABLASI, KELOMPOK, PREDIKSI
 
 BIRU, MERAH = "#1F5FA8", "#C1442A"
 KELABU, KELABU_MUDA = "#6B7280", "#B8BCC4"
@@ -91,8 +91,8 @@ def boot_gabung(d, a, b, n=1000, seed=2026):
 
 panel = pd.read_csv(os.path.join(D, "panel_nasional_bersih.csv"))
 deteksi = panel.groupby("tahun")["titik_panas"].sum()
-P = pd.read_csv(os.path.join(D, "patokan_prediksi_lengkap.csv"), dtype={"tag": str})
-A = pd.read_csv(os.path.join(D, "patokan_ablasi.csv"), dtype={"tag": str})
+P = pd.read_csv(os.path.join(D, PREDIKSI), dtype={"tag": str})
+A = pd.read_csv(os.path.join(D, ABLASI), dtype={"tag": str})
 print("Gambar:")
 
 # ============================================================ 1. peta
@@ -175,8 +175,8 @@ simpan(fig, "gambar_pat3_reliabilitas")
 
 # ============================================================ 4. ablasi
 LABEL_K = {"api": "Fire history", "musim": "Season", "iklim": "ENSO / IOD", "hujan": "Rainfall",
-           "lahan": "Land", "manusia": "Population"}
-fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.2), sharey=True)
+           "lahan": "Land", "manusia": "Population", "gambut": "Peat", "cuaca": "Fire weather (FWI)"}
+fig, axes = plt.subplots(1, 2, figsize=(7.2, 0.5 * len(KELOMPOK) + 0.2), sharey=True)
 for ax, (sas, judul) in zip(axes, SASARAN):
     d0 = pilih(A, sas)
     biasa = d0[(d0["skema"] == "S1") & (d0["tahun"] >= 2020)]

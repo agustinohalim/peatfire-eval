@@ -1,8 +1,9 @@
 """
 Artikel 2, Percobaan C — ablasi kelompok fitur dengan gradient boosting.
 
-Panel: DL_FIRE_NASIONAL/panel_nasional_fitur_lengkap.csv (gabung_lahan_nasional.py).
-Kelompok: kelompok_fitur.KELOMPOK (api, musim, iklim, hujan, lahan, manusia).
+Panel dan keluaran mengikuti PATOKAN_PUTARAN (kelompok_fitur.py): lengkap = panel_nasional_fitur_lengkap.csv,
+enam kelompok, keluaran patokan_ablasi.csv; penuh (bawaan) = + gambut dan cuaca (FWI),
+keluaran patokan_ablasi_penuh.csv.
 
 Konfigurasi: "lengkap" (semua kelompok) dan "tanpa_<k>" untuk tiap kelompok k. Hanya gradient
 boosting (parameter Artikel 1), karena ablasi bertanya tentang fitur, bukan model; dan hanya
@@ -20,12 +21,12 @@ import os
 import warnings
 import pandas as pd
 from xgboost import XGBClassifier
-from kelompok_fitur import KELOMPOK
+from kelompok_fitur import ABLASI, KELOMPOK, PANEL
 
 warnings.filterwarnings("ignore")
 BASE = os.path.dirname(os.path.abspath(__file__))
 D = os.path.join(BASE, "DL_FIRE_NASIONAL")
-df = pd.read_csv(os.path.join(D, "panel_nasional_fitur_lengkap.csv"))
+df = pd.read_csv(os.path.join(D, PANEL))
 SEMUA = [c for k in KELOMPOK for c in KELOMPOK[k]]
 KONFIG = {"lengkap": SEMUA}
 KONFIG.update({f"tanpa_{k}": [c for c in SEMUA if c not in KELOMPOK[k]] for k in KELOMPOK})
@@ -58,5 +59,5 @@ for ylab in ("y_kabupaten", "y_gabungan"):
         print(f"{ylab} {skema} {tag}", flush=True)
 
 out = pd.concat(baris, ignore_index=True)
-out.to_csv(os.path.join(D, "patokan_ablasi.csv"), index=False)
-print(f"tersimpan: patokan_ablasi.csv  baris: {len(out)}  konfigurasi: {', '.join(KONFIG)}")
+out.to_csv(os.path.join(D, ABLASI), index=False)
+print(f"tersimpan: {ABLASI}  baris: {len(out)}  konfigurasi: {', '.join(KONFIG)}")

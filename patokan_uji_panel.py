@@ -25,7 +25,8 @@ import pandas as pd
 from sklearn.metrics import average_precision_score as ap
 
 D = os.path.join(os.path.dirname(os.path.abspath(__file__)), "DL_FIRE_NASIONAL")
-P = pd.read_csv(os.path.join(D, "patokan_prediksi_lengkap.csv"), dtype={"tag": str})
+from kelompok_fitur import MODEL, PREDIKSI
+P = pd.read_csv(os.path.join(D, PREDIKSI), dtype={"tag": str})
 P = P[P.ada_positif == 1]                                  # 411 kabupaten yang sama untuk kedua sasaran
 EKSTREM = [("S2", "2015"), ("S2", "2019"), ("S1", "2023")]
 TENANG = [("S1", t) for t in ("2020", "2021", "2022", "2024", "2025")]
@@ -82,9 +83,8 @@ for j in ("mentah", "ruang sisa"):
           f"[{np.percentile(dif, 2.5):+.3f}, {np.percentile(dif, 97.5):+.3f}]")
 
 # ---------------------------------------------------------------- B
-MODEL = ["klimatologi", "persistence", "seasonal_naive", "rasio", "logistik", "rf", "xgb", "mlp"]
 BIASA = [str(t) for t in range(2020, 2026)]
-Q = pd.read_csv(os.path.join(D, "patokan_prediksi_lengkap.csv"), dtype={"tag": str})
+Q = pd.read_csv(os.path.join(D, PREDIKSI), dtype={"tag": str})
 print("\nB. Ketidaksepakatan juara provinsi lawan nol permutasi (provinsi palsu berukuran sama)")
 for s, min_pos in (("y_kabupaten", 40), ("y_gabungan", 40)):
     d = Q[(Q.sasaran == s) & (Q.skema == "S1") & Q.tag.isin(BIASA)]

@@ -23,8 +23,8 @@ import pandas as pd
 from sklearn.metrics import average_precision_score as ap
 
 D = os.path.join(os.path.dirname(os.path.abspath(__file__)), "DL_FIRE_NASIONAL")
-P = pd.read_csv(os.path.join(D, "patokan_prediksi_lengkap.csv"), dtype={"tag": str})
-MODEL = ["klimatologi", "persistence", "seasonal_naive", "rasio", "logistik", "rf", "xgb", "mlp"]
+from kelompok_fitur import MODEL, PREDIKSI
+P = pd.read_csv(os.path.join(D, PREDIKSI), dtype={"tag": str})
 BIASA = [str(t) for t in range(2020, 2026)]
 MIN_POS = 40
 rng = np.random.default_rng(2026)

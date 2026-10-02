@@ -28,9 +28,9 @@ keywords:
   - Indonesia
   - spatial transfer
 repository-code: "https://github.com/agustinohalim/peatfire-eval"
-version: "2.0.1"
+version: "2.1.0"
 date-released: "2026-10-02"
-doi: "10.5281/zenodo.22125224"          # DOI konsep (selalu versi terbaru); v2.0.0: 23081230; v1.3.0: 23081229; v1.2.0: 23008148; v1.1.0: 22949480; v1.0.0: 22125225; konsep: 22125224)
+doi: "10.5281/zenodo.22125224"          # DOI konsep (selalu versi terbaru); v2.0.1: 23081324; v2.0.0: 23081230; v1.3.0: 23081229; v1.2.0: 23008148; v1.1.0: 22949480; v1.0.0: 22125225; konsep: 22125224)
 identifiers:
   - type: doi
     value: "10.5281/zenodo.22125224"

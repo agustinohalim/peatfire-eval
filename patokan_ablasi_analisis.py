@@ -18,10 +18,10 @@ import os
 import numpy as np
 import pandas as pd
 from sklearn.metrics import average_precision_score as ap
-from kelompok_fitur import KELOMPOK
+from kelompok_fitur import ABLASI, KELOMPOK
 
 BASE = os.path.dirname(os.path.abspath(__file__))
-P = pd.read_csv(os.path.join(BASE, "DL_FIRE_NASIONAL", "patokan_ablasi.csv"), dtype={"tag": str})
+P = pd.read_csv(os.path.join(BASE, "DL_FIRE_NASIONAL", ABLASI), dtype={"tag": str})
 TAHUN_BIASA = [str(t) for t in range(2020, 2026)]
 
 

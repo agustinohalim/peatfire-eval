@@ -24,11 +24,12 @@ import pandas as pd
 from sklearn.metrics import average_precision_score as ap
 
 D = os.path.join(os.path.dirname(os.path.abspath(__file__)), "DL_FIRE_NASIONAL")
-P = pd.read_csv(os.path.join(D, "patokan_prediksi_lengkap.csv"), dtype={"tag": str})
+from kelompok_fitur import PREDIKSI, PUTARAN
+P = pd.read_csv(os.path.join(D, PREDIKSI), dtype={"tag": str})
 P = P[P.ada_positif == 1]
 EKSTREM = [("S2", "2015"), ("S2", "2014"), ("S2", "2019")]
 TENANG = [("S1", t) for t in ("2020", "2021", "2022", "2024", "2025")]
-MODEL = ["xgb", "rf", "mlp", "persistence", "seasonal_naive"]
+MODEL = ["xgb", "rf", "mlp", "persistence", "seasonal_naive"] + (["fwi", "fwi_logistik"] if PUTARAN == "penuh" else [])
 SAS = ("y_kabupaten", "y_gabungan")
 rng = np.random.default_rng(2026)
 

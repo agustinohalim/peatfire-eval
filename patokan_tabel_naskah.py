@@ -22,12 +22,13 @@ from sklearn.metrics import average_precision_score as ap
 BASE = os.path.dirname(os.path.abspath(__file__))
 D = os.path.join(BASE, "DL_FIRE_NASIONAL")
 # PATOKAN_BERKAS=patokan_prediksi_kepekaan.csv untuk uji kepekaan ambang (tanpa S3)
-P = pd.read_csv(os.path.join(D, os.environ.get("PATOKAN_BERKAS", "patokan_prediksi_lengkap.csv")), dtype={"tag": str})
-MODEL = ["klimatologi", "persistence", "seasonal_naive", "rasio", "logistik", "rf", "xgb", "mlp"]
+from kelompok_fitur import MODEL, PREDIKSI
+P = pd.read_csv(os.path.join(D, os.environ.get("PATOKAN_BERKAS", PREDIKSI)), dtype={"tag": str})
 NAMA = {"klimatologi": "Climatology", "persistence": "Persistence", "seasonal_naive": "Seasonal naive",
         "rasio": "Ratio scaling", "logistik": "Logistic (ONI, DMI)", "rf": "Random forest",
-        "xgb": "Gradient boosting", "mlp": "MLP"}
-PELUANG = {"logistik", "rf", "xgb", "mlp"}
+        "xgb": "Gradient boosting", "mlp": "MLP", "fwi": "FWI (previous month)",
+        "fwi_logistik": "Logistic (FWI)", "fwi_kini": "FWI (same month, reference)"}
+PELUANG = {"logistik", "fwi_logistik", "rf", "xgb", "mlp"}
 BIASA = [str(t) for t in range(2020, 2026)]
 
 
@@ -77,17 +78,22 @@ for sas in ("y_kabupaten", "y_gabungan"):
             u = f"{dalam_tahun(biasa, m, 'klimatologi'):+.3f} [{lo:+.3f}, {hi:+.3f}]"
         e = f"{ece(biasa['y'].to_numpy(), biasa[m].to_numpy()):.3f}" if m in PELUANG else "—"
         print(f"  {NAMA[m]:<22}{dalam_tahun(biasa, m):>15.3f}{u:>34}{ap(biasa['y'], biasa[m]):>15.3f}{e:>8}")
+    if "fwi_kini" in biasa:
+        lo, hi = boot_dalam_tahun(biasa, "fwi_kini", "klimatologi")
+        print(f"  rujukan, bukan prakiraan: {NAMA['fwi_kini']} dalam-tahun {dalam_tahun(biasa, 'fwi_kini'):.3f}, "
+              f"vs klim {dalam_tahun(biasa, 'fwi_kini', 'klimatologi'):+.3f} [{lo:+.3f}, {hi:+.3f}], "
+              f"gabung {ap(biasa['y'], biasa['fwi_kini']):.3f}")
 
     print("\nTabel 4. S2 tahun ekstrem disisihkan: keunggulan atas klimatologi dalam tahun itu [95%]")
     for t in ("2015", "2014", "2019"):
         dd = s2[s2["tag"] == t]
         teks = []
-        for m in ("xgb", "rf", "mlp"):
+        for m in ("xgb", "rf", "mlp") + (("fwi", "fwi_logistik") if "fwi" in dd else ()):
             lo, hi = boot_dalam_tahun(dd, m, "klimatologi")
             teks.append(f"{NAMA[m]} {dalam_tahun(dd, m, 'klimatologi'):+.3f} [{lo:+.3f}, {hi:+.3f}]")
         print(f"  {t} (prev {dd['y'].mean() * 100:.1f}%, klim AUC-PR {ap(dd['y'], dd['klimatologi']):.3f}): " + "; ".join(teks))
     y = s2["y"].to_numpy()
-    print(f"  ECE tahun ekstrem: " + ", ".join(f"{NAMA[m]} {ece(y, s2[m].to_numpy()):.3f}" for m in ("logistik", "rf", "xgb", "mlp")))
+    print(f"  ECE tahun ekstrem: " + ", ".join(f"{NAMA[m]} {ece(y, s2[m].to_numpy()):.3f}" for m in ("logistik", "fwi_logistik", "rf", "xgb", "mlp") if m in s2))
 
     print("\nTabel 5. S3 transfer antarpulau: rugi gradient boosting, dalam-tahun, baris sama [95%]")
     kunci = ["gid", "tahun", "bulan", "tag"]

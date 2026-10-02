@@ -5,8 +5,13 @@ Data   : DL_FIRE_NASIONAL/panel_nasional_fitur_bersih.csv (498 kabupaten/kota, 2
          label y_kabupaten = > maks(p90 kabupaten, 10) dan y_gabungan = > p90 nasional).
 Kunci  : gid (GADM), bukan nama; "Banjar" dipakai dua kabupaten berbeda.
 
-Model (Artikel_2_Rencana bagian D; model 8 FWI ditunda sampai datanya ada):
+Model (Artikel_2_Rencana bagian D):
   klimatologi, persistence, seasonal_naive, rasio   -- baseline lokal, dari sejarah kabupaten
+  fwi       : Fire Weather Index GFWED bulan t-1 apa adanya, tanpa pelatihan (putaran penuh)
+  fwi_logistik : regresi logistik terskala pada jeda FWI (fwi_lag1-3, fwi_maks_lag1,
+              fwi_anom_lag1) dan suku bulan — model bahaya kebakaran berbasis cuaca saja
+  fwi_kini  : FWI bulan t sendiri. BUKAN prakiraan (cuaca serentak dengan kebakaran); rujukan
+              "cuaca sempurna" untuk batas atas yang dapat dicapai indeks cuaca
   logistik  : regresi logistik terskala pada lag ONI 1-6, lag DMI 1-3, suku bulan
   rf        : random forest pada seluruh fitur
   xgb       : gradient boosting (parameter sama dengan Artikel 1)
@@ -22,9 +27,10 @@ Skema pembagian:
 
 Pakai:
     python patokan_prediksi.py            (± 30-60 menit; jalankan di latar belakang)
-    PATOKAN_FITUR=hujan|lengkap python patokan_prediksi.py   (lihat kumpulan fitur di bawah)
+    PATOKAN_FITUR=hujan|lengkap|penuh python patokan_prediksi.py   (lihat kumpulan fitur di bawah)
+    Tanpa PATOKAN_FITUR, putaran mengikuti PATOKAN_PUTARAN di kelompok_fitur.py (bawaan penuh).
 
-Keluaran: DL_FIRE_NASIONAL/patokan_prediksi.csv (tidak masuk repo)
+Keluaran: DL_FIRE_NASIONAL/patokan_prediksi_<putaran>.csv (tidak masuk repo)
 """
 
 import os
@@ -45,20 +51,25 @@ D = os.path.join(BASE, "DL_FIRE_NASIONAL")
 #   PATOKAN_FITUR=dasar   (bawaan)  lag titik panas, ONI, DMI, musim
 #   PATOKAN_FITUR=hujan             + jeda hujan CHIRPS (gabung_chirps_nasional.py)
 #   PATOKAN_FITUR=lengkap           + lapisan lahan dan manusia (gabung_lahan_nasional.py)
+#   PATOKAN_FITUR=penuh             + gambut dan jeda FWI, dan baseline FWI (gabung_fwi_nasional.py)
 # PATOKAN_HUJAN=1 dari putaran 25 September 2026 tetap berarti "hujan".
-from kelompok_fitur import KELOMPOK
-FITUR_SET = os.environ.get("PATOKAN_FITUR") or ("hujan" if os.environ.get("PATOKAN_HUJAN") == "1" else "dasar")
+from kelompok_fitur import KELOMPOK, PUTARAN, TAMBAHAN_PENUH
+FITUR_SET = os.environ.get("PATOKAN_FITUR") or ("hujan" if os.environ.get("PATOKAN_HUJAN") == "1" else PUTARAN)
 BERKAS = {"dasar": ("panel_nasional_fitur_bersih.csv", "patokan_prediksi.csv"),
           "hujan": ("panel_nasional_fitur_hujan.csv", "patokan_prediksi_hujan.csv"),
-          "lengkap": ("panel_nasional_fitur_lengkap.csv", "patokan_prediksi_lengkap.csv")}[FITUR_SET]
+          "lengkap": ("panel_nasional_fitur_lengkap.csv", "patokan_prediksi_lengkap.csv"),
+          "penuh": ("panel_nasional_fitur_penuh.csv", "patokan_prediksi_penuh.csv")}[FITUR_SET]
 OUT = os.path.join(D, BERKAS[1])
 
 df = pd.read_csv(os.path.join(D, BERKAS[0]))
 FITUR = KELOMPOK["api"] + KELOMPOK["musim"] + KELOMPOK["iklim"]
-if FITUR_SET in ("hujan", "lengkap"):
+if FITUR_SET in ("hujan", "lengkap", "penuh"):
     FITUR += KELOMPOK["hujan"]
-if FITUR_SET == "lengkap":
+if FITUR_SET in ("lengkap", "penuh"):
     FITUR += KELOMPOK["lahan"] + KELOMPOK["manusia"]
+if FITUR_SET == "penuh":
+    FITUR += TAMBAHAN_PENUH["gambut"] + TAMBAHAN_PENUH["cuaca"]
+CUACA = TAMBAHAN_PENUH["cuaca"] + ["bulan_sin", "bulan_cos"]
 IKLIM = [f"oni_lag{l}" for l in range(1, 7)] + [f"dmi_lag{l}" for l in range(1, 4)] + ["bulan_sin", "bulan_cos"]
 DIPELAJARI = ["logistik", "rf", "xgb", "mlp"]
 PULAU = {
@@ -86,8 +97,12 @@ def lokal(latih, uji):
     base = k
     lalu = uji[["tp_lag1", "tp_lag2"]].fillna(0.0).sum(axis=1).to_numpy()
     rasio = base * np.clip(lalu / np.maximum(base * 2, 1e-9), 0.2, 5.0)
-    return {"klimatologi": k, "persistence": uji["tp_lag1"].fillna(0.0).to_numpy(),
-            "seasonal_naive": uji["tp_lag12"].fillna(0.0).to_numpy(), "rasio": rasio}
+    out = {"klimatologi": k, "persistence": uji["tp_lag1"].fillna(0.0).to_numpy(),
+           "seasonal_naive": uji["tp_lag12"].fillna(0.0).to_numpy(), "rasio": rasio}
+    if FITUR_SET == "penuh":
+        out["fwi"] = uji["fwi_lag1"].to_numpy()
+        out["fwi_kini"] = uji["fwi_kini"].to_numpy()
+    return out
 
 
 def dipelajari(latih, uji, ylab):
@@ -97,6 +112,10 @@ def dipelajari(latih, uji, ylab):
     lg = make_pipeline(StandardScaler(), LogisticRegression(max_iter=3000))
     lg.fit(latih[IKLIM].fillna(0.0), yl)
     out["logistik"] = lg.predict_proba(uji[IKLIM].fillna(0.0))[:, 1]
+    if FITUR_SET == "penuh":
+        lf = make_pipeline(StandardScaler(), LogisticRegression(max_iter=3000))
+        lf.fit(latih[CUACA], yl)
+        out["fwi_logistik"] = lf.predict_proba(uji[CUACA])[:, 1]
     rf = RandomForestClassifier(n_estimators=300, min_samples_leaf=5, n_jobs=-1, random_state=42)
     rf.fit(Xl, yl)
     out["rf"] = rf.predict_proba(Xu)[:, 1]

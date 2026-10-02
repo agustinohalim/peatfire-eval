@@ -25,11 +25,11 @@ import os
 import numpy as np
 import pandas as pd
 
-os.environ["PATOKAN_FITUR"] = "lengkap"
+os.environ.setdefault("PATOKAN_FITUR", os.environ.get("PATOKAN_PUTARAN", "penuh"))
 BASE = os.path.dirname(os.path.abspath(__file__))
 exec(open(os.path.join(BASE, "patokan_prediksi.py"), encoding="utf-8").read().split("baris = []")[0])
 
-OUT = os.path.join(D, "patokan_prediksi_kepekaan.csv")
+OUT = os.path.join(D, "patokan_prediksi_kepekaan.csv" if FITUR_SET == "lengkap" else "patokan_prediksi_kepekaan_penuh.csv")
 BATAS_BAWAH = 10
 panel = pd.read_csv(os.path.join(D, "panel_nasional_bersih.csv"), usecols=["gid", "tahun", "titik_panas"])
 

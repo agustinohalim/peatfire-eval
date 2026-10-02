@@ -4,6 +4,11 @@
 Indonesia (498 districts and cities, 2012–2025). See the section *PeatFireBench* below; the
 West Kalimantan and Kalimantan analyses of earlier versions are kept unchanged.
 
+**Version 2.1.0 adds a peat layer and fire weather to PeatFireBench**: peat fraction per district
+from the Ministry of Agriculture's 2019 peat map (via Trase, CC BY 4.0), monthly Fire Weather
+Index from GFWED, and two FWI baselines. The paper's runs now use this "penuh" (full) set; the
+2.0.x results are reproduced with `PATOKAN_PUTARAN=lengkap`.
+
 Panel construction and evaluation-protocol experiments for district-month fire severity
 forecasting in Indonesian Kalimantan: West Kalimantan on its own, and all five provinces.
 
@@ -80,7 +85,7 @@ district polygon. On the archive used in the paper this reads 833,208 detections
 low-confidence and 785 non-vegetation records, discards 404,060 that fall outside the province,
 and retains 396,699.
 
-## PeatFireBench (version 2.0.0)
+## PeatFireBench (version 2.1.0)
 
 ### Files
 
@@ -90,6 +95,8 @@ and retains 396,699.
 | `DL_FIRE_NASIONAL/chirps_bulanan_kabupaten_2012_2025.csv` | Monthly CHIRPS rainfall per district (from `Skrip_CHIRPS_Earth_Engine.js`) |
 | `DL_FIRE_NASIONAL/statis_kabupaten.csv`, `tutupan_tahunan.csv`, `hilang_hutan_tahunan_v2.csv` | Terrain, population, MODIS land cover and Hansen forest loss per district (from `Skrip_Statis_Earth_Engine.js`) |
 | `data/oni.ascii.txt`, `data/dmi.had.long.data` | ENSO (ONI) and Indian Ocean Dipole (DMI) indices, NOAA |
+| `DL_FIRE_NASIONAL/gambut/spatial-metrics-indonesia-peat_area_kabupaten.csv` | Peat area per current (BPS) district, Peta Lahan Gambut Indonesia 1:50.000, Kementerian Pertanian, December 2019, as published by [Trase](https://trase.earth/open-data/datasets/spatial-metrics-indonesia-peat-area) (release 18 September 2026, CC BY 4.0) |
+| `DL_FIRE_NASIONAL/fwi_bulanan_kabupaten_2012_2025_v2.csv` | Monthly mean and maximum Fire Weather Index per district from GFWED (MERRA-2), with sea cells filled (from `Skrip_FWI_Earth_Engine.js`) |
 
 ### Build the benchmark panel (seconds)
 
@@ -99,19 +106,23 @@ python gabung_indeks_nasional.py DL_FIRE_NASIONAL/panel_nasional.csv data/oni.as
 python bersihkan_panel_nasional.py      # removes 4 water bodies, adds both severity targets
 python gabung_chirps_nasional.py        # rainfall features
 python gabung_lahan_nasional.py         # land and population features -> panel_nasional_fitur_lengkap.csv
+python gabung_gambut_nasional.py        # peat fraction (BPS -> GADM crosswalk) -> panel_nasional_fitur_gambut.csv
+python gabung_fwi_nasional.py           # lagged fire weather -> panel_nasional_fitur_penuh.csv
 ```
 
 The resulting `panel_nasional_fitur_lengkap.csv` (77,688 rows, 2013–2025) is byte-identical to
-the one used in the paper. Columns: `gid` (GADM identifier), `provinsi`, `kabupaten`, `tahun`,
+the one used in the paper, and `panel_nasional_fitur_penuh.csv` matches it to floating-point
+rounding (largest difference 1.4e-14, in `fwi_anom_lag1`). Columns: `gid` (GADM identifier), `provinsi`, `kabupaten`, `tahun`,
 `bulan`, `titik_panas` (detections), `y_kabupaten` (per-district target, primary), `y_gabungan`
 (pooled target), `ada_positif` (district has at least one per-district positive), and the
 feature groups listed in `kelompok_fitur.py` (`api` fire history, `musim` season, `iklim`
-climate indices, `hujan` rainfall, `lahan` land, `manusia` population).
+climate indices, `hujan` rainfall, `lahan` land, `manusia` population, `gambut` peat, `cuaca`
+fire weather). `fwi_kini`, the same-month FWI, is a reference column, not a forecast feature.
 
 ### Run the baselines and reproduce the paper
 
 ```bash
-PATOKAN_FITUR=lengkap python patokan_prediksi.py   # 8 baselines x splits S1/S2/S3 x 2 targets (~15 min)
+python patokan_prediksi.py                         # 10 baselines x splits S1/S2/S3 x 2 targets (~30 min)
 python patokan_tabel_naskah.py                     # Tables 2, 3, 5
 python patokan_ablasi.py && python patokan_ablasi_analisis.py   # Table 4 (feature groups)
 python patokan_provinsi.py                         # Section 6.7, provinces
@@ -123,7 +134,9 @@ python gambar_patokan.py                           # Figures 1-5
 
 Splits: **S1** chronological (test 2019–2025, train on earlier years); **S2** extreme year
 withheld (2015, 2014, 2019); **S3** island transfer (train without the test island group).
-Score a new model by writing its predictions in the same layout as `patokan_prediksi_lengkap.csv`
+All scripts read the run from `PATOKAN_PUTARAN` (`penuh`, the default, or `lengkap` for the
+2.0.x results; see `kelompok_fitur.py`).
+Score a new model by writing its predictions in the same layout as `patokan_prediksi_penuh.csv`
 (one row per test district-month, one column per model) and passing it to
 `patokan_tabel_naskah.py` with `PATOKAN_BERKAS=<file>`.
 
