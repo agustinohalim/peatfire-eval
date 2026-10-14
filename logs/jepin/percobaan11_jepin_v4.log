@@ -1,0 +1,47 @@
+==========================================================================================
+A. ENUMERASI EKSAK: selisih berpasangan dan kestabilan per metrik
+==========================================================================================
+  selisih AUC-PR GB - klim: +0.043, selang 95% eksak [-0.058, +0.109], P(selisih > 0) = 81.9%
+  rerata pembalikan AUC-PR vs D 1.08; ROC-AUC vs C 1.97
+
+==========================================================================================
+B. BENIH GRADIENT BOOSTING (peluang eksak GB > klimatologi)
+==========================================================================================
+  benih 42: AUC-PR 0.653  P(GB > klim) 81.9%
+  benih  0: AUC-PR 0.657  P(GB > klim) 81.0%
+  benih  1: AUC-PR 0.654  P(GB > klim) 81.8%
+  benih  2: AUC-PR 0.654  P(GB > klim) 79.3%
+  benih  3: AUC-PR 0.671  P(GB > klim) 86.6%
+  benih  4: AUC-PR 0.680  P(GB > klim) 90.1%
+  benih  5: AUC-PR 0.684  P(GB > klim) 93.1%
+  benih  6: AUC-PR 0.660  P(GB > klim) 83.0%
+  benih  7: AUC-PR 0.666  P(GB > klim) 85.8%
+  benih  8: AUC-PR 0.668  P(GB > klim) 87.1%
+  benih  9: AUC-PR 0.670  P(GB > klim) 90.1%
+  rentang P lintas 11 benih: 79.3% - 93.1%, rerata 85.4%
+  GB rerata 11 benih: AUC-PR 0.667, P(GB > klim) 87.4%
+
+==========================================================================================
+C. MEMBUANG BULAN TANPA KEBAKARAN, BULAN PARAH DITAHAN (gugus tahun, 2.000 ulangan)
+==========================================================================================
+  bulan tanpa kebakaran disimpan 100.0%: pembalikan rerata 1.10 [0, 5]; GB juara 81.8%
+  bulan tanpa kebakaran disimpan  50.0%: pembalikan rerata 1.33 [0, 4]; GB juara 82.1%
+  bulan tanpa kebakaran disimpan  25.0%: pembalikan rerata 1.74 [0, 5]; GB juara 75.1%
+  bulan tanpa kebakaran disimpan   8.5%: pembalikan rerata 2.71 [0, 7]; GB juara 67.8%
+
+==========================================================================================
+D. PANJANG REKAMAN UJI (tahun diambil dengan pengembalian, prevalensi asli, 2.000 ulangan)
+==========================================================================================
+   2 tahun (rerata  26.1 bulan parah): GB juara  72.4%; peringkat utuh sama   9.0%; rerata pembalikan 2.51
+   3 tahun (rerata  39.3 bulan parah): GB juara  68.8%; peringkat utuh sama   9.7%; rerata pembalikan 2.27
+   4 tahun (rerata  53.2 bulan parah): GB juara  75.3%; peringkat utuh sama  19.2%; rerata pembalikan 1.78
+   5 tahun (rerata  65.2 bulan parah): GB juara  78.9%; peringkat utuh sama  28.1%; rerata pembalikan 1.48
+   7 tahun (rerata  91.3 bulan parah): GB juara  81.5%; peringkat utuh sama  40.9%; rerata pembalikan 1.11
+  10 tahun (rerata 131.8 bulan parah): GB juara  86.2%; peringkat utuh sama  54.2%; rerata pembalikan 0.76
+  14 tahun (rerata 184.8 bulan parah): GB juara  92.0%; peringkat utuh sama  63.3%; rerata pembalikan 0.53
+  21 tahun (rerata 275.9 bulan parah): GB juara  94.2%; peringkat utuh sama  74.8%; rerata pembalikan 0.35
+  28 tahun (rerata 368.0 bulan parah): GB juara  97.2%; peringkat utuh sama  80.8%; rerata pembalikan 0.24
+
+  tersimpan: Gambar_JEPIN/fig_panjang_rekaman.png dan .pdf
+
+selesai.

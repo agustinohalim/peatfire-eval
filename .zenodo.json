@@ -1,11 +1,11 @@
 {
   "title": "peatfire-eval: PeatFireBench and evaluation-protocol experiments for district-month fire severity forecasting in Indonesia",
-  "description": "<p><strong>PeatFireBench</strong>: a district-month benchmark for fire forecasting in Indonesia (498 districts and cities, 2012-2025), built from VIIRS S-NPP active fire detections with the national peat map (Ministry of Agriculture 2019, via Trase), GFWED fire weather, ENSO and IOD indices, CHIRPS rainfall, land cover, forest loss, terrain and population; twelve baselines; chronological, extreme-year and island-transfer splits; two severity targets. The raw panel and covariate tables are included; the feature panel is rebuilt by the scripts. Accompanies the manuscript <em>PeatFireBench: a district-month benchmark for Indonesian fire forecasting, and five evaluation choices that change its conclusions</em>.</p><p><strong>Version 2.1.1</strong> adds the analyses of the third review round: district-relative FWI baselines, five further seeds with a seed-averaged provincial ranking, per-year calibration with intervals, a provincial check of the peat crosswalk, and results split by peat and non-peat districts.</p><p>Versions 1.0.0-1.3.0 hold earlier analyses of West Kalimantan and of the five Kalimantan provinces, kept unchanged because they are cited. Version 1.3.0 corrected the ONI timing (each three-month season assigned to its last month).</p>",
+  "description": "<p><strong>PeatFireBench</strong>: a district-month benchmark for fire forecasting in Indonesia (498 districts and cities, 2012-2025), built from VIIRS S-NPP active fire detections with the national peat map (Ministry of Agriculture 2019, via Trase), GFWED fire weather, ENSO and IOD indices, CHIRPS rainfall, land cover, forest loss, terrain and population; twelve baselines; chronological, extreme-year and island-transfer splits; two severity targets. The raw panel and covariate tables are included; the feature panel is rebuilt by the scripts. Accompanies the manuscript <em>PeatFireBench: a district-month benchmark for Indonesian fire forecasting, and five evaluation choices that change its conclusions</em>.</p><p><strong>Version 2.1.1</strong> adds the analyses of the third review round: district-relative FWI baselines, five further seeds with a seed-averaged provincial ranking, per-year calibration with intervals, a provincial check of the peat crosswalk, and results split by peat and non-peat districts.</p><p><strong>Version 2.2.0</strong> adds the West Kalimantan ranking-stability analyses (year-clustered bootstrap with exact enumeration, record-length projection, discarding non-fire test months, seed sensitivity) for the manuscript <em>How Stable Are Fire Prediction Model Rankings? Bootstrap Evidence From West Kalimantan</em>, with their logs.</p><p>Versions 1.0.0-1.3.0 hold earlier analyses of West Kalimantan and of the five Kalimantan provinces, kept unchanged because they are cited. Version 1.3.0 corrected the ONI timing (each three-month season assigned to its last month).</p>",
   "upload_type": "software",
   "license": "MIT",
   "access_right": "open",
   "language": "eng",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "creators": [
     {
       "name": "Halim, Agustino",
@@ -28,7 +28,9 @@
     "spatial transfer",
     "benchmark dataset",
     "fire weather index",
-    "peat"
+    "peat",
+    "ranking uncertainty",
+    "bootstrap"
   ],
   "related_identifiers": [
     {

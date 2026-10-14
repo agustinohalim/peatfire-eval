@@ -1,0 +1,15 @@
+Panel: 2184 baris, ambang > 369, uji 1176 kabupaten-bulan, 92 positif (7.8%), 7 model, 300 ulangan
+subsampel berukuran sama: 14 positif + 170 negatif
+
+================================================================================================
+PEMBALIKAN PASANGAN (dari 21) TERHADAP PERINGKAT DATA UJI UTUH
+================================================================================================
+skema                 ROC-AUC vs C: median [2.5,97.5]  nol   AUC-PR vs D: median [2.5,97.5]  nol
+------------------------------------------------------------------------------------------------
+seimbang                2 [0, 5]  rerata 2.06  nol  30/300    2 [0, 6]  rerata 2.16  nol  35/300
+bootstrap-asli          2 [0, 4]  rerata 1.69  nol  44/300    1 [0, 2]  rerata 0.78  nol 121/300
+subsampel-184           3 [0, 8]  rerata 3.61  nol   9/300    3 [0, 6]  rerata 2.62  nol  29/300
+bootstrap-kab           2 [0, 5]  rerata 1.79  nol  36/300    1 [0, 3]  rerata 0.97  nol 100/300
+bootstrap-tahun         2 [0, 4]  rerata 2.06  nol  30/300    1 [0, 4]  rerata 1.12  nol 128/300
+
+selesai.

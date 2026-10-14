@@ -1,0 +1,85 @@
+Panel: 2184 baris, ambang > 369, uji 1176, positif 92 (7.8%), 1000 ulangan bootstrap
+
+============================================================================================
+A. METRIK DENGAN SELANG 95% (bootstrap gugus tahun, 7 tahun uji; iid dalam kurung)
+============================================================================================
+  Gradient boosting  AUC-PR 0.653 [0.482, 0.786] ([0.552, 0.749])   ROC-AUC 0.957 [0.940, 0.970]   peringkat D 1, C 1
+  Climatology        AUC-PR 0.611 [0.507, 0.727] ([0.510, 0.703])   ROC-AUC 0.950 [0.939, 0.960]   peringkat D 2, C 2
+  Logistic, full     AUC-PR 0.538 [0.376, 0.707] ([0.436, 0.641])   ROC-AUC 0.921 [0.885, 0.943]   peringkat D 3, C 3
+  Seasonal naive     AUC-PR 0.474 [0.344, 0.643] ([0.377, 0.583])   ROC-AUC 0.913 [0.888, 0.936]   peringkat D 4, C 5
+  Ratio scaling      AUC-PR 0.440 [0.357, 0.571] ([0.343, 0.543])   ROC-AUC 0.919 [0.895, 0.947]   peringkat D 5, C 4
+  Persistence        AUC-PR 0.358 [0.240, 0.444] ([0.274, 0.455])   ROC-AUC 0.882 [0.833, 0.909]   peringkat D 6, C 7
+  Logistic, ONI      AUC-PR 0.329 [0.223, 0.487] ([0.266, 0.414])   ROC-AUC 0.893 [0.846, 0.925]   peringkat D 7, C 6
+
+============================================================================================
+B. PELUANG PERINGKAT AUC-PR (%), bootstrap gugus tahun | iid
+============================================================================================
+                          1      2      3      4      5      6      7
+  Gradient boosting      78     22      0      0      0      0      0   |   84   15    0    0    0    0    0
+  Climatology            22     75      2      1      0      0      0   |   16   82    2    0    0    0    0
+  Logistic, full          0      2     89      8      1      0      0   |    0    2   96    2    0    0    0
+  Seasonal naive          0      1      5     68     24      2      0   |    0    0    0   74   22    3    0
+  Ratio scaling           0      0      4     20     70      6      0   |    0    0    2   23   74    1    0
+  Persistence             0      0      0      0      0     62     37   |    0    0    0    0    2   70   28
+  Logistic, ONI           0      0      0      3      4     30     62   |    0    0    0    0    1   27   72
+  tahun: pembalikan lawan D median 1 [0, 4], rerata 1.12; peringkat utuh sama 40.3%
+  iid: pembalikan lawan D median 1 [0, 2], rerata 0.76; peringkat utuh sama 41.3%
+
+============================================================================================
+C. PELUANG MODEL DI ATAS TETANGGANYA (AUC-PR, gugus tahun | iid)
+============================================================================================
+  Gradient boosting  > Climatology        selisih +0.043   P  77.9% |  84.5%
+  Climatology        > Logistic, full     selisih +0.072   P  97.5% |  97.9%
+  Logistic, full     > Seasonal naive     selisih +0.064   P  93.8% |  99.5%
+  Seasonal naive     > Ratio scaling      selisih +0.034   P  74.4% |  75.1%
+  Ratio scaling      > Persistence        selisih +0.082   P  99.7% | 100.0%
+  Persistence        > Logistic, ONI      selisih +0.028   P  62.3% |  72.2%
+
+============================================================================================
+D. PEMBALIKAN LAWAN JUMLAH POSITIF (300 ulangan; acuan = data uji utuh)
+============================================================================================
+   23 positif, asli      n=  294: AUC-PR rerata 2.13 [0, 6]  ROC-AUC rerata 3.34  juara D tetap 66%
+   23 positif, seimbang  n=   46: AUC-PR rerata 5.21 [1, 11]  ROC-AUC rerata 4.91  juara D tetap 48%
+   46 positif, asli      n=  588: AUC-PR rerata 1.22 [0, 4]  ROC-AUC rerata 2.43  juara D tetap 76%
+   46 positif, seimbang  n=   92: AUC-PR rerata 3.68 [0, 9]  ROC-AUC rerata 3.56  juara D tetap 56%
+   69 positif, asli      n=  882: AUC-PR rerata 1.01 [0, 3]  ROC-AUC rerata 2.00  juara D tetap 80%
+   69 positif, seimbang  n=  138: AUC-PR rerata 3.00 [0, 7]  ROC-AUC rerata 3.08  juara D tetap 64%
+   92 positif, asli      n= 1176: AUC-PR rerata 0.78 [0, 2]  ROC-AUC rerata 1.82  juara D tetap 84%
+   92 positif, seimbang  n=  184: AUC-PR rerata 2.38 [0, 6]  ROC-AUC rerata 2.64  juara D tetap 68%
+
+============================================================================================
+E. BENIH GRADIENT BOOSTING (random_state 0-9)
+============================================================================================
+  AUC-PR GB lintas 10 benih: min 0.654, maks 0.684, rerata 0.666; peringkat: [1]
+
+============================================================================================
+F. SKILL TERNORMALISASI PER TAHUN UJI
+============================================================================================
+                        2019    2020    2021    2022    2023    2024    2025
+  Gradient boosting    0.904   0.562   0.525   0.404   0.795   0.464   0.780
+  Climatology          0.830   0.516   0.425   0.743   0.759   0.428   0.749
+  Logistic, full       0.849   0.466   0.492   0.256   0.620   0.317   0.659
+  Seasonal naive       0.736   0.445   0.573   0.245   0.630   0.262   0.629
+  Ratio scaling        0.671   0.506   0.428   0.407   0.346   0.339   0.363
+  Persistence          0.481   0.258   0.189   0.133   0.383   0.295   0.340
+  Logistic, ONI        0.554   0.231   0.123   0.134   0.465   0.271   0.433
+
+============================================================================================
+G. AMBANG DARI TAHUN LATIH SAJA (persentil 90 data latih tiap lipatan)
+============================================================================================
+  positif 87 (7.4%)
+  Gradient boosting  AUC-PR 0.631  peringkat 1 (ambang penuh: 1)
+  Climatology        AUC-PR 0.572  peringkat 2 (ambang penuh: 2)
+  Logistic, full     AUC-PR 0.520  peringkat 3 (ambang penuh: 3)
+  Seasonal naive     AUC-PR 0.442  peringkat 4 (ambang penuh: 4)
+  Ratio scaling      AUC-PR 0.414  peringkat 5 (ambang penuh: 5)
+  Logistic, ONI      AUC-PR 0.365  peringkat 6 (ambang penuh: 7)
+  Persistence        AUC-PR 0.334  peringkat 7 (ambang penuh: 6)
+  pembalikan lawan peringkat ambang penuh: 1 dari 21
+
+Gambar
+  tersimpan: Gambar_JEPIN/fig_peluang_peringkat.png dan .pdf
+  tersimpan: Gambar_JEPIN/fig_jumlah_positif.png dan .pdf
+  tersimpan: Gambar_JEPIN/fig_skill_per_tahun.png dan .pdf
+
+selesai.

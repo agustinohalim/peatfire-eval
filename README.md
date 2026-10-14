@@ -15,7 +15,8 @@ included tables and to reproduce every number, table and figure of that paper is
 Version history: 2.0.0 added PeatFireBench; 2.1.0 added the peat layer, fire weather and the FWI
 baselines (the 2.0.x results are reproduced with `PATOKAN_PUTARAN=lengkap`); 2.1.1 adds the
 analyses requested in review (district-relative FWI baselines, seed sensitivity, per-year
-calibration, peat checks, peat and non-peat districts). Versions 1.0.0–1.3.0 hold earlier
+calibration, peat checks, peat and non-peat districts); 2.2.0 adds the West Kalimantan
+ranking-stability analyses described below. Versions 1.0.0–1.3.0 hold earlier
 analyses of West Kalimantan and of the five Kalimantan provinces. Those manuscripts were withdrawn
 and their questions folded into PeatFireBench; the code is kept below, unchanged, because its
 Zenodo versions are cited.
@@ -99,6 +100,41 @@ Score a new model by writing its predictions in the same layout as `patokan_pred
 Raw FIRMS detections and GADM polygons are not redistributed: `unduh_firms_nasional.py`
 downloads the detections (set `FIRMS_MAP_KEY` in the environment), and GADM 4.1 is free from
 gadm.org. The Earth Engine scripts contain a placeholder project path to replace with your own.
+
+## West Kalimantan ranking stability (version 2.2.0)
+
+These scripts accompany the manuscript *How Stable Are Fire Prediction Model Rankings? Bootstrap
+Evidence From West Kalimantan* (Halim, Lukman, Andika, Macnamara and Erwin, in review). They reuse
+the West Kalimantan panel `data/panel_bulanan.csv`, the seven models and the rolling-origin folds
+(2019–2025) of `percobaan.py`, with the ONI timing of version 1.3.0, and resample the test set by
+test year. Logs of the runs reported in the manuscript are in `logs/jepin/`.
+
+| Result | Script |
+|---|---|
+| Discarding non-fire months versus a natural-prevalence test set of the same size | `percobaan7_kontrol_ukuran.py` |
+| Rank probabilities, record-length and balancing curves (district-month bootstrap), ten seeds, per-year skill, training-year threshold; Fig. 4 | `percobaan8_jepin.py` |
+| Exact enumeration of all 1,716 resamples of the seven test years; leave-one-year-out; training-year threshold | `percobaan9_jepin_tahun.py` |
+| Record length projected by resampling whole years | `percobaan10_proyeksi_tahun.py` |
+| Paired difference interval, ROC-AUC versus AUC-PR stability, eleven seeds, discarding non-fire months with all severe months kept, record length 2–28 years | `percobaan11_jepin_v4.py` |
+| Enumerated year-clustered intervals for Table II | `percobaan12_selang_eksak.py` |
+| Exact sign and sign-flip tests on the seven per-year differences | `uji_tanda_jepin.py` |
+| Figs. 2 and 3 (from the logs of percobaan 9 and 11) | `gambar_jepin.py` |
+
+```bash
+python percobaan7_kontrol_ukuran.py data/panel_bulanan.csv data/oni.ascii.txt
+python percobaan8_jepin.py data/panel_bulanan.csv data/oni.ascii.txt
+python percobaan9_jepin_tahun.py data/panel_bulanan.csv data/oni.ascii.txt
+python percobaan10_proyeksi_tahun.py data/panel_bulanan.csv data/oni.ascii.txt
+python percobaan11_jepin_v4.py data/panel_bulanan.csv data/oni.ascii.txt
+python percobaan12_selang_eksak.py data/panel_bulanan.csv data/oni.ascii.txt
+python uji_tanda_jepin.py      # reads logs/jepin/percobaan5_ulasan.log
+python gambar_jepin.py         # reads logs/jepin/percobaan9_* and percobaan11_*; writes Gambar_JEPIN/
+```
+
+Fig. 1 of that manuscript is Fig. 1 of the archived analysis (`gambar.py`). The 1,716-resample
+enumerations take a few minutes each; `percobaan11_jepin_v4.py`, which refits gradient boosting with
+ten seeds, takes about ten minutes. All randomness uses fixed seeds, so the logs are reproduced
+exactly.
 
 ## Archived: West Kalimantan and Kalimantan analyses (versions 1.x)
 

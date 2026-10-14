@@ -1,0 +1,73 @@
+==============================================================================
+A. SEBERAPA BESAR SKILL GABUNGAN BERASAL DARI MEMBEDAKAN KABUPATEN
+==============================================================================
+  prediktor 'rerata kabupaten' (tanpa musim): ROC-AUC 0.678, AUC-PR 0.136
+  klimatologi (kabupaten x bulan)           : ROC-AUC 0.950, AUC-PR 0.611
+
+  positif per kabupaten pada data uji (ambang gabungan > 369):
+    Ketapang                15 dari 84
+    Sanggau                 14 dari 84
+    Sintang                 13 dari 84
+    KapuasHulu              10 dari 84
+    Landak                   9 dari 84
+    Sekadau                  7 dari 84
+    Bengkayang               6 dari 84
+    Melawi                   5 dari 84
+    KubuRaya                 5 dari 84
+    Sambas                   4 dari 84
+    Pontianak                2 dari 84
+    KayongUtara              2 dari 84
+    KotaPontianak            0 dari 84
+    Singkawang               0 dari 84
+
+==============================================================================
+B. METRIK DI DALAM KABUPATEN, AMBANG GABUNGAN
+==============================================================================
+  kabupaten dengan positif dan negatif di data uji: 12 dari 14
+  model                ROC-AUC rerata  AUC-PR rerata  skill rerata
+  gradient-boosting             0.937          0.630         0.598
+  klimatologi                   0.904          0.512         0.476
+  regresi-penuh                 0.897          0.487         0.445
+  seasonal-naive                0.865          0.458         0.413
+  regresi-ONI                   0.892          0.433         0.386
+  rasio-analog                  0.860          0.382         0.328
+  persistence                   0.843          0.342         0.281
+  tau ROC-AUC vs AUC-PR (di dalam kabupaten) = +0.905, pembalikan 1 dari 21
+
+==============================================================================
+C. AMBANG PER KABUPATEN (persentil 90 tiap kabupaten, 2012-2025)
+==============================================================================
+
+  [pembanding] ambang gabungan > 369
+  n uji 1176, positif 92, prevalensi 7.8%
+  model                ROC-AUC seimb. ROC-AUC asli  AUC-PR   rank A  C  D
+  gradient-boosting             0.957        0.957   0.653      1  1  1
+  klimatologi                   0.949        0.950   0.611      2  2  2
+  regresi-penuh                 0.920        0.921   0.538      3  3  3
+  seasonal-naive                0.912        0.913   0.474      5  5  4
+  rasio-analog                  0.917        0.919   0.440      4  4  5
+  persistence                   0.881        0.882   0.358      7  7  6
+  regresi-ONI                   0.894        0.893   0.329      6  6  7
+  tau C vs D (metrik saja) = +0.810; pembalikan cell A vs D: median 3, rentang 0-7, nol pada 2/300
+  GB di atas klimatologi menurut ROC-AUC seimbang: 222/300 undian
+  selisih AUC-PR GB - klimatologi +0.043 [-0.054, +0.132]
+
+  ambang per kabupaten: KotaPontianak 3, Singkawang 14, KayongUtara 171, Pontianak 272, Sambas 292, Bengkayang 308, Melawi 335, Landak 397, Sekadau 400, KapuasHulu 420, KubuRaya 566, Sintang 724, Sanggau 894, Ketapang 1679
+
+  ambang per kabupaten
+  n uji 1176, positif 78, prevalensi 6.6%
+  model                ROC-AUC seimb. ROC-AUC asli  AUC-PR   rank A  C  D
+  gradient-boosting             0.904        0.903   0.496      1  1  1
+  regresi-penuh                 0.861        0.862   0.339      2  2  2
+  klimatologi                   0.856        0.855   0.315      3  3  3
+  seasonal-naive                0.838        0.836   0.314      5  5  4
+  regresi-ONI                   0.843        0.844   0.308      4  4  5
+  rasio-analog                  0.816        0.816   0.226      6  6  6
+  persistence                   0.803        0.803   0.222      7  7  7
+  tau C vs D (metrik saja) = +0.905; pembalikan cell A vs D: median 2, rentang 0-9, nol pada 18/300
+  GB di atas klimatologi menurut ROC-AUC seimbang: 298/300 undian
+  selisih AUC-PR GB - klimatologi +0.181 [+0.071, +0.275]
+
+  tau peringkat AUC-PR gabungan vs per kabupaten = +0.714
+
+selesai.
