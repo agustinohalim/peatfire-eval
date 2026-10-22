@@ -6,8 +6,8 @@ weather, ENSO and IOD indices, CHIRPS rainfall, land cover, forest loss, terrain
 with twelve baselines, three splits and two severity targets; and the evaluation-protocol
 experiments behind it.
 
-This repository accompanies the manuscript *PeatFireBench: a district-month benchmark for
-Indonesian fire forecasting, and five evaluation choices that change its conclusions* (Halim,
+This repository accompanies the manuscript *Evaluation choices change which fire forecasting
+model a district would choose: PeatFireBench, a 498-district benchmark for Indonesia* (Halim,
 Lukman, Andika, Macnamara and Erwin, in review). Everything needed to rebuild the panel from the
 included tables and to reproduce every number, table and figure of that paper is in the section
 **PeatFireBench** below.
@@ -16,7 +16,8 @@ Version history: 2.0.0 added PeatFireBench; 2.1.0 added the peat layer, fire wea
 baselines (the 2.0.x results are reproduced with `PATOKAN_PUTARAN=lengkap`); 2.1.1 adds the
 analyses requested in review (district-relative FWI baselines, seed sensitivity, per-year
 calibration, peat checks, peat and non-peat districts); 2.2.0 adds the West Kalimantan
-ranking-stability analyses described below. Versions 1.0.0–1.3.0 hold earlier
+ranking-stability analyses described below; 2.3.0 adds the decision value of the warnings and
+the FWI System components. Versions 1.0.0–1.3.0 hold earlier
 analyses of West Kalimantan and of the five Kalimantan provinces. Those manuscripts were withdrawn
 and their questions folded into PeatFireBench; the code is kept below, unchanged, because its
 Zenodo versions are cited.
@@ -47,6 +48,7 @@ pip install -r requirements.txt
 | `DL_FIRE_NASIONAL/statis_kabupaten.csv`, `tutupan_tahunan.csv`, `hilang_hutan_tahunan_v2.csv` | Terrain, population, MODIS land cover and Hansen forest loss per district (from `Skrip_Statis_Earth_Engine.js`) |
 | `data/oni.ascii.txt`, `data/dmi.had.long.data` | ENSO (ONI) and Indian Ocean Dipole (DMI) indices, NOAA |
 | `DL_FIRE_NASIONAL/gambut/spatial-metrics-indonesia-peat_area_kabupaten.csv` | Peat area per current (BPS) district, Peta Lahan Gambut Indonesia 1:50.000, Kementerian Pertanian, December 2019, as published by [Trase](https://trase.earth/open-data/datasets/spatial-metrics-indonesia-peat-area) (release 18 September 2026, CC BY 4.0) |
+| `DL_FIRE_NASIONAL/gfwed_komponen_MERRA2.CORRECTED.csv` | Monthly Drought Code, Duff Moisture Code, Fine Fuel Moisture Code, Buildup Index and FWI per district from the GFWED v2.0 monthly files of NASA (bias-corrected MERRA-2 precipitation; from `gabung_gfwed_komponen.py`, which needs the 168 monthly files and the GADM 4.1 level-2 polygons) |
 | `DL_FIRE_NASIONAL/fwi_bulanan_kabupaten_2012_2025_v2.csv` | Monthly mean and maximum Fire Weather Index per district from GFWED (MERRA-2), with sea cells filled (from `Skrip_FWI_Earth_Engine.js`) |
 
 ### Build the benchmark panel (seconds)
@@ -87,6 +89,9 @@ python patokan_fwi_adil.py                         # Table 2 and S3: FWI percent
 python patokan_ece.py                              # S4: calibration per year with intervals
 python patokan_benih.py && python patokan_benih_analisis.py   # S5: five more seeds, seed-averaged provincial ranking (~1 h + ~3 h)
 python patokan_gambut_bagi.py                      # S7: districts with and without peat
+# added in 2.3.0 (logs in logs/peatfirebench/)
+python patokan_nilai.py                            # Section 6.8 and Table 6: hit rate, false alarm ratio, relative economic value
+python patokan_fwi_komponen.py                     # Table 5: FWI System components (~1 h)
 ```
 
 Splits: **S1** chronological (test 2019–2025, train on earlier years); **S2** extreme year

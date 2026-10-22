@@ -1,0 +1,50 @@
+baris 77688, tanpa nilai GFWED 0 (diisi median kabupaten-bulan)
+cek: korelasi fwi_g1 dengan fwi_lag1 (Earth Engine) 0.986
+  y_kabupaten S1 2019
+  y_kabupaten S1 2020
+  y_kabupaten S1 2021
+  y_kabupaten S1 2022
+  y_kabupaten S1 2023
+  y_kabupaten S1 2024
+  y_kabupaten S1 2025
+  y_kabupaten S2 2015
+  y_kabupaten S2 2014
+  y_kabupaten S2 2019
+  y_gabungan S1 2019
+  y_gabungan S1 2020
+  y_gabungan S1 2021
+  y_gabungan S1 2022
+  y_gabungan S1 2023
+  y_gabungan S1 2024
+  y_gabungan S1 2025
+  y_gabungan S2 2015
+  y_gabungan S2 2014
+  y_gabungan S2 2019
+
+=== y_kabupaten: S1 2020-2025, nilai indeks di atas tempat (klim_<k> - klim_saja), dalam-tahun AUC-PR [95 %]
+  klim_saja AUC-PR 0.150, klimatologi 0.125
+  klim_dc     AUC-PR 0.145  - klim_saja -0.005 [-0.013, +0.008]
+  klim_dmc    AUC-PR 0.170  - klim_saja +0.020 [+0.010, +0.034]
+  klim_ffmc   AUC-PR 0.184  - klim_saja +0.034 [+0.024, +0.049]
+  klim_bui    AUC-PR 0.168  - klim_saja +0.018 [+0.010, +0.029]
+  klim_fwi    AUC-PR 0.181  - klim_saja +0.031 [+0.020, +0.047]
+  klim_semua  AUC-PR 0.177  - klim_saja +0.027 [+0.017, +0.043]
+=== y_kabupaten: S2 tahun ekstrem, klim_<k> - klim_saja per tahun
+  2015: dc -0.015 [-0.042, +0.016]; dmc -0.010 [-0.036, +0.026]; ffmc +0.052 [+0.037, +0.069]; bui -0.008 [-0.034, +0.027]; fwi -0.020 [-0.048, +0.017]; semua -0.037 [-0.067, +0.002]
+  2014: dc -0.181 [-0.210, -0.146]; dmc -0.117 [-0.152, -0.079]; ffmc +0.021 [+0.001, +0.042]; bui -0.126 [-0.161, -0.090]; fwi -0.118 [-0.157, -0.079]; semua -0.154 [-0.190, -0.114]
+  2019: dc -0.081 [-0.104, -0.051]; dmc -0.036 [-0.065, -0.009]; ffmc +0.003 [-0.016, +0.019]; bui -0.041 [-0.065, -0.014]; fwi -0.103 [-0.130, -0.073]; semua -0.103 [-0.130, -0.075]
+
+=== y_gabungan: S1 2020-2025, nilai indeks di atas tempat (klim_<k> - klim_saja), dalam-tahun AUC-PR [95 %]
+  klim_saja AUC-PR 0.488, klimatologi 0.479
+  klim_dc     AUC-PR 0.470  - klim_saja -0.018 [-0.037, -0.004]
+  klim_dmc    AUC-PR 0.490  - klim_saja +0.002 [-0.013, +0.015]
+  klim_ffmc   AUC-PR 0.519  - klim_saja +0.031 [+0.019, +0.042]
+  klim_bui    AUC-PR 0.490  - klim_saja +0.002 [-0.012, +0.015]
+  klim_fwi    AUC-PR 0.467  - klim_saja -0.021 [-0.041, -0.006]
+  klim_semua  AUC-PR 0.469  - klim_saja -0.019 [-0.038, -0.002]
+=== y_gabungan: S2 tahun ekstrem, klim_<k> - klim_saja per tahun
+  2015: dc -0.086 [-0.117, -0.056]; dmc -0.102 [-0.134, -0.068]; ffmc +0.025 [+0.015, +0.036]; bui -0.096 [-0.125, -0.063]; fwi -0.125 [-0.158, -0.088]; semua -0.123 [-0.159, -0.087]
+  2014: dc -0.208 [-0.237, -0.175]; dmc -0.129 [-0.160, -0.099]; ffmc -0.000 [-0.012, +0.011]; bui -0.149 [-0.179, -0.116]; fwi -0.156 [-0.191, -0.122]; semua -0.193 [-0.223, -0.158]
+  2019: dc -0.110 [-0.130, -0.084]; dmc -0.091 [-0.116, -0.070]; ffmc -0.018 [-0.029, -0.005]; bui -0.087 [-0.109, -0.066]; fwi -0.133 [-0.159, -0.105]; semua -0.141 [-0.164, -0.112]
+
+selesai.
