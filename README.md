@@ -96,7 +96,7 @@ python patokan_nilai.py                            # Section 6.8 and Table 6: hi
 python patokan_fwi_komponen.py                     # Table 5: FWI System components (~1 h)
 ```
 
-### Revision analyses (version 2.4.0)
+### Revision analyses (versions 2.4.0 and 2.5.0)
 
 The revised manuscript, *PeatFireBench: a district-month benchmark for fire forecasting in
 Indonesia, with a level-adjusted fire calendar as its baseline*, compares every model with a
@@ -104,9 +104,9 @@ reference climatology computed from the training years only, on the same rows: t
 (MC, the reference of version 2.3.0), the share of training years in which the district exceeded
 its threshold in that calendar month (EF-1m) or in a three-month window (EF-3m), a probability
 climatology chosen per fold on training years (EF-P), and EF-1m adjusted with last month's national
-detection count (EF-L). The analyses ran in five rounds (phases A to E). For each round the design
+detection count (EF-L). The analyses ran in six rounds (phases A to F; phase F in version 2.5.0). For each round the design
 and the decision rules were written and committed before any script ran; `registration/` holds
-those records with their results (in Indonesian, `Hasil_Patokan_6.md` to `Hasil_Patokan_10.md`).
+those records with their results (in Indonesian, `Hasil_Patokan_6.md` to `Hasil_Patokan_11.md`).
 The commit identifiers in them refer to the authors' working repository; header paragraphs that
 named internal review files were shortened, and nothing else was changed. Logs are in
 `logs/peatfirebench/revision/`.
@@ -145,6 +145,10 @@ python patokan_revisi_setel.py                     # gradient boosting tuned ins
 # phase E (Hasil_Patokan_10): one target per run, for memory
 python -u patokan_revisi_peluang.py y_kabupaten > DL_FIRE_NASIONAL/penuh/patokan_revisi_peluang_kab.log
 python -u patokan_revisi_peluang.py y_gabungan  > DL_FIRE_NASIONAL/penuh/patokan_revisi_peluang_nas.log
+# phase F (Hasil_Patokan_11): EF-L as a ranking and as alert rules, tuned quota, gradient boosting with the
+# national count; reads the phase E outputs; one target per run, for memory
+python -u patokan_revisi_tingkat.py y_kabupaten > DL_FIRE_NASIONAL/penuh/patokan_revisi_tingkat_kab.log
+python -u patokan_revisi_tingkat.py y_gabungan  > DL_FIRE_NASIONAL/penuh/patokan_revisi_tingkat_nas.log
 python gambar_patokan.py                           # Figures 1-5 of the revised manuscript (gambar_rev*)
 ```
 

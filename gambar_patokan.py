@@ -145,13 +145,13 @@ simpan(fig, "gambar_rev2_peta")
 RUJUKAN = {"y_kabupaten": "klim_frek1", "y_gabungan": "klim_frek"}
 GESER = {("y_gabungan", "S1", 2022): (-24, 3), ("y_gabungan", "S1", 2021): (-24, -8),
          ("y_gabungan", "S1", 2020): (5, 3), ("y_gabungan", "S1", 2025): (5, -6),
-         ("y_gabungan", "S2", 2019): (4, -10), ("y_kabupaten", "S1", 2021): (-24, -8),
+         ("y_gabungan", "S2", 2019): (-26, -11), ("y_kabupaten", "S1", 2021): (-24, -8),
          ("y_kabupaten", "S1", 2020): (5, 2), ("y_kabupaten", "S1", 2025): (5, -5),
-         ("y_kabupaten", "S2", 2019): (4, -10)}
+         ("y_kabupaten", "S2", 2019): (-26, -11)}
 fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.2), sharey=True)
 for ax, (sas, judul) in zip(axes, SASARAN):
     d0 = pilih(P, sas)
-    titik = [(t, "S1", d0[(d0["skema"] == "S1") & (d0["tag"] == str(t))]) for t in range(2019, 2026)]
+    titik = [(t, "S1", d0[(d0["skema"] == "S1") & (d0["tag"] == str(t))]) for t in range(2020, 2026)]
     titik += [(int(t), "S2", d0[(d0["skema"] == "S2") & (d0["tag"] == t)]) for t in EKSTREM]
     geser = 0.012 * deteksi.max() / 1e3
     for th, sk, dd in titik:
@@ -182,7 +182,7 @@ simpan(fig, "gambar_rev4_ekstrem")
 fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.2), sharey=True)
 for ax, (sas, judul) in zip(axes, SASARAN):
     d0 = pilih(P, sas)
-    blok = [("Non-extreme years 2020–2025", d0[(d0["skema"] == "S1") & (d0["tahun"] >= 2020)], BIRU),
+    blok = [("Chronological test years 2020–2025", d0[(d0["skema"] == "S1") & (d0["tahun"] >= 2020)], BIRU),
             ("Extreme years withheld", d0[d0["skema"] == "S2"], MERAH)]
     for lab, dd, c in blok:
         y, p = dd["y"].to_numpy(), dd["xgb"].to_numpy()
@@ -196,7 +196,7 @@ axes[0].set_ylabel("Observed frequency"); axes[1].legend(loc="lower right")
 simpan(fig, "gambar_rev5_reliabilitas")
 
 # ============================================================ 4. ablasi
-LABEL_K = {"api": "Fire history", "musim": "Season", "iklim": "ENSO / IOD", "hujan": "Rainfall",
+LABEL_K = {"api": "Fire history", "musim": "Season", "iklim": "Climate indices (ONI, DMI)", "hujan": "Rainfall",
            "lahan": "Land", "manusia": "Population", "gambut": "Peat", "cuaca": "Fire weather (FWI)"}
 fig, axes = plt.subplots(1, 2, figsize=(7.2, 0.5 * len(KELOMPOK) + 0.2), sharey=True)
 for ax, (sas, judul) in zip(axes, SASARAN):
@@ -229,8 +229,8 @@ ax.plot(x, bul.to_numpy() / 1e3, color=KELABU, lw=0.8)
 for t in EKSTREM:
     ax.axvspan(pd.Timestamp(f"{t}-01-01"), pd.Timestamp(f"{t}-12-31"), color=MERAH, alpha=0.10, lw=0)
     ax.text(pd.Timestamp(f"{t}-07-01"), bul.max() / 1e3 * 1.03, t, ha="center", va="bottom", fontsize=7.5, color=MERAH)
-ax.axvspan(pd.Timestamp("2019-01-01"), pd.Timestamp("2025-12-31"), ymin=0, ymax=0.04, color=BIRU, lw=0)
-ax.text(pd.Timestamp("2022-07-01"), bul.max() / 1e3 * 0.30, "chronological test years 2019–2025",
+ax.axvspan(pd.Timestamp("2020-01-01"), pd.Timestamp("2025-12-31"), ymin=0, ymax=0.04, color=BIRU, lw=0)
+ax.text(pd.Timestamp("2022-07-01"), bul.max() / 1e3 * 0.30, "chronological test years 2020–2025",
         ha="center", va="bottom", fontsize=7, color=BIRU)
 ax.set_ylabel("Detections per month (thousands)"); ax.grid(True, axis="y")
 ax.set_xlim(x.min(), x.max()); ax.set_ylim(top=bul.max() / 1e3 * 1.12)
