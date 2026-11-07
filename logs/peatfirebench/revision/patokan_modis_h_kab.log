@@ -1,0 +1,93 @@
+MODIS/VIIRS 2012-2025 r 0.195; F = 2; kabupaten 498; sasaran y_kabupaten; rujukan pasangan ef1
+cek ap_cepat = sklearn: ok
+
+====================================================================================================
+H V0  y_kabupaten  (rujukan pasangan ef1), n = 9, df 8
+====================================================================================================
+  V0 2003: latih 22 tahun (2004-2025), 110,616 baris; uji 4,609, prevalensi 11.28%; EF-P ef1_halus; koef EF-L +0.731 +0.922
+  V0 2004: latih 22 tahun (2003-2025), 110,197 baris; uji 5,028, prevalensi 15.19%; EF-P ef1_halus; koef EF-L +0.724 +0.942
+  V0 2005: latih 22 tahun (2003-2025), 110,197 baris; uji 5,028, prevalensi 8.19%; EF-P ef1_halus; koef EF-L +0.732 +0.914
+  V0 2006: latih 22 tahun (2003-2025), 110,197 baris; uji 5,028, prevalensi 16.95%; EF-P ef1_halus; koef EF-L +0.714 +0.871
+  V0 2007: latih 22 tahun (2003-2025), 110,197 baris; uji 5,028, prevalensi 7.34%; EF-P ef1_halus; koef EF-L +0.732 +0.912
+  V0 2008: latih 22 tahun (2003-2025), 110,197 baris; uji 5,028, prevalensi 6.44%; EF-P ef1_halus; koef EF-L +0.744 +0.926
+  V0 2009: latih 22 tahun (2003-2025), 110,197 baris; uji 5,028, prevalensi 12.27%; EF-P ef1_halus; koef EF-L +0.724 +0.917
+  V0 2010: latih 22 tahun (2003-2025), 110,197 baris; uji 5,028, prevalensi 2.33%; EF-P ef1_halus; koef EF-L +0.747 +0.890
+  V0 2011: latih 22 tahun (2003-2025), 110,197 baris; uji 5,028, prevalensi 8.43%; EF-P ef1_halus; koef EF-L +0.733 +0.910
+  Brier rata-rata: kalender 0.06620  efp 0.06623  efl 0.06244  lokal 0.06344  gb 0.05909
+  AUC-PR rata-rata: kalender 0.503  efp 0.499  efl 0.473  lokal 0.468  gb 0.532
+  BSS
+    efl atas kalender             +0.0590 2tahap [-0.0183, +0.1672] t95 [-0.0574, +0.1754]  per tahun -0.018 -0.023 -0.029 +0.203 -0.068 -0.037 +0.074 +0.400 +0.029
+    efp atas kalender             +0.0010 2tahap [-0.0028, +0.0064] t95 [-0.0049, +0.0069]  per tahun -0.003 -0.004 -0.002 -0.003 -0.001 +0.005 -0.003 +0.020 +0.000
+    efl atas efp                  +0.0588 2tahap [-0.0172, +0.1637] t95 [-0.0549, +0.1726]  per tahun -0.015 -0.018 -0.027 +0.205 -0.067 -0.042 +0.077 +0.387 +0.029
+    lokal atas efl                -0.0168 2tahap [-0.0502, +0.0135] t95 [-0.0451, +0.0115]  per tahun -0.025 +0.019 -0.004 -0.052 +0.015 +0.042 -0.049 -0.034 -0.064
+    gb atas kalender              +0.1147 2tahap [+0.0379, +0.2234] t95 [-0.0031, +0.2325]  per tahun +0.029 +0.001 +0.051 +0.262 +0.044 +0.048 +0.068 +0.471 +0.059
+    gb atas efp                   +0.1147 2tahap [+0.0382, +0.2215] t95 [-0.0004, +0.2298]  per tahun +0.032 +0.005 +0.052 +0.265 +0.045 +0.043 +0.071 +0.460 +0.059
+    gb atas efl                   +0.0612 2tahap [+0.0342, +0.0908] t95 [+0.0298, +0.0926]  LOLOS  per tahun +0.046 +0.023 +0.077 +0.075 +0.105 +0.082 -0.007 +0.119 +0.031
+  AUC-PR
+    gb - efl                      +0.0583 2tahap [+0.0319, +0.0847] t95 [+0.0294, +0.0873]  LOLOS  per tahun +0.075 +0.064 +0.078 +0.033 +0.071 +0.127 +0.016 +0.061 +0.000
+    gb - kalender                 +0.0288 2tahap [+0.0006, +0.0603] t95 [-0.0039, +0.0615]  per tahun +0.003 -0.061 +0.052 +0.060 +0.032 +0.046 +0.002 +0.083 +0.043
+  R36c V0: GB lolos atas kalender False, EF-P False, EF-L True  -> mengalahkan ketiga rujukan: False
+  Geser-tingkat (BSS mentah / tingkat-benar / bagian yang hilang)
+    gb atas kalender  mentah +0.1147  tingkat-benar +0.0372 2tahap [-0.0198, +0.0922] t95 [-0.0319, +0.1063]  bagian hilang 0.68 [0.19, 1.36]
+    gb atas efp       mentah +0.1147  tingkat-benar +0.0341 2tahap [-0.0226, +0.0879] t95 [-0.0342, +0.1024]  bagian hilang 0.70 [0.22, 1.37]
+  BSS rasio-jumlah (semua baris uji) vs rata-rata rasio
+    efl atas kalender  rasio-jumlah +0.0576  rata-rata rasio +0.0590
+    gb atas kalender  rasio-jumlah +0.1082  rata-rata rasio +0.1147
+    gb atas efp       rasio-jumlah +0.1086  rata-rata rasio +0.1147
+    gb atas efl       rasio-jumlah +0.0537  rata-rata rasio +0.0612
+    lokal atas efl       rasio-jumlah -0.0160  rata-rata rasio -0.0168
+
+====================================================================================================
+H V1  y_kabupaten  (rujukan pasangan ef1), n = 9, df 8
+====================================================================================================
+  V1 2003: latih 12 tahun (2004-2015), 60,336 baris; uji 4,609, prevalensi 11.28%; EF-P ef1_halus; koef EF-L +0.680 +0.735
+  V1 2004: latih 12 tahun (2003-2015), 59,917 baris; uji 5,028, prevalensi 15.19%; EF-P ef1_halus; koef EF-L +0.670 +0.787
+  V1 2005: latih 12 tahun (2003-2015), 59,917 baris; uji 5,028, prevalensi 8.19%; EF-P ef1_halus; koef EF-L +0.680 +0.704
+  V1 2006: latih 12 tahun (2003-2015), 59,917 baris; uji 5,028, prevalensi 16.95%; EF-P ef1_halus; koef EF-L +0.660 +0.647
+  V1 2007: latih 12 tahun (2003-2015), 59,917 baris; uji 5,028, prevalensi 7.34%; EF-P ef1_halus; koef EF-L +0.684 +0.720
+  V1 2008: latih 12 tahun (2003-2015), 59,917 baris; uji 5,028, prevalensi 6.44%; EF-P ef1_halus; koef EF-L +0.694 +0.726
+  V1 2009: latih 12 tahun (2003-2015), 59,917 baris; uji 5,028, prevalensi 12.27%; EF-P ef1_halus; koef EF-L +0.673 +0.733
+  V1 2010: latih 12 tahun (2003-2015), 59,917 baris; uji 5,028, prevalensi 2.33%; EF-P ef1_halus; koef EF-L +0.696 +0.585
+  V1 2011: latih 12 tahun (2003-2015), 59,917 baris; uji 5,028, prevalensi 8.43%; EF-P ef1_halus; koef EF-L +0.679 +0.713
+  Brier rata-rata: kalender 0.06617  efp 0.06545  efl 0.06163  lokal 0.06239  gb 0.06232
+  AUC-PR rata-rata: kalender 0.511  efp 0.510  efl 0.501  lokal 0.484  gb 0.519
+  BSS
+    efl atas kalender             +0.0728 2tahap [-0.0108, +0.1990] t95 [-0.0625, +0.2081]  per tahun -0.014 -0.113 +0.029 +0.085 +0.013 +0.114 -0.012 +0.509 +0.044
+    efp atas kalender             +0.0119 2tahap [+0.0041, +0.0218] t95 [+0.0007, +0.0232]  LOLOS  per tahun +0.004 -0.004 +0.009 +0.001 +0.012 +0.023 +0.003 +0.044 +0.015
+    efl atas efp                  +0.0636 2tahap [-0.0168, +0.1863] t95 [-0.0666, +0.1938]  per tahun -0.018 -0.108 +0.020 +0.084 +0.001 +0.092 -0.015 +0.487 +0.029
+    lokal atas efl                -0.0206 2tahap [-0.0602, +0.0080] t95 [-0.0545, +0.0133]  per tahun -0.031 +0.016 -0.023 +0.016 +0.006 +0.004 -0.016 -0.128 -0.029
+    gb atas kalender              +0.0657 2tahap [-0.0051, +0.1551] t95 [-0.0336, +0.1649]  per tahun -0.027 -0.082 +0.073 +0.047 +0.079 +0.115 -0.062 +0.354 +0.094
+    gb atas efp                   +0.0558 2tahap [-0.0105, +0.1396] t95 [-0.0359, +0.1476]  per tahun -0.032 -0.077 +0.065 +0.046 +0.068 +0.093 -0.065 +0.324 +0.080
+    gb atas efl                   -0.0252 2tahap [-0.1089, +0.0315] t95 [-0.1151, +0.0646]  per tahun -0.013 +0.028 +0.046 -0.041 +0.067 +0.001 -0.049 -0.317 +0.053
+  AUC-PR
+    gb - efl                      +0.0177 2tahap [-0.0027, +0.0376] t95 [-0.0044, +0.0398]  per tahun +0.011 +0.045 +0.014 -0.008 +0.037 +0.063 -0.033 +0.010 +0.020
+    gb - kalender                 +0.0076 2tahap [-0.0156, +0.0321] t95 [-0.0190, +0.0342]  per tahun +0.001 -0.049 +0.016 +0.040 +0.006 +0.031 -0.043 +0.013 +0.053
+  R36c V1: GB lolos atas kalender False, EF-P False, EF-L False  -> mengalahkan ketiga rujukan: False
+
+====================================================================================================
+H V2  y_kabupaten  (rujukan pasangan ef1), n = 9, df 8
+====================================================================================================
+  V2 2003: latih 22 tahun (2004-2025), 110,352 baris; uji 4,598, prevalensi 11.77%; EF-P ef1_halus; koef EF-L +0.736 +0.922
+  V2 2004: latih 22 tahun (2003-2025), 109,934 baris; uji 5,016, prevalensi 15.91%; EF-P ef1_halus; koef EF-L +0.729 +0.935
+  V2 2005: latih 22 tahun (2003-2025), 110,197 baris; uji 5,028, prevalensi 8.61%; EF-P ef1_halus; koef EF-L +0.734 +0.917
+  V2 2006: latih 22 tahun (2003-2025), 109,671 baris; uji 5,004, prevalensi 17.69%; EF-P ef1_halus; koef EF-L +0.729 +0.876
+  V2 2007: latih 22 tahun (2003-2025), 109,934 baris; uji 5,016, prevalensi 7.64%; EF-P ef1_halus; koef EF-L +0.732 +0.913
+  V2 2008: latih 22 tahun (2003-2025), 109,934 baris; uji 5,016, prevalensi 6.70%; EF-P ef1_halus; koef EF-L +0.743 +0.921
+  V2 2009: latih 22 tahun (2003-2025), 110,197 baris; uji 5,028, prevalensi 12.79%; EF-P ef1_halus; koef EF-L +0.728 +0.913
+  V2 2010: latih 22 tahun (2003-2025), 110,197 baris; uji 5,028, prevalensi 2.43%; EF-P ef1_halus; koef EF-L +0.738 +0.883
+  V2 2011: latih 22 tahun (2003-2025), 110,197 baris; uji 5,028, prevalensi 8.77%; EF-P ef1_halus; koef EF-L +0.736 +0.914
+  Brier rata-rata: kalender 0.06708  efp 0.06712  efl 0.06331  lokal 0.06460  gb 0.05981
+  AUC-PR rata-rata: kalender 0.525  efp 0.525  efl 0.498  lokal 0.486  gb 0.553
+  BSS
+    efl atas kalender             +0.0576 2tahap [-0.0178, +0.1591] t95 [-0.0562, +0.1715]  per tahun -0.013 -0.023 -0.021 +0.208 -0.082 -0.046 +0.080 +0.380 +0.035
+    efp atas kalender             +0.0008 2tahap [-0.0028, +0.0063] t95 [-0.0050, +0.0066]  per tahun -0.003 -0.004 -0.002 -0.003 -0.002 +0.005 -0.003 +0.020 -0.000
+    efl atas efp                  +0.0575 2tahap [-0.0173, +0.1549] t95 [-0.0537, +0.1687]  per tahun -0.010 -0.019 -0.019 +0.210 -0.080 -0.051 +0.083 +0.367 +0.035
+    lokal atas efl                -0.0204 2tahap [-0.0544, +0.0089] t95 [-0.0496, +0.0088]  per tahun -0.031 +0.016 -0.010 -0.056 +0.014 +0.038 -0.058 -0.023 -0.073
+    gb atas kalender              +0.1139 2tahap [+0.0363, +0.2214] t95 [+0.0006, +0.2272]  LOLOS  per tahun +0.036 +0.007 +0.064 +0.274 +0.028 +0.035 +0.073 +0.446 +0.063
+    gb atas efp                   +0.1139 2tahap [+0.0378, +0.2191] t95 [+0.0032, +0.2246]  LOLOS  per tahun +0.038 +0.011 +0.066 +0.276 +0.030 +0.030 +0.076 +0.435 +0.063
+    gb atas efl                   +0.0611 2tahap [+0.0337, +0.0895] t95 [+0.0315, +0.0907]  LOLOS  per tahun +0.048 +0.030 +0.083 +0.083 +0.102 +0.077 -0.008 +0.107 +0.029
+  AUC-PR
+    gb - efl                      +0.0554 2tahap [+0.0292, +0.0871] t95 [+0.0234, +0.0875]  LOLOS  per tahun +0.074 +0.070 +0.062 +0.035 +0.066 +0.135 +0.004 +0.060 -0.007
+    gb - kalender                 +0.0278 2tahap [+0.0004, +0.0626] t95 [-0.0054, +0.0609]  per tahun +0.006 -0.055 +0.046 +0.056 +0.026 +0.046 -0.010 +0.095 +0.038
+  R36c V2: GB lolos atas kalender True, EF-P True, EF-L True  -> mengalahkan ketiga rujukan: True
+selesai.

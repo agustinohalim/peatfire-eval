@@ -96,21 +96,24 @@ python patokan_nilai.py                            # Section 6.8 and Table 6: hi
 python patokan_fwi_komponen.py                     # Table 5: FWI System components (~1 h)
 ```
 
-### Revision analyses (versions 2.4.0 to 2.6.0)
+### Revision analyses (versions 2.4.0 to 2.7.0)
 
 The revised manuscript, *IndoFireBench: a district-month benchmark for fire forecasting in
-Indonesia, and the reference forecasts it needs* (the benchmark is named PeatFireBench in this
+Indonesia, where much of the apparent skill is the year's fire level* (the benchmark is named PeatFireBench in this
 repository and its earlier versions), compares every model with a
 reference climatology computed from the training years only, on the same rows: the mean count
 (MC, the reference of version 2.3.0), the share of training years in which the district exceeded
 its threshold in that calendar month (EF-1m) or in a three-month window (EF-3m), a probability
 climatology chosen per fold on training years (EF-P), and EF-1m adjusted with last month's national
-detection count (EF-L). The analyses ran in seven rounds (phases A to G; phase F in version 2.5.0, phase G in 2.6.0). For each round the design
+detection count (EF-L). The analyses ran in eight rounds (phases A to H; phase F in version 2.5.0, phase G in 2.6.0, phase H in 2.7.0). For each round the design
 and the decision rules were written and committed before any script ran; `registration/` holds
-those records with their results (in Indonesian, `Hasil_Patokan_6.md` to `Hasil_Patokan_12.md`).
+those records with their results (in Indonesian, `Hasil_Patokan_6.md` to `Hasil_Patokan_13.md`).
 Phase G tests EF-L on the MODIS years 2003-2011, which no earlier round had scored: the MODIS
 standard-processing archive (`MODIS_SP`) is downloaded with the same box and filter, and a panel is
-built with the same district polygons. The MODIS data are not included; the scripts below rebuild them.
+built with the same district polygons. Phase H repeats the MODIS test trained only on years before 2016
+and with thresholds from training years, adds EF-P, the level-shift diagnostic and Brier skill as one
+ratio, and applies the rule that a forecast beats the references only if it beats all three. The MODIS
+data are not included; the scripts below rebuild them.
 The commit identifiers in them refer to the authors' working repository; header paragraphs that
 named internal review files were shortened, and nothing else was changed. Logs are in
 `logs/peatfirebench/revision/`.
@@ -163,6 +166,9 @@ python modis_keyakinan.py                          # MODIS confidence (0-100) to
 node bangun_panel_nasional.js DL_FIRE_SV-C2_792597/gadm41_IDN_2.json DL_FIRE_MODIS/panel_modis.csv DL_FIRE_MODIS/kelas
 python -u patokan_modis.py y_kabupaten > DL_FIRE_MODIS/patokan_modis_kab.log
 python -u patokan_modis.py y_gabungan  > DL_FIRE_MODIS/patokan_modis_nas.log
+# phase H (Hasil_Patokan_13): MODIS variants trained before 2016 and with training-year thresholds
+python -u patokan_modis_h.py y_kabupaten > DL_FIRE_MODIS/patokan_modis_h_kab.log
+python -u patokan_modis_h.py y_gabungan  > DL_FIRE_MODIS/patokan_modis_h_nas.log
 python gambar_patokan.py                           # Figures 1-5 of the revised manuscript (gambar_rev*)
 ```
 
