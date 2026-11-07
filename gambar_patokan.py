@@ -145,9 +145,9 @@ simpan(fig, "gambar_rev2_peta")
 RUJUKAN = {"y_kabupaten": "klim_frek1", "y_gabungan": "klim_frek"}
 GESER = {("y_gabungan", "S1", 2022): (-24, 3), ("y_gabungan", "S1", 2021): (-24, -8),
          ("y_gabungan", "S1", 2020): (5, 3), ("y_gabungan", "S1", 2025): (5, -6),
-         ("y_gabungan", "S2", 2019): (-26, -11), ("y_kabupaten", "S1", 2021): (-24, -8),
+         ("y_gabungan", "S2", 2019): (5, 3), ("y_kabupaten", "S1", 2021): (-24, -8),
          ("y_kabupaten", "S1", 2020): (5, 2), ("y_kabupaten", "S1", 2025): (5, -5),
-         ("y_kabupaten", "S2", 2019): (-26, -11)}
+         ("y_kabupaten", "S2", 2019): (5, 3)}
 fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.2), sharey=True)
 for ax, (sas, judul) in zip(axes, SASARAN):
     d0 = pilih(P, sas)
