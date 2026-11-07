@@ -1,0 +1,15 @@
+G1. Daya uji BSS atas EF-L, tahun biasa S1 2020-2025 (n = 6, df 5)
+
+--- y_kabupaten
+    rf         rata-rata +0.0303  sd 0.0944  MDD80 0.1345  tahun dibutuhkan 79  per tahun +0.040 -0.097 +0.101 +0.142 -0.068 +0.064
+    xgb        rata-rata +0.0665  sd 0.1089  MDD80 0.1552  tahun dibutuhkan 24  per tahun -0.061 +0.077 +0.205 +0.171 -0.046 +0.053
+    xgb_setel  rata-rata +0.0647  sd 0.1416  MDD80 0.2017  tahun dibutuhkan 40  per tahun -0.127 +0.156 +0.203 +0.149 -0.100 +0.107
+    xgb_nas    rata-rata +0.0908  sd 0.1075  MDD80 0.1531  tahun dibutuhkan 14  per tahun +0.029 +0.141 +0.218 +0.192 +0.010 -0.045
+
+--- y_gabungan
+    rf         rata-rata +0.0577  sd 0.0763  MDD80 0.1087  tahun dibutuhkan 16  per tahun -0.027 +0.072 +0.166 -0.008 +0.020 +0.123
+    xgb        rata-rata +0.0372  sd 0.1686  MDD80 0.2402  tahun dibutuhkan 164  per tahun -0.269 +0.117 +0.219 +0.004 +0.027 +0.125
+    xgb_setel  rata-rata +0.0688  sd 0.1161  MDD80 0.1655  tahun dibutuhkan 25  per tahun -0.113 +0.117 +0.208 +0.000 +0.046 +0.155
+    xgb_nas    rata-rata +0.0657  sd 0.1108  MDD80 0.1578  tahun dibutuhkan 25  per tahun -0.119 +0.131 +0.197 +0.004 +0.072 +0.109
+
+selesai.

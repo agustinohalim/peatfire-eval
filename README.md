@@ -96,17 +96,21 @@ python patokan_nilai.py                            # Section 6.8 and Table 6: hi
 python patokan_fwi_komponen.py                     # Table 5: FWI System components (~1 h)
 ```
 
-### Revision analyses (versions 2.4.0 and 2.5.0)
+### Revision analyses (versions 2.4.0 to 2.6.0)
 
-The revised manuscript, *PeatFireBench: a district-month benchmark for fire forecasting in
-Indonesia, with a level-adjusted fire calendar as its baseline*, compares every model with a
+The revised manuscript, *IndoFireBench: a district-month benchmark for fire forecasting in
+Indonesia, and the reference forecasts it needs* (the benchmark is named PeatFireBench in this
+repository and its earlier versions), compares every model with a
 reference climatology computed from the training years only, on the same rows: the mean count
 (MC, the reference of version 2.3.0), the share of training years in which the district exceeded
 its threshold in that calendar month (EF-1m) or in a three-month window (EF-3m), a probability
 climatology chosen per fold on training years (EF-P), and EF-1m adjusted with last month's national
-detection count (EF-L). The analyses ran in six rounds (phases A to F; phase F in version 2.5.0). For each round the design
+detection count (EF-L). The analyses ran in seven rounds (phases A to G; phase F in version 2.5.0, phase G in 2.6.0). For each round the design
 and the decision rules were written and committed before any script ran; `registration/` holds
-those records with their results (in Indonesian, `Hasil_Patokan_6.md` to `Hasil_Patokan_11.md`).
+those records with their results (in Indonesian, `Hasil_Patokan_6.md` to `Hasil_Patokan_12.md`).
+Phase G tests EF-L on the MODIS years 2003-2011, which no earlier round had scored: the MODIS
+standard-processing archive (`MODIS_SP`) is downloaded with the same box and filter, and a panel is
+built with the same district polygons. The MODIS data are not included; the scripts below rebuild them.
 The commit identifiers in them refer to the authors' working repository; header paragraphs that
 named internal review files were shortened, and nothing else was changed. Logs are in
 `logs/peatfirebench/revision/`.
@@ -149,6 +153,16 @@ python -u patokan_revisi_peluang.py y_gabungan  > DL_FIRE_NASIONAL/penuh/patokan
 # national count; reads the phase E outputs; one target per run, for memory
 python -u patokan_revisi_tingkat.py y_kabupaten > DL_FIRE_NASIONAL/penuh/patokan_revisi_tingkat_kab.log
 python -u patokan_revisi_tingkat.py y_gabungan  > DL_FIRE_NASIONAL/penuh/patokan_revisi_tingkat_nas.log
+# phase G (Hasil_Patokan_12): minimum detectable Brier skill over EF-L; probability scores with
+# training-year thresholds; EF-L and fire-count forecasts on the MODIS years 2003-2011
+python patokan_revisi_daya.py > DL_FIRE_NASIONAL/penuh/patokan_revisi_daya.log
+python -u patokan_revisi_ambang_peluang.py y_kabupaten > DL_FIRE_NASIONAL/penuh/patokan_revisi_ambang_peluang_kab.log
+python -u patokan_revisi_ambang_peluang.py y_gabungan  > DL_FIRE_NASIONAL/penuh/patokan_revisi_ambang_peluang_nas.log
+python unduh_firms_modis.py                        # MODIS_SP 2003-2025 into DL_FIRE_MODIS/ (needs FIRMS_MAP_KEY; ~1 h)
+python modis_keyakinan.py                          # MODIS confidence (0-100) to the l/n/h classes
+node bangun_panel_nasional.js DL_FIRE_SV-C2_792597/gadm41_IDN_2.json DL_FIRE_MODIS/panel_modis.csv DL_FIRE_MODIS/kelas
+python -u patokan_modis.py y_kabupaten > DL_FIRE_MODIS/patokan_modis_kab.log
+python -u patokan_modis.py y_gabungan  > DL_FIRE_MODIS/patokan_modis_nas.log
 python gambar_patokan.py                           # Figures 1-5 of the revised manuscript (gambar_rev*)
 ```
 

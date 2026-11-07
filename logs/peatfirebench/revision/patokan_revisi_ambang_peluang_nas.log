@@ -1,0 +1,20 @@
+cek ap_cepat = sklearn: ok
+S1 2020: ambang dari 2012-2019
+S1 2021: ambang dari 2012-2020
+S1 2022: ambang dari 2012-2021
+S1 2023: ambang dari 2012-2022
+S1 2024: ambang dari 2012-2023
+S1 2025: ambang dari 2012-2024
+baris 35856; y kepekaan = y dihitung ulang: 1.0000
+
+====================================================================================================
+G2. y_gabungan: ambang dari tahun latih, S1 2020-2025 (prevalensi 5.39%)
+====================================================================================================
+  Brier rata-rata tahun: kalender 0.03615  ef1_tingkat 0.02719  rf 0.02591  xgb 0.02672
+  AUC-PR rata-rata tahun: kalender 0.694  ef1_tingkat 0.705  rf 0.748  xgb 0.738
+    BSS rf           atas kalender    +0.2934 2tahap [+0.1478, +0.4630] t95 [+0.0772, +0.5095]  LOLOS  per tahun +0.329 +0.474 +0.575 +0.056 +0.097 +0.229
+    BSS xgb          atas kalender    +0.2725 2tahap [+0.1176, +0.4546] t95 [+0.0318, +0.5132]  LOLOS  per tahun +0.105 +0.523 +0.585 +0.055 +0.108 +0.258
+    BSS ef1_tingkat  atas kalender    +0.2555 2tahap [+0.1229, +0.4053] t95 [+0.0604, +0.4507]  LOLOS  per tahun +0.321 +0.424 +0.502 +0.058 +0.094 +0.135
+    BSS rf           atas ef1_tingkat +0.0594 2tahap [+0.0076, +0.1210] t95 [-0.0069, +0.1256]  per tahun +0.013 +0.087 +0.146 -0.003 +0.004 +0.109
+    BSS xgb          atas ef1_tingkat +0.0296 2tahap [-0.1161, +0.1555] t95 [-0.1657, +0.2249]  per tahun -0.317 +0.172 +0.168 -0.003 +0.016 +0.142
+selesai.
