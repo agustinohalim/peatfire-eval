@@ -1,15 +1,22 @@
 """
 Gambar naskah Artikel 2 (PeatFireBench), dari panel dan putaran panel lengkap.
 
-  gambar_pat1_peta         : 498 kabupaten/kota, (a) deteksi VIIRS 2012-2025 (skala log),
+Sejak 7 Nov 2026 menulis nama gambar_rev* dengan nomor naskah revisi (Naskah_Artikel2_Revisi.md).
+Berkas gambar_pat* yang sudah ada adalah gambar naskah terkirim ke Natural Hazards dan tidak ditimpa.
+
+  gambar_rev1_deret        : Fig. 1, deteksi bulanan nasional 2012-2025, tahun uji ekstrem ditandai
+  gambar_rev2_peta         : Fig. 2, 498 kabupaten/kota, (a) deteksi VIIRS 2012-2025 (skala log),
                              (b) ambang per kabupaten maks(p90, 10); kabupaten tanpa positif kelabu
-  gambar_pat2_ekstrem      : keunggulan dalam-tahun gradient boosting atas klimatologi per tahun uji
-                             lawan jumlah deteksi nasional, dua sasaran (panel lengkap)
-  gambar_pat3_reliabilitas : diagram reliabilitas gradient boosting, tahun biasa 2020-2025 lawan
-                             tahun ekstrem disisihkan, dua sasaran (panel lengkap)
-  gambar_pat4_ablasi       : sumbangan tiap kelompok fitur, dalam-tahun lawan digabung lintas tahun,
-                             dua sasaran (dari patokan_ablasi.csv)
-  gambar_pat5_deret        : deteksi bulanan nasional 2012-2025, tahun uji ekstrem ditandai
+  gambar_rev3_ablasi       : Fig. 3, sumbangan tiap kelompok fitur, dalam-tahun lawan digabung lintas
+                             tahun, dua sasaran (dari patokan_ablasi.csv)
+  gambar_rev4_ekstrem      : Fig. 4, keunggulan dalam-tahun gradient boosting per tahun uji lawan jumlah
+                             deteksi nasional, atas MC (simbol kosong) dan atas rujukan pasangan Tabel 2
+                             (simbol isi; EF-1m per kabupaten, EF-3m nasional), dua sasaran
+  gambar_rev5_reliabilitas : Fig. 5, diagram reliabilitas gradient boosting, tahun biasa 2020-2025 lawan
+                             tahun ekstrem disisihkan, dua sasaran
+
+Prediksi dari patokan_revisi_prediksi.csv (klimatologi dan xgb sama dengan berkas lama; berkas ini
+menambah klim_frek dan klim_frek1).
 
 Gaya mengikuti gambar_kalimantan.py; judul tidak digambar di kanvas (judul di keterangan).
 Pakai:    python gambar_patokan.py
@@ -27,7 +34,7 @@ from matplotlib.collections import PatchCollection
 from matplotlib.colors import LogNorm, LinearSegmentedColormap
 from matplotlib.patches import Patch, Polygon
 from sklearn.metrics import average_precision_score as ap
-from kelompok_fitur import ABLASI, KELOMPOK, PREDIKSI
+from kelompok_fitur import ABLASI, KELOMPOK
 
 BIRU, MERAH = "#1F5FA8", "#C1442A"
 KELABU, KELABU_MUDA = "#6B7280", "#B8BCC4"
@@ -91,7 +98,10 @@ def boot_gabung(d, a, b, n=1000, seed=2026):
 
 panel = pd.read_csv(os.path.join(D, "panel_nasional_bersih.csv"))
 deteksi = panel.groupby("tahun")["titik_panas"].sum()
-P = pd.read_csv(os.path.join(D, PREDIKSI), dtype={"tag": str})
+P = pd.read_csv(os.path.join(D, "patokan_revisi_prediksi.csv"), dtype={"tag": str},
+                usecols=["gid", "tahun", "ada_positif", "y", "sasaran", "skema", "tag", "klimatologi",
+                         "klim_frek", "klim_frek1", "xgb"])
+P = P[P["skema"] != "Q"]
 A = pd.read_csv(os.path.join(D, ABLASI), dtype={"tag": str})
 print("Gambar:")
 
@@ -129,32 +139,44 @@ for ax, (kol, label, warna), huruf in zip(axes, panel_peta, "ab"):
     if kol == "ambang":
         ax.text(0.01, 0.02, "grey: no month above threshold (excluded from per-district metrics)",
                 transform=ax.transAxes, fontsize=7, color=TINTA_2)
-simpan(fig, "gambar_pat1_peta")
+simpan(fig, "gambar_rev2_peta")
 
-# ============================================================ 2. keunggulan per tahun
-GESER = {("y_gabungan", 2021): (-24, 2), ("y_gabungan", 2020): (5, 6), ("y_gabungan", 2025): (5, -8),
-         ("y_kabupaten", 2021): (6, -9), ("y_kabupaten", 2022): (-26, 2), ("y_kabupaten", 2025): (6, 4),
-         ("y_kabupaten", 2024): (6, -7)}
-fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.0), sharey=True)
+# ============================================================ 2. keunggulan per tahun (Fig. 4)
+RUJUKAN = {"y_kabupaten": "klim_frek1", "y_gabungan": "klim_frek"}
+GESER = {("y_gabungan", "S1", 2022): (-24, 3), ("y_gabungan", "S1", 2021): (-24, -8),
+         ("y_gabungan", "S1", 2020): (5, 3), ("y_gabungan", "S1", 2025): (5, -6),
+         ("y_gabungan", "S2", 2019): (4, -10), ("y_kabupaten", "S1", 2021): (-24, -8),
+         ("y_kabupaten", "S1", 2020): (5, 2), ("y_kabupaten", "S1", 2025): (5, -5),
+         ("y_kabupaten", "S2", 2019): (4, -10)}
+fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.2), sharey=True)
 for ax, (sas, judul) in zip(axes, SASARAN):
     d0 = pilih(P, sas)
     titik = [(t, "S1", d0[(d0["skema"] == "S1") & (d0["tag"] == str(t))]) for t in range(2019, 2026)]
     titik += [(int(t), "S2", d0[(d0["skema"] == "S2") & (d0["tag"] == t)]) for t in EKSTREM]
+    geser = 0.012 * deteksi.max() / 1e3
     for th, sk, dd in titik:
-        b = ap(dd["y"], dd["xgb"]) - ap(dd["y"], dd["klimatologi"])
-        lo, hi = boot_dalam_tahun(dd, "xgb", "klimatologi")
         c, mk = (MERAH, "s") if sk == "S2" else (BIRU, "o")
         x = deteksi[th] / 1e3
-        ax.errorbar(x, b, yerr=[[b - lo], [hi - b]], fmt=mk, color=c, ms=4.5, elinewidth=1, capsize=0)
-        dx, dy = GESER.get((sas, th), (4, 3)) if sk == "S1" else (4, 3)
-        ax.annotate(str(th), (x, b), xytext=(dx, dy), textcoords="offset points", fontsize=7, color=c)
+        for rj, dx, isi in (("klimatologi", -geser, "none"), (RUJUKAN[sas], geser, c)):
+            b = ap(dd["y"], dd["xgb"]) - ap(dd["y"], dd[rj])
+            lo, hi = boot_dalam_tahun(dd, "xgb", rj)
+            ax.errorbar(x + dx, b, yerr=[[b - lo], [hi - b]], fmt=mk, color=c, mfc=isi, ms=4.5,
+                        elinewidth=1, capsize=0)
+            print(f"    {sas} {sk} {th} {rj}: {b:+.3f} [{lo:+.3f}, {hi:+.3f}]")
+            if rj != "klimatologi":
+                ax.annotate(str(th), (x + dx, b), xytext=GESER.get((sas, sk, th), (4, -3)), textcoords="offset points", fontsize=7,
+                            color=c)
     ax.axhline(0, color=KELABU, lw=0.8); ax.set_title(judul, loc="left"); ax.grid(True, axis="y")
-axes[0].set_ylabel("AUC-PR, gradient boosting − climatology")
+    ax.set_xlim(-70, 870)
+axes[0].set_ylabel("AUC-PR, gradient boosting − reference")
 fig.supxlabel("National VIIRS detections in test year (thousands)", fontsize=9, y=-0.02)
-axes[1].plot([], [], "o", color=BIRU, ms=4.5, label="Chronological split")
-axes[1].plot([], [], "s", color=MERAH, ms=4.5, label="Extreme year withheld")
-axes[1].legend(loc="upper right")
-simpan(fig, "gambar_pat2_ekstrem")
+fig.legend(handles=[
+    plt.Line2D([], [], ls="", marker="o", color=KELABU, mfc="none", ms=4.5, label="Over MC"),
+    plt.Line2D([], [], ls="", marker="o", color=KELABU, ms=4.5, label="Over EF-3m (a) / EF-1m (b)"),
+    plt.Line2D([], [], ls="", marker="o", color=BIRU, ms=4.5, label="Chronological split"),
+    plt.Line2D([], [], ls="", marker="s", color=MERAH, ms=4.5, label="Extreme year withheld")],
+    loc="lower center", ncol=4, bbox_to_anchor=(0.5, -0.12))
+simpan(fig, "gambar_rev4_ekstrem")
 
 # ============================================================ 3. reliabilitas
 fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.2), sharey=True)
@@ -171,7 +193,7 @@ for ax, (sas, judul) in zip(axes, SASARAN):
     ax.set_xlim(0, 1); ax.set_ylim(0, 1); ax.set_aspect("equal")
     ax.set_title(judul, loc="left"); ax.set_xlabel("Predicted probability"); ax.grid(True)
 axes[0].set_ylabel("Observed frequency"); axes[1].legend(loc="lower right")
-simpan(fig, "gambar_pat3_reliabilitas")
+simpan(fig, "gambar_rev5_reliabilitas")
 
 # ============================================================ 4. ablasi
 LABEL_K = {"api": "Fire history", "musim": "Season", "iklim": "ENSO / IOD", "hujan": "Rainfall",
@@ -196,7 +218,7 @@ for ax, (sas, judul) in zip(axes, SASARAN):
 fig.legend(handles=[Patch(color=BIRU, label="Scored within each year"),
                     Patch(color=MERAH, label="Test years pooled")],
            loc="lower center", ncol=2, bbox_to_anchor=(0.5, -0.13))
-simpan(fig, "gambar_pat4_ablasi")
+simpan(fig, "gambar_rev3_ablasi")
 
 # ============================================================ 5. deret nasional
 bul = panel.groupby("bulan")["titik_panas"].sum()
@@ -212,5 +234,5 @@ ax.text(pd.Timestamp("2022-07-01"), bul.max() / 1e3 * 0.30, "chronological test 
         ha="center", va="bottom", fontsize=7, color=BIRU)
 ax.set_ylabel("Detections per month (thousands)"); ax.grid(True, axis="y")
 ax.set_xlim(x.min(), x.max()); ax.set_ylim(top=bul.max() / 1e3 * 1.12)
-simpan(fig, "gambar_pat5_deret")
+simpan(fig, "gambar_rev1_deret")
 print("selesai.")

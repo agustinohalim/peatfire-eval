@@ -1,0 +1,116 @@
+cek ap_cepat = sklearn: ok
+====================================================================================================
+C4. Kuota bulanan, ambang luar-lipatan, nilai ekonomi relatif, per kabupaten
+====================================================================================================
+
+--- biasa (S1 2020-2025)
+  (b) kuota 10 % kabupaten tertinggi tiap bulan: hit / FAR [hit kab] [hit dua tahap]
+    xgb            hit 0.405 [0.360, 0.448] [0.304, 0.513]  FAR 0.868
+    rf             hit 0.435 [0.395, 0.478] [0.324, 0.545]  FAR 0.858
+    mlp            hit 0.413 [0.373, 0.454] [0.309, 0.519]  FAR 0.868
+    log_klim_jeda  hit 0.314 [0.272, 0.353] [0.233, 0.404]  FAR 0.892
+    klim_frek1     hit 0.350 [0.307, 0.399] [0.263, 0.446]  FAR 0.877
+    klim_frek      hit 0.282 [0.244, 0.326] [0.213, 0.382]  FAR 0.894
+    klimatologi    hit 0.184 [0.142, 0.226] [0.133, 0.249]  FAR 0.928
+    selisih hit xgb - EF-1m           +0.055 [+0.005, +0.112]  dua tahap [-0.043, +0.184]
+    selisih hit rf - EF-1m            +0.085 [+0.030, +0.138]  dua tahap [-0.014, +0.217]
+    selisih hit mlp - EF-1m           +0.063 [+0.012, +0.110]  dua tahap [-0.038, +0.193]
+    selisih hit log_klim_jeda - EF-1m -0.036 [-0.097, +0.016]  dua tahap [-0.137, +0.072]
+    per tahun hit xgb / EF-1m: 2020 0.477/0.372  2021 0.458/0.337  2022 0.509/0.264  2023 0.229/0.207  2024 0.297/0.395  2025 0.460/0.524
+  (a) ambang 10 % luar-lipatan: hit / FAR / bagian siaga
+    xgb            hit 0.365  FAR 0.658  siaga 5.1%
+    klim_frek1     hit 0.407  FAR 0.790  siaga 8.9%
+    klim_frek      hit 0.434  FAR 0.808  siaga 10.7%
+    klimatologi    hit 0.265  FAR 0.869  siaga 10.1%
+    log_klim_jeda  hit 0.334  FAR 0.790  siaga 6.5%
+  nilai ekonomi relatif, a = 0.05 / 0.1 / 0.2 / 0.3 / 0.5
+    p>a   xgb         +0.380 +0.219 +0.077 -0.001 -0.021
+    p>a   klim_frek1  +0.031 -0.668 -1.364 -1.692 -1.655
+    p>a   klim_frek   -0.122 -0.741 -1.390 -1.225 -0.182
+    thr   xgb         +0.283 +0.224 +0.130 +0.081 +0.009
+    thr   klim_frek1  +0.011 -0.140 -0.307 -0.048 +0.000
+    thr   klim_frek   +0.003 -0.412 -0.223 +0.000 +0.000
+    thr   klimatologi -0.312 -0.597 -0.211 +0.000 +0.000
+    thr   log_klim_jeda+0.132 -0.045 -0.134 -0.153 -0.008
+    amplop xgb        +0.457 +0.344 +0.194 +0.127 +0.069
+    amplop klim_frek1 +0.358 +0.267 +0.181 +0.133 +0.064
+    amplop klim_frek  +0.336 +0.236 +0.132 +0.085 +0.048
+    p>a xgb - EF-1m, a = 0.05         +0.348 [+0.262, +0.495]  dua tahap [+0.068, +0.784]
+    thr xgb - EF-1m, a = 0.05         +0.272 [+0.203, +0.398]  dua tahap [-0.018, +0.716]
+    p>a xgb - EF-1m, a = 0.1          +0.887 [+0.699, +1.244]  dua tahap [+0.159, +2.028]
+    thr xgb - EF-1m, a = 0.1          +0.363 [+0.277, +0.507]  dua tahap [+0.019, +0.861]
+    p>a xgb - EF-1m, a = 0.2          +1.441 [+1.162, +1.964]  dua tahap [+0.355, +3.174]
+    thr xgb - EF-1m, a = 0.2          +0.437 [+0.354, +0.590]  dua tahap [+0.095, +0.965]
+    p>a xgb - EF-1m, a = 0.3          +1.691 [+1.370, +2.332]  dua tahap [+0.416, +3.694]
+    thr xgb - EF-1m, a = 0.3          +0.129 [+0.094, +0.171]  dua tahap [-0.004, +0.292]
+    p>a xgb - EF-1m, a = 0.5          +1.634 [+1.303, +2.235]  dua tahap [+0.443, +3.346]
+    thr xgb - EF-1m, a = 0.5          +0.009 [+0.002, +0.016]  dua tahap [-0.014, +0.038]
+
+--- ekstrem (S2 2015, 2014, 2019)
+  (b) kuota 10 % kabupaten tertinggi tiap bulan: hit / FAR [hit kab] [hit dua tahap]
+    xgb            hit 0.244 [0.229, 0.260] [0.203, 0.285]  FAR 0.551
+    rf             hit 0.241 [0.224, 0.257] [0.198, 0.281]  FAR 0.558
+    mlp            hit 0.239 [0.225, 0.256] [0.196, 0.291]  FAR 0.558
+    log_klim_jeda  hit 0.213 [0.197, 0.227] [0.175, 0.261]  FAR 0.607
+    klim_frek1     hit 0.228 [0.215, 0.245] [0.198, 0.267]  FAR 0.578
+    klim_frek      hit 0.219 [0.202, 0.236] [0.188, 0.253]  FAR 0.593
+    klimatologi    hit 0.202 [0.185, 0.217] [0.169, 0.243]  FAR 0.626
+    selisih hit xgb - EF-1m           +0.016 [+0.001, +0.028]  dua tahap [-0.004, +0.033]
+    selisih hit rf - EF-1m            +0.013 [-0.002, +0.024]  dua tahap [-0.012, +0.033]
+    selisih hit mlp - EF-1m           +0.011 [-0.004, +0.023]  dua tahap [-0.010, +0.032]
+    selisih hit log_klim_jeda - EF-1m -0.015 [-0.032, -0.002]  dua tahap [-0.037, +0.005]
+    per tahun hit xgb / EF-1m: 2015 0.201/0.198  2014 0.282/0.262  2019 0.248/0.224
+  (a) ambang 10 % luar-lipatan: hit / FAR / bagian siaga
+    xgb            hit 0.732  FAR 0.379  siaga 22.1%
+    klim_frek1     hit 0.357  FAR 0.212  siaga 8.3%
+    klim_frek      hit 0.426  FAR 0.261  siaga 10.6%
+    klimatologi    hit 0.349  FAR 0.363  siaga 10.1%
+    log_klim_jeda  hit 0.602  FAR 0.352  siaga 17.2%
+  nilai ekonomi relatif, a = 0.05 / 0.1 / 0.2 / 0.3 / 0.5
+    p>a   xgb         +0.285 +0.468 +0.579 +0.487 +0.293
+    p>a   klim_frek1  +0.119 +0.245 +0.440 +0.314 +0.080
+    p>a   klim_frek   +0.312 +0.417 +0.399 +0.183 +0.000
+    thr   xgb         +0.367 +0.461 +0.568 +0.442 +0.287
+    thr   klim_frek1  -0.477 -0.051 +0.042 +0.028 +0.000
+    thr   klim_frek   +0.061 -0.143 -0.057 +0.000 +0.000
+    thr   klimatologi -0.148 -0.284 -0.057 +0.000 +0.000
+    thr   log_klim_jeda+0.140 +0.276 +0.337 +0.134 +0.001
+    amplop xgb        +0.459 +0.555 +0.638 +0.558 +0.391
+    amplop klim_frek1 +0.317 +0.492 +0.605 +0.511 +0.335
+    amplop klim_frek  +0.412 +0.531 +0.617 +0.519 +0.317
+    p>a xgb - EF-1m, a = 0.05         +0.166 [+0.104, +0.231]  dua tahap [-0.104, +0.475]
+    thr xgb - EF-1m, a = 0.05         +0.845 [+0.743, +0.946]  dua tahap [+0.427, +1.363]
+    p>a xgb - EF-1m, a = 0.1          +0.222 [+0.181, +0.266]  dua tahap [-0.001, +0.489]
+    thr xgb - EF-1m, a = 0.1          +0.512 [+0.454, +0.568]  dua tahap [+0.241, +0.845]
+    p>a xgb - EF-1m, a = 0.2          +0.139 [+0.113, +0.162]  dua tahap [-0.032, +0.292]
+    thr xgb - EF-1m, a = 0.2          +0.526 [+0.490, +0.560]  dua tahap [+0.333, +0.701]
+    p>a xgb - EF-1m, a = 0.3          +0.173 [+0.145, +0.199]  dua tahap [-0.033, +0.337]
+    thr xgb - EF-1m, a = 0.3          +0.414 [+0.388, +0.442]  dua tahap [+0.179, +0.568]
+    p>a xgb - EF-1m, a = 0.5          +0.213 [+0.181, +0.241]  dua tahap [-0.029, +0.375]
+    thr xgb - EF-1m, a = 0.5          +0.287 [+0.260, +0.311]  dua tahap [+0.073, +0.426]
+
+====================================================================================================
+C4 nasional: kuota bulanan, 498 kabupaten
+====================================================================================================
+
+--- biasa (S1 2020-2025)
+    xgb            hit 0.646  FAR 0.638
+    rf             hit 0.656  FAR 0.632
+    log_klim_jeda  hit 0.614  FAR 0.654
+    klim_frek      hit 0.622  FAR 0.650
+    klim_frek1     hit 0.621  FAR 0.649
+    klimatologi    hit 0.521  FAR 0.701
+    selisih hit xgb - EF-3m           +0.024 [+0.005, +0.046]  dua tahap [-0.007, +0.060]
+    selisih hit rf - EF-3m            +0.034 [+0.014, +0.053]  dua tahap [+0.004, +0.067]
+
+--- ekstrem (S2 2015, 2014, 2019)
+    xgb            hit 0.396  FAR 0.338
+    rf             hit 0.394  FAR 0.342
+    log_klim_jeda  hit 0.394  FAR 0.341
+    klim_frek      hit 0.386  FAR 0.355
+    klim_frek1     hit 0.386  FAR 0.354
+    klimatologi    hit 0.390  FAR 0.347
+    selisih hit xgb - EF-3m           +0.010 [+0.001, +0.018]  dua tahap [-0.002, +0.021]
+    selisih hit rf - EF-3m            +0.008 [+0.001, +0.016]  dua tahap [-0.002, +0.020]
+
+selesai.

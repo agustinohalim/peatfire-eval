@@ -1,0 +1,63 @@
+S1 2020 y_kabupaten: validasi [np.int64(2018), np.int64(2019)], terpilih depth 2 n 300 mcw 1 (AP val 0.600; baku d3 n300 mcw1 0.590)
+S1 2020 y_gabungan: validasi [np.int64(2018), np.int64(2019)], terpilih depth 2 n 300 mcw 1 (AP val 0.831; baku d3 n300 mcw1 0.826)
+S1 2021 y_kabupaten: validasi [np.int64(2019), np.int64(2020)], terpilih depth 5 n 600 mcw 1 (AP val 0.504; baku d3 n300 mcw1 0.487)
+S1 2021 y_gabungan: validasi [np.int64(2019), np.int64(2020)], terpilih depth 3 n 300 mcw 1 (AP val 0.794; baku d3 n300 mcw1 0.794)
+S1 2022 y_kabupaten: validasi [np.int64(2020), np.int64(2021)], terpilih depth 5 n 300 mcw 1 (AP val 0.188; baku d3 n300 mcw1 0.167)
+S1 2022 y_gabungan: validasi [np.int64(2020), np.int64(2021)], terpilih depth 5 n 150 mcw 10 (AP val 0.682; baku d3 n300 mcw1 0.672)
+S1 2023 y_kabupaten: validasi [np.int64(2021), np.int64(2022)], terpilih depth 5 n 600 mcw 1 (AP val 0.120; baku d3 n300 mcw1 0.097)
+S1 2023 y_gabungan: validasi [np.int64(2021), np.int64(2022)], terpilih depth 5 n 300 mcw 10 (AP val 0.678; baku d3 n300 mcw1 0.671)
+S1 2024 y_kabupaten: validasi [np.int64(2022), np.int64(2023)], terpilih depth 5 n 150 mcw 1 (AP val 0.444; baku d3 n300 mcw1 0.436)
+S1 2024 y_gabungan: validasi [np.int64(2022), np.int64(2023)], terpilih depth 3 n 600 mcw 1 (AP val 0.753; baku d3 n300 mcw1 0.747)
+S1 2025 y_kabupaten: validasi [np.int64(2023), np.int64(2024)], terpilih depth 5 n 600 mcw 1 (AP val 0.486; baku d3 n300 mcw1 0.471)
+S1 2025 y_gabungan: validasi [np.int64(2023), np.int64(2024)], terpilih depth 5 n 600 mcw 1 (AP val 0.806; baku d3 n300 mcw1 0.793)
+S2 2015 y_kabupaten: validasi [np.int64(2024), np.int64(2025)], terpilih depth 5 n 600 mcw 10 (AP val 0.285; baku d3 n300 mcw1 0.217)
+S2 2015 y_gabungan: validasi [np.int64(2024), np.int64(2025)], terpilih depth 5 n 600 mcw 1 (AP val 0.776; baku d3 n300 mcw1 0.756)
+S2 2014 y_kabupaten: validasi [np.int64(2024), np.int64(2025)], terpilih depth 5 n 600 mcw 10 (AP val 0.295; baku d3 n300 mcw1 0.237)
+S2 2014 y_gabungan: validasi [np.int64(2024), np.int64(2025)], terpilih depth 5 n 600 mcw 1 (AP val 0.780; baku d3 n300 mcw1 0.771)
+S2 2019 y_kabupaten: validasi [np.int64(2024), np.int64(2025)], terpilih depth 5 n 600 mcw 1 (AP val 0.285; baku d3 n300 mcw1 0.220)
+S2 2019 y_gabungan: validasi [np.int64(2024), np.int64(2025)], terpilih depth 5 n 600 mcw 1 (AP val 0.779; baku d3 n300 mcw1 0.762)
+cek ap_cepat = sklearn: ok
+====================================================================================================
+D9. GB tersetel lawan GB baku dan rujukan
+====================================================================================================
+
+--- y_kabupaten, rujukan EF-1m (AP 0.245); AP xgb_setel 0.299, xgb 0.276
+  xgb_setel - EF-1m         +0.055  2tahap [-0.015, +0.121]  t95 [-0.016, +0.125]    per tahun +0.019 +0.096 +0.109 +0.093 -0.066 +0.076
+  xgb - EF-1m               +0.031  2tahap [-0.034, +0.105]  t95 [-0.036, +0.099]    per tahun +0.034 +0.024 +0.115 +0.088 -0.059 -0.015
+  xgb_setel - xgb           +0.023  2tahap [-0.013, +0.064]  t95 [-0.025, +0.071]    per tahun -0.015 +0.072 -0.006 +0.005 -0.007 +0.091
+  xgb_setel - rf            +0.012  2tahap [-0.040, +0.061]  t95 [-0.053, +0.076]    per tahun -0.075 +0.061 +0.062 -0.021 -0.031 +0.072
+  S2 2015: xgb_setel +0.100  xgb +0.102
+  S2 2014: xgb_setel -0.031  xgb -0.046
+  S2 2019: xgb_setel +0.098  xgb +0.071
+
+--- y_gabungan, rujukan EF-3m (AP 0.688); AP xgb_setel 0.733, xgb 0.726
+  xgb_setel - EF-3m         +0.045  2tahap [+0.015, +0.080]  t95 [+0.010, +0.080]  LOLOS R16  per tahun +0.079 +0.046 +0.076 +0.025 -0.011 +0.055
+  xgb - EF-3m               +0.038  2tahap [+0.007, +0.076]  t95 [-0.001, +0.077]    per tahun +0.070 +0.046 +0.081 +0.013 -0.020 +0.039
+  xgb_setel - xgb           +0.007  2tahap [-0.001, +0.014]  t95 [-0.002, +0.015]    per tahun +0.009 +0.000 -0.006 +0.012 +0.009 +0.016
+  xgb_setel - rf            -0.005  2tahap [-0.017, +0.006]  t95 [-0.017, +0.007]    per tahun -0.008 -0.019 -0.004 -0.008 -0.009 +0.016
+  S2 2015: xgb_setel +0.047  xgb +0.048
+  S2 2014: xgb_setel +0.017  xgb +0.009
+  S2 2019: xgb_setel +0.032  xgb +0.033
+
+konfigurasi terpilih:
+    sasaran skema  tag   konfigurasi
+y_kabupaten    S1 2020  d2_n300_mcw1
+ y_gabungan    S1 2020  d2_n300_mcw1
+y_kabupaten    S1 2021  d5_n600_mcw1
+ y_gabungan    S1 2021  d3_n300_mcw1
+y_kabupaten    S1 2022  d5_n300_mcw1
+ y_gabungan    S1 2022 d5_n150_mcw10
+y_kabupaten    S1 2023  d5_n600_mcw1
+ y_gabungan    S1 2023 d5_n300_mcw10
+y_kabupaten    S1 2024  d5_n150_mcw1
+ y_gabungan    S1 2024  d3_n600_mcw1
+y_kabupaten    S1 2025  d5_n600_mcw1
+ y_gabungan    S1 2025  d5_n600_mcw1
+y_kabupaten    S2 2015 d5_n600_mcw10
+ y_gabungan    S2 2015  d5_n600_mcw1
+y_kabupaten    S2 2014 d5_n600_mcw10
+ y_gabungan    S2 2014  d5_n600_mcw1
+y_kabupaten    S2 2019  d5_n600_mcw1
+ y_gabungan    S2 2019  d5_n600_mcw1
+
+selesai.

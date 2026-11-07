@@ -17,7 +17,9 @@ baselines (the 2.0.x results are reproduced with `PATOKAN_PUTARAN=lengkap`); 2.1
 analyses requested in review (district-relative FWI baselines, seed sensitivity, per-year
 calibration, peat checks, peat and non-peat districts); 2.2.0 adds the West Kalimantan
 ranking-stability analyses described below; 2.3.0 adds the decision value of the warnings and
-the FWI System components. Versions 1.0.0–1.3.0 hold earlier
+the FWI System components; 2.4.0 adds the revision analyses (matched reference climatologies,
+probability references and five registered analysis rounds, section **Revision analyses** below).
+Versions 1.0.0–1.3.0 hold earlier
 analyses of West Kalimantan and of the five Kalimantan provinces. Those manuscripts were withdrawn
 and their questions folded into PeatFireBench; the code is kept below, unchanged, because its
 Zenodo versions are cited.
@@ -93,6 +95,62 @@ python patokan_gambut_bagi.py                      # S7: districts with and with
 python patokan_nilai.py                            # Section 6.8 and Table 6: hit rate, false alarm ratio, relative economic value
 python patokan_fwi_komponen.py                     # Table 5: FWI System components (~1 h)
 ```
+
+### Revision analyses (version 2.4.0)
+
+The revised manuscript, *PeatFireBench: a district-month benchmark for fire forecasting in
+Indonesia, with a level-adjusted fire calendar as its baseline*, compares every model with a
+reference climatology computed from the training years only, on the same rows: the mean count
+(MC, the reference of version 2.3.0), the share of training years in which the district exceeded
+its threshold in that calendar month (EF-1m) or in a three-month window (EF-3m), a probability
+climatology chosen per fold on training years (EF-P), and EF-1m adjusted with last month's national
+detection count (EF-L). The analyses ran in five rounds (phases A to E). For each round the design
+and the decision rules were written and committed before any script ran; `registration/` holds
+those records with their results (in Indonesian, `Hasil_Patokan_6.md` to `Hasil_Patokan_10.md`).
+The commit identifiers in them refer to the authors' working repository; header paragraphs that
+named internal review files were shortened, and nothing else was changed. Logs are in
+`logs/peatfirebench/revision/`.
+
+```bash
+# phase A: frequency climatologies, out-of-fold training predictions (Hasil_Patokan_6)
+python patokan_revisi_prediksi.py                  # adds klim_frek (EF-3m), klim_frek1 (EF-1m) and split Q (~30 min)
+python patokan_revisi_oof.py                       # out-of-fold predictions on training years (~1 h)
+python patokan_revisi_analisis.py                  # A1-A5
+python patokan_revisi_pascahoc.py                  # post-hoc checks, not registered
+# phase B (Hasil_Patokan_7)
+python patokan_revisi_tabel2.py                    # Table 2 against the matched references
+python patokan_revisi_gabung.py                    # years pooled against the matched references
+python patokan_revisi_jeda2.py                     # forecasts without last month's data
+python patokan_revisi_kalibrasi.py                 # recalibration from earlier years
+python patokan_revisi_fwi.py                       # ISI and the FWI System components
+python gadm_ke_csv_wkt.py                          # GADM 4.1 polygons as WKT (needs the GADM file)
+python patokan_revisi_provinsi.py                  # provinces, scattered and contiguous nulls (several hours)
+python patokan_revisi_provinsi_biaya.py            # provinces, cross-validated transfer cost
+# phase C (Hasil_Patokan_8)
+python patokan_revisi_tahun.py                     # year-resampled intervals; extreme-year contrast
+python patokan_revisi_rujukan.py                   # reference chosen inside each fold
+python patokan_revisi_siaga.py                     # alert rules against EF-1m
+python patokan_revisi_ambang.py                    # thresholds from training years only (Supplementary S6)
+python patokan_revisi_sederhana.py                 # local history on EF-1m, fire-history tree
+python patokan_revisi_pasca2015.py                 # recalibration on years after 2015
+# phase D (Hasil_Patokan_9)
+python patokan_revisi_setara.py                    # equivalence, minimum detectable difference, Holm
+python patokan_revisi_proper.py                    # Brier skill and log score
+python patokan_revisi_proper2.py                   # smoothed probability references, post hoc
+python patokan_revisi_fdrs.py                      # DC and FFMC baselines; fire versus weather lags (Supplementary S3)
+python patokan_revisi_gambut.py                    # peat strata and provinces (Supplementary S7)
+python patokan_revisi_siaga2.py                    # monthly quota against threshold rules
+python patokan_revisi_rezim.py                     # fire per unit drought after 2015
+python patokan_revisi_setel.py                     # gradient boosting tuned inside folds (~1 h)
+# phase E (Hasil_Patokan_10): one target per run, for memory
+python -u patokan_revisi_peluang.py y_kabupaten > DL_FIRE_NASIONAL/penuh/patokan_revisi_peluang_kab.log
+python -u patokan_revisi_peluang.py y_gabungan  > DL_FIRE_NASIONAL/penuh/patokan_revisi_peluang_nas.log
+python gambar_patokan.py                           # Figures 1-5 of the revised manuscript (gambar_rev*)
+```
+
+The phase scripts read `patokan_revisi_prediksi.csv` and `patokan_revisi_oof.csv` from phase A,
+and some read `patokan_benih.csv`, `patokan_fwi_adil.csv` and `patokan_fwi_komponen.csv` from the
+2.1.1 and 2.3.0 scripts above, so phase A and those scripts run first.
 
 Splits: **S1** chronological (test 2019–2025, train on earlier years); **S2** extreme year
 withheld (2015, 2014, 2019); **S3** island transfer (train without the test island group).

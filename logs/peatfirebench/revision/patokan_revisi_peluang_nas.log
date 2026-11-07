@@ -1,0 +1,247 @@
+==============================================================================================================
+E1. Rujukan peluang per lipatan (Brier tinggalkan-satu-tahun di tahun latih)
+==============================================================================================================
+  y_gabungan  S1 2020: pilih ef3           konstan 0.10950 konstan_bulan 0.09914 ef1 0.06208 ef3 0.05975 ef1_pasca 0.06840 ef1_halus 0.06033   ef1_tingkat koef ef1 +0.657 anomali +0.705
+  y_gabungan  S1 2021: pilih ef3           konstan 0.10271 konstan_bulan 0.09388 ef1 0.05972 ef3 0.05816 ef1_pasca 0.06399 ef1_halus 0.05845   ef1_tingkat koef ef1 +0.686 anomali +0.797
+  y_gabungan  S1 2022: pilih ef3           konstan 0.09646 konstan_bulan 0.08890 ef1 0.05781 ef3 0.05658 ef1_pasca 0.06097 ef1_halus 0.05684   ef1_tingkat koef ef1 +0.709 anomali +0.862
+  y_gabungan  S1 2023: pilih ef3           konstan 0.09057 konstan_bulan 0.08412 ef1 0.05610 ef3 0.05511 ef1_pasca 0.05855 ef1_halus 0.05535   ef1_tingkat koef ef1 +0.730 anomali +0.922
+  y_gabungan  S1 2024: pilih ef1_halus     konstan 0.09150 konstan_bulan 0.08439 ef1 0.05478 ef3 0.05417 ef1_pasca 0.05667 ef1_halus 0.05416   ef1_tingkat koef ef1 +0.759 anomali +0.949
+  y_gabungan  S1 2025: pilih ef1_halus     konstan 0.08906 konstan_bulan 0.08198 ef1 0.05238 ef3 0.05209 ef1_pasca 0.05385 ef1_halus 0.05187   ef1_tingkat koef ef1 +0.776 anomali +0.975
+  y_gabungan  S2 2015: pilih ef1_halus     konstan 0.07984 konstan_bulan 0.07417 ef1 0.04692 ef3 0.04673 ef1_pasca 0.04744 ef1_halus 0.04645   ef1_tingkat koef ef1 +0.745 anomali +0.906
+  y_gabungan  S2 2014: pilih ef1_halus     konstan 0.08148 konstan_bulan 0.07513 ef1 0.04854 ef3 0.04824 ef1_pasca 0.04882 ef1_halus 0.04806   ef1_tingkat koef ef1 +0.762 anomali +1.030
+  y_gabungan  S2 2019: pilih ef1_halus     konstan 0.08318 konstan_bulan 0.07720 ef1 0.05011 ef3 0.04984 ef1_pasca 0.05152 ef1_halus 0.04962   ef1_tingkat koef ef1 +0.753 anomali +0.980
+
+cek y_gabungan: ef1 dihitung ulang vs klim_frek1 tersimpan: selisih maks 1.00e-06; ef3 vs klim_frek 1.00e-06; baris dicek 53784
+  E3 keluar: klimatologi (nilai di luar [0,1]: 0..1.2e+04)
+  E3 keluar: persistence (nilai di luar [0,1]: 0..5.7e+04)
+  E3 keluar: seasonal_naive (nilai di luar [0,1]: 0..1.98e+04)
+  E3 keluar: rasio (nilai di luar [0,1]: 0..1.56e+04)
+  E3 keluar: fwi (nilai di luar [0,1]: 0..61.2)
+  E3 keluar: fwi_kini (nilai di luar [0,1]: 0..61.2)
+  E3 keluar: dc_nasional (nilai di luar [0,1]: 4.53..1.47e+03)
+  E3 keluar: ffmc_nasional (nilai di luar [0,1]: 15.8..95.9)
+  E3 keluar: fwi_anomali (nilai di luar [0,1]: -2.94..68.6)
+E3 kolom (22): logistik, fwi_logistik, rf, xgb, mlp, klim_frek, klim_frek1, log_klim_jeda, log_ef1_jeda, xgb_sejarah, dc_persentil, log_ef1_fdrs, ef1_api, ef1_cuaca, ef1_keduanya, xgb_tanpa_api, xgb_setel, fwi_persentil, klim_saja, klim_fwi, fwi_kini_persentil, klim_fwi_kini
+
+==============================================================================================================
+y_gabungan, biasa (rujukan pasangan EF-3m); rujukan peluang terpilih: 2020 ef3, 2021 ef3, 2022 ef3, 2023 ef3, 2024 ef1_halus, 2025 ef1_halus
+==============================================================================================================
+  Brier rata-rata tahun: konstan 0.05999  konstan_bulan 0.05783  ef1 0.04506  ef3 0.04156  ef1_pasca 0.03948  ef1_halus 0.04374  rujukan_peluang 0.04173  ef1_tingkat 0.03174  xgb 0.03106  rf 0.03027
+
+  R24. Calon konstan atas EF-3m
+    BSS konstan atas EF-3m                      -0.4529 2tahap [-0.8271, -0.0761] t95 [-0.9449, +0.0390]  per tahun -0.174 -0.063 +0.082 -1.044 -0.911 -0.608
+    BSS konstan_bulan atas EF-3m                -0.4001 2tahap [-0.6748, -0.1306] t95 [-0.7413, -0.0589]  per tahun -0.218 -0.127 -0.008 -0.777 -0.720 -0.551
+    BSS ef1_pasca atas EF-3m                    +0.0576 2tahap [-0.0058, +0.1124] t95 [-0.0300, +0.1451]  per tahun +0.054 +0.104 +0.104 -0.106 +0.118 +0.071
+    BSS ef1_halus atas EF-3m                    -0.0518 2tahap [-0.1063, -0.0003] t95 [-0.1223, +0.0186]  per tahun -0.081 -0.115 -0.126 +0.039 +0.010 -0.039
+    BSS rujukan_peluang atas EF-3m              -0.0048 2tahap [-0.0234, +0.0080] t95 [-0.0229, +0.0133]  per tahun +0.000 +0.000 +0.000 -0.000 +0.010 -0.039
+    BSS ef1_tingkat atas EF-3m                  +0.2318 2tahap [+0.1125, +0.3627] t95 [+0.0613, +0.4024]  LOLOS  per tahun +0.295 +0.363 +0.455 +0.063 +0.081 +0.133
+
+  E3. BSS semua kolom peluang atas EF-3m / rujukan_peluang / ef1_tingkat
+  -- atas klim_frek
+    logistik                                    -0.3461 2tahap [-0.6517, -0.0314] t95 [-0.7489, +0.0567]  per tahun -0.105 -0.101 +0.148 -0.788 -0.744 -0.488
+    fwi_logistik                                -0.3203 2tahap [-0.6252, -0.0133] t95 [-0.7203, +0.0796]  per tahun -0.113 -0.017 +0.140 -0.799 -0.685 -0.449
+    rf                                          +0.2711 2tahap [+0.1478, +0.4239] t95 [+0.0770, +0.4651]  LOLOS  per tahun +0.276 +0.409 +0.546 +0.056 +0.100 +0.240
+    xgb                                         +0.2554 2tahap [+0.1207, +0.4234] t95 [+0.0376, +0.4733]  LOLOS  per tahun +0.106 +0.438 +0.574 +0.067 +0.106 +0.242
+    mlp                                         +0.1971 2tahap [-0.0165, +0.4070] t95 [-0.1095, +0.5037]  per tahun -0.280 +0.418 +0.555 +0.077 +0.146 +0.266
+    klim_frek1                                  -0.0831 2tahap [-0.1525, -0.0178] t95 [-0.1742, +0.0080]  per tahun -0.131 -0.166 -0.173 +0.035 -0.005 -0.059
+    log_klim_jeda                               +0.2002 2tahap [+0.1206, +0.2891] t95 [+0.0896, +0.3107]  LOLOS  per tahun +0.281 +0.272 +0.319 +0.159 +0.057 +0.113
+    log_ef1_jeda                                +0.2476 2tahap [+0.1467, +0.3578] t95 [+0.1021, +0.3930]  LOLOS  per tahun +0.372 +0.331 +0.400 +0.154 +0.061 +0.167
+    xgb_sejarah                                 +0.2301 2tahap [+0.0756, +0.4067] t95 [+0.0032, +0.4569]  LOLOS  per tahun +0.287 +0.400 +0.525 -0.055 +0.060 +0.164
+    dc_persentil                                -5.2651 2tahap [-6.8596, -3.9509] t95 [-7.1086, -3.4215]  per tahun -4.615 -3.972 -3.612 -5.745 -8.484 -5.161
+    log_ef1_fdrs                                +0.0661 2tahap [-0.0102, +0.1425] t95 [-0.0300, +0.1622]  per tahun +0.123 +0.122 +0.191 +0.012 -0.022 -0.030
+    ef1_api                                     +0.2484 2tahap [+0.1455, +0.3588] t95 [+0.1016, +0.3952]  LOLOS  per tahun +0.374 +0.337 +0.399 +0.144 +0.061 +0.174
+    ef1_cuaca                                   +0.1181 2tahap [+0.0231, +0.2255] t95 [-0.0196, +0.2558]  per tahun +0.172 +0.173 +0.326 +0.035 -0.038 +0.041
+    ef1_keduanya                                +0.2651 2tahap [+0.1593, +0.3833] t95 [+0.1119, +0.4183]  LOLOS  per tahun +0.381 +0.346 +0.445 +0.151 +0.075 +0.192
+    xgb_tanpa_api                               +0.1282 2tahap [-0.0345, +0.3118] t95 [-0.1080, +0.3644]  per tahun +0.189 +0.299 +0.458 -0.079 -0.102 +0.003
+    xgb_setel                                   +0.2794 2tahap [+0.1585, +0.4320] t95 [+0.0781, +0.4807]  LOLOS  per tahun +0.216 +0.438 +0.569 +0.064 +0.123 +0.267
+    fwi_persentil                               -5.5727 2tahap [-7.1384, -4.2784] t95 [-7.2636, -3.8818]  per tahun -4.811 -4.341 -3.989 -5.853 -8.418 -6.024
+    klim_saja                                   -0.1885 2tahap [-0.2687, -0.1200] t95 [-0.2560, -0.1210]  per tahun -0.221 -0.206 -0.241 -0.064 -0.181 -0.219
+    klim_fwi                                    -0.1557 2tahap [-0.2489, -0.0624] t95 [-0.2610, -0.0504]  per tahun -0.249 -0.219 -0.054 -0.022 -0.252 -0.138
+    fwi_kini_persentil                          -5.3699 2tahap [-6.7700, -4.2036] t95 [-6.9006, -3.8393]  per tahun -4.386 -4.237 -4.089 -5.723 -7.888 -5.898
+    klim_fwi_kini                               -0.0550 2tahap [-0.1564, +0.0367] t95 [-0.1655, +0.0555]  per tahun -0.070 -0.078 -0.003 +0.096 -0.226 -0.049
+     ringkas: titik > 0 pada 12 dari 21; lolos kedua selang 8
+  -- atas rujukan_peluang
+    logistik                                    -0.3398 2tahap [-0.6600, -0.0250] t95 [-0.7431, +0.0635]  per tahun -0.105 -0.101 +0.148 -0.788 -0.762 -0.432
+    fwi_logistik                                -0.3142 2tahap [-0.6331, -0.0132] t95 [-0.7147, +0.0863]  per tahun -0.113 -0.017 +0.140 -0.799 -0.702 -0.394
+    rf                                          +0.2742 2tahap [+0.1513, +0.4246] t95 [+0.0789, +0.4696]  LOLOS  per tahun +0.276 +0.409 +0.546 +0.056 +0.090 +0.269
+    xgb                                         +0.2586 2tahap [+0.1243, +0.4284] t95 [+0.0394, +0.4779]  LOLOS  per tahun +0.106 +0.438 +0.574 +0.067 +0.097 +0.270
+    mlp                                         +0.2002 2tahap [-0.0131, +0.4076] t95 [-0.1084, +0.5088]  per tahun -0.280 +0.418 +0.555 +0.077 +0.138 +0.294
+    klim_frek                                   +0.0045 2tahap [-0.0082, +0.0223] t95 [-0.0130, +0.0220]  per tahun -0.000 -0.000 -0.000 +0.000 -0.010 +0.037
+    klim_frek1                                  -0.0782 2tahap [-0.1468, -0.0111] t95 [-0.1715, +0.0150]  per tahun -0.131 -0.166 -0.173 +0.035 -0.015 -0.020
+    log_klim_jeda                               +0.2041 2tahap [+0.1246, +0.2916] t95 [+0.0954, +0.3127]  LOLOS  per tahun +0.281 +0.272 +0.319 +0.159 +0.047 +0.146
+    log_ef1_jeda                                +0.2511 2tahap [+0.1485, +0.3592] t95 [+0.1060, +0.3963]  LOLOS  per tahun +0.372 +0.331 +0.400 +0.154 +0.051 +0.198
+    xgb_sejarah                                 +0.2337 2tahap [+0.0772, +0.4105] t95 [+0.0068, +0.4606]  LOLOS  per tahun +0.287 +0.400 +0.525 -0.055 +0.051 +0.195
+    dc_persentil                                -5.2430 2tahap [-6.8707, -3.9159] t95 [-7.1305, -3.3556]  per tahun -4.615 -3.972 -3.612 -5.745 -8.583 -4.930
+    log_ef1_fdrs                                +0.0708 2tahap [-0.0001, +0.1431] t95 [-0.0205, +0.1621]  per tahun +0.123 +0.122 +0.191 +0.012 -0.033 +0.009
+    ef1_api                                     +0.2519 2tahap [+0.1465, +0.3592] t95 [+0.1051, +0.3987]  LOLOS  per tahun +0.374 +0.337 +0.399 +0.144 +0.052 +0.205
+    ef1_cuaca                                   +0.1223 2tahap [+0.0290, +0.2258] t95 [-0.0147, +0.2593]  per tahun +0.172 +0.173 +0.326 +0.035 -0.049 +0.077
+    ef1_keduanya                                +0.2685 2tahap [+0.1583, +0.3854] t95 [+0.1152, +0.4219]  LOLOS  per tahun +0.381 +0.346 +0.445 +0.151 +0.065 +0.222
+    xgb_tanpa_api                               +0.1325 2tahap [-0.0345, +0.3166] t95 [-0.1025, +0.3675]  per tahun +0.189 +0.299 +0.458 -0.079 -0.113 +0.040
+    xgb_setel                                   +0.2825 2tahap [+0.1619, +0.4347] t95 [+0.0796, +0.4853]  LOLOS  per tahun +0.216 +0.438 +0.569 +0.064 +0.114 +0.295
+    fwi_persentil                               -5.5452 2tahap [-7.1426, -4.2605] t95 [-7.2616, -3.8288]  per tahun -4.811 -4.341 -3.989 -5.853 -8.516 -5.761
+    klim_saja                                   -0.1829 2tahap [-0.2590, -0.1134] t95 [-0.2489, -0.1169]  per tahun -0.221 -0.206 -0.241 -0.064 -0.193 -0.173
+    klim_fwi                                    -0.1507 2tahap [-0.2491, -0.0541] t95 [-0.2620, -0.0395]  per tahun -0.249 -0.219 -0.054 -0.022 -0.265 -0.095
+    fwi_kini_persentil                          -5.3423 2tahap [-6.8657, -4.1813] t95 [-6.8918, -3.7927]  per tahun -4.386 -4.237 -4.089 -5.723 -7.980 -5.639
+    klim_fwi_kini                               -0.0506 2tahap [-0.1564, +0.0471] t95 [-0.1673, +0.0662]  per tahun -0.070 -0.078 -0.003 +0.096 -0.239 -0.009
+     ringkas: titik > 0 pada 13 dari 22; lolos kedua selang 8
+  -- atas ef1_tingkat
+    logistik                                    -0.7303 2tahap [-0.9166, -0.5594] t95 [-0.8893, -0.5712]  per tahun -0.567 -0.729 -0.563 -0.909 -0.898 -0.716
+    fwi_logistik                                -0.6965 2tahap [-0.8772, -0.5361] t95 [-0.8506, -0.5424]  per tahun -0.578 -0.597 -0.578 -0.921 -0.833 -0.671
+    rf                                          +0.0577 2tahap [-0.0002, +0.1266] t95 [-0.0225, +0.1379]  per tahun -0.027 +0.072 +0.166 -0.008 +0.020 +0.123
+    xgb                                         +0.0372 2tahap [-0.0941, +0.1522] t95 [-0.1396, +0.2141]  per tahun -0.269 +0.117 +0.219 +0.004 +0.027 +0.125
+    mlp                                         -0.0513 2tahap [-0.3737, +0.1498] t95 [-0.4498, +0.3473]  per tahun -0.817 +0.086 +0.184 +0.015 +0.071 +0.154
+    klim_frek                                   -0.3557 2tahap [-0.6188, -0.1395] t95 [-0.6792, -0.0321]  per tahun -0.419 -0.571 -0.835 -0.068 -0.088 -0.154
+    klim_frek1                                  -0.4889 2tahap [-0.8756, -0.1729] t95 [-0.9600, -0.0177]  per tahun -0.604 -0.831 -1.152 -0.031 -0.093 -0.222
+    log_klim_jeda                               -0.0601 2tahap [-0.1671, +0.0301] t95 [-0.1873, +0.0671]  per tahun -0.020 -0.143 -0.250 +0.102 -0.026 -0.023
+    log_ef1_jeda                                +0.0120 2tahap [-0.0653, +0.0806] t95 [-0.0761, +0.1001]  per tahun +0.110 -0.050 -0.101 +0.096 -0.022 +0.039
+    xgb_sejarah                                 +0.0100 2tahap [-0.0579, +0.0911] t95 [-0.0803, +0.1002]  per tahun -0.011 +0.058 +0.128 -0.127 -0.022 +0.035
+    dc_persentil                                -7.1450 2tahap [-8.6895, -5.8648] t95 [-8.3817, -5.9082]  per tahun -6.967 -6.810 -7.464 -6.202 -9.320 -6.107
+    log_ef1_fdrs                                -0.2436 2tahap [-0.3920, -0.1292] t95 [-0.4143, -0.0730]  per tahun -0.244 -0.379 -0.484 -0.055 -0.112 -0.188
+    ef1_api                                     +0.0135 2tahap [-0.0636, +0.0825] t95 [-0.0729, +0.0998]  per tahun +0.112 -0.041 -0.102 +0.086 -0.021 +0.047
+    ef1_cuaca                                   -0.1630 2tahap [-0.2608, -0.0918] t95 [-0.2639, -0.0620]  per tahun -0.175 -0.299 -0.238 -0.030 -0.130 -0.106
+    ef1_keduanya                                +0.0386 2tahap [-0.0230, +0.0954] t95 [-0.0284, +0.1055]  per tahun +0.121 -0.027 -0.019 +0.094 -0.006 +0.068
+    xgb_tanpa_api                               -0.1243 2tahap [-0.1905, -0.0500] t95 [-0.1988, -0.0498]  per tahun -0.150 -0.101 +0.006 -0.152 -0.199 -0.150
+    xgb_setel                                   +0.0690 2tahap [-0.0175, +0.1604] t95 [-0.0528, +0.1908]  per tahun -0.113 +0.117 +0.208 +0.000 +0.046 +0.155
+    fwi_persentil                               -7.5762 2tahap [-9.0180, -6.3309] t95 [-8.6345, -6.5179]  per tahun -7.245 -7.390 -8.156 -6.317 -9.248 -7.102
+    klim_saja                                   -0.6217 2tahap [-0.9901, -0.3203] t95 [-1.0702, -0.1732]  per tahun -0.732 -0.894 -1.278 -0.136 -0.285 -0.406
+    klim_fwi                                    -0.5646 2tahap [-0.8709, -0.2937] t95 [-0.9373, -0.1918]  per tahun -0.772 -0.915 -0.934 -0.091 -0.362 -0.313
+    fwi_kini_persentil                          -7.3351 2tahap [-8.7814, -6.1219] t95 [-8.3594, -6.3108]  per tahun -6.641 -7.225 -8.338 -6.179 -8.671 -6.957
+    klim_fwi_kini                               -0.4269 2tahap [-0.7058, -0.1759] t95 [-0.7653, -0.0885]  per tahun -0.518 -0.693 -0.841 +0.035 -0.334 -0.209
+     ringkas: titik > 0 pada 7 dari 22; lolos kedua selang 0
+
+  E2. Pemecahan oracle tingkat tahun (BSS mentah / tingkat-benar / bagian tingkat)
+    xgb           atas klim_frek        mentah +0.2554  tingkat-benar +0.0977 2tahap [+0.0616, +0.1343] t95 [+0.0699, +0.1255]  bagian tingkat 0.62 [0.22, 0.79]  per tahun tb +0.088 +0.080 +0.129 +0.091 +0.067 +0.131
+    rf            atas klim_frek        mentah +0.2711  tingkat-benar +0.0787 2tahap [+0.0489, +0.1111] t95 [+0.0562, +0.1012]  bagian tingkat 0.71 [0.38, 0.86]  per tahun tb +0.093 +0.059 +0.060 +0.082 +0.066 +0.113
+    mlp           atas klim_frek        mentah +0.1971  tingkat-benar +0.0689 2tahap [-0.0140, +0.1337] t95 [-0.0246, +0.1624]  bagian tingkat 0.65 [-0.27, 1.23]  per tahun tb -0.104 +0.103 +0.092 +0.085 +0.080 +0.158
+    log_ef1_jeda  atas klim_frek        mentah +0.2476  tingkat-benar +0.0846 2tahap [+0.0356, +0.1322] t95 [+0.0296, +0.1395]  bagian tingkat 0.66 [0.42, 0.84]  per tahun tb +0.147 +0.053 +0.085 +0.134 +0.005 +0.083
+    xgb_setel     atas klim_frek        mentah +0.2794  tingkat-benar +0.1134 2tahap [+0.0752, +0.1530] t95 [+0.0807, +0.1460]  bagian tingkat 0.59 [0.22, 0.78]  per tahun tb +0.110 +0.080 +0.118 +0.113 +0.089 +0.169
+    xgb           atas rujukan_peluang  mentah +0.2586  tingkat-benar +0.0777 2tahap [+0.0327, +0.1222] t95 [+0.0298, +0.1255]  bagian tingkat 0.70 [0.43, 0.87]  per tahun tb +0.088 +0.080 +0.129 +0.091 -0.008 +0.086
+    rf            atas rujukan_peluang  mentah +0.2742  tingkat-benar +0.0585 2tahap [+0.0208, +0.0969] t95 [+0.0211, +0.0959]  bagian tingkat 0.79 [0.58, 0.92]  per tahun tb +0.093 +0.059 +0.060 +0.082 -0.009 +0.067
+    mlp           atas rujukan_peluang  mentah +0.2002  tingkat-benar +0.0492 2tahap [-0.0309, +0.1125] t95 [-0.0391, +0.1375]  bagian tingkat 0.75 [0.23, 1.52]  per tahun tb -0.104 +0.103 +0.092 +0.085 +0.006 +0.114
+    log_ef1_jeda  atas rujukan_peluang  mentah +0.2511  tingkat-benar +0.0633 2tahap [-0.0072, +0.1242] t95 [-0.0215, +0.1480]  bagian tingkat 0.75 [0.55, 1.04]  per tahun tb +0.147 +0.053 +0.085 +0.134 -0.075 +0.035
+    xgb_setel     atas rujukan_peluang  mentah +0.2825  tingkat-benar +0.0940 2tahap [+0.0489, +0.1383] t95 [+0.0507, +0.1372]  bagian tingkat 0.67 [0.40, 0.83]  per tahun tb +0.110 +0.080 +0.118 +0.113 +0.016 +0.126
+
+  E4. Log score: eps 1e-4 / 1e-3
+    bagian positif dengan EF-3m < 1e-3: 0.014; rujukan_peluang < 1e-3: 0.014
+    eps 0.0001 dlog atas klim_frek       xgb +0.0382 t95 [+0.0117, +0.0647]   rf +0.0357 t95 [+0.0138, +0.0576]
+    eps 0.0001 dlog atas rujukan_peluang xgb +0.0369 t95 [+0.0091, +0.0647]   rf +0.0344 t95 [+0.0108, +0.0580]
+    eps 0.0001 dlog atas ef1_tingkat     xgb +0.0080 t95 [-0.0060, +0.0220]   rf +0.0055 t95 [-0.0001, +0.0112]
+    eps 0.001 dlog atas klim_frek       xgb +0.0366 t95 [+0.0100, +0.0631]   rf +0.0341 t95 [+0.0120, +0.0561]
+    eps 0.001 dlog atas rujukan_peluang xgb +0.0352 t95 [+0.0074, +0.0630]   rf +0.0327 t95 [+0.0090, +0.0564]
+    eps 0.001 dlog atas ef1_tingkat     xgb +0.0078 t95 [-0.0062, +0.0217]   rf +0.0053 t95 [-0.0004, +0.0109]
+
+==============================================================================================================
+y_gabungan, ekstrem (rujukan pasangan EF-3m); rujukan peluang terpilih: 2015 ef1_halus, 2014 ef1_halus, 2019 ef1_halus
+==============================================================================================================
+  Brier rata-rata tahun: konstan 0.14672  konstan_bulan 0.13138  ef1 0.07935  ef3 0.08263  ef1_pasca 0.09049  ef1_halus 0.07942  rujukan_peluang 0.07942  ef1_tingkat 0.06507  xgb 0.05527  rf 0.05608
+
+  R24. Calon konstan atas EF-3m
+    BSS konstan atas EF-3m                      2015 -0.666  2014 -0.764  2019 -0.958
+    BSS konstan_bulan atas EF-3m                2015 -0.470  2014 -0.635  2019 -0.718
+    BSS ef1_pasca atas EF-3m                    2015 -0.067  2014 -0.079  2019 -0.160
+    BSS ef1_halus atas EF-3m                    2015 +0.028  2014 +0.048  2019 +0.044
+    BSS rujukan_peluang atas EF-3m              2015 +0.028  2014 +0.048  2019 +0.044
+    BSS ef1_tingkat atas EF-3m                  2015 +0.311  2014 +0.157  2019 +0.132
+
+  E3. BSS semua kolom peluang atas EF-3m / rujukan_peluang / ef1_tingkat
+  -- atas klim_frek
+    logistik                                    2015 -0.318  2014 -0.695  2019 -0.840
+    fwi_logistik                                2015 -0.401  2014 -0.638  2019 -0.729
+    rf                                          2015 +0.429  2014 +0.214  2019 +0.293
+    xgb                                         2015 +0.434  2014 +0.223  2019 +0.313
+    mlp                                         2015 +0.409  2014 +0.249  2019 +0.232
+    klim_frek1                                  2015 +0.028  2014 +0.050  2019 +0.044
+    log_klim_jeda                               2015 +0.330  2014 +0.233  2019 +0.185
+    log_ef1_jeda                                2015 +0.334  2014 +0.231  2019 +0.194
+    xgb_sejarah                                 2015 +0.431  2014 +0.233  2019 +0.234
+    dc_persentil                                2015 -2.765  2014 -3.082  2019 -5.006
+    log_ef1_fdrs                                2015 +0.115  2014 -0.005  2019 +0.096
+    ef1_api                                     2015 +0.331  2014 +0.226  2019 +0.193
+    ef1_cuaca                                   2015 +0.236  2014 +0.049  2019 +0.171
+    ef1_keduanya                                2015 +0.366  2014 +0.239  2019 +0.241
+    xgb_tanpa_api                               2015 +0.218  2014 -0.036  2019 +0.060
+    xgb_setel                                   2015 +0.422  2014 +0.239  2019 +0.302
+    fwi_persentil                               2015 -2.385  2014 -2.825  2019 -4.857
+    klim_saja                                   2015 +0.018  2014 +0.025  2019 -0.005
+    klim_fwi                                    2015 +0.248  2014 +0.019  2019 -0.037
+    fwi_kini_persentil                          2015 -2.361  2014 -2.464  2019 -4.844
+    klim_fwi_kini                               2015 +0.311  2014 +0.259  2019 +0.164
+     ringkas: titik > 0 pada 16 dari 21; lolos kedua selang 0
+  -- atas rujukan_peluang
+    logistik                                    2015 -0.356  2014 -0.779  2019 -0.924
+    fwi_logistik                                2015 -0.442  2014 -0.720  2019 -0.808
+    rf                                          2015 +0.412  2014 +0.175  2019 +0.261
+    xgb                                         2015 +0.417  2014 +0.184  2019 +0.281
+    mlp                                         2015 +0.392  2014 +0.211  2019 +0.197
+    klim_frek                                   2015 -0.029  2014 -0.050  2019 -0.046
+    klim_frek1                                  2015 +0.000  2014 +0.003  2019 +0.000
+    log_klim_jeda                               2015 +0.310  2014 +0.195  2019 +0.147
+    log_ef1_jeda                                2015 +0.315  2014 +0.193  2019 +0.158
+    xgb_sejarah                                 2015 +0.415  2014 +0.195  2019 +0.199
+    dc_persentil                                2015 -2.874  2014 -3.286  2019 -5.280
+    log_ef1_fdrs                                2015 +0.089  2014 -0.056  2019 +0.055
+    ef1_api                                     2015 +0.311  2014 +0.187  2019 +0.156
+    ef1_cuaca                                   2015 +0.213  2014 +0.002  2019 +0.133
+    ef1_keduanya                                2015 +0.348  2014 +0.201  2019 +0.206
+    xgb_tanpa_api                               2015 +0.195  2014 -0.088  2019 +0.018
+    xgb_setel                                   2015 +0.405  2014 +0.201  2019 +0.271
+    fwi_persentil                               2015 -2.484  2014 -3.016  2019 -5.123
+    klim_saja                                   2015 -0.011  2014 -0.024  2019 -0.050
+    klim_fwi                                    2015 +0.226  2014 -0.030  2019 -0.084
+    fwi_kini_persentil                          2015 -2.459  2014 -2.638  2019 -5.110
+    klim_fwi_kini                               2015 +0.291  2014 +0.222  2019 +0.125
+     ringkas: titik > 0 pada 15 dari 22; lolos kedua selang 0
+  -- atas ef1_tingkat
+    logistik                                    2015 -0.913  2014 -1.011  2019 -1.119
+    fwi_logistik                                2015 -1.034  2014 -0.944  2019 -0.991
+    rf                                          2015 +0.171  2014 +0.068  2019 +0.186
+    xgb                                         2015 +0.178  2014 +0.078  2019 +0.209
+    mlp                                         2015 +0.142  2014 +0.108  2019 +0.116
+    klim_frek                                   2015 -0.452  2014 -0.187  2019 -0.151
+    klim_frek1                                  2015 -0.411  2014 -0.127  2019 -0.101
+    log_klim_jeda                               2015 +0.027  2014 +0.090  2019 +0.061
+    log_ef1_jeda                                2015 +0.033  2014 +0.088  2019 +0.072
+    xgb_sejarah                                 2015 +0.174  2014 +0.091  2019 +0.118
+    dc_persentil                                2015 -4.466  2014 -3.843  2019 -5.916
+    log_ef1_fdrs                                2015 -0.285  2014 -0.193  2019 -0.041
+    ef1_api                                     2015 +0.028  2014 +0.081  2019 +0.071
+    ef1_cuaca                                   2015 -0.110  2014 -0.128  2019 +0.045
+    ef1_keduanya                                2015 +0.080  2014 +0.097  2019 +0.126
+    xgb_tanpa_api                               2015 -0.136  2014 -0.229  2019 -0.082
+    xgb_setel                                   2015 +0.161  2014 +0.098  2019 +0.197
+    fwi_persentil                               2015 -3.915  2014 -3.538  2019 -5.743
+    klim_saja                                   2015 -0.426  2014 -0.157  2019 -0.157
+    klim_fwi                                    2015 -0.092  2014 -0.164  2019 -0.194
+    fwi_kini_persentil                          2015 -3.880  2014 -3.111  2019 -5.729
+    klim_fwi_kini                               2015 -0.000  2014 +0.120  2019 +0.037
+     ringkas: titik > 0 pada 10 dari 22; lolos kedua selang 0
+
+  E2. Pemecahan oracle tingkat tahun (BSS mentah / tingkat-benar / bagian tingkat)
+    xgb           atas klim_frek        mentah 2015 +0.434 2014 +0.223 2019 +0.313   tingkat-benar 2015 +0.208 2014 +0.073 2019 +0.185
+    rf            atas klim_frek        mentah 2015 +0.429 2014 +0.214 2019 +0.293   tingkat-benar 2015 +0.206 2014 +0.085 2019 +0.153
+    mlp           atas klim_frek        mentah 2015 +0.409 2014 +0.249 2019 +0.232   tingkat-benar 2015 +0.205 2014 +0.038 2019 +0.151
+    log_ef1_jeda  atas klim_frek        mentah 2015 +0.334 2014 +0.231 2019 +0.194   tingkat-benar 2015 +0.182 2014 +0.068 2019 +0.083
+    xgb_setel     atas klim_frek        mentah 2015 +0.422 2014 +0.239 2019 +0.302   tingkat-benar 2015 +0.192 2014 +0.083 2019 +0.183
+    xgb           atas rujukan_peluang  mentah 2015 +0.417 2014 +0.184 2019 +0.281   tingkat-benar 2015 +0.197 2014 +0.031 2019 +0.161
+    rf            atas rujukan_peluang  mentah 2015 +0.412 2014 +0.175 2019 +0.261   tingkat-benar 2015 +0.195 2014 +0.044 2019 +0.128
+    mlp           atas rujukan_peluang  mentah 2015 +0.392 2014 +0.211 2019 +0.197   tingkat-benar 2015 +0.194 2014 -0.005 2019 +0.126
+    log_ef1_jeda  atas rujukan_peluang  mentah 2015 +0.315 2014 +0.193 2019 +0.158   tingkat-benar 2015 +0.171 2014 +0.025 2019 +0.056
+    xgb_setel     atas rujukan_peluang  mentah 2015 +0.405 2014 +0.201 2019 +0.271   tingkat-benar 2015 +0.181 2014 +0.042 2019 +0.160
+
+  E4. Log score: eps 1e-4 / 1e-3
+    bagian positif dengan EF-3m < 1e-3: 0.036; rujukan_peluang < 1e-3: 0.036
+    eps 0.0001 dlog atas klim_frek       xgb +0.1042   rf +0.1023
+    eps 0.0001 dlog atas rujukan_peluang xgb +0.1086   rf +0.1067
+    eps 0.0001 dlog atas ef1_tingkat     xgb +0.0396   rf +0.0376
+    eps 0.001 dlog atas klim_frek       xgb +0.0905   rf +0.0886
+    eps 0.001 dlog atas rujukan_peluang xgb +0.0949   rf +0.0930
+    eps 0.001 dlog atas ef1_tingkat     xgb +0.0392   rf +0.0372
+
+==============================================================================================================
+Ringkasan R27 (tahun biasa): kolom dengan BSS lolos kedua selang / titik > 0
+==============================================================================================================
+  y_gabungan   atas klim_frek        lolos 1 dari 21; titik > 0 12; tidak lolos: logistik, fwi_logistik, mlp, klim_frek1, dc_persentil, log_ef1_fdrs, ef1_cuaca, xgb_tanpa_api, fwi_persentil, klim_saja, klim_fwi, fwi_kini_persentil, klim_fwi_kini
+  y_gabungan   atas rujukan_peluang  lolos 1 dari 22; titik > 0 13; tidak lolos: logistik, fwi_logistik, mlp, klim_frek, klim_frek1, dc_persentil, log_ef1_fdrs, ef1_cuaca, xgb_tanpa_api, fwi_persentil, klim_saja, klim_fwi, fwi_kini_persentil, klim_fwi_kini
+  y_gabungan   atas ef1_tingkat      lolos 0 dari 22; titik > 0 7; tidak lolos: logistik, fwi_logistik, rf, xgb, mlp, klim_frek, klim_frek1, log_klim_jeda, log_ef1_jeda, xgb_sejarah, dc_persentil, log_ef1_fdrs, ef1_api, ef1_cuaca, ef1_keduanya, xgb_tanpa_api, xgb_setel, fwi_persentil, klim_saja, klim_fwi, fwi_kini_persentil, klim_fwi_kini
+
+selesai.

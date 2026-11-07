@@ -1,0 +1,101 @@
+baris panel 77688; DC bulan lalu hilang 0.00% (diisi median kabupaten)
+S1 2020 selesai
+S1 2021 selesai
+S1 2022 selesai
+S1 2023 selesai
+S1 2024 selesai
+S1 2025 selesai
+S2 2015 selesai
+S2 2014 selesai
+S2 2019 selesai
+cek ap_cepat = sklearn: ok
+baris gabung 107568
+====================================================================================================
+D4/D5. Baseline FDRS dan pemisahan jeda
+====================================================================================================
+
+--- y_kabupaten, rujukan EF-1m (AP 0.245), 411 kabupaten
+  AP dc_nasional         0.090
+  AP ffmc_nasional       0.122
+  AP dc_persentil        0.091
+  AP log_ef1_fdrs        0.246
+  AP ef1_api             0.245
+  AP ef1_cuaca           0.249
+  AP ef1_keduanya        0.264
+  AP xgb_tanpa_api       0.226
+  AP fwi                 0.124
+  AP fwi_persentil       0.133
+  AP klim_fwi            0.181
+  AP log_ef1_jeda        0.246
+  dc_nasional - EF-1m               -0.155  2tahap [-0.262, -0.064]  t95 [-0.289, -0.021]    per tahun -0.140 -0.027 -0.027 -0.371 -0.195 -0.171
+  ffmc_nasional - EF-1m             -0.123  2tahap [-0.205, -0.050]  t95 [-0.225, -0.020]    per tahun -0.089 -0.028 -0.028 -0.286 -0.156 -0.148
+  dc_persentil - EF-1m              -0.154  2tahap [-0.282, -0.044]  t95 [-0.316, +0.009]    per tahun -0.145 -0.007 +0.010 -0.409 -0.233 -0.136
+  log_ef1_fdrs - EF-1m              +0.001  2tahap [-0.043, +0.042]  t95 [-0.045, +0.048]    per tahun +0.017 -0.001 -0.023 +0.076 -0.006 -0.056
+  ef1_api - EF-1m                   +0.000  2tahap [-0.063, +0.055]  t95 [-0.055, +0.055]    per tahun +0.000 +0.055 +0.026 +0.001 -0.099 +0.017
+  ef1_cuaca - EF-1m                 +0.004  2tahap [-0.028, +0.037]  t95 [-0.018, +0.027]    per tahun +0.026 +0.002 -0.007 +0.033 -0.025 -0.003
+  ef1_keduanya - EF-1m              +0.020  2tahap [-0.039, +0.071]  t95 [-0.033, +0.072]    per tahun +0.042 +0.028 +0.049 +0.046 -0.082 +0.034
+  xgb_tanpa_api - EF-1m             -0.019  2tahap [-0.086, +0.048]  t95 [-0.093, +0.056]    per tahun -0.030 -0.003 +0.067 +0.045 -0.123 -0.068
+  fwi - EF-1m                       -0.121  2tahap [-0.204, -0.048]  t95 [-0.225, -0.017]    per tahun -0.089 -0.028 -0.026 -0.291 -0.147 -0.145
+  fwi_persentil - EF-1m             -0.112  2tahap [-0.215, -0.012]  t95 [-0.245, +0.021]    per tahun -0.111 -0.024 +0.052 -0.298 -0.211 -0.079
+  klim_fwi - EF-1m                  -0.064  2tahap [-0.126, -0.000]  t95 [-0.134, +0.007]    per tahun -0.106 -0.035 +0.016 -0.031 -0.175 -0.050
+  log_ef1_jeda - EF-1m              +0.002  2tahap [-0.057, +0.051]  t95 [-0.053, +0.056]    per tahun +0.000 +0.030 +0.022 +0.037 -0.102 +0.022
+  xgb - EF-1m                       +0.031  2tahap [-0.034, +0.105]  t95 [-0.036, +0.099]    per tahun +0.034 +0.024 +0.115 +0.088 -0.059 -0.015
+  -- DC/FFMC lawan FWI komposit
+  dc_nasional - fwi                 -0.034  2tahap [-0.062, -0.011]  t95 [-0.067, -0.001]    per tahun -0.050 +0.001 -0.001 -0.079 -0.048 -0.026
+  dc_persentil - fwi_persentil      -0.041  2tahap [-0.081, -0.008]  t95 [-0.086, +0.003]    per tahun -0.034 +0.017 -0.042 -0.111 -0.022 -0.057
+  ffmc_nasional - fwi               -0.002  2tahap [-0.011, +0.003]  t95 [-0.007, +0.003]    per tahun -0.000 +0.001 -0.003 +0.005 -0.009 -0.003
+  log_ef1_fdrs - klim_fwi           +0.065  2tahap [-0.006, +0.136]  t95 [-0.020, +0.150]    per tahun +0.123 +0.034 -0.039 +0.108 +0.170 -0.006
+  log_ef1_fdrs - log_ef1_jeda       -0.000  2tahap [-0.057, +0.061]  t95 [-0.067, +0.066]    per tahun +0.017 -0.031 -0.045 +0.039 +0.096 -0.078
+  -- pemisahan jeda
+  ef1_keduanya - ef1_api            +0.020  2tahap [-0.009, +0.040]  t95 [-0.008, +0.047]    per tahun +0.042 -0.028 +0.023 +0.045 +0.017 +0.018
+  ef1_keduanya - ef1_cuaca          +0.015  2tahap [-0.030, +0.050]  t95 [-0.026, +0.056]    per tahun +0.016 +0.025 +0.057 +0.012 -0.057 +0.037
+  xgb - xgb_tanpa_api               +0.050  2tahap [+0.025, +0.083]  t95 [+0.035, +0.065]  LOLOS R16  per tahun +0.064 +0.027 +0.048 +0.043 +0.064 +0.053
+  xgb - ef1_keduanya                +0.012  2tahap [-0.030, +0.057]  t95 [-0.031, +0.055]    per tahun -0.008 -0.003 +0.066 +0.043 +0.023 -0.049
+  R19: ef1_api / ef1_keduanya = 0.00; ef1_cuaca / ef1_keduanya = 0.23
+  S2 2015 (AP EF-1m 0.722): dc_nasional -0.343  ffmc_nasional -0.269  dc_persentil -0.310  log_ef1_fdrs +0.004  ef1_api +0.040  ef1_cuaca +0.033  ef1_keduanya +0.056  xgb_tanpa_api +0.052  fwi -0.264  log_ef1_jeda +0.053  xgb +0.102
+  S2 2014 (AP EF-1m 0.663): dc_nasional -0.393  ffmc_nasional -0.326  dc_persentil -0.381  log_ef1_fdrs -0.085  ef1_api -0.034  ef1_cuaca -0.103  ef1_keduanya -0.014  xgb_tanpa_api -0.148  fwi -0.341  log_ef1_jeda -0.010  xgb -0.046
+  S2 2019 (AP EF-1m 0.677): dc_nasional -0.354  ffmc_nasional -0.307  dc_persentil -0.373  log_ef1_fdrs +0.017  ef1_api +0.006  ef1_cuaca -0.003  ef1_keduanya +0.026  xgb_tanpa_api -0.025  fwi -0.294  log_ef1_jeda +0.023  xgb +0.071
+
+--- y_gabungan, rujukan EF-3m (AP 0.688), 498 kabupaten
+  AP dc_nasional         0.160
+  AP ffmc_nasional       0.177
+  AP dc_persentil        0.119
+  AP log_ef1_fdrs        0.661
+  AP ef1_api             0.714
+  AP ef1_cuaca           0.666
+  AP ef1_keduanya        0.714
+  AP xgb_tanpa_api       0.603
+  AP fwi                 0.198
+  AP fwi_persentil       0.140
+  AP klim_fwi            0.462
+  AP log_ef1_jeda        0.713
+  dc_nasional - EF-3m               -0.528  2tahap [-0.596, -0.441]  t95 [-0.608, -0.448]    per tahun -0.492 -0.461 -0.433 -0.599 -0.616 -0.568
+  ffmc_nasional - EF-3m             -0.511  2tahap [-0.580, -0.419]  t95 [-0.585, -0.437]    per tahun -0.434 -0.476 -0.439 -0.571 -0.596 -0.552
+  dc_persentil - EF-3m              -0.569  2tahap [-0.629, -0.491]  t95 [-0.627, -0.512]    per tahun -0.530 -0.529 -0.529 -0.617 -0.657 -0.554
+  log_ef1_fdrs - EF-3m              -0.027  2tahap [-0.061, +0.006]  t95 [-0.059, +0.005]    per tahun +0.012 -0.041 -0.031 +0.001 -0.030 -0.074
+  ef1_api - EF-3m                   +0.026  2tahap [-0.012, +0.071]  t95 [-0.022, +0.073]    per tahun +0.100 +0.018 +0.036 +0.022 -0.042 +0.019
+  ef1_cuaca - EF-3m                 -0.022  2tahap [-0.058, +0.013]  t95 [-0.060, +0.016]    per tahun +0.021 -0.042 -0.009 +0.011 -0.039 -0.074
+  ef1_keduanya - EF-3m              +0.026  2tahap [-0.011, +0.069]  t95 [-0.019, +0.071]    per tahun +0.096 +0.003 +0.047 +0.027 -0.031 +0.015
+  xgb_tanpa_api - EF-3m             -0.085  2tahap [-0.121, -0.051]  t95 [-0.111, -0.058]    per tahun -0.067 -0.091 -0.063 -0.059 -0.114 -0.113
+  fwi - EF-3m                       -0.490  2tahap [-0.562, -0.392]  t95 [-0.565, -0.416]    per tahun -0.411 -0.451 -0.419 -0.564 -0.559 -0.538
+  fwi_persentil - EF-3m             -0.548  2tahap [-0.604, -0.480]  t95 [-0.586, -0.510]    per tahun -0.508 -0.542 -0.532 -0.554 -0.614 -0.539
+  klim_fwi - EF-3m                  -0.226  2tahap [-0.300, -0.145]  t95 [-0.327, -0.125]    per tahun -0.260 -0.298 -0.325 -0.062 -0.243 -0.170
+  log_ef1_jeda - EF-3m              +0.025  2tahap [-0.013, +0.070]  t95 [-0.023, +0.072]    per tahun +0.098 +0.015 +0.035 +0.027 -0.042 +0.015
+  xgb - EF-3m                       +0.038  2tahap [+0.007, +0.076]  t95 [-0.001, +0.077]    per tahun +0.070 +0.046 +0.081 +0.013 -0.020 +0.039
+  -- DC/FFMC lawan FWI komposit
+  dc_nasional - fwi                 -0.038  2tahap [-0.078, -0.007]  t95 [-0.066, -0.009]    per tahun -0.081 -0.009 -0.014 -0.035 -0.057 -0.030
+  dc_persentil - fwi_persentil      -0.021  2tahap [-0.044, +0.001]  t95 [-0.051, +0.009]    per tahun -0.022 +0.013 +0.003 -0.063 -0.043 -0.015
+  ffmc_nasional - fwi               -0.021  2tahap [-0.041, -0.008]  t95 [-0.032, -0.010]    per tahun -0.022 -0.025 -0.020 -0.007 -0.037 -0.015
+  log_ef1_fdrs - klim_fwi           +0.200  2tahap [+0.109, +0.279]  t95 [+0.098, +0.301]  LOLOS R16  per tahun +0.272 +0.257 +0.295 +0.064 +0.213 +0.097
+  log_ef1_fdrs - log_ef1_jeda       -0.052  2tahap [-0.094, -0.014]  t95 [-0.092, -0.011]    per tahun -0.086 -0.055 -0.066 -0.026 +0.012 -0.089
+  -- pemisahan jeda
+  ef1_keduanya - ef1_api            +0.001  2tahap [-0.011, +0.010]  t95 [-0.010, +0.012]    per tahun -0.004 -0.015 +0.011 +0.005 +0.011 -0.004
+  ef1_keduanya - ef1_cuaca          +0.048  2tahap [+0.019, +0.084]  t95 [+0.015, +0.082]  LOLOS R16  per tahun +0.075 +0.045 +0.056 +0.016 +0.008 +0.089
+  xgb - xgb_tanpa_api               +0.123  2tahap [+0.090, +0.165]  t95 [+0.089, +0.157]  LOLOS R16  per tahun +0.137 +0.138 +0.145 +0.072 +0.095 +0.152
+  xgb - ef1_keduanya                +0.012  2tahap [-0.012, +0.038]  t95 [-0.017, +0.041]    per tahun -0.026 +0.043 +0.034 -0.014 +0.011 +0.024
+  R19: ef1_api / ef1_keduanya = 0.97; ef1_cuaca / ef1_keduanya = -0.84
+  S2 2015 (AP EF-3m 0.843): dc_nasional -0.553  ffmc_nasional -0.510  dc_persentil -0.520  log_ef1_fdrs -0.008  ef1_api +0.032  ef1_cuaca +0.009  ef1_keduanya +0.035  xgb_tanpa_api -0.022  fwi -0.499  log_ef1_jeda +0.034  xgb +0.048
+  S2 2014 (AP EF-3m 0.833): dc_nasional -0.588  ffmc_nasional -0.561  dc_persentil -0.560  log_ef1_fdrs -0.054  ef1_api -0.011  ef1_cuaca -0.047  ef1_keduanya -0.006  xgb_tanpa_api -0.054  fwi -0.554  log_ef1_jeda -0.008  xgb +0.009
+  S2 2019 (AP EF-3m 0.849): dc_nasional -0.601  ffmc_nasional -0.586  dc_persentil -0.610  log_ef1_fdrs -0.004  ef1_api -0.012  ef1_cuaca -0.006  ef1_keduanya -0.007  xgb_tanpa_api -0.056  fwi -0.572  log_ef1_jeda -0.012  xgb +0.033
+
+selesai.

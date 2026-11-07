@@ -1,0 +1,42 @@
+baris 71712; benih 1-5 tergabung untuk ['rf', 'xgb', 'mlp'] (rata-rata enam benih)
+graf: 502 kabupaten, 945 sisi, 29 tanpa tetangga
+
+=== y_kabupaten, rujukan klim_frek1: 11 provinsi >= 40 positif
+  JawaBarat              kab  17 pos   55  juara rf             rf-ref +0.066
+  JawaTengah             kab  26 pos   78  juara klim_frek1     rf-ref -0.023
+  JawaTimur              kab  30 pos  116  juara rf             rf-ref +0.106
+  KalimantanBarat        kab  14 pos   54  juara klim_frek1     rf-ref -0.113
+  KalimantanTengah       kab  14 pos   41  juara xgb            rf-ref -0.032
+  NusaTenggaraBarat      kab   9 pos   44  juara klim_frek1     rf-ref -0.108
+  NusaTenggaraTimur      kab  20 pos   94  juara klim_frek1     rf-ref -0.196
+  Papua                  kab  23 pos  100  juara mlp            rf-ref +0.115
+  SulawesiSelatan        kab  23 pos   68  juara klim_frek1     rf-ref -0.131
+  SulawesiTenggara       kab  12 pos   43  juara klim_frek1     rf-ref -0.184
+  SumateraUtara          kab  23 pos   55  juara klim_frek1     rf-ref -0.047
+  teramati: D = 0.600, H = 0.109; juara: {'klim_frek1': 7, 'rf': 2, 'xgb': 1, 'mlp': 1}
+  nol acak         D median 0.745 [p95 0.818], P = 0.965;  H median 0.077 [p95 0.111], P = 0.060
+  nol bersebelahan D median 0.782 [p95 0.855], P = 0.995;  H median 0.101 [p95 0.145], P = 0.345
+  biaya transfer tervalidasi silang: juara provinsi lain +0.008 [-0.015, +0.049]; juara nasional +0.017 [-0.017, +0.071]
+
+=== y_gabungan, rujukan klim_frek: 19 provinsi >= 40 positif
+  BangkaBelitung         kab   7 pos   85  juara klim_frek      rf-ref -0.093
+  Jambi                  kab  11 pos   41  juara klim_frek      rf-ref -0.018
+  JawaTimur              kab  38 pos  130  juara klim_frek      rf-ref -0.031
+  KalimantanBarat        kab  14 pos  236  juara mlp            rf-ref +0.006
+  KalimantanSelatan      kab  13 pos   87  juara klim_frek      rf-ref -0.210
+  KalimantanTengah       kab  14 pos  127  juara rf             rf-ref +0.041
+  KalimantanTimur        kab   9 pos  159  juara log_klim_jeda  rf-ref -0.009
+  Lampung                kab  14 pos   45  juara klim_frek      rf-ref -0.039
+  Maluku                 kab  11 pos   63  juara rf             rf-ref +0.024
+  NusaTenggaraBarat      kab  10 pos  114  juara klim_frek      rf-ref -0.001
+  NusaTenggaraTimur      kab  21 pos  331  juara klim_frek      rf-ref -0.016
+  Papua                  kab  29 pos   58  juara mlp            rf-ref +0.023
+  Riau                   kab  12 pos   84  juara xgb            rf-ref +0.064
+  SulawesiSelatan        kab  24 pos   55  juara log_klim_jeda  rf-ref -0.011
+  SulawesiTengah         kab  11 pos   78  juara klim_frek      rf-ref -0.047
+  SulawesiTenggara       kab  12 pos   72  juara klim_frek      rf-ref -0.069
+  SumateraBarat          kab  19 pos   47  juara log_klim_jeda  rf-ref -0.028
+  SumateraSelatan        kab  15 pos  117  juara rf             rf-ref +0.051
+  SumateraUtara          kab  33 pos   58  juara klim_frek      rf-ref -0.061
+  teramati: D = 0.696, H = 0.061; juara: {'klim_frek': 10, 'rf': 3, 'log_klim_jeda': 3, 'mlp': 2, 'xgb': 1}
+  nol acak         D median 0.784 [p95 0.825], P = 0.935;  H median 0.048 [p95 0.065], P = 0.125

@@ -1,0 +1,45 @@
+cek ap_cepat = sklearn: ok
+S1 2020 selesai
+S1 2021 selesai
+S1 2022 selesai
+S1 2023 selesai
+S1 2024 selesai
+S1 2025 selesai
+S2 2015 selesai
+S2 2014 selesai
+S2 2019 selesai
+====================================================================================================
+C6. Baseline sederhana yang lebih kuat
+====================================================================================================
+
+--- y_kabupaten, rujukan EF-1m (AP 0.245)
+  log_ef1_jeda   AP 0.246  per tahun +0.000 +0.030 +0.022 +0.037 -0.102 +0.022
+  log_ef1_jeda - EF-1m              +0.002 [-0.027, +0.031]  dua tahap [-0.055, +0.051]
+  xgb_sejarah    AP 0.219  per tahun -0.040 -0.005 -0.010 +0.071 -0.105 -0.062
+  xgb_sejarah - EF-1m               -0.025 [-0.051, -0.003]  dua tahap [-0.085, +0.027]
+  log_klim_jeda  AP 0.201  per tahun -0.063 -0.009 -0.011 +0.001 -0.130 -0.051
+  log_klim_jeda - EF-1m             -0.044 [-0.070, -0.021]  dua tahap [-0.096, -0.001]
+  xgb - log_ef1_jeda                +0.030 [+0.011, +0.052]  dua tahap [-0.016, +0.076]
+  xgb - xgb_sejarah                 +0.057 [+0.035, +0.088]  dua tahap [+0.022, +0.114]
+  rf - log_ef1_jeda                 +0.041 [+0.024, +0.061]  dua tahap [+0.001, +0.082]
+  rf - xgb_sejarah                  +0.068 [+0.050, +0.093]  dua tahap [+0.038, +0.113]
+  S2 2015: log_ef1_jeda +0.053  xgb_sejarah +0.060  xgb +0.102
+  S2 2014: log_ef1_jeda -0.010  xgb_sejarah -0.011  xgb -0.046
+  S2 2019: log_ef1_jeda +0.023  xgb_sejarah -0.011  xgb +0.071
+
+--- y_gabungan, rujukan EF-3m (AP 0.688)
+  log_ef1_jeda   AP 0.713  per tahun +0.098 +0.015 +0.035 +0.027 -0.042 +0.015
+  log_ef1_jeda - EF-3m              +0.025 [+0.009, +0.042]  dua tahap [-0.011, +0.067]
+  xgb_sejarah    AP 0.699  per tahun +0.054 +0.012 +0.050 +0.002 -0.043 -0.010
+  xgb_sejarah - EF-3m               +0.011 [-0.008, +0.030]  dua tahap [-0.023, +0.050]
+  log_klim_jeda  AP 0.674  per tahun +0.034 -0.024 -0.030 +0.029 -0.060 -0.032
+  log_klim_jeda - EF-3m             -0.014 [-0.035, +0.007]  dua tahap [-0.051, +0.022]
+  xgb - log_ef1_jeda                +0.014 [+0.002, +0.024]  dua tahap [-0.013, +0.037]
+  xgb - xgb_sejarah                 +0.027 [+0.019, +0.035]  dua tahap [+0.013, +0.043]
+  rf - log_ef1_jeda                 +0.025 [+0.015, +0.036]  dua tahap [-0.000, +0.048]
+  rf - xgb_sejarah                  +0.039 [+0.029, +0.048]  dua tahap [+0.025, +0.053]
+  S2 2015: log_ef1_jeda +0.034  xgb_sejarah +0.049  xgb +0.048
+  S2 2014: log_ef1_jeda -0.008  xgb_sejarah -0.001  xgb +0.009
+  S2 2019: log_ef1_jeda -0.012  xgb_sejarah +0.012  xgb +0.033
+
+selesai.

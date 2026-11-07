@@ -1,0 +1,39 @@
+fitur jeda >= 2: 29 dari 37
+  y_kabupaten S1 2019
+  y_kabupaten S1 2020
+  y_kabupaten S1 2021
+  y_kabupaten S1 2022
+  y_kabupaten S1 2023
+  y_kabupaten S1 2024
+  y_kabupaten S1 2025
+  y_kabupaten S2 2015
+  y_kabupaten S2 2014
+  y_kabupaten S2 2019
+  y_gabungan S1 2019
+  y_gabungan S1 2020
+  y_gabungan S1 2021
+  y_gabungan S1 2022
+  y_gabungan S1 2023
+  y_gabungan S1 2024
+  y_gabungan S1 2025
+  y_gabungan S2 2015
+  y_gabungan S2 2014
+  y_gabungan S2 2019
+
+=== y_kabupaten, rujukan klim_frek1 (AUC-PR dalam-tahun 0.245); S1 2020-2025
+  rf_j2   AUC-PR 0.251 (jeda 1: 0.288)  atas rujukan +0.006 [-0.021, +0.036]  rugi lawan jeda 1 +0.037 [+0.017, +0.056]
+  xgb_j2  AUC-PR 0.215 (jeda 1: 0.276)  atas rujukan -0.030 [-0.056, +0.000]  rugi lawan jeda 1 +0.061 [+0.041, +0.083]
+  S2, xgb_j2 atas rujukan [95%, 500]:
+    2015: +0.047 [+0.022, +0.070]  (jeda 1: +0.102)
+    2014: -0.145 [-0.175, -0.112]  (jeda 1: -0.046)
+    2019: -0.012 [-0.050, +0.027]  (jeda 1: +0.071)
+
+=== y_gabungan, rujukan klim_frek (AUC-PR dalam-tahun 0.688); S1 2020-2025
+  rf_j2   AUC-PR 0.678 (jeda 1: 0.738)  atas rujukan -0.010 [-0.025, +0.003]  rugi lawan jeda 1 +0.060 [+0.049, +0.072]
+  xgb_j2  AUC-PR 0.663 (jeda 1: 0.726)  atas rujukan -0.025 [-0.040, -0.011]  rugi lawan jeda 1 +0.063 [+0.052, +0.076]
+  S2, xgb_j2 atas rujukan [95%, 500]:
+    2015: +0.005 [-0.011, +0.022]  (jeda 1: +0.048)
+    2014: -0.052 [-0.074, -0.031]  (jeda 1: +0.009)
+    2019: +0.009 [-0.008, +0.028]  (jeda 1: +0.033)
+
+selesai.

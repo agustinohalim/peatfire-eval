@@ -1,0 +1,221 @@
+====================================================================================================
+A1/A3. Tabel 2 dan 3 ulang terhadap klim_frek (rujukan baru)
+====================================================================================================
+
+--- y_kabupaten: 411 satuan, S1 2020-2025 29592 baris, prevalensi 4.02%
+  model            AUC-PR dlm-thn       unggul vs klim_frek [95%]  unggul vs klim rata-rata
+  rf                        0.288         +0.095 [+0.075, +0.122]                    +0.162
+  xgb                       0.276         +0.083 [+0.060, +0.115]                    +0.151
+  mlp                       0.257         +0.064 [+0.039, +0.091]                    +0.131
+  klim_frek1                0.245         +0.052 [+0.035, +0.073]                    +0.119
+  log_klim_jeda             0.201         +0.008 [-0.007, +0.026]                    +0.076
+  klim_frek                 0.193                                                    +0.068
+  fwi_logistik              0.156         -0.037 [-0.056, -0.019]                    +0.030
+  persistence               0.142         -0.051 [-0.068, -0.034]                    +0.016
+  klimatologi               0.125         -0.068 [-0.083, -0.055]                    +0.000
+  fwi                       0.124         -0.069 [-0.085, -0.048]                    -0.002
+  logistik                  0.124         -0.069 [-0.085, -0.059]                    -0.002
+  rasio                     0.115         -0.078 [-0.094, -0.065]                    -0.011
+  seasonal_naive            0.113         -0.080 [-0.093, -0.065]                    -0.012
+  A3: xgb - log_klim_jeda +0.075 [+0.054, +0.104]
+      rf  - log_klim_jeda +0.087 [+0.068, +0.111]
+  S2 tahun ekstrem disisihkan, unggul atas klim_frek [95%]:
+    2015 (prev 22.6%, klim_frek 0.712, klim rata 0.572): xgb +0.112 [+0.087, +0.135]; rf +0.099 [+0.074, +0.123]; mlp +0.090 [+0.063, +0.116]; log_klim_jeda +0.025 [-0.001, +0.052]; fwi_logistik -0.108 [-0.140, -0.076]
+    2014 (prev 17.7%, klim_frek 0.621, klim rata 0.588): xgb -0.004 [-0.039, +0.032]; rf -0.031 [-0.071, +0.006]; mlp -0.009 [-0.044, +0.026]; log_klim_jeda -0.025 [-0.057, +0.009]; fwi_logistik -0.223 [-0.254, -0.192]
+    2019 (prev 15.7%, klim_frek 0.672, klim rata 0.507): xgb +0.076 [+0.039, +0.107]; rf +0.062 [+0.025, +0.096]; mlp +0.021 [-0.013, +0.059]; log_klim_jeda -0.043 [-0.083, -0.007]; fwi_logistik -0.155 [-0.198, -0.112]
+
+--- y_gabungan: 498 satuan, S1 2020-2025 35856 baris, prevalensi 6.13%
+  model            AUC-PR dlm-thn       unggul vs klim_frek [95%]  unggul vs klim rata-rata
+  rf                        0.738         +0.050 [+0.032, +0.067]                    +0.259
+  xgb                       0.726         +0.038 [+0.021, +0.054]                    +0.247
+  mlp                       0.714         +0.026 [+0.007, +0.044]                    +0.235
+  klim_frek                 0.688                                                    +0.209
+  log_klim_jeda             0.674         -0.014 [-0.035, +0.007]                    +0.195
+  klim_frek1                0.665         -0.023 [-0.031, -0.012]                    +0.186
+  persistence               0.551         -0.137 [-0.164, -0.108]                    +0.072
+  seasonal_naive            0.551         -0.138 [-0.159, -0.116]                    +0.071
+  rasio                     0.486         -0.203 [-0.231, -0.168]                    +0.006
+  klimatologi               0.479         -0.209 [-0.240, -0.169]                    +0.000
+  fwi_logistik              0.212         -0.476 [-0.518, -0.423]                    -0.267
+  fwi                       0.198         -0.490 [-0.545, -0.419]                    -0.282
+  logistik                  0.149         -0.539 [-0.584, -0.490]                    -0.330
+  A3: xgb - log_klim_jeda +0.052 [+0.032, +0.073]
+      rf  - log_klim_jeda +0.064 [+0.043, +0.085]
+  S2 tahun ekstrem disisihkan, unggul atas klim_frek [95%]:
+    2015 (prev 19.2%, klim_frek 0.843, klim rata 0.848): xgb +0.048 [+0.032, +0.065]; rf +0.049 [+0.033, +0.066]; mlp +0.047 [+0.029, +0.064]; log_klim_jeda +0.045 [+0.030, +0.058]; fwi_logistik -0.429 [-0.472, -0.382]
+    2014 (prev 16.9%, klim_frek 0.833, klim rata 0.854): xgb +0.009 [-0.005, +0.026]; rf +0.011 [-0.004, +0.028]; mlp +0.003 [-0.014, +0.021]; log_klim_jeda -0.000 [-0.016, +0.017]; fwi_logistik -0.519 [-0.552, -0.479]
+    2019 (prev 14.5%, klim_frek 0.849, klim rata 0.818): xgb +0.033 [+0.016, +0.053]; rf +0.028 [+0.011, +0.050]; mlp +0.021 [+0.003, +0.041]; log_klim_jeda -0.009 [-0.029, +0.013]; fwi_logistik -0.517 [-0.560, -0.470]
+
+====================================================================================================
+A2. Temuan 1 ulang: kontras ekstrem - tenang, 411 kabupaten
+====================================================================================================
+
+--- rujukan klim_frek; tenang = S1 kronologis (seperti naskah); selang kabupaten 300 ulangan, dua tahap 1000 ulangan
+  xgb
+    m1 AUC-PR mentah           per kab -0.023 [-0.064, +0.006]  nasional -0.014 [-0.030, +0.007]  selisih -0.010 kab [-0.056, +0.024] dua-tahap [-0.083, +0.049]
+    m2 ruang sisa              per kab +0.111 [+0.045, +0.162]  nasional +0.082 [+0.027, +0.153]  selisih +0.028 kab [-0.064, +0.101] dua-tahap [-0.129, +0.154]
+    m3 AUC-PR ternormalisasi   per kab -0.010 [-0.054, +0.022]  nasional -0.008 [-0.027, +0.014]  selisih -0.002 kab [-0.051, +0.034] dua-tahap [-0.084, +0.064]
+    m4 ROC-AUC                 per kab -0.065 [-0.082, -0.043]  nasional -0.000 [-0.007, +0.007]  selisih -0.065 kab [-0.084, -0.044] dua-tahap [-0.125, -0.017]
+    m5 Brier skill             per kab -0.123 [-0.160, -0.093]  nasional +0.030 [+0.002, +0.060]  selisih -0.153 kab [-0.198, -0.112] dua-tahap [-0.296, -0.025]
+  rf
+    m1 AUC-PR mentah           per kab -0.050 [-0.084, -0.023]  nasional -0.024 [-0.042, -0.003]  selisih -0.026 kab [-0.067, +0.009] dua-tahap [-0.115, +0.039]
+    m2 ruang sisa              per kab +0.046 [-0.019, +0.097]  nasional +0.043 [-0.009, +0.112]  selisih +0.003 kab [-0.087, +0.079] dua-tahap [-0.179, +0.149]
+    m3 AUC-PR ternormalisasi   per kab -0.041 [-0.077, -0.010]  nasional -0.020 [-0.039, +0.004]  selisih -0.022 kab [-0.067, +0.017] dua-tahap [-0.124, +0.053]
+    m4 ROC-AUC                 per kab -0.063 [-0.082, -0.042]  nasional -0.001 [-0.008, +0.006]  selisih -0.062 kab [-0.081, -0.041] dua-tahap [-0.112, -0.015]
+    m5 Brier skill             per kab -0.175 [-0.210, -0.147]  nasional -0.002 [-0.024, +0.026]  selisih -0.173 kab [-0.217, -0.141] dua-tahap [-0.286, -0.065]
+  mlp
+    m1 AUC-PR mentah           per kab -0.039 [-0.074, -0.007]  nasional -0.005 [-0.023, +0.016]  selisih -0.035 kab [-0.075, +0.004] dua-tahap [-0.097, +0.031]
+    m2 ruang sisa              per kab +0.036 [-0.030, +0.097]  nasional +0.076 [+0.007, +0.152]  selisih -0.040 kab [-0.126, +0.052] dua-tahap [-0.198, +0.101]
+    m3 AUC-PR ternormalisasi   per kab -0.032 [-0.068, +0.002]  nasional +0.000 [-0.020, +0.024]  selisih -0.032 kab [-0.077, +0.009] dua-tahap [-0.099, +0.041]
+    m4 ROC-AUC                 per kab -0.072 [-0.093, -0.052]  nasional -0.003 [-0.009, +0.004]  selisih -0.069 kab [-0.090, -0.048] dua-tahap [-0.137, -0.016]
+    m5 Brier skill             per kab -0.057 [-0.092, -0.025]  nasional +0.076 [+0.045, +0.113]  selisih -0.133 kab [-0.183, -0.090] dua-tahap [-0.280, +0.025]
+  per tahun, xgb (m1 / m2 / m5):
+    y_kabupaten  S2 2015  m1 +0.112  m2 +0.388  m5 +0.429  prev  22.6%
+    y_kabupaten  S2 2014  m1 -0.004  m2 -0.010  m5 +0.032  prev  17.7%
+    y_kabupaten  S2 2019  m1 +0.076  m2 +0.231  m5 +0.325  prev  15.7%
+    y_kabupaten  S1 2020  m1 +0.129  m2 +0.146  m5 +0.313  prev   3.5%
+    y_kabupaten  S1 2021  m1 +0.049  m2 +0.051  m5 +0.546  prev   1.7%
+    y_kabupaten  S1 2022  m1 +0.138  m2 +0.141  m5 +0.684  prev   1.1%
+    y_kabupaten  S1 2024  m1 +0.012  m2 +0.015  m5 +0.103  prev   3.8%
+    y_kabupaten  S1 2025  m1 +0.095  m2 +0.108  m5 +0.278  prev   2.6%
+    y_gabungan   S2 2015  m1 +0.048  m2 +0.303  m5 +0.434  prev  23.3%
+    y_gabungan   S2 2014  m1 +0.009  m2 +0.053  m5 +0.223  prev  20.5%  e = np.nanmean([G[(s,) + k + (m,)] for k in eks], axis=0)
+
+    y_gabungan   S2 2019  m1 +0.033  m2 +0.219  m5 +0.313  prev  17.6%
+    y_gabungan   S1 2020  m1 +0.070  m2 +0.181  m5 +0.106  prev   6.4%
+    y_gabungan   S1 2021  m1 +0.046  m2 +0.122  m5 +0.438  prev   5.2%
+    y_gabungan   S1 2022  m1 +0.081  m2 +0.201  m5 +0.574  prev   4.0%
+    y_gabungan   S1 2024  m1 -0.020  m2 -0.095  m5 +0.106  prev   8.0%
+    y_gabungan   S1 2025  m1 +0.039  m2 +0.136  m5 +0.242  prev   7.1%
+
+--- rujukan klim_frek; tenang = Q disisihkan (rezim latih sama dengan S2); selang kabupaten 300 ulangan, dua tahap 1000 ulangan
+  xgb
+    m1 AUC-PR mentah           per kab -0.024 [-0.068, +0.017]  nasional -0.000 [-0.015, +0.019]  selisih -0.024 kab [-0.071, +0.018] dua-tahap [-0.101, +0.045]
+    m2 ruang sisa              per kab +0.111 [+0.042, +0.174]  nasional +0.105 [+0.050, +0.170]  selisih +0.006 kab [-0.081, +0.084] dua-tahap [-0.136, +0.140]
+    m3 AUC-PR ternormalisasi   per kab -0.010 [-0.057, +0.035]  nasional +0.006 [-0.010, +0.027]  selisih -0.016 kab [-0.065, +0.028] dua-tahap [-0.100, +0.061]
+    m4 ROC-AUC                 per kab -0.061 [-0.079, -0.040]  nasional +0.001 [-0.006, +0.008]  selisih -0.062 kab [-0.079, -0.041] dua-tahap [-0.124, -0.011]
+    m5 Brier skill             per kab -0.072 [-0.115, -0.041]  nasional +0.054 [+0.025, +0.083]  selisih -0.126 kab [-0.174, -0.087] dua-tahap [-0.274, +0.001]
+  rf
+    m1 AUC-PR mentah           per kab -0.053 [-0.095, -0.017]  nasional -0.007 [-0.026, +0.011]  selisih -0.046 kab [-0.088, -0.007] dua-tahap [-0.139, +0.031]
+    m2 ruang sisa              per kab +0.041 [-0.024, +0.098]  nasional +0.078 [+0.022, +0.148]  selisih -0.037 kab [-0.126, +0.036] dua-tahap [-0.215, +0.108]
+    m3 AUC-PR ternormalisasi   per kab -0.045 [-0.088, -0.006]  nasional -0.002 [-0.022, +0.019]  selisih -0.043 kab [-0.088, -0.001] dua-tahap [-0.151, +0.044]
+    m4 ROC-AUC                 per kab -0.059 [-0.076, -0.038]  nasional +0.001 [-0.007, +0.007]  selisih -0.059 kab [-0.078, -0.039] dua-tahap [-0.109, -0.016]
+    m5 Brier skill             per kab -0.134 [-0.173, -0.109]  nasional +0.045 [+0.023, +0.072]  selisih -0.179 kab [-0.226, -0.144] dua-tahap [-0.301, -0.064]
+  mlp
+    m1 AUC-PR mentah           per kab -0.020 [-0.053, +0.009]  nasional -0.005 [-0.023, +0.015]  selisih -0.015 kab [-0.052, +0.024] dua-tahap [-0.077, +0.042]
+    m2 ruang sisa              per kab +0.056 [-0.013, +0.120]  nasional +0.071 [+0.004, +0.144]  selisih -0.014 kab [-0.105, +0.075] dua-tahap [-0.174, +0.121]
+    m3 AUC-PR ternormalisasi   per kab -0.012 [-0.049, +0.019]  nasional -0.000 [-0.020, +0.022]  selisih -0.012 kab [-0.052, +0.030] dua-tahap [-0.081, +0.053]
+    m4 ROC-AUC                 per kab -0.070 [-0.091, -0.051]  nasional -0.005 [-0.012, +0.002]  selisih -0.065 kab [-0.087, -0.047] dua-tahap [-0.131, -0.012]
+    m5 Brier skill             per kab -0.069 [-0.106, -0.039]  nasional +0.036 [+0.007, +0.068]  selisih -0.105 kab [-0.156, -0.060] dua-tahap [-0.222, +0.023]
+  per tahun, xgb (m1 / m2 / m5):
+    y_kabupaten  S2 2015  m1 +0.112  m2 +0.388  m5 +0.429  prev  22.6%
+    y_kabupaten  S2 2014  m1 -0.004  m2 -0.010  m5 +0.032  prev  17.7%
+    y_kabupaten  S2 2019  m1 +0.076  m2 +0.231  m5 +0.325  prev  15.7%
+    y_kabupaten  Q 2020  m1 +0.113  m2 +0.133  m5 +0.212  prev   3.5%
+    y_kabupaten  Q 2021  m1 +0.061  m2 +0.064  m5 +0.478  prev   1.7%
+    y_kabupaten  Q 2022  m1 +0.162  m2 +0.165  m5 +0.648  prev   1.1%
+    y_kabupaten  Q 2024  m1 -0.006  m2 -0.008  m5 +0.053  prev   3.8%
+    y_kabupaten  Q 2025  m1 +0.095  m2 +0.108  m5 +0.278  prev   2.6%
+    y_gabungan   S2 2015  m1 +0.048  m2 +0.303  m5 +0.434  prev  23.3%
+    y_gabungan   S2 2014  m1 +0.009  m2 +0.053  m5 +0.223  prev  20.5%
+    y_gabungan   S2 2019  m1 +0.033  m2 +0.219  m5 +0.313  prev  17.6%
+    y_gabungan   Q 2020  m1 +0.023  m2 +0.073  m5 +0.114  prev   6.4%
+    y_gabungan   Q 2021  m1 +0.026  m2 +0.074  m5 +0.345  prev   5.2%
+    y_gabungan   Q 2022  m1 +0.066  m2 +0.170  m5 +0.534  prev   4.0%
+    y_gabungan   Q 2024  m1 -0.004  m2 -0.019  m5 +0.110  prev   8.0%
+    y_gabungan   Q 2025  m1 +0.039  m2 +0.136  m5 +0.242  prev   7.1%
+
+--- rujukan klimatologi; tenang = S1 kronologis; rujukan versi terkirim; selang kabupaten 300 ulangan, dua tahap 300 ulangan
+  xgb
+    m1 AUC-PR mentah           per kab +0.049 [+0.005, +0.083]  nasional -0.244 [-0.286, -0.187]  selisih +0.293 kab [+0.219, +0.340] dua-tahap [+0.157, +0.423]
+    m2 ruang sisa              per kab +0.248 [+0.193, +0.296]  nasional -0.300 [-0.384, -0.204]  selisih +0.549 kab [+0.423, +0.646] dua-tahap [+0.365, +0.694]
+    m3 AUC-PR ternormalisasi   per kab +0.087 [+0.041, +0.125]  nasional -0.254 [-0.298, -0.192]  selisih +0.341 kab [+0.260, +0.393] dua-tahap [+0.182, +0.486]
+    m4 ROC-AUC                 per kab -0.065 [-0.083, -0.041]  nasional -0.018 [-0.024, -0.010]  selisih -0.047 kab [-0.065, -0.025] dua-tahap [-0.111, +0.011]
+  rf
+    m1 AUC-PR mentah           per kab +0.022 [-0.019, +0.058]  nasional -0.255 [-0.294, -0.195]  selisih +0.277 kab [+0.210, +0.315] dua-tahap [+0.128, +0.428]
+    m2 ruang sisa              per kab +0.196 [+0.132, +0.247]  nasional -0.322 [-0.391, -0.227]  selisih +0.519 kab [+0.402, +0.602] dua-tahap [+0.348, +0.688]
+    m3 AUC-PR ternormalisasi   per kab +0.056 [+0.006, +0.098]  nasional -0.265 [-0.308, -0.202]  selisih +0.321 kab [+0.246, +0.364] dua-tahap [+0.150, +0.491]
+    m4 ROC-AUC                 per kab -0.063 [-0.082, -0.037]  nasional -0.019 [-0.025, -0.011]  selisih -0.044 kab [-0.063, -0.021] dua-tahap [-0.104, +0.013]
+  mlp
+    m1 AUC-PR mentah           per kab +0.033 [-0.012, +0.070]  nasional -0.235 [-0.277, -0.184]  selisih +0.268 kab [+0.201, +0.317] dua-tahap [+0.142, +0.401]
+    m2 ruang sisa              per kab +0.201 [+0.139, +0.251]  nasional -0.315 [-0.388, -0.217]  selisih +0.516 kab [+0.405, +0.601] dua-tahap [+0.349, +0.678]
+    m3 AUC-PR ternormalisasi   per kab +0.065 [+0.016, +0.108]  nasional -0.245 [-0.289, -0.189]  selisih +0.311 kab [+0.236, +0.365] dua-tahap [+0.167, +0.461]
+    m4 ROC-AUC                 per kab -0.072 [-0.093, -0.046]  nasional -0.020 [-0.027, -0.013]  selisih -0.051 kab [-0.072, -0.029] dua-tahap [-0.116, +0.009]
+  per tahun, xgb (m1 / m2 / m5):
+    y_kabupaten  S2 2015  m1 +0.252  m2 +0.588  m5 +nan  prev  22.6%
+    y_kabupaten  S2 2014  m1 +0.030  m2 +0.072  m5 +nan  prev  17.7%
+    y_kabupaten  S2 2019  m1 +0.241  m2 +0.488  m5 +nan  prev  15.7%
+    y_kabupaten  S1 2020  m1 +0.164  m2 +0.178  m5 +nan  prev   3.5%
+    y_kabupaten  S1 2021  m1 +0.063  m2 +0.065  m5 +nan  prev   1.7%
+    y_kabupaten  S1 2022  m1 +0.141  m2 +0.143  m5 +nan  prev   1.1%
+    y_kabupaten  S1 2024  m1 +0.127  m2 +0.144  m5 +nan  prev   3.8%
+    y_kabupaten  S1 2025  m1 +0.132  m2 +0.143  m5 +nan  prev   2.6%
+    y_gabungan   S2 2015  m1 +0.042  m2 +0.277  m5 +nan  prev  23.3%
+    y_gabungan   S2 2014  m1 -0.012  m2 -0.085  m5 +nan  prev  20.5%
+    y_gabungan   S2 2019  m1 +0.064  m2 +0.351  m5 +nan  prev  17.6%
+    y_gabungan   S1 2020  m1 +0.267  m2 +0.458  m5 +nan  prev   6.4%
+    y_gabungan   S1 2021  m1 +0.272  m2 +0.448  m5 +nan  prev   5.2%
+    y_gabungan   S1 2022  m1 +0.400  m2 +0.553  m5 +nan  prev   4.0%
+    y_gabungan   S1 2024  m1 +0.172  m2 +0.428  m5 +nan  prev   8.0%
+    y_gabungan   S1 2025  m1 +0.266  m2 +0.519  m5 +nan  prev   7.1%
+
+====================================================================================================
+A4. Nilai keputusan dengan ambang dari tahun latih (luar-lipatan), per kabupaten
+====================================================================================================
+
+--- biasa (S1 2020-2025)
+  xgb            dapat dicapai +0.283 +0.224 +0.130 +0.081 +0.009   amplop +0.457 +0.344 +0.194 +0.127 +0.069
+  klim_frek      dapat dicapai +0.003 -0.412 -0.223 +0.000 +0.000   amplop +0.336 +0.236 +0.132 +0.085 +0.048
+  klimatologi    dapat dicapai -0.312 -0.597 -0.211 +0.000 +0.000   amplop +0.227 +0.118 +0.059 +0.034 +0.007
+  log_klim_jeda  dapat dicapai +0.132 -0.045 -0.134 -0.153 -0.008   amplop +0.348 +0.238 +0.123 +0.083 +0.038
+  a = 0.05: xgb - klim_frek dapat dicapai +0.280 [+0.217, +0.401]
+  a = 0.1: xgb - klim_frek dapat dicapai +0.635 [+0.495, +0.891]
+  a = 0.2: xgb - klim_frek dapat dicapai +0.353 [+0.289, +0.437]
+  a = 0.3: xgb - klim_frek dapat dicapai +0.081 [+0.049, +0.107]
+  a = 0.5: xgb - klim_frek dapat dicapai +0.009 [+0.002, +0.016]
+
+--- ekstrem (S2 2014, 2015, 2019)
+  xgb            dapat dicapai +0.367 +0.461 +0.568 +0.442 +0.287   amplop +0.459 +0.555 +0.638 +0.558 +0.391
+  klim_frek      dapat dicapai +0.061 -0.143 -0.057 +0.000 +0.000   amplop +0.412 +0.531 +0.617 +0.519 +0.317
+  klimatologi    dapat dicapai -0.148 -0.284 -0.057 +0.000 +0.000   amplop +0.288 +0.390 +0.471 +0.355 +0.163
+  log_klim_jeda  dapat dicapai +0.140 +0.276 +0.337 +0.134 +0.001   amplop +0.351 +0.514 +0.608 +0.513 +0.298
+  a = 0.05: xgb - klim_frek dapat dicapai +0.306 [+0.224, +0.391]
+  a = 0.1: xgb - klim_frek dapat dicapai +0.604 [+0.533, +0.670]
+  a = 0.2: xgb - klim_frek dapat dicapai +0.624 [+0.594, +0.655]
+  a = 0.3: xgb - klim_frek dapat dicapai +0.442 [+0.422, +0.465]
+  a = 0.5: xgb - klim_frek dapat dicapai +0.287 [+0.261, +0.313]
+
+====================================================================================================
+A5. Aturan siaga kausal: hit rate / FAR / bagian siaga terwujud (rata-rata tahun)
+====================================================================================================
+
+--- biasa (S1 2020-2025)
+  (a) ambang = skor yang menyiagakan 10 % prakiraan luar-lipatan tahun latih
+    xgb            hit 0.365  FAR 0.658  siaga 5.1%  (siaga per tahun 4% 1% 0% 13% 6% 6%)
+    klim_frek      hit 0.434  FAR 0.808  siaga 10.7%  (siaga per tahun 7% 10% 12% 12% 12% 11%)
+    klimatologi    hit 0.265  FAR 0.869  siaga 10.1%  (siaga per tahun 10% 10% 10% 10% 10% 10%)
+    log_klim_jeda  hit 0.334  FAR 0.790  siaga 6.5%  (siaga per tahun 5% 5% 3% 12% 8% 7%)
+  (b) 10 % kabupaten tertinggi tiap bulan
+    xgb            hit 0.405  FAR 0.868  siaga 10.0%
+    klim_frek      hit 0.282  FAR 0.894  siaga 10.0%
+    klimatologi    hit 0.184  FAR 0.928  siaga 10.0%
+    log_klim_jeda  hit 0.314  FAR 0.892  siaga 10.0%
+    rf             hit 0.435  FAR 0.858  siaga 10.0%
+    mlp            hit 0.413  FAR 0.868  siaga 10.0%
+
+--- ekstrem (S2 2014, 2015, 2019)
+  (a) ambang = skor yang menyiagakan 10 % prakiraan luar-lipatan tahun latih
+    xgb            hit 0.732  FAR 0.379  siaga 22.1%  (siaga per tahun 29% 15% 22%)
+    klim_frek      hit 0.426  FAR 0.261  siaga 10.6%  (siaga per tahun 11% 10% 10%)
+    klimatologi    hit 0.349  FAR 0.363  siaga 10.1%  (siaga per tahun 10% 10% 10%)
+    log_klim_jeda  hit 0.602  FAR 0.352  siaga 17.2%  (siaga per tahun 20% 16% 16%)
+  (b) 10 % kabupaten tertinggi tiap bulan
+    xgb            hit 0.244  FAR 0.551  siaga 10.0%
+    klim_frek      hit 0.219  FAR 0.593  siaga 10.0%
+    klimatologi    hit 0.202  FAR 0.626  siaga 10.0%
+    log_klim_jeda  hit 0.213  FAR 0.607  siaga 10.0%
+    rf             hit 0.241  FAR 0.558  siaga 10.0%
+    mlp            hit 0.239  FAR 0.558  siaga 10.0%
+
+selesai.
+exit 0

@@ -1,0 +1,46 @@
+cek ap_cepat = sklearn: ok
+S1 2020: ambang dari 2012-2019
+S1 2021: ambang dari 2012-2020
+S1 2022: ambang dari 2012-2021
+S1 2023: ambang dari 2012-2022
+S1 2024: ambang dari 2012-2023
+S1 2025: ambang dari 2012-2024
+S2 2015: ambang dari 2012-2025
+S2 2014: ambang dari 2012-2025
+S2 2019: ambang dari 2012-2025
+baris label ulang 107568; y kepekaan = y dihitung ulang: 1.0000
+====================================================================================================
+C5. Tabel 2 (benih 42) dengan label baku dan label ulang per lipatan
+====================================================================================================
+
+--- y_kabupaten, rujukan EF-1m
+  label baku (ambang 2012-2025)                411 kab, prev 4.02%, AP EF-1m 0.245
+      rf   +0.043 [+0.016, +0.071]  dua tahap [-0.013, +0.098]
+      xgb  +0.031 [-0.002, +0.066]  dua tahap [-0.031, +0.101]
+      mlp  +0.012 [-0.021, +0.042]  dua tahap [-0.044, +0.076]
+      S2: 2015 xgb +0.102; 2014 xgb -0.046; 2019 xgb +0.071
+  label ulang, kabupaten tetap (ada_positif baku) 411 kab, prev 3.73%, AP EF-1m 0.247
+      rf   +0.031 [-0.001, +0.063]  dua tahap [-0.020, +0.083]
+      xgb  +0.028 [-0.014, +0.069]  dua tahap [-0.041, +0.113]
+      mlp  -0.007 [-0.042, +0.026]  dua tahap [-0.056, +0.052]
+      S2: 2015 xgb +0.074; 2014 xgb -0.062; 2019 xgb +0.047
+  label ulang, kabupaten per lipatan           409 kab, prev 3.75%, AP EF-1m 0.247
+      rf   +0.031 [-0.003, +0.065]  dua tahap [-0.021, +0.082]
+      xgb  +0.028 [-0.016, +0.071]  dua tahap [-0.040, +0.118]
+      mlp  -0.007 [-0.044, +0.027]  dua tahap [-0.060, +0.054]
+      S2: 2015 xgb +0.070; 2014 xgb -0.062; 2019 xgb +0.046
+      kabupaten per lipatan: 2020 407  2021 407  2022 408  2023 408  2024 409  2025 409
+
+--- y_gabungan, rujukan EF-3m
+  label baku (ambang 2012-2025)                498 kab, prev 6.13%, AP EF-3m 0.688
+      rf   +0.050 [+0.032, +0.067]  dua tahap [+0.019, +0.084]
+      xgb  +0.038 [+0.021, +0.054]  dua tahap [+0.005, +0.074]
+      mlp  +0.026 [+0.007, +0.044]  dua tahap [-0.006, +0.058]
+      S2: 2015 xgb +0.048; 2014 xgb +0.009; 2019 xgb +0.033
+  label ulang                                  498 kab, prev 5.39%, AP EF-3m 0.694
+      rf   +0.053 [+0.033, +0.073]  dua tahap [+0.013, +0.099]
+      xgb  +0.043 [+0.024, +0.061]  dua tahap [+0.005, +0.083]
+      mlp  +0.031 [+0.010, +0.051]  dua tahap [-0.005, +0.070]
+      S2: 2015 xgb +0.046; 2014 xgb +0.004; 2019 xgb +0.031
+
+selesai.

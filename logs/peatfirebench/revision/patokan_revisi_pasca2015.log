@@ -1,0 +1,20 @@
+====================================================================================================
+C7. Platt pasca-2015 lawan Platt semua tahun lawan mentah, per kabupaten, gradient boosting
+====================================================================================================
+  S1 2020: prevalensi 3.49%  tahun dalam pasca-2015 4  mentah: ECE 0.0403 rata-rata p 7.52%  platt_semua: ECE 0.0524 rata-rata p 8.73%  platt_pasca2015: ECE 0.0193 rata-rata p 5.40%
+  S1 2021: prevalensi 1.68%  tahun dalam pasca-2015 5  mentah: ECE 0.0194 rata-rata p 3.63%  platt_semua: ECE 0.0312 rata-rata p 4.80%  platt_pasca2015: ECE 0.0121 rata-rata p 2.89%
+  S1 2022: prevalensi 1.07%  tahun dalam pasca-2015 6  mentah: ECE 0.0068 rata-rata p 1.68%  platt_semua: ECE 0.0136 rata-rata p 2.35%  platt_pasca2015: ECE 0.0045 rata-rata p 1.32%
+  S1 2023: prevalensi 11.58%  tahun dalam pasca-2015 7  mentah: ECE 0.0273 rata-rata p 8.84%  platt_semua: ECE 0.0212 rata-rata p 9.91%  platt_pasca2015: ECE 0.0457 rata-rata p 7.01%
+  S1 2024: prevalensi 3.75%  tahun dalam pasca-2015 8  mentah: ECE 0.0213 rata-rata p 5.89%  platt_semua: ECE 0.0319 rata-rata p 6.94%  platt_pasca2015: ECE 0.0115 rata-rata p 4.90%
+  S1 2025: prevalensi 2.55%  tahun dalam pasca-2015 9  mentah: ECE 0.0237 rata-rata p 4.92%  platt_semua: ECE 0.0345 rata-rata p 5.99%  platt_pasca2015: ECE 0.0184 rata-rata p 4.38%
+  S2 2015: prevalensi 22.63%  tahun dalam pasca-2015 10  mentah: ECE 0.0579 rata-rata p 16.84%  platt_semua: ECE 0.0326 rata-rata p 19.37%  platt_pasca2015: ECE 0.0519 rata-rata p 17.44%
+  S2 2014: prevalensi 17.70%  tahun dalam pasca-2015 10  mentah: ECE 0.1021 rata-rata p 7.50%  platt_semua: ECE 0.0830 rata-rata p 9.42%  platt_pasca2015: ECE 0.0971 rata-rata p 7.99%
+  S2 2019: prevalensi 15.69%  tahun dalam pasca-2015 9  mentah: ECE 0.0205 rata-rata p 13.64%  platt_semua: ECE 0.0111 rata-rata p 16.13%  platt_pasca2015: ECE 0.0320 rata-rata p 12.49%
+
+  rata-rata tahun biasa: mentah ECE 0.0232  platt_semua ECE 0.0308  platt_pasca2015 ECE 0.0186
+  tahun dengan |rata-rata p - prevalensi| lebih kecil (pasca-2015 lawan mentah): 5 dari 6
+
+  rata-rata tahun ekstrem: mentah ECE 0.0602  platt_semua ECE 0.0422  platt_pasca2015 ECE 0.0603
+  tahun dengan |rata-rata p - prevalensi| lebih kecil (pasca-2015 lawan mentah): 2 dari 3
+
+selesai.

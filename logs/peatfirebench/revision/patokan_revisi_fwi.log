@@ -1,0 +1,207 @@
+201201
+201202
+201203
+201204
+201205
+201206
+201207
+201208
+201209
+201210
+201211
+201212
+201301
+201302
+201303
+201304
+201305
+201306
+201307
+201308
+201309
+201310
+201311
+201312
+201401
+201402
+201403
+201404
+201405
+201406
+201407
+201408
+201409
+201410
+201411
+201412
+201501
+201502
+201503
+201504
+201505
+201506
+201507
+201508
+201509
+201510
+201511
+201512
+201601
+201602
+201603
+201604
+201605
+201606
+201607
+201608
+201609
+201610
+201611
+201612
+201701
+201702
+201703
+201704
+201705
+201706
+201707
+201708
+201709
+201710
+201711
+201712
+201801
+201802
+201803
+201804
+201805
+201806
+201807
+201808
+201809
+201810
+201811
+201812
+201901
+201902
+201903
+201904
+201905
+201906
+201907
+201908
+201909
+201910
+201911
+201912
+202001
+202002
+202003
+202004
+202005
+202006
+202007
+202008
+202009
+202010
+202011
+202012
+202101
+202102
+202103
+202104
+202105
+202106
+202107
+202108
+202109
+202110
+202111
+202112
+202201
+202202
+202203
+202204
+202205
+202206
+202207
+202208
+202209
+202210
+202211
+202212
+202301
+202302
+202303
+202304
+202305
+202306
+202307
+202308
+202309
+202310
+202311
+202312
+202401
+202402
+202403
+202404
+202405
+202406
+202407
+202408
+202409
+202410
+202411
+202412
+202501
+202502
+202503
+202504
+202505
+202506
+202507
+202508
+202509
+202510
+202511
+202512
+ISI: 84336 baris; cek FWI lawan berkas komponen: selisih maks 0.00e+00
+baris tanpa ISI: 0 (diisi median kabupaten-bulan)
+  y_kabupaten selesai
+  y_gabungan selesai
+cek klim_saja dihitung ulang lawan berkas lama: selisih maks 1.11e-16
+
+=== y_kabupaten: S1 2020-2025, selisih terhadap klim_saja [95 %, 1.000]
+  klim_saja: dalam-tahun 0.150, gabungan 0.125
+  klim_dc     dalam-tahun -0.005 (Hasil_Patokan_5)           gabungan +0.034 [+0.027, +0.043]
+  klim_dmc    dalam-tahun +0.020 (Hasil_Patokan_5)           gabungan +0.053 [+0.044, +0.064]
+  klim_ffmc   dalam-tahun +0.034 (Hasil_Patokan_5)           gabungan +0.102 [+0.089, +0.118]
+  klim_bui    dalam-tahun +0.018 (Hasil_Patokan_5)           gabungan +0.054 [+0.045, +0.065]
+  klim_fwi    dalam-tahun +0.031 (Hasil_Patokan_5)           gabungan +0.070 [+0.061, +0.083]
+  klim_semua  dalam-tahun +0.027 (Hasil_Patokan_5)           gabungan +0.068 [+0.057, +0.081]
+  klim_isi    dalam-tahun +0.044 [+0.032, +0.061]            gabungan +0.103 [+0.091, +0.120]
+  S2, klim_isi - klim_saja dalam tahun itu [95 %, 300]:
+    2015: +0.034 [+0.011, +0.060]
+    2014: -0.035 [-0.067, -0.003]
+    2019: -0.083 [-0.108, -0.056]
+
+=== y_gabungan: S1 2020-2025, selisih terhadap klim_saja [95 %, 1.000]
+  klim_saja: dalam-tahun 0.488, gabungan 0.457
+  klim_dc     dalam-tahun -0.018 (Hasil_Patokan_5)           gabungan +0.001 [-0.017, +0.016]
+  klim_dmc    dalam-tahun +0.002 (Hasil_Patokan_5)           gabungan +0.021 [+0.007, +0.033]
+  klim_ffmc   dalam-tahun +0.031 (Hasil_Patokan_5)           gabungan +0.072 [+0.061, +0.086]
+  klim_bui    dalam-tahun +0.002 (Hasil_Patokan_5)           gabungan +0.023 [+0.009, +0.035]
+  klim_fwi    dalam-tahun -0.021 (Hasil_Patokan_5)           gabungan +0.004 [-0.014, +0.019]
+  klim_semua  dalam-tahun -0.019 (Hasil_Patokan_5)           gabungan +0.012 [-0.006, +0.028]
+  klim_isi    dalam-tahun +0.017 [+0.003, +0.029]            gabungan +0.054 [+0.042, +0.067]
+  S2, klim_isi - klim_saja dalam tahun itu [95 %, 300]:
+    2015: -0.017 [-0.039, +0.002]
+    2014: -0.037 [-0.057, -0.017]
+    2019: -0.077 [-0.097, -0.054]
+
+DC bulanan GFWED, rerata kabupaten:
+  KalimantanTengah: September 2015 367; September 2016-2025 rerata 89, maks 279 (2019-09)
+  SumateraSelatan: September 2015 413; September 2016-2025 rerata 131, maks 348 (2019-09)
+
+selesai.

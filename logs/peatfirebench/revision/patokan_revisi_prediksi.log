@@ -1,0 +1,18 @@
+y_kabupaten: baseline S1/S2 selesai
+y_gabungan: baseline S1/S2 selesai
+cek klimatologi rata-rata dihitung ulang vs berkas lama: selisih maks 4.55e-13
+y_kabupaten Q 2020
+y_kabupaten Q 2021
+y_kabupaten Q 2022
+y_kabupaten Q 2023
+y_kabupaten Q 2024
+y_kabupaten Q 2025
+y_gabungan Q 2020
+y_gabungan Q 2021
+y_gabungan Q 2022
+y_gabungan Q 2023
+y_gabungan Q 2024
+y_gabungan Q 2025
+cek reproduksi xgb S2 2015 per kabupaten: 5976 baris, selisih maks 2.98e-08
+tersimpan: DL_FIRE_NASIONAL\patokan_revisi_prediksi.csv  baris 191232  (S1/S2 119520, Q 71712)
+prediksi exit 0
