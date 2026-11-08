@@ -1,0 +1,40 @@
+Tahun  ONI AMJ  fase      ONI ASO  DMI MJ  fase IOD | per kab: prev  GB/EF-L  EF-L/kal | nasional: prev  GB/EF-L  EF-L/kal
+-- MODIS maju
+2008  -0.85   La Nina   -0.25    +0.20  netral   |   4.81%  +0.035   +0.226   |   6.99%  -0.011   +0.081
+2009  +0.03   netral    +0.66    +0.18  netral   |  10.71%  -0.003   -0.013   |  11.43%  -0.003   -0.003
+2010  -0.16   netral    -1.43    -0.08  netral   |   2.10%  -0.468   +0.543   |   3.93%  +0.084   +0.258
+2011  -0.50   La Nina   -0.76    -0.02  netral   |   6.95%  +0.032   +0.048   |   9.99%  +0.073   -0.002
+2012  -0.18   netral    +0.37    -0.18  netral   |   8.53%  +0.059   -0.071   |  10.74%  +0.067   -0.022
+2013  -0.30   netral    -0.32    -0.50  negatif  |   4.80%  +0.087   +0.031   |   7.95%  +0.131   -0.079
+2014  +0.35   netral    +0.24    -0.06  netral   |  11.70%  +0.113   -0.052   |  12.13%  +0.065   +0.018
+2015  +1.04   El Nino   +2.02    +0.27  netral   |  15.94%  +0.089   +0.101   |  13.72%  +0.104   +0.093
+2016  +0.57   El Nino   -0.42    -0.28  netral   |   2.27%  -0.178   +0.415   |   4.00%  +0.006   +0.205
+2017  +0.35   netral    -0.23    +0.48  positif  |   2.08%  -0.583   +0.427   |   3.95%  -0.095   +0.329
+2018  -0.07   netral    +0.52    +0.14  netral   |   5.30%  +0.025   +0.055   |   6.96%  +0.093   +0.099
+2019  +0.71   El Nino   +0.31    +0.57  positif  |   9.67%  +0.054   -0.013   |  10.27%  +0.081   +0.071
+-- VIIRS
+2020  +0.04   netral    -0.77    +0.38  netral   |   3.49%  -0.061   +0.451   |   5.29%  -0.269   +0.295
+2021  -0.40   netral    -0.64    +0.00  netral   |   1.68%  +0.077   +0.624   |   4.32%  +0.117   +0.363
+2022  -0.83   La Nina   -0.87    -0.23  netral   |   1.07%  +0.205   +0.703   |   3.33%  +0.219   +0.455
+2023  +0.46   netral    +1.50    +0.55  positif  |  11.58%  +0.171   -0.051   |  11.43%  +0.004   +0.063
+2024  +0.43   netral    -0.12    +0.25  netral   |   3.75%  -0.046   +0.200   |   6.58%  +0.027   +0.081
+2025  -0.04   netral    -0.43    +0.05  netral   |   2.55%  +0.053   +0.327   |   5.82%  +0.125   +0.133
+
+Rata-rata BSS per fase (n tahun)
+  MODIS maju ONI AMJ  El Nino  n  3: per kab GB/EF-L -0.012 EF-L/kal +0.168 | nasional GB/EF-L +0.064 EF-L/kal +0.123  tahun 2015, 2016, 2019
+  MODIS maju ONI AMJ  La Nina  n  2: per kab GB/EF-L +0.034 EF-L/kal +0.137 | nasional GB/EF-L +0.031 EF-L/kal +0.040  tahun 2008, 2011
+  MODIS maju ONI AMJ  netral   n  7: per kab GB/EF-L -0.110 EF-L/kal +0.131 | nasional GB/EF-L +0.049 EF-L/kal +0.086  tahun 2009, 2010, 2012, 2013, 2014, 2017, 2018
+  MODIS maju DMI MJ   negatif  n  1: per kab GB/EF-L +0.087 EF-L/kal +0.031 | nasional GB/EF-L +0.131 EF-L/kal -0.079  tahun 2013
+  MODIS maju DMI MJ   netral   n  9: per kab GB/EF-L -0.033 EF-L/kal +0.139 | nasional GB/EF-L +0.053 EF-L/kal +0.081  tahun 2008, 2009, 2010, 2011, 2012, 2014, 2015, 2016, 2018
+  MODIS maju DMI MJ   positif  n  2: per kab GB/EF-L -0.264 EF-L/kal +0.207 | nasional GB/EF-L -0.007 EF-L/kal +0.200  tahun 2017, 2019
+  VIIRS      ONI AMJ  La Nina  n  1: per kab GB/EF-L +0.205 EF-L/kal +0.703 | nasional GB/EF-L +0.219 EF-L/kal +0.455  tahun 2022
+  VIIRS      ONI AMJ  netral   n  5: per kab GB/EF-L +0.039 EF-L/kal +0.310 | nasional GB/EF-L +0.001 EF-L/kal +0.187  tahun 2020, 2021, 2023, 2024, 2025
+  VIIRS      DMI MJ   netral   n  5: per kab GB/EF-L +0.046 EF-L/kal +0.461 | nasional GB/EF-L +0.044 EF-L/kal +0.265  tahun 2020, 2021, 2022, 2024, 2025
+  VIIRS      DMI MJ   positif  n  1: per kab GB/EF-L +0.171 EF-L/kal -0.051 | nasional GB/EF-L +0.004 EF-L/kal +0.063  tahun 2023
+  keduanya   ONI AMJ  El Nino  n  3: per kab GB/EF-L -0.012 EF-L/kal +0.168 | nasional GB/EF-L +0.064 EF-L/kal +0.123  tahun 2015, 2016, 2019
+  keduanya   ONI AMJ  La Nina  n  3: per kab GB/EF-L +0.091 EF-L/kal +0.326 | nasional GB/EF-L +0.094 EF-L/kal +0.178  tahun 2008, 2011, 2022
+  keduanya   ONI AMJ  netral   n 12: per kab GB/EF-L -0.048 EF-L/kal +0.206 | nasional GB/EF-L +0.029 EF-L/kal +0.128  tahun 2009, 2010, 2012, 2013, 2014, 2017, 2018, 2020, 2021, 2023, 2024, 2025
+  keduanya   DMI MJ   negatif  n  1: per kab GB/EF-L +0.087 EF-L/kal +0.031 | nasional GB/EF-L +0.131 EF-L/kal -0.079  tahun 2013
+  keduanya   DMI MJ   netral   n 14: per kab GB/EF-L -0.005 EF-L/kal +0.254 | nasional GB/EF-L +0.050 EF-L/kal +0.147  tahun 2008, 2009, 2010, 2011, 2012, 2014, 2015, 2016, 2018, 2020, 2021, 2022, 2024, 2025
+  keduanya   DMI MJ   positif  n  3: per kab GB/EF-L -0.119 EF-L/kal +0.121 | nasional GB/EF-L -0.003 EF-L/kal +0.154  tahun 2017, 2019, 2023
+selesai.

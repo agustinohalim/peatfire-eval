@@ -1,0 +1,52 @@
+DC bulan lalu hilang 0.00% (diisi median kabupaten)
+
+M1 koefisien per lipatan (EF-L ulang | EF-D | EF-LD)
+  2020: EF-L +0.657 +0.705 | EF-D +0.662 DC +0.941 | EF-LD +0.679 nas +0.464 DC +0.665
+  2021: EF-L +0.686 +0.797 | EF-D +0.685 DC +1.007 | EF-LD +0.708 nas +0.544 DC +0.667
+  2022: EF-L +0.709 +0.862 | EF-D +0.699 DC +1.052 | EF-LD +0.729 nas +0.613 DC +0.654
+  2023: EF-L +0.730 +0.922 | EF-D +0.715 DC +1.122 | EF-LD +0.750 nas +0.655 DC +0.666
+  2024: EF-L +0.759 +0.949 | EF-D +0.740 DC +1.110 | EF-LD +0.778 nas +0.688 DC +0.656
+  2025: EF-L +0.776 +0.975 | EF-D +0.755 DC +1.141 | EF-LD +0.797 nas +0.717 DC +0.680
+
+y_gabungan: rujukan pasangan EF-3m; kabupaten 498; baris 35,856; EF-L ulang lawan tersimpan, selisih maks 1.11e-16
+
+M1 (a) rata-rata rasio [2 tahap] t95; (b) satu rasio [2 tahap]; (c) median, tahun > 0 (n = 6)
+  efd           atas ef1_tingkat     (a) -0.0964 [-0.1666, -0.0452] t95 [-0.1638, -0.0290]  (b) -0.0916 [-0.1608, -0.0452]  (c) -0.0830 0/6  per tahun -0.090 -0.204 -0.136 -0.076 -0.035 -0.038
+  efd           atas klim_frek       (a) +0.1646 [+0.0597, +0.2789] t95 [+0.0137, +0.3156]  LOLOS  (b) +0.1664 [+0.0558, +0.2809]  (c) +0.1658 5/6  per tahun +0.232 +0.234 +0.381 -0.008 +0.049 +0.100
+  efd           atas rujukan_peluang (a) +0.1686 [+0.0669, +0.2848] t95 [+0.0183, +0.3189]  LOLOS  (b) +0.1698 [+0.0634, +0.2821]  (c) +0.1826 5/6  per tahun +0.232 +0.234 +0.381 -0.008 +0.039 +0.134
+  efld          atas ef1_tingkat     (a) +0.0335 [+0.0123, +0.0535] t95 [+0.0088, +0.0581]  LOLOS  (b) +0.0298 [+0.0097, +0.0518]  (c) +0.0332 6/6  per tahun +0.031 +0.014 +0.061 +0.002 +0.058 +0.036
+  efld          atas klim_frek       (a) +0.2568 [+0.1383, +0.3873] t95 [+0.0870, +0.4265]  LOLOS  (b) +0.2591 [+0.1349, +0.3900]  (c) +0.2404 6/6  per tahun +0.317 +0.372 +0.488 +0.065 +0.134 +0.164
+  efld          atas rujukan_peluang (a) +0.2605 [+0.1456, +0.3901] t95 [+0.0924, +0.4285]  LOLOS  (b) +0.2621 [+0.1397, +0.3905]  (c) +0.2561 6/6  per tahun +0.317 +0.372 +0.488 +0.065 +0.125 +0.195
+  xgb           atas efld            (a) +0.0044 [-0.1362, +0.1203] t95 [-0.1738, +0.1826]  (b) -0.0088 [-0.1478, +0.1109]  (c) +0.0474 4/6  per tahun -0.309 +0.105 +0.168 +0.002 -0.033 +0.093
+  rf            atas efld            (a) +0.0254 [-0.0325, +0.0925] t95 [-0.0498, +0.1005]  (b) +0.0169 [-0.0352, +0.0863]  (c) +0.0247 3/6  per tahun -0.060 +0.059 +0.112 -0.010 -0.040 +0.091
+  log_ef1_fdrs  atas ef1_tingkat     (a) -0.2436 [-0.3920, -0.1292] t95 [-0.4143, -0.0730]  (b) -0.2159 [-0.3671, -0.1135]  (c) -0.2159 0/6  per tahun -0.244 -0.379 -0.484 -0.055 -0.112 -0.188
+  ef1_cuaca     atas ef1_tingkat     (a) -0.1630 [-0.2608, -0.0918] t95 [-0.2639, -0.0620]  (b) -0.1470 [-0.2535, -0.0738]  (c) -0.1525 0/6  per tahun -0.175 -0.299 -0.238 -0.030 -0.130 -0.106
+
+M2c galat Monte Carlo: batas dua tahap per jalan (rata-rata rasio | satu rasio)
+  benih 2026 selesai
+  benih 1 selesai
+  benih 2 selesai
+  benih 3 selesai
+  benih 4 selesai
+  10.000 ulangan selesai
+  xgb           atas klim_frek        rata-rata rasio bawah +0.1103..+0.1207 atas +0.4072..+0.4351 | satu rasio bawah +0.1053..+0.1165 atas +0.4054..+0.4360
+  rf            atas klim_frek        rata-rata rasio bawah +0.1336..+0.1478 atas +0.4083..+0.4239 | satu rasio bawah +0.1294..+0.1402 atas +0.4100..+0.4296
+  ef1_tingkat   atas klim_frek        rata-rata rasio bawah +0.1122..+0.1180 atas +0.3460..+0.3627 | satu rasio bawah +0.1117..+0.1191 atas +0.3510..+0.3649
+  xgb           atas rujukan_peluang  rata-rata rasio bawah +0.1111..+0.1243 atas +0.4095..+0.4356 | satu rasio bawah +0.1054..+0.1191 atas +0.4092..+0.4386
+  xgb           atas ef1_tingkat      rata-rata rasio bawah -0.1075..-0.0941 atas +0.1448..+0.1585 | satu rasio bawah -0.1139..-0.0962 atas +0.1345..+0.1424
+  xgb_setel     atas ef1_tingkat      rata-rata rasio bawah -0.0277..-0.0175 atas +0.1516..+0.1644 | satu rasio bawah -0.0318..-0.0237 atas +0.1429..+0.1535
+  rf            atas ef1_tingkat      rata-rata rasio bawah -0.0055..-0.0002 atas +0.1221..+0.1278 | satu rasio bawah -0.0100..-0.0050 atas +0.1114..+0.1192
+  log_ef1_jeda  atas ef1_tingkat      rata-rata rasio bawah -0.0653..-0.0609 atas +0.0735..+0.0806 | satu rasio bawah -0.0573..-0.0462 atas +0.0811..+0.0865
+  mlp           atas ef1_tingkat      rata-rata rasio bawah -0.3949..-0.3559 atas +0.1448..+0.1545 | satu rasio bawah -0.4096..-0.3859 atas +0.1393..+0.1439
+  xgb_nas       atas ef1_tingkat      rata-rata rasio bawah -0.0312..-0.0155 atas +0.1471..+0.1548 | satu rasio bawah -0.0358..-0.0281 atas +0.1347..+0.1469
+  efd           atas ef1_tingkat      rata-rata rasio bawah -0.1666..-0.1573 atas -0.0483..-0.0446 | satu rasio bawah -0.1608..-0.1485 atas -0.0486..-0.0446
+  efd           atas klim_frek        rata-rata rasio bawah +0.0587..+0.0604 atas +0.2701..+0.2849 | satu rasio bawah +0.0544..+0.0579 atas +0.2728..+0.2859
+  efd           atas rujukan_peluang  rata-rata rasio bawah +0.0615..+0.0669 atas +0.2755..+0.2861 | satu rasio bawah +0.0565..+0.0634 atas +0.2768..+0.2872
+  efld          atas ef1_tingkat      rata-rata rasio bawah +0.0112..+0.0124 atas +0.0535..+0.0552 | satu rasio bawah +0.0083..+0.0097 atas +0.0518..+0.0534
+  efld          atas klim_frek        rata-rata rasio bawah +0.1355..+0.1438 atas +0.3718..+0.3887 | satu rasio bawah +0.1296..+0.1393 atas +0.3765..+0.3902
+  efld          atas rujukan_peluang  rata-rata rasio bawah +0.1395..+0.1456 atas +0.3768..+0.3901 | satu rasio bawah +0.1347..+0.1404 atas +0.3772..+0.3905
+  xgb           atas efld             rata-rata rasio bawah -0.1415..-0.1280 atas +0.1124..+0.1261 | satu rasio bawah -0.1478..-0.1365 atas +0.1011..+0.1109
+  rf            atas efld             rata-rata rasio bawah -0.0364..-0.0325 atas +0.0876..+0.0945 | satu rasio bawah -0.0404..-0.0323 atas +0.0778..+0.0863
+  log_ef1_fdrs  atas ef1_tingkat      rata-rata rasio bawah -0.3995..-0.3805 atas -0.1292..-0.1228 | satu rasio bawah -0.3671..-0.3553 atas -0.1145..-0.1102
+  ef1_cuaca     atas ef1_tingkat      rata-rata rasio bawah -0.2608..-0.2450 atas -0.0940..-0.0854 | satu rasio bawah -0.2535..-0.2368 atas -0.0796..-0.0701
+selesai.

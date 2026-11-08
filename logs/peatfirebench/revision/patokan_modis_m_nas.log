@@ -1,0 +1,65 @@
+MODIS/VIIRS 2012-2025 r 0.195; F bawaan 2; lantai dipakai 2; kabupaten 498; sasaran y_gabungan; rujukan pasangan ef3; benih [42, 1, 2, 3, 4, 5]
+cek ap_cepat = sklearn: ok
+
+====================================================================================================
+M2 R  y_gabungan  lantai 2  (prakiraan maju 2008-2019, ambang dari tahun latih), n = 12
+====================================================================================================
+  R 2008: latih 5 tahun, 29,382 baris; uji 5,976, prevalensi 6.99%; EF-P ef1_halus
+  R 2009: latih 6 tahun, 35,358 baris; uji 5,976, prevalensi 11.43%; EF-P ef1_halus
+  R 2010: latih 7 tahun, 41,334 baris; uji 5,976, prevalensi 3.93%; EF-P ef1_halus
+  R 2011: latih 8 tahun, 47,310 baris; uji 5,976, prevalensi 9.99%; EF-P ef1_halus
+  R 2012: latih 9 tahun, 53,286 baris; uji 5,976, prevalensi 10.74%; EF-P ef1_halus
+  R 2013: latih 10 tahun, 59,262 baris; uji 5,976, prevalensi 7.95%; EF-P ef1_halus
+  R 2014: latih 11 tahun, 65,238 baris; uji 5,976, prevalensi 12.13%; EF-P ef1_halus
+  R 2015: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 13.72%; EF-P ef1_halus
+  R 2016: latih 13 tahun, 77,190 baris; uji 5,976, prevalensi 4.00%; EF-P ef1_halus
+  R 2017: latih 14 tahun, 83,166 baris; uji 5,976, prevalensi 3.95%; EF-P ef1_halus
+  R 2018: latih 15 tahun, 89,142 baris; uji 5,976, prevalensi 6.96%; EF-P ef1_halus
+  R 2019: latih 16 tahun, 95,118 baris; uji 5,976, prevalensi 10.27%; EF-P ef1_halus
+  (44 s) kabupaten 498; prevalensi per tahun 2008:6.99% 2009:11.43% 2010:3.93% 2011:9.99% 2012:10.74% 2013:7.95% 2014:12.13% 2015:13.72% 2016:4.00% 2017:3.95% 2018:6.96% 2019:10.27%
+
+M2a galat Monte Carlo: dua tahap, lima benih x 1.000 dan 10.000 ulangan benih B.SEED
+    (rata-rata rasio [2 tahap] t95 | satu rasio [2 tahap])
+  gb/efl: rata-rata rasio +0.0496 t95 [+0.0095, +0.0897]  satu rasio +0.0553
+  gb/kalender: rata-rata rasio +0.1366 t95 [+0.0743, +0.1989]  satu rasio +0.1397
+  gb/efp: rata-rata rasio +0.1449 t95 [+0.0639, +0.2259]  satu rasio +0.1532
+  efl/kalender: rata-rata rasio +0.0874 t95 [+0.0103, +0.1645]  satu rasio +0.0894
+    benih 2026      gb/efl       rata-rata rasio [+0.0081, +0.0880]  satu rasio [+0.0199, +0.0897]
+    benih 2026      gb/kalender  rata-rata rasio [+0.0801, +0.2027]  satu rasio [+0.0818, +0.2052]
+    benih 2026      gb/efp       rata-rata rasio [+0.0772, +0.2270]  satu rasio [+0.0802, +0.2373]
+    benih 2026      efl/kalender  rata-rata rasio [+0.0245, +0.1656]  satu rasio [+0.0286, +0.1642]
+    benih 1         gb/efl       rata-rata rasio [+0.0125, +0.0852]  satu rasio [+0.0226, +0.0861]
+    benih 1         gb/kalender  rata-rata rasio [+0.0826, +0.1926]  satu rasio [+0.0848, +0.1954]
+    benih 1         gb/efp       rata-rata rasio [+0.0766, +0.2140]  satu rasio [+0.0809, +0.2248]
+    benih 1         efl/kalender  rata-rata rasio [+0.0236, +0.1532]  satu rasio [+0.0287, +0.1535]
+    benih 2         gb/efl       rata-rata rasio [+0.0024, +0.0834]  satu rasio [+0.0138, +0.0840]
+    benih 2         gb/kalender  rata-rata rasio [+0.0820, +0.1939]  satu rasio [+0.0818, +0.1964]
+    benih 2         gb/efp       rata-rata rasio [+0.0782, +0.2160]  satu rasio [+0.0807, +0.2243]
+    benih 2         efl/kalender  rata-rata rasio [+0.0288, +0.1522]  satu rasio [+0.0297, +0.1533]
+    benih 3         gb/efl       rata-rata rasio [+0.0082, +0.0846]  satu rasio [+0.0197, +0.0860]
+    benih 3         gb/kalender  rata-rata rasio [+0.0820, +0.1973]  satu rasio [+0.0840, +0.2011]
+    benih 3         gb/efp       rata-rata rasio [+0.0793, +0.2215]  satu rasio [+0.0830, +0.2350]
+    benih 3         efl/kalender  rata-rata rasio [+0.0252, +0.1596]  satu rasio [+0.0293, +0.1613]
+    benih 4         gb/efl       rata-rata rasio [+0.0096, +0.0849]  satu rasio [+0.0198, +0.0875]
+    benih 4         gb/kalender  rata-rata rasio [+0.0837, +0.1934]  satu rasio [+0.0855, +0.1966]
+    benih 4         gb/efp       rata-rata rasio [+0.0786, +0.2210]  satu rasio [+0.0824, +0.2289]
+    benih 4         efl/kalender  rata-rata rasio [+0.0273, +0.1595]  satu rasio [+0.0296, +0.1588]
+    10.000 ulangan  gb/efl       rata-rata rasio [+0.0086, +0.0851]  satu rasio [+0.0194, +0.0864]
+    10.000 ulangan  gb/kalender  rata-rata rasio [+0.0798, +0.1967]  satu rasio [+0.0820, +0.1992]
+    10.000 ulangan  gb/efp       rata-rata rasio [+0.0752, +0.2210]  satu rasio [+0.0789, +0.2305]
+    10.000 ulangan  efl/kalender  rata-rata rasio [+0.0239, +0.1601]  satu rasio [+0.0276, +0.1590]
+
+  rentang batas bawah atas enam jalan:
+    gb/efl       rata-rata rasio +0.0024 .. +0.0125  semua > 0: True   satu rasio +0.0138 .. +0.0226  semua > 0: True
+    gb/kalender  rata-rata rasio +0.0798 .. +0.0837  semua > 0: True   satu rasio +0.0818 .. +0.0855  semua > 0: True
+    gb/efp       rata-rata rasio +0.0752 .. +0.0793  semua > 0: True   satu rasio +0.0789 .. +0.0830  semua > 0: True
+    efl/kalender  rata-rata rasio +0.0236 .. +0.0288  semua > 0: True   satu rasio +0.0276 .. +0.0297  semua > 0: True
+
+M2b bootstrap blok bergerak atas tahun uji (panjang 3, melingkar), kabupaten diambil ulang, 10.000 ulangan
+    gb/efl       rata-rata rasio +0.0496 [+0.0121, +0.0850]  satu rasio [+0.0217, +0.0858]
+    gb/kalender  rata-rata rasio +0.1366 [+0.0823, +0.1936]  satu rasio [+0.0861, +0.1935]
+    gb/efp       rata-rata rasio +0.1449 [+0.0768, +0.2178]  satu rasio [+0.0824, +0.2229]
+    efl/kalender  rata-rata rasio +0.0874 [+0.0116, +0.1660]  satu rasio [+0.0179, +0.1626]
+
+  per tahun (untuk M3): gb/efl 2008:-0.011 2009:-0.003 2010:+0.084 2011:+0.073 2012:+0.067 2013:+0.131 2014:+0.065 2015:+0.104 2016:+0.006 2017:-0.095 2018:+0.093 2019:+0.081; efl/kalender 2008:+0.081 2009:-0.003 2010:+0.258 2011:-0.002 2012:-0.022 2013:-0.079 2014:+0.018 2015:+0.093 2016:+0.205 2017:+0.329 2018:+0.099 2019:+0.071
+selesai.

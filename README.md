@@ -96,18 +96,18 @@ python patokan_nilai.py                            # Section 6.8 and Table 6: hi
 python patokan_fwi_komponen.py                     # Table 5: FWI System components (~1 h)
 ```
 
-### Revision analyses (versions 2.4.0 to 2.8.0)
+### Revision analyses (versions 2.4.0 to 2.9.0)
 
-The revised manuscript, *IndoFireBench: a district-month benchmark for fire forecasting in
-Indonesia, where much of the apparent skill is the year's fire level* (the benchmark is named PeatFireBench in this
+The revised manuscript, *Much of the probability skill of monthly district fire forecasts in Indonesia is
+the fire level: the IndoFireBench benchmark* (the benchmark is named PeatFireBench in this
 repository and its earlier versions), compares every model with a
 reference climatology computed from the training years only, on the same rows: the mean count
 (MC, the reference of version 2.3.0), the share of training years in which the district exceeded
 its threshold in that calendar month (EF-1m) or in a three-month window (EF-3m), a probability
 climatology chosen per fold on training years (EF-P), and EF-1m adjusted with last month's national
-detection count (EF-L). The analyses ran in twelve rounds (phases A to L; phase F in version 2.5.0, phase G in 2.6.0, phase H in 2.7.0, phases I to L in 2.8.0). For each round the design
+detection count (EF-L). The analyses ran in thirteen rounds (phases A to M; phase F in version 2.5.0, phase G in 2.6.0, phase H in 2.7.0, phases I to L in 2.8.0, phase M in 2.9.0). For each round the design
 and the decision rules were written and committed before any script ran; `registration/` holds
-those records with their results (in Indonesian, `Hasil_Patokan_6.md` to `Hasil_Patokan_17.md`).
+those records with their results (in Indonesian, `Hasil_Patokan_6.md` to `Hasil_Patokan_18.md`).
 Phase G tests EF-L on the MODIS years 2003-2011, which no earlier round had scored: the MODIS
 standard-processing archive (`MODIS_SP`) is downloaded with the same box and filter, and a panel is
 built with the same district polygons. Phase H repeats the MODIS test trained only on years before 2016
@@ -119,7 +119,10 @@ detectable difference. Phase J adds the only MODIS forecast (test years 2008-201
 the years before it), cross-validation with a one-year buffer after the test year, and peat districts on
 VIIRS. Phase K averages the forward forecast over the years in several ways (mean of yearly ratios, one
 ratio over all test rows, median year) and repeats it with stricter event floors; phase L does the same
-for the VIIRS probability results. The MODIS data are not included; the scripts below rebuild them.
+for the VIIRS probability results. Phase M adds two drought forms of EF-L on VIIRS (EF-D with the
+district's Drought Code of the month before in place of the national count, EF-LD with both), repeats the
+two-stage intervals with five bootstrap seeds, 10,000 draws and a moving-block year bootstrap, and lists the
+ENSO and dipole phase of every test year. The MODIS data are not included; the scripts below rebuild them.
 The commit identifiers in them refer to the authors' working repository; header paragraphs that
 named internal review files were shortened, and nothing else was changed. Logs are in
 `logs/peatfirebench/revision/`.
@@ -195,6 +198,11 @@ python -u patokan_modis_k.py y_kabupaten 5 > DL_FIRE_MODIS/patokan_modis_k_kab_l
 # phase L (Hasil_Patokan_17): averaging the VIIRS probability results over years
 python -u patokan_tingkat_l.py y_kabupaten > DL_FIRE_NASIONAL/penuh/patokan_tingkat_l_kab.log
 python -u patokan_tingkat_l.py y_gabungan  > DL_FIRE_NASIONAL/penuh/patokan_tingkat_l_nas.log
+# phase M (Hasil_Patokan_18): drought forms of EF-L, bootstrap Monte Carlo error, block bootstrap, ENSO phase
+python -u patokan_tingkat_m.py y_kabupaten > DL_FIRE_NASIONAL/penuh/patokan_tingkat_m_kab.log
+python -u patokan_tingkat_m.py y_gabungan  > DL_FIRE_NASIONAL/penuh/patokan_tingkat_m_nas.log
+python -u patokan_modis_m.py y_gabungan    > DL_FIRE_MODIS/patokan_modis_m_nas.log
+python -u patokan_enso_m.py > DL_FIRE_NASIONAL/penuh/patokan_enso_m.log    # reads the phase K and L logs
 ```
 
 The phase scripts read `patokan_revisi_prediksi.csv` and `patokan_revisi_oof.csv` from phase A,
