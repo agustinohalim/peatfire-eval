@@ -17,6 +17,8 @@ Pakai:
   python gabung_gfwed_komponen.py --unduh MERRA2           (168 berkas, bisa berjam-jam)
   python gabung_gfwed_komponen.py --cocokkan                (bandingkan FWI dengan salinan EE, 2015-09)
   python gabung_gfwed_komponen.py --presip MERRA2           (tulis DL_FIRE_NASIONAL/gfwed_komponen_<PRESIP>.csv)
+  --awal (bersama --unduh/--presip): bulan 2002-12 s.d. 2011-12 untuk jalur MODIS (fase N revisi), keluaran
+  gfwed_komponen_<PRESIP>_awal.csv; agregasi sama.
 """
 import argparse
 import json
@@ -36,6 +38,7 @@ GADM = os.path.join(BASE, "DL_FIRE_SV-C2_792597", "gadm41_IDN_2.json")
 URL = "https://portal.nccs.nasa.gov/datashare/GlobalFWI/v2.0/fwiCalcs.MERRA2/Default"
 KOMP = ["DC", "DMC", "FFMC", "BUI", "FWI"]
 BULAN = [f"{t}{b:02d}" for t in range(2012, 2026) for b in range(1, 13)]
+BULAN_AWAL = ["200212"] + [f"{t}{b:02d}" for t in range(2003, 2012) for b in range(1, 13)]
 LANGKAH = 0.05
 
 
@@ -43,9 +46,9 @@ def berkas(presip, ym):
     return os.path.join(NC, f"FWI.{presip}.Monthly.Default.{ym}.nc")
 
 
-def unduh(presip):
+def unduh(presip, bulan=BULAN):
     os.makedirs(NC, exist_ok=True)
-    for ym in BULAN:
+    for ym in bulan:
         f = berkas(presip, ym)
         if os.path.exists(f) and os.path.getsize(f) > 1_000_000:
             continue
@@ -118,9 +121,10 @@ if __name__ == "__main__":
     ap.add_argument("--unduh")
     ap.add_argument("--cocokkan", action="store_true")
     ap.add_argument("--presip")
+    ap.add_argument("--awal", action="store_true")
     a = ap.parse_args()
     if a.unduh:
-        unduh(a.unduh)
+        unduh(a.unduh, BULAN_AWAL if a.awal else BULAN)
     if a.cocokkan:
         ee = pd.read_csv(os.path.join(D, "fwi_bulanan_kabupaten_2012_2025_v2.csv"))
         ee = ee[ee.bulan == "2015-09"].set_index("GID_2").fwi
@@ -130,6 +134,6 @@ if __name__ == "__main__":
             print(f"{presip}: n = {len(j)} (kosong skrip {k.isna().sum()}), r = {np.corrcoef(ee[j], k[j])[0, 1]:.4f}, rata-rata EE {ee[j].mean():.2f}, "
                   f"skrip {k[j].mean():.2f}, beda mutlak median {np.median(abs(ee[j] - k[j])):.3f}")
     if a.presip:
-        out = agregasi(a.presip)
-        out.to_csv(os.path.join(D, f"gfwed_komponen_{a.presip}.csv"), index=False)
+        out = agregasi(a.presip, BULAN_AWAL if a.awal else BULAN)
+        out.to_csv(os.path.join(D, f"gfwed_komponen_{a.presip}{'_awal' if a.awal else ''}.csv"), index=False)
         print(len(out), "baris")

@@ -1,0 +1,84 @@
+DC bulan lalu hilang di baris panel 0 dari 137448 (diisi median kabupaten); kabupaten tanpa DC sama sekali 0
+MODIS/VIIRS 2012-2025 r 0.195; F bawaan 2; lantai dipakai 2; kabupaten 498; sasaran y_gabungan; rujukan pasangan ef3; benih [42, 1, 2, 3, 4, 5]
+cek ap_cepat = sklearn: ok
+
+====================================================================================================
+N R  y_gabungan  lantai 2  (prakiraan maju 2008-2019, ambang dari tahun latih), n = 12
+====================================================================================================
+    koef 2008: EF-L +0.658 +0.582 | EF-D +0.652 DC +0.548 | EF-LD +0.660 nas +0.446 DC +0.290
+  R 2008: latih 5 tahun, 29,382 baris; uji 5,976, prevalensi 6.99%; EF-P ef1_halus
+    koef 2009: EF-L +0.677 +0.579 | EF-D +0.677 DC +0.618 | EF-LD +0.683 nas +0.376 DC +0.418
+  R 2009: latih 6 tahun, 35,358 baris; uji 5,976, prevalensi 11.43%; EF-P ef1_halus
+    koef 2010: EF-L +0.714 +0.565 | EF-D +0.716 DC +0.641 | EF-LD +0.722 nas +0.360 DC +0.454
+  R 2010: latih 7 tahun, 41,334 baris; uji 5,976, prevalensi 3.93%; EF-P ef1_halus
+    koef 2011: EF-L +0.720 +0.740 | EF-D +0.728 DC +0.829 | EF-LD +0.735 nas +0.414 DC +0.584
+  R 2011: latih 8 tahun, 47,310 baris; uji 5,976, prevalensi 9.99%; EF-P ef1_halus
+    koef 2012: EF-L +0.744 +0.742 | EF-D +0.749 DC +0.805 | EF-LD +0.758 nas +0.448 DC +0.557
+  R 2012: latih 9 tahun, 53,286 baris; uji 5,976, prevalensi 10.74%; EF-P ef1_halus
+    koef 2013: EF-L +0.767 +0.717 | EF-D +0.773 DC +0.790 | EF-LD +0.781 nas +0.424 DC +0.563
+  R 2013: latih 10 tahun, 59,262 baris; uji 5,976, prevalensi 7.95%; EF-P ef1_halus
+    koef 2014: EF-L +0.773 +0.647 | EF-D +0.785 DC +0.778 | EF-LD +0.790 nas +0.346 DC +0.603
+  R 2014: latih 11 tahun, 65,238 baris; uji 5,976, prevalensi 12.13%; EF-P ef1_halus
+    koef 2015: EF-L +0.783 +0.626 | EF-D +0.794 DC +0.775 | EF-LD +0.799 nas +0.328 DC +0.600
+  R 2015: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 13.72%; EF-P ef1_halus
+    koef 2016: EF-L +0.799 +0.707 | EF-D +0.811 DC +0.843 | EF-LD +0.817 nas +0.370 DC +0.636
+  R 2016: latih 13 tahun, 77,190 baris; uji 5,976, prevalensi 4.00%; EF-P ef1_halus
+    koef 2017: EF-L +0.807 +0.747 | EF-D +0.814 DC +0.862 | EF-LD +0.824 nas +0.449 DC +0.601
+  R 2017: latih 14 tahun, 83,166 baris; uji 5,976, prevalensi 3.95%; EF-P ef1_halus
+    koef 2018: EF-L +0.827 +0.793 | EF-D +0.827 DC +0.899 | EF-LD +0.843 nas +0.521 DC +0.584
+  R 2018: latih 15 tahun, 89,142 baris; uji 5,976, prevalensi 6.96%; EF-P ef1_halus
+    koef 2019: EF-L +0.839 +0.806 | EF-D +0.835 DC +0.896 | EF-LD +0.855 nas +0.558 DC +0.568
+  R 2019: latih 16 tahun, 95,118 baris; uji 5,976, prevalensi 10.27%; EF-P ef1_halus
+  (47 s) kabupaten 498; prevalensi per tahun 2008:6.99% 2009:11.43% 2010:3.93% 2011:9.99% 2012:10.74% 2013:7.95% 2014:12.13% 2015:13.72% 2016:4.00% 2017:3.95% 2018:6.96% 2019:10.27%
+  geser periode (logit): kalender -0.319  EF-P -0.392  GB rata-rata benih -0.169
+
+Reproduksi fase K/M
+    gb/efl       (a) +0.0496 [+0.0081, +0.0880] t [+0.0095, +0.0897]  LOLOS | (b) +0.0553 [+0.0199, +0.0897] | (c) median +0.0699 9/12
+      per tahun 2008:-0.011 2009:-0.003 2010:+0.084 2011:+0.073 2012:+0.067 2013:+0.131 2014:+0.065 2015:+0.104 2016:+0.006 2017:-0.095 2018:+0.093 2019:+0.081
+    gb/kalender  (a) +0.1366 [+0.0801, +0.2027] t [+0.0743, +0.1989]  LOLOS | (b) +0.1397 [+0.0818, +0.2052] | (c) median +0.1141 11/12
+      per tahun 2008:+0.071 2009:-0.005 2010:+0.321 2011:+0.071 2012:+0.046 2013:+0.062 2014:+0.083 2015:+0.188 2016:+0.210 2017:+0.265 2018:+0.182 2019:+0.145
+    gb/efp       (a) +0.1449 [+0.0772, +0.2270] t [+0.0639, +0.2259]  LOLOS | (b) +0.1532 [+0.0802, +0.2373] | (c) median +0.1124 11/12
+      per tahun 2008:+0.106 2009:-0.025 2010:+0.384 2011:+0.058 2012:+0.009 2013:+0.067 2014:+0.062 2015:+0.187 2016:+0.287 2017:+0.316 2018:+0.168 2019:+0.119
+    efl/kalender  (a) +0.0874 [+0.0245, +0.1656] t [+0.0103, +0.1645]  LOLOS | (b) +0.0894 [+0.0286, +0.1642] | (c) median +0.0756 8/12
+      per tahun 2008:+0.081 2009:-0.003 2010:+0.258 2011:-0.002 2012:-0.022 2013:-0.079 2014:+0.018 2015:+0.093 2016:+0.205 2017:+0.329 2018:+0.099 2019:+0.071
+
+N1 rujukan kekeringan: (a) rata-rata rasio [dua tahap] t95 | (b) satu rasio [dua tahap] | (c) median, tahun > 0
+    gb/efld      (a) +0.0257 [-0.0144, +0.0607] t [-0.0124, +0.0638] | (b) +0.0310 [-0.0039, +0.0624] | (c) median +0.0579 7/12
+      per tahun 2008:-0.060 2009:-0.019 2010:-0.036 2011:+0.088 2012:+0.063 2013:+0.073 2014:+0.055 2015:+0.064 2016:-0.003 2017:-0.073 2018:+0.095 2019:+0.061
+    gb/efd       (a) +0.0635 [+0.0229, +0.1028] t [+0.0242, +0.1029]  LOLOS | (b) +0.0639 [+0.0265, +0.0996] | (c) median +0.0733 10/12
+      per tahun 2008:-0.068 2009:-0.007 2010:+0.026 2011:+0.126 2012:+0.064 2013:+0.035 2014:+0.048 2015:+0.083 2016:+0.093 2017:+0.113 2018:+0.158 2019:+0.091
+    efld/efl       (a) +0.0240 [+0.0028, +0.0491] t [-0.0001, +0.0482] | (b) +0.0250 [+0.0058, +0.0470] | (c) median +0.0134 9/12
+      per tahun 2008:+0.046 2009:+0.016 2010:+0.116 2011:-0.016 2012:+0.004 2013:+0.062 2014:+0.011 2015:+0.043 2016:+0.008 2017:-0.020 2018:-0.002 2019:+0.021
+    efd/efl       (a) -0.0183 [-0.0767, +0.0274] t [-0.0749, +0.0383] | (b) -0.0092 [-0.0580, +0.0275] | (c) median +0.0035 7/12
+      per tahun 2008:+0.054 2009:+0.004 2010:+0.060 2011:-0.061 2012:+0.003 2013:+0.099 2014:+0.018 2015:+0.023 2016:-0.097 2017:-0.234 2018:-0.078 2019:-0.011
+    efld/kalender  (a) +0.1090 [+0.0441, +0.1883] t [+0.0296, +0.1884]  LOLOS | (b) +0.1122 [+0.0479, +0.1902] | (c) median +0.0933 9/12
+      per tahun 2008:+0.123 2009:+0.013 2010:+0.344 2011:-0.018 2012:-0.017 2013:-0.012 2014:+0.029 2015:+0.132 2016:+0.212 2017:+0.315 2018:+0.097 2019:+0.090
+    efld/efp       (a) +0.1160 [+0.0375, +0.2158] t [+0.0157, +0.2163]  LOLOS | (b) +0.1261 [+0.0421, +0.2262] | (c) median +0.0711 8/12
+      per tahun 2008:+0.156 2009:-0.006 2010:+0.405 2011:-0.033 2012:-0.057 2013:-0.006 2014:+0.008 2015:+0.131 2016:+0.289 2017:+0.363 2018:+0.080 2019:+0.062
+
+  GB/EF-LD: batas bawah dua tahap, lima benih x 1.000 dan 10.000 ulangan
+    benih 2026      rata-rata rasio [-0.0144, +0.0607]  satu rasio [-0.0039, +0.0624]
+    benih 1         rata-rata rasio [-0.0097, +0.0600]  satu rasio [-0.0022, +0.0618]
+    benih 2         rata-rata rasio [-0.0126, +0.0583]  satu rasio [-0.0044, +0.0595]
+    benih 3         rata-rata rasio [-0.0128, +0.0600]  satu rasio [-0.0055, +0.0615]
+    benih 4         rata-rata rasio [-0.0127, +0.0609]  satu rasio [-0.0034, +0.0634]
+    10.000 ulangan  rata-rata rasio [-0.0136, +0.0606]  satu rasio [-0.0057, +0.0621]
+    rentang batas bawah rata-rata rasio -0.0144 .. -0.0097 semua > 0: False; satu rasio -0.0057 .. -0.0022 semua > 0: False
+    blok 3 gb/efld   rata-rata rasio +0.0257 [-0.0126, +0.0597]  satu rasio [-0.0064, +0.0618]
+    blok 3 efld/efl    rata-rata rasio +0.0240 [+0.0047, +0.0432]  satu rasio [+0.0080, +0.0414]
+
+N2 bagian tingkat (GB enam benih; periode lalu tahun)
+  atas kalender rata-rata rasio BSS mentah +0.1366 [0.08, 0.20]  offset periode +0.1221 [0.08, 0.17]  per tahun +0.0561 [0.01, 0.10] | bagian periode 0.11 [-0.15, 0.29]  bagian tahun 0.48 [0.25, 0.76]  total 0.59 [0.24, 0.92]
+      sisa per tahun t95 [+0.0080, +0.1042]; mentah per tahun +0.071 -0.005 +0.321 +0.071 +0.046 +0.062 +0.083 +0.188 +0.210 +0.265 +0.182 +0.145
+  atas kalender satu rasio      BSS mentah +0.1397 [0.08, 0.21]  offset periode +0.1272 [0.08, 0.17]  per tahun +0.0658 [0.02, 0.11] | bagian periode 0.09 [-0.18, 0.28]  bagian tahun 0.44 [0.24, 0.67]  total 0.53 [0.21, 0.85]
+  atas efp      rata-rata rasio BSS mentah +0.1449 [0.08, 0.23]  offset periode +0.1235 [0.07, 0.19]  per tahun +0.0455 [-0.00, 0.09] | bagian periode 0.15 [-0.09, 0.31]  bagian tahun 0.54 [0.28, 0.82]  total 0.69 [0.29, 1.01]
+      sisa per tahun t95 [-0.0072, +0.0982]; mentah per tahun +0.106 -0.025 +0.384 +0.058 +0.009 +0.067 +0.062 +0.187 +0.287 +0.316 +0.168 +0.119
+  atas efp      satu rasio      BSS mentah +0.1532 [0.08, 0.24]  offset periode +0.1295 [0.08, 0.19]  per tahun +0.0563 [0.01, 0.10] | bagian periode 0.15 [-0.10, 0.32]  bagian tahun 0.48 [0.26, 0.72]  total 0.63 [0.26, 0.95]
+
+N3 uji tahunan (12 tahun): tahun > 0, uji tanda dua sisi, Wilcoxon dua sisi eksak
+    gb/efl       9/12  tanda p 0.1460  Wilcoxon W 14.0 p 0.0522
+    gb/kalender  11/12  tanda p 0.0063  Wilcoxon W 1.0 p 0.0010
+    gb/efp       11/12  tanda p 0.0063  Wilcoxon W 2.0 p 0.0015
+    gb/efld      7/12  tanda p 0.7744  Wilcoxon W 21.0 p 0.1763
+    efld/efl       9/12  tanda p 0.1460  Wilcoxon W 14.0 p 0.0522
+selesai.

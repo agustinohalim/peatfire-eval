@@ -96,7 +96,7 @@ python patokan_nilai.py                            # Section 6.8 and Table 6: hi
 python patokan_fwi_komponen.py                     # Table 5: FWI System components (~1 h)
 ```
 
-### Revision analyses (versions 2.4.0 to 2.9.0)
+### Revision analyses (versions 2.4.0 to 2.10.0)
 
 The revised manuscript, *Much of the probability skill of monthly district fire forecasts in Indonesia is
 the fire level: the IndoFireBench benchmark* (the benchmark is named PeatFireBench in this
@@ -105,9 +105,9 @@ reference climatology computed from the training years only, on the same rows: t
 (MC, the reference of version 2.3.0), the share of training years in which the district exceeded
 its threshold in that calendar month (EF-1m) or in a three-month window (EF-3m), a probability
 climatology chosen per fold on training years (EF-P), and EF-1m adjusted with last month's national
-detection count (EF-L). The analyses ran in thirteen rounds (phases A to M; phase F in version 2.5.0, phase G in 2.6.0, phase H in 2.7.0, phases I to L in 2.8.0, phase M in 2.9.0). For each round the design
+detection count (EF-L). The analyses ran in fourteen rounds (phases A to N; phase F in version 2.5.0, phase G in 2.6.0, phase H in 2.7.0, phases I to L in 2.8.0, phase M in 2.9.0, phase N in 2.10.0). For each round the design
 and the decision rules were written and committed before any script ran; `registration/` holds
-those records with their results (in Indonesian, `Hasil_Patokan_6.md` to `Hasil_Patokan_18.md`).
+those records with their results (in Indonesian, `Hasil_Patokan_6.md` to `Hasil_Patokan_19.md`).
 Phase G tests EF-L on the MODIS years 2003-2011, which no earlier round had scored: the MODIS
 standard-processing archive (`MODIS_SP`) is downloaded with the same box and filter, and a panel is
 built with the same district polygons. Phase H repeats the MODIS test trained only on years before 2016
@@ -122,7 +122,12 @@ ratio over all test rows, median year) and repeats it with stricter event floors
 for the VIIRS probability results. Phase M adds two drought forms of EF-L on VIIRS (EF-D with the
 district's Drought Code of the month before in place of the national count, EF-LD with both), repeats the
 two-stage intervals with five bootstrap seeds, 10,000 draws and a moving-block year bootstrap, and lists the
-ENSO and dipole phase of every test year. The MODIS data are not included; the scripts below rebuild them.
+ENSO and dipole phase of every test year. Phase N scores EF-D and EF-LD on the forward MODIS forecast,
+with the GFWED Drought Code of December 2002 to December 2011 aggregated to districts in the same way as
+for 2012-2025 (`DL_FIRE_NASIONAL/gfwed_komponen_MERRA2.CORRECTED_awal.csv`, from
+`gabung_gfwed_komponen.py --unduh MERRA2.CORRECTED --awal` and `--presip MERRA2.CORRECTED --awal`), splits
+the forward forecast's level-shift share into period and year, and gives sign and signed-rank tests over
+the forward years for both targets. The MODIS data are not included; the scripts below rebuild them.
 The commit identifiers in them refer to the authors' working repository; header paragraphs that
 named internal review files were shortened, and nothing else was changed. Logs are in
 `logs/peatfirebench/revision/`.
@@ -203,6 +208,9 @@ python -u patokan_tingkat_m.py y_kabupaten > DL_FIRE_NASIONAL/penuh/patokan_ting
 python -u patokan_tingkat_m.py y_gabungan  > DL_FIRE_NASIONAL/penuh/patokan_tingkat_m_nas.log
 python -u patokan_modis_m.py y_gabungan    > DL_FIRE_MODIS/patokan_modis_m_nas.log
 python -u patokan_enso_m.py > DL_FIRE_NASIONAL/penuh/patokan_enso_m.log    # reads the phase K and L logs
+# phase N (Hasil_Patokan_19): drought forms and level share on the forward MODIS forecast
+python -u patokan_modis_n.py y_gabungan    > DL_FIRE_MODIS/patokan_modis_n_nas.log
+python -u patokan_modis_n.py y_kabupaten   > DL_FIRE_MODIS/patokan_modis_n_kab.log
 ```
 
 The phase scripts read `patokan_revisi_prediksi.csv` and `patokan_revisi_oof.csv` from phase A,
