@@ -1,0 +1,36 @@
+semua kabupaten 411, baris 29,592
+STRATA bergambut (> 0): kabupaten 125, baris 9,000, prevalensi 3.73%
+y_kabupaten: rujukan pasangan EF-1m; baris 9,000; tahun 2020, 2021, 2022, 2023, 2024, 2025
+
+I5 Tabel 4: BSS 2tahap t95 MDD80 (n = 6, df 5); BEDA = satu selang memuat nol, yang lain tidak
+  -- atas klim_frek1
+    konstan         +0.2550 2tahap [-0.0061, +0.4557] t95 [-0.0579, +0.5678] MDD80 0.4248
+    rujukan_peluang +0.0854 2tahap [+0.0288, +0.1554] t95 [+0.0038, +0.1670] MDD80 0.1108  KEDUANYA
+    ef1_tingkat     +0.3797 2tahap [+0.2036, +0.5437] t95 [+0.1610, +0.5985] MDD80 0.2970  KEDUANYA
+    log_ef1_jeda    +0.2703 2tahap [+0.1566, +0.3949] t95 [+0.1143, +0.4263] MDD80 0.2118  KEDUANYA
+    rf              +0.3893 2tahap [+0.2423, +0.5491] t95 [+0.1959, +0.5827] MDD80 0.2626  KEDUANYA
+    xgb             +0.4207 2tahap [+0.2825, +0.5837] t95 [+0.2235, +0.6178] MDD80 0.2677  KEDUANYA
+    xgb_setel       +0.4111 2tahap [+0.2535, +0.5945] t95 [+0.1899, +0.6323] MDD80 0.3003  KEDUANYA
+    mlp             +0.3251 2tahap [+0.1374, +0.5244] t95 [+0.0731, +0.5771] MDD80 0.3421  KEDUANYA
+    xgb_nas         +0.4330 2tahap [+0.2843, +0.6014] t95 [+0.2250, +0.6410] MDD80 0.2824  KEDUANYA
+  -- atas rujukan_peluang
+    log_ef1_jeda    +0.2057 2tahap [+0.1111, +0.3188] t95 [+0.0804, +0.3311] MDD80 0.1702  KEDUANYA
+    rf              +0.3398 2tahap [+0.2170, +0.4753] t95 [+0.1763, +0.5034] MDD80 0.2220  KEDUANYA
+    xgb             +0.3717 2tahap [+0.2465, +0.5302] t95 [+0.1902, +0.5531] MDD80 0.2464  KEDUANYA
+    xgb_setel       +0.3609 2tahap [+0.2176, +0.5370] t95 [+0.1494, +0.5724] MDD80 0.2872  KEDUANYA
+    mlp             +0.2655 2tahap [+0.0786, +0.4608] t95 [+0.0090, +0.5220] MDD80 0.3483  KEDUANYA
+  -- atas ef1_tingkat
+    log_ef1_jeda    -0.2238 2tahap [-0.4362, -0.0445] t95 [-0.4369, -0.0106] MDD80 0.2894  KEDUANYA
+    rf              +0.0036 2tahap [-0.1143, +0.1025] t95 [-0.1260, +0.1332] MDD80 0.1760
+    xgb             +0.0660 2tahap [-0.0225, +0.1575] t95 [-0.0469, +0.1789] MDD80 0.1533
+    xgb_setel       +0.0573 2tahap [-0.0651, +0.1832] t95 [-0.1148, +0.2294] MDD80 0.2337
+    mlp             -0.0891 2tahap [-0.3285, +0.0641] t95 [-0.3375, +0.1593] MDD80 0.3373
+    xgb_nas         +0.0910 2tahap [-0.0071, +0.1868] t95 [-0.0369, +0.2190] MDD80 0.1737
+
+I4 Pemecahan geser-tingkat: mentah / offset periode / per tahun; bagian periode, bagian tahun [2 tahap]
+    xgb  atas klim_frek1       mentah +0.4207  periode +0.1288 [+0.0328, +0.2350] t95 [-0.0042, +0.2618]  tahun +0.0879  bagian periode 0.69 [0.44, 0.91]  bagian tahun 0.10 [-0.02, 0.22]  total 0.79
+    rf   atas klim_frek1       mentah +0.3893  periode +0.1116 [+0.0236, +0.1975] t95 [-0.0027, +0.2259]  tahun +0.0656  bagian periode 0.71 [0.51, 0.92]  bagian tahun 0.12 [0.01, 0.21]  total 0.83
+    xgb  atas rujukan_peluang  mentah +0.3717  periode +0.1092 [+0.0161, +0.2127] t95 [-0.0218, +0.2403]  tahun +0.0754  bagian periode 0.71 [0.38, 0.95]  bagian tahun 0.09 [-0.05, 0.24]  total 0.80
+    rf   atas rujukan_peluang  mentah +0.3398  periode +0.0924 [+0.0161, +0.1681] t95 [-0.0109, +0.1956]  tahun +0.0526  bagian periode 0.73 [0.48, 0.94]  bagian tahun 0.12 [0.01, 0.23]  total 0.85
+  geser periode (logit) xgb -0.451  rf -0.721  klim_frek1 -1.373  rujukan_peluang -1.273
+selesai.

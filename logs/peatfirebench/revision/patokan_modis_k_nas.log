@@ -1,0 +1,132 @@
+MODIS/VIIRS 2012-2025 r 0.195; F bawaan 2; lantai dipakai 2; kabupaten 498; sasaran y_gabungan; rujukan pasangan ef3; benih [42, 1, 2, 3, 4, 5]
+cek ap_cepat = sklearn: ok
+
+====================================================================================================
+K R  y_gabungan  lantai 2  (prakiraan maju 2008-2019, ambang dari tahun latih), n = 12
+====================================================================================================
+  R 2008: latih 5 tahun, 29,382 baris; uji 5,976, prevalensi 6.99%; EF-P ef1_halus
+  R 2009: latih 6 tahun, 35,358 baris; uji 5,976, prevalensi 11.43%; EF-P ef1_halus
+  R 2010: latih 7 tahun, 41,334 baris; uji 5,976, prevalensi 3.93%; EF-P ef1_halus
+  R 2011: latih 8 tahun, 47,310 baris; uji 5,976, prevalensi 9.99%; EF-P ef1_halus
+  R 2012: latih 9 tahun, 53,286 baris; uji 5,976, prevalensi 10.74%; EF-P ef1_halus
+  R 2013: latih 10 tahun, 59,262 baris; uji 5,976, prevalensi 7.95%; EF-P ef1_halus
+  R 2014: latih 11 tahun, 65,238 baris; uji 5,976, prevalensi 12.13%; EF-P ef1_halus
+  R 2015: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 13.72%; EF-P ef1_halus
+  R 2016: latih 13 tahun, 77,190 baris; uji 5,976, prevalensi 4.00%; EF-P ef1_halus
+  R 2017: latih 14 tahun, 83,166 baris; uji 5,976, prevalensi 3.95%; EF-P ef1_halus
+  R 2018: latih 15 tahun, 89,142 baris; uji 5,976, prevalensi 6.96%; EF-P ef1_halus
+  R 2019: latih 16 tahun, 95,118 baris; uji 5,976, prevalensi 10.27%; EF-P ef1_halus
+  (103 s); tiga tahun tersepi: 2010 (3.93%), 2017 (3.95%), 2016 (4.00%)
+
+    gb atas efl
+      (a) rata-rata rasio  +0.0496 2tahap [+0.0081, +0.0880] t95 [+0.0095, +0.0897] MDD80 0.0560  LOLOS
+      (b) satu rasio       +0.0553 2tahap [+0.0199, +0.0897]  LOLOS
+      (c) median tahunan   +0.0699; tahun > 0: 9 dari 12; uji tanda p = 0.146
+      (d) tanpa 3 tersepi  +0.0667 2tahap [+0.0313, +0.0971] t95 [+0.0310, +0.1023] MDD80 0.0494  LOLOS
+      (e) 2008-2015 +0.0638 (t95 [+0.0232, +0.1045]); 2016-2019 +0.0211 (t95 [-0.1162, +0.1583])
+      per tahun 2008:-0.011 2009:-0.003 2010:+0.084 2011:+0.073 2012:+0.067 2013:+0.131 2014:+0.065 2015:+0.104 2016:+0.006 2017:-0.095 2018:+0.093 2019:+0.081
+
+    efl atas kalender
+      (a) rata-rata rasio  +0.0874 2tahap [+0.0245, +0.1656] t95 [+0.0103, +0.1645] MDD80 0.1078  LOLOS
+      (b) satu rasio       +0.0894 2tahap [+0.0286, +0.1642]  LOLOS
+      (c) median tahunan   +0.0756; tahun > 0: 8 dari 12; uji tanda p = 0.388
+      (d) tanpa 3 tersepi  +0.0285 2tahap [-0.0130, +0.0677] t95 [-0.0183, +0.0753] MDD80 0.0648
+      (e) 2008-2015 +0.0432 (t95 [-0.0427, +0.1292]); 2016-2019 +0.1757 (t95 [-0.0108, +0.3622])
+      per tahun 2008:+0.081 2009:-0.003 2010:+0.258 2011:-0.002 2012:-0.022 2013:-0.079 2014:+0.018 2015:+0.093 2016:+0.205 2017:+0.329 2018:+0.099 2019:+0.071
+
+    efl atas efp
+      (a) rata-rata rasio  +0.0951 2tahap [+0.0153, +0.1920] t95 [-0.0025, +0.1928] MDD80 0.1365
+      (b) satu rasio       +0.1037 2tahap [+0.0228, +0.1999]  LOLOS
+      (c) median tahunan   +0.0621; tahun > 0: 7 dari 12; uji tanda p = 0.774
+      (d) tanpa 3 tersepi  +0.0173 2tahap [-0.0281, +0.0613] t95 [-0.0353, +0.0699] MDD80 0.0729
+      (e) 2008-2015 +0.0449 (t95 [-0.0658, +0.1555]); 2016-2019 +0.1956 (t95 [-0.0584, +0.4497])
+      per tahun 2008:+0.115 2009:-0.022 2010:+0.327 2011:-0.016 2012:-0.061 2013:-0.073 2014:-0.003 2015:+0.092 2016:+0.283 2017:+0.375 2018:+0.083 2019:+0.042
+
+    efp atas kalender
+      (a) rata-rata rasio  -0.0158 2tahap [-0.0499, +0.0121] t95 [-0.0491, +0.0175] MDD80 0.0465
+      (b) satu rasio       -0.0160 2tahap [-0.0499, +0.0129]
+      (c) median tahunan   +0.0076; tahun > 0: 7 dari 12; uji tanda p = 0.774
+      (d) tanpa 3 tersepi  +0.0107 2tahap [-0.0083, +0.0286] t95 [-0.0069, +0.0283] MDD80 0.0243
+      (e) 2008-2015 -0.0067 (t95 [-0.0443, +0.0309]); 2016-2019 -0.0340 (t95 [-0.1429, +0.0749])
+      per tahun 2008:-0.039 2009:+0.019 2010:-0.103 2011:+0.014 2012:+0.037 2013:-0.005 2014:+0.022 2015:+0.001 2016:-0.109 2017:-0.075 2018:+0.018 2019:+0.030
+
+    gb atas kalender
+      (a) rata-rata rasio  +0.1366 2tahap [+0.0801, +0.2027] t95 [+0.0743, +0.1989] MDD80 0.0871  LOLOS
+      (b) satu rasio       +0.1397 2tahap [+0.0818, +0.2052]  LOLOS
+      (c) median tahunan   +0.1141; tahun > 0: 11 dari 12; uji tanda p = 0.006
+      (d) tanpa 3 tersepi  +0.0937 2tahap [+0.0477, +0.1383] t95 [+0.0439, +0.1435] MDD80 0.0690  LOLOS
+      (e) 2008-2015 +0.1046 (t95 [+0.0188, +0.1903]); 2016-2019 +0.2006 (t95 [+0.1205, +0.2806])
+      per tahun 2008:+0.071 2009:-0.005 2010:+0.321 2011:+0.071 2012:+0.046 2013:+0.062 2014:+0.083 2015:+0.188 2016:+0.210 2017:+0.265 2018:+0.182 2019:+0.145
+
+    gb atas efp
+      (a) rata-rata rasio  +0.1449 2tahap [+0.0772, +0.2270] t95 [+0.0639, +0.2259] MDD80 0.1132  LOLOS
+      (b) satu rasio       +0.1532 2tahap [+0.0802, +0.2373]  LOLOS
+      (c) median tahunan   +0.1124; tahun > 0: 11 dari 12; uji tanda p = 0.006
+      (d) tanpa 3 tersepi  +0.0835 2tahap [+0.0377, +0.1277] t95 [+0.0305, +0.1365] MDD80 0.0735  LOLOS
+      (e) 2008-2015 +0.1061 (t95 [-0.0015, +0.2137]); 2016-2019 +0.2225 (t95 [+0.0723, +0.3726])
+      per tahun 2008:+0.106 2009:-0.025 2010:+0.384 2011:+0.058 2012:+0.009 2013:+0.067 2014:+0.062 2015:+0.187 2016:+0.287 2017:+0.316 2018:+0.168 2019:+0.119
+
+R39 ringkas: gb/efl rr +0.050 L satu +0.055 [+0.020, +0.090] med +0.070 (9/12) tanpa-sepi +0.067 L; efl/kalender rr +0.087 L satu +0.089 [+0.029, +0.164] med +0.076 (8/12) tanpa-sepi +0.029; efl/efp rr +0.095 satu +0.104 [+0.023, +0.200] med +0.062 (7/12) tanpa-sepi +0.017; efp/kalender rr -0.016 satu -0.016 [-0.050, +0.013] med +0.008 (7/12) tanpa-sepi +0.011; gb/kalender rr +0.137 L satu +0.140 [+0.082, +0.205] med +0.114 (11/12) tanpa-sepi +0.094 L; gb/efp rr +0.145 L satu +0.153 [+0.080, +0.237] med +0.112 (11/12) tanpa-sepi +0.083 L
+
+====================================================================================================
+K D  y_gabungan  (Brier rujukan V3 12 tahun acak atas V1 latih < 2016, tanpa GB), n = 9
+====================================================================================================
+  V1 2003: latih 12 tahun, 71,712 baris; uji 5,478, prevalensi 13.47%; EF-P ef1_halus
+  V3 undian 0 2003: latih 12 tahun, 71,712 baris; uji 5,478, prevalensi 13.47%; EF-P ef3
+  V3 undian 1 2003: latih 12 tahun, 71,712 baris; uji 5,478, prevalensi 13.47%; EF-P ef3
+  V3 undian 2 2003: latih 12 tahun, 71,712 baris; uji 5,478, prevalensi 13.47%; EF-P ef3
+  V3 undian 3 2003: latih 12 tahun, 71,712 baris; uji 5,478, prevalensi 13.47%; EF-P ef3
+  V3 undian 4 2003: latih 12 tahun, 71,712 baris; uji 5,478, prevalensi 13.47%; EF-P ef1_halus
+  V1 2004: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 14.64%; EF-P ef1_halus
+  V3 undian 0 2004: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 14.64%; EF-P ef1_halus
+  V3 undian 1 2004: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 14.64%; EF-P ef1_halus
+  V3 undian 2 2004: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 14.64%; EF-P ef3
+  V3 undian 3 2004: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 14.64%; EF-P ef1_halus
+  V3 undian 4 2004: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 14.64%; EF-P ef3
+  V1 2005: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 11.90%; EF-P ef1_halus
+  V3 undian 0 2005: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 11.90%; EF-P ef3
+  V3 undian 1 2005: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 11.90%; EF-P ef1_halus
+  V3 undian 2 2005: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 11.90%; EF-P ef3
+  V3 undian 3 2005: latih 12 tahun, 71,712 baris; uji 5,976, prevalensi 11.90%; EF-P ef3
+  V3 undian 4 2005: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 11.90%; EF-P ef1_halus
+  V1 2006: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 16.53%; EF-P ef1_halus
+  V3 undian 0 2006: latih 12 tahun, 71,712 baris; uji 5,976, prevalensi 16.53%; EF-P ef3
+  V3 undian 1 2006: latih 12 tahun, 71,712 baris; uji 5,976, prevalensi 16.53%; EF-P ef1_halus
+  V3 undian 2 2006: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 16.53%; EF-P ef1_halus
+  V3 undian 3 2006: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 16.53%; EF-P ef1_halus
+  V3 undian 4 2006: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 16.53%; EF-P ef1_halus
+  V1 2007: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 11.06%; EF-P ef1_halus
+  V3 undian 0 2007: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 11.06%; EF-P ef1_halus
+  V3 undian 1 2007: latih 12 tahun, 71,712 baris; uji 5,976, prevalensi 11.06%; EF-P ef3
+  V3 undian 2 2007: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 11.06%; EF-P ef1_halus
+  V3 undian 3 2007: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 11.06%; EF-P ef3
+  V3 undian 4 2007: latih 12 tahun, 71,712 baris; uji 5,976, prevalensi 11.06%; EF-P ef1_halus
+  V1 2008: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 10.26%; EF-P ef1_halus
+  V3 undian 0 2008: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 10.26%; EF-P ef1_halus
+  V3 undian 1 2008: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 10.26%; EF-P ef1_halus
+  V3 undian 2 2008: latih 12 tahun, 71,712 baris; uji 5,976, prevalensi 10.26%; EF-P ef3
+  V3 undian 3 2008: latih 12 tahun, 71,712 baris; uji 5,976, prevalensi 10.26%; EF-P ef3
+  V3 undian 4 2008: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 10.26%; EF-P ef3
+  V1 2009: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 14.96%; EF-P ef1_halus
+  V3 undian 0 2009: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 14.96%; EF-P ef1_halus
+  V3 undian 1 2009: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 14.96%; EF-P ef1_halus
+  V3 undian 2 2009: latih 12 tahun, 71,712 baris; uji 5,976, prevalensi 14.96%; EF-P ef1_halus
+  V3 undian 3 2009: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 14.96%; EF-P ef1_halus
+  V3 undian 4 2009: latih 12 tahun, 71,712 baris; uji 5,976, prevalensi 14.96%; EF-P ef3
+  V1 2010: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 6.14%; EF-P ef1_halus
+  V3 undian 0 2010: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 6.14%; EF-P ef3
+  V3 undian 1 2010: latih 12 tahun, 71,712 baris; uji 5,976, prevalensi 6.14%; EF-P ef1_halus
+  V3 undian 2 2010: latih 12 tahun, 71,712 baris; uji 5,976, prevalensi 6.14%; EF-P ef1_halus
+  V3 undian 3 2010: latih 12 tahun, 71,712 baris; uji 5,976, prevalensi 6.14%; EF-P ef1_halus
+  V3 undian 4 2010: latih 12 tahun, 71,712 baris; uji 5,976, prevalensi 6.14%; EF-P ef1_halus
+  V1 2011: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 12.43%; EF-P ef1_halus
+  V3 undian 0 2011: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 12.43%; EF-P ef1_halus
+  V3 undian 1 2011: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 12.43%; EF-P ef1_halus
+  V3 undian 2 2011: latih 12 tahun, 71,712 baris; uji 5,976, prevalensi 12.43%; EF-P ef3
+  V3 undian 3 2011: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 12.43%; EF-P ef3
+  V3 undian 4 2011: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 12.43%; EF-P ef1_halus
+  (23 s) BSS Brier rujukan V3 atas V1 (positif = rujukan 12 tahun acak lebih baik)
+    kalender  -0.0932 2tahap [-0.1673, -0.0060] t95 [-0.2006, +0.0143] MDD80 0.1489  tak terbedakan  per tahun -0.192 -0.131 -0.101 -0.184 -0.090 -0.001 -0.225 +0.235 -0.149
+    efp       -0.0967 2tahap [-0.1838, +0.0003] t95 [-0.2185, +0.0250] MDD80 0.1687  tak terbedakan  per tahun -0.245 -0.168 -0.101 -0.185 -0.111 +0.038 -0.228 +0.262 -0.134
+    efl       -0.0550 2tahap [-0.1000, +0.0020] t95 [-0.1235, +0.0134] MDD80 0.0948  tak terbedakan  per tahun -0.130 -0.113 -0.083 -0.045 -0.112 -0.064 -0.074 +0.168 -0.042
+selesai.

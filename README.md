@@ -96,7 +96,7 @@ python patokan_nilai.py                            # Section 6.8 and Table 6: hi
 python patokan_fwi_komponen.py                     # Table 5: FWI System components (~1 h)
 ```
 
-### Revision analyses (versions 2.4.0 to 2.7.0)
+### Revision analyses (versions 2.4.0 to 2.8.0)
 
 The revised manuscript, *IndoFireBench: a district-month benchmark for fire forecasting in
 Indonesia, where much of the apparent skill is the year's fire level* (the benchmark is named PeatFireBench in this
@@ -105,15 +105,21 @@ reference climatology computed from the training years only, on the same rows: t
 (MC, the reference of version 2.3.0), the share of training years in which the district exceeded
 its threshold in that calendar month (EF-1m) or in a three-month window (EF-3m), a probability
 climatology chosen per fold on training years (EF-P), and EF-1m adjusted with last month's national
-detection count (EF-L). The analyses ran in eight rounds (phases A to H; phase F in version 2.5.0, phase G in 2.6.0, phase H in 2.7.0). For each round the design
+detection count (EF-L). The analyses ran in twelve rounds (phases A to L; phase F in version 2.5.0, phase G in 2.6.0, phase H in 2.7.0, phases I to L in 2.8.0). For each round the design
 and the decision rules were written and committed before any script ran; `registration/` holds
-those records with their results (in Indonesian, `Hasil_Patokan_6.md` to `Hasil_Patokan_13.md`).
+those records with their results (in Indonesian, `Hasil_Patokan_6.md` to `Hasil_Patokan_17.md`).
 Phase G tests EF-L on the MODIS years 2003-2011, which no earlier round had scored: the MODIS
 standard-processing archive (`MODIS_SP`) is downloaded with the same box and filter, and a panel is
 built with the same district polygons. Phase H repeats the MODIS test trained only on years before 2016
 and with thresholds from training years, adds EF-P, the level-shift diagnostic and Brier skill as one
-ratio, and applies the rule that a forecast beats the references only if it beats all three. The MODIS
-data are not included; the scripts below rebuild them.
+ratio, and applies the rule that a forecast beats the references only if it beats all three. Phase I
+uses six gradient-boosting seeds on MODIS, controls the length of the training record, splits the
+level-shift diagnostic into a period offset and the year-to-year level, and reports the minimum
+detectable difference. Phase J adds the only MODIS forecast (test years 2008-2019, each trained only on
+the years before it), cross-validation with a one-year buffer after the test year, and peat districts on
+VIIRS. Phase K averages the forward forecast over the years in several ways (mean of yearly ratios, one
+ratio over all test rows, median year) and repeats it with stricter event floors; phase L does the same
+for the VIIRS probability results. The MODIS data are not included; the scripts below rebuild them.
 The commit identifiers in them refer to the authors' working repository; header paragraphs that
 named internal review files were shortened, and nothing else was changed. Logs are in
 `logs/peatfirebench/revision/`.
@@ -170,6 +176,25 @@ python -u patokan_modis.py y_gabungan  > DL_FIRE_MODIS/patokan_modis_nas.log
 python -u patokan_modis_h.py y_kabupaten > DL_FIRE_MODIS/patokan_modis_h_kab.log
 python -u patokan_modis_h.py y_gabungan  > DL_FIRE_MODIS/patokan_modis_h_nas.log
 python gambar_patokan.py                           # Figures 1-5 of the revised manuscript (gambar_rev*)
+# phase I (Hasil_Patokan_14): six seeds, training length, level-shift split, minimum detectable difference
+python -u patokan_modis_i.py y_kabupaten > DL_FIRE_MODIS/patokan_modis_i_kab.log
+python -u patokan_modis_i.py y_gabungan  > DL_FIRE_MODIS/patokan_modis_i_nas.log
+python -u patokan_tingkat_i.py y_kabupaten > DL_FIRE_NASIONAL/penuh/patokan_tingkat_i_kab.log
+python -u patokan_tingkat_i.py y_gabungan  > DL_FIRE_NASIONAL/penuh/patokan_tingkat_i_nas.log
+# phase J (Hasil_Patokan_15): forward MODIS forecast 2008-2019, buffered cross-validation, peat districts
+python -u patokan_modis_j.py y_kabupaten > DL_FIRE_MODIS/patokan_modis_j_kab.log
+python -u patokan_modis_j.py y_gabungan  > DL_FIRE_MODIS/patokan_modis_j_nas.log
+python -u patokan_tingkat_j.py y_kabupaten > DL_FIRE_NASIONAL/penuh/patokan_tingkat_j_kab.log
+python -u patokan_tingkat_j.py y_gabungan  > DL_FIRE_NASIONAL/penuh/patokan_tingkat_j_nas.log
+python gambar_inti_i.py                            # Figure 3 of the revised manuscript (gambar_rev6_inti)
+# phase K (Hasil_Patokan_16): averaging the forward forecast over years; event floors 3 and 5
+python -u patokan_modis_k.py y_kabupaten   > DL_FIRE_MODIS/patokan_modis_k_kab.log
+python -u patokan_modis_k.py y_gabungan    > DL_FIRE_MODIS/patokan_modis_k_nas.log
+python -u patokan_modis_k.py y_kabupaten 3 > DL_FIRE_MODIS/patokan_modis_k_kab_l3.log
+python -u patokan_modis_k.py y_kabupaten 5 > DL_FIRE_MODIS/patokan_modis_k_kab_l5.log
+# phase L (Hasil_Patokan_17): averaging the VIIRS probability results over years
+python -u patokan_tingkat_l.py y_kabupaten > DL_FIRE_NASIONAL/penuh/patokan_tingkat_l_kab.log
+python -u patokan_tingkat_l.py y_gabungan  > DL_FIRE_NASIONAL/penuh/patokan_tingkat_l_nas.log
 ```
 
 The phase scripts read `patokan_revisi_prediksi.csv` and `patokan_revisi_oof.csv` from phase A,
