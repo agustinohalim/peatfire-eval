@@ -1,0 +1,55 @@
+cek ap_cepat = sklearn: ok
+S1 2020: ambang dari 2012-2019
+S1 2021: ambang dari 2012-2020
+S1 2022: ambang dari 2012-2021
+S1 2023: ambang dari 2012-2022
+S1 2024: ambang dari 2012-2023
+S1 2025: ambang dari 2012-2024
+baris 35856; y kepekaan = y dihitung ulang: 1.0000
+baris per kabupaten (positif di tahun latih): 29376; EF-L kosong 0
+
+Prevalensi per lipatan (latih ambang tahun latih / latih ambang seluruh panel / uji tahun latih / uji seluruh panel):
+  2020: 7.38% / 9.68% / 2.09% / 2.88%
+  2021: 7.07% / 8.83% / 1.24% / 1.39%
+  2022: 6.84% / 8.00% / 0.89% / 0.89%
+  2023: 7.08% / 7.29% / 9.30% / 9.55%
+  2024: 7.06% / 7.50% / 2.79% / 3.10%
+  2025: 6.91% / 7.13% / 2.16% / 2.11%
+
+====================================================================================================
+P. y_kabupaten: ambang dari tahun latih, S1 2020-2025 (prevalensi 3.75%)
+====================================================================================================
+Pemeriksaan G2: BSS xgb atas kalender +0.3929  BSS rf atas kalender +0.3835  BSS ef1_tingkat atas kalender +0.3619
+
+P1 Pemecahan geser-tingkat atas kalender mentah: mentah / offset periode / per tahun; bagian [2 tahap]
+    xgb  mentah +0.3929  periode +0.1457  tahun +0.0424  bagian periode 0.63 [0.30, 0.95]  bagian tahun 0.26 [0.06, 0.45]  total 0.89 [0.72, 1.05]
+         per tahun mentah +0.437 +0.627 +0.719 +0.098 +0.169 +0.308  sesudah geser per tahun +0.051 +0.047 +0.085 +0.121 -0.051 +0.002
+    rf   mentah +0.3835  periode +0.1449  tahun +0.0319  bagian periode 0.62 [0.38, 0.85]  bagian tahun 0.29 [0.14, 0.47]  total 0.92 [0.81, 1.03]
+         per tahun mentah +0.468 +0.574 +0.688 +0.071 +0.158 +0.343  sesudah geser per tahun +0.050 +0.058 +0.047 +0.061 -0.033 +0.010
+  geser periode (logit) xgb -0.289  rf -0.532  kalender -1.140
+
+Deskriptif: MDD80 BSS atas EF-L (enam tahun, df 5), ambang tahun latih
+    xgb  atas EF-L +0.0486  MDD80 0.1228
+    rf   atas EF-L +0.0219  MDD80 0.1089
+
+====================================================================================================
+Q1 VIIRS S1 (y_kabupaten): L = BSS mentah - BSS sesudah geser per tahun (GB atas kalender); d = |logit kalender - logit teramati|
+====================================================================================================
+  2020: mentah +0.437  geser +0.051  L +0.386  d 1.329 (tanda +1.329; laju 2.56%, kalender 9.03%)
+  2021: mentah +0.627  geser +0.047  L +0.580  d 1.845 (tanda +1.845; laju 1.47%, kalender 8.65%)
+  2022: mentah +0.719  geser +0.085  L +0.634  d 2.120 (tanda +2.120; laju 1.08%, kalender 8.35%)
+  2023: mentah +0.098  geser +0.121  L -0.023  d 0.302 (tanda -0.302; laju 11.34%, kalender 8.64%)
+  2024: mentah +0.169  geser -0.051  L +0.220  d 0.982 (tanda +0.982; laju 3.40%, kalender 8.60%)
+  2025: mentah +0.308  geser +0.002  L +0.306  d 1.224 (tanda +1.224; laju 2.63%, kalender 8.41%)
+  Spearman L lawan d (6 tahun) rho +1.000 p 0.000
+
+====================================================================================================
+Q2 VIIRS S1 (y_kabupaten): dua tahap, kabupaten lawan klaster provinsi (1.000 ulangan, benih 2026)
+====================================================================================================
+  provinsi 34; kabupaten 409
+    xgb/kalender     +0.3929  kabupaten [+0.2116, +0.5802]  provinsi [+0.2142, +0.6003]  tahun t [+0.1328, +0.6529]
+    rf/kalender     +0.3835  kabupaten [+0.2029, +0.5636]  provinsi [+0.2002, +0.5901]  tahun t [+0.1322, +0.6347]
+    ef1_tingkat/kalender     +0.3619  kabupaten [+0.1609, +0.5594]  provinsi [+0.1435, +0.5908]  tahun t [+0.0766, +0.6473]
+    xgb/ef1_tingkat  +0.0486  kabupaten [-0.0325, +0.1157]  provinsi [-0.0479, +0.1241]  tahun t [-0.0419, +0.1390]
+    rf/ef1_tingkat  +0.0219  kabupaten [-0.0605, +0.0776]  provinsi [-0.0914, +0.0939]  tahun t [-0.0583, +0.1021]
+selesai.

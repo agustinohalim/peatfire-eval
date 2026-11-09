@@ -108,3 +108,12 @@ pertama yang sepenuhnya ex-ante.
 
 **Stempel waktu publik.** Berkas ini, kedua tambahannya dan kode fase O masuk rilis peatfire-eval 2.11.0 di Zenodo
 sebelum data `VIIRS_SNPP_SP` 2026 terbit, sehingga waktu pendaftaran dapat diperiksa di luar repositori penulis.
+
+## Tambahan bertanggal ketiga (9 Nov 2026, sesudah panel 23, masih sebelum data standar 2026)
+
+Pemicu: telaah internal pra-kirim kedua puluh tiga (catatan telaah tidak dirilis): di Riau dan Sumatra bagian utara puncak api jatuh pada
+Februari–Maret, dan sasaran per kabupaten menilai kedua belas bulan, jadi pendaftaran sebelum 1 Juni 2027 tidak
+mendahului musim api semua kabupaten. Perubahan satu-satunya: pendaftaran 2027 (aturan yang sama seperti tambahan
+kedua) dilakukan dengan stempel waktu publik **sebelum 1 Januari 2027**, bukan sebelum 1 Juni 2027. Ini hanya
+memajukan tanggal, jadi lebih ketat; aturan 2026 (R48(a)–(e), R48(f′)) tidak berubah. Penulis tetap belum melihat
+hitungan deteksi 2026.

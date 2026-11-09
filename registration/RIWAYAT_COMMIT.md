@@ -99,9 +99,16 @@ repositori penulis; isi commit itu sendiri hanya dapat diperiksa di repositori p
 - `41fa400` 2026-11-09T15:03:10+07:00 docs(kebakaran): register the 2026 evaluation protocol before any 2026 data
 - `5ee3e4e` 2026-11-09T15:18:34+07:00 docs(kebakaran): add a dated addendum to the 2026 protocol before any 2026 data
 - `0f64423` 2026-11-09T16:32:49+07:00 docs(kebakaran): add a second dated addendum to the 2026 protocol before any 2026 data
+- `7a3dec9` 2026-11-09T19:01:30+07:00 docs(kebakaran): text round on panel 23 majors that need no new numbers (third dated addendum)
 
 ## Hasil_Patokan_22.md
 
 - `86ec90f` 2026-11-09T16:44:57+07:00 docs(kebakaran): pre-register IndoFireBench phase P (level share with training-year thresholds) before running
 - `745b6fb` 2026-11-09T16:45:34+07:00 feat(kebakaran): add the phase P script for IndoFireBench before running it
 - `c001048` 2026-11-09T16:46:42+07:00 feat(kebakaran): IndoFireBench phase P results; the level share holds with training-year thresholds
+
+## Hasil_Patokan_23.md
+
+- `c028252` 2026-11-09T18:57:38+07:00 docs(kebakaran): pre-register IndoFireBench phase Q before running
+- `3fa2052` 2026-11-09T18:58:49+07:00 feat(kebakaran): add the phase Q scripts for IndoFireBench before running them
+- `8b413d7` 2026-11-09T19:04:57+07:00 feat(kebakaran): IndoFireBench phase Q results
