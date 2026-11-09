@@ -96,18 +96,18 @@ python patokan_nilai.py                            # Section 6.8 and Table 6: hi
 python patokan_fwi_komponen.py                     # Table 5: FWI System components (~1 h)
 ```
 
-### Revision analyses (versions 2.4.0 to 2.11.1)
+### Revision analyses (versions 2.4.0 to 2.11.2)
 
-The revised manuscript, *IndoFireBench: a district benchmark and reference forecasts for monthly fire
-forecasting in Indonesia* (the benchmark is named PeatFireBench in this
+The revised manuscript, *IndoFireBench: a district benchmark with reference forecasts for monthly fire
+prediction in Indonesia* (the benchmark is named PeatFireBench in this
 repository and its earlier versions), compares every model with a
 reference climatology computed from the training years only, on the same rows: the mean count
 (MC, the reference of version 2.3.0), the share of training years in which the district exceeded
 its threshold in that calendar month (EF-1m) or in a three-month window (EF-3m), a probability
 climatology chosen per fold on training years (EF-P), and EF-1m adjusted with last month's national
-detection count (EF-L). The analyses ran in fifteen rounds (phases A to O; phase F in version 2.5.0, phase G in 2.6.0, phase H in 2.7.0, phases I to L in 2.8.0, phase M in 2.9.0, phase N in 2.10.0, phase O in 2.11.0 and 2.11.1). For each round the design
+detection count (EF-L). The analyses ran in sixteen rounds (phases A to P; phase F in version 2.5.0, phase G in 2.6.0, phase H in 2.7.0, phases I to L in 2.8.0, phase M in 2.9.0, phase N in 2.10.0, phase O in 2.11.0 and 2.11.1, phase P in 2.11.2). For each round the design
 and the decision rules were written and committed before any script ran; `registration/` holds
-those records with their results (in Indonesian, `Hasil_Patokan_6.md` to `Hasil_Patokan_20.md`);
+those records with their results (in Indonesian, `Hasil_Patokan_6.md` to `Hasil_Patokan_20.md` and `Hasil_Patokan_22.md`);
 `Hasil_Patokan_21.md` registers the evaluation of the 2026 season, with two dated addenda, and
 `RIWAYAT_COMMIT.md` lists the commits of every record with their time stamps.
 Phase G tests EF-L on the MODIS years 2003-2011, which no earlier round had scored: the MODIS
@@ -133,7 +133,9 @@ the forward years for both targets. Phase O refits gradient boosting with the di
 EF-LD uses, on the chronological VIIRS test years (`patokan_tingkat_o.py`, added in 2.11.1) and on the
 forward MODIS forecast (`patokan_modis_o.py`), and scores it over the four references with five bootstrap
 seeds, 10,000 draws and a moving-block year bootstrap; `gambar_inti_o.py` draws Figure 3 of the revised
-manuscript with that series. The 2026 evaluation (`Hasil_Patokan_21.md`) was registered on 9 November 2026,
+manuscript with that series. Phase P (`patokan_tingkat_p.py`) repeats the phase I level-share
+decomposition on the chronological VIIRS test years with thresholds, evaluated districts and calendars taken
+from the training years of each fold (the data of phase G2), instead of from the full panel. The 2026 evaluation (`Hasil_Patokan_21.md`) was registered on 9 November 2026,
 before standard-processing 2026 detections were released, and is to be run once with this code. The MODIS
 data are not included; the scripts below rebuild them.
 The commit identifiers in them refer to the authors' working repository; header paragraphs that
@@ -224,6 +226,9 @@ python -u patokan_tingkat_o.py y_kabupaten > DL_FIRE_NASIONAL/penuh/patokan_ting
 python -u patokan_tingkat_o.py y_gabungan  > DL_FIRE_NASIONAL/penuh/patokan_tingkat_o_nas.log
 python -u patokan_modis_o.py y_gabungan    > DL_FIRE_MODIS/patokan_modis_o_nas.log
 python -u patokan_modis_o.py y_kabupaten   > DL_FIRE_MODIS/patokan_modis_o_kab.log
+# phase P (Hasil_Patokan_22): level share with thresholds from training years, VIIRS
+python -u patokan_tingkat_p.py y_kabupaten > DL_FIRE_NASIONAL/penuh/patokan_tingkat_p_kab.log
+python -u patokan_tingkat_p.py y_gabungan  > DL_FIRE_NASIONAL/penuh/patokan_tingkat_p_nas.log
 python gambar_inti_o.py                            # Figure 3 of the revised manuscript, with phases M to O
 ```
 

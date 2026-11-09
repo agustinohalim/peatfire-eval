@@ -96,12 +96,12 @@ BARIS = ["VIIRS 2020–2025,\nchronological\n(all features)", "MODIS 2008–2019
          "MODIS 2003–2011,\nall other years", "MODIS, training-year\nthresholds, lag buffer",
          "MODIS, 12 random\ntraining years", "MODIS, trained\nbefore 2016"]
 VAR = [None, "R", "V0", "V6", "V3", "V1"]
-PERB = [("Gradient boosting over raw calendar", BIRU, ("xgb", REF), "gb atas kalender"),
+PERB = [("GB (VIIRS) or GB-FH (MODIS) over raw calendar", BIRU, ("xgb", REF), "gb atas kalender"),
         ("EF-L over raw calendar", HIJAU, ("ef1_tingkat", REF), "efl atas kalender"),
-        ("Gradient boosting over EF-P", UNGU, ("xgb", "rujukan_peluang"), "gb atas efp"),
-        ("Gradient boosting over EF-L", MERAH, ("xgb", "ef1_tingkat"), "gb atas efl"),
-        ("Gradient boosting over EF-LD", JINGGA, None, None),
-        ("Gradient boosting + DC over EF-LD (forward, added later)", COKLAT, "dc", None)]
+        ("GB or GB-FH over EF-P", UNGU, ("xgb", "rujukan_peluang"), "gb atas efp"),
+        ("GB or GB-FH over EF-L", MERAH, ("xgb", "ef1_tingkat"), "gb atas efl"),
+        ("GB or GB-FH over EF-LD", JINGGA, None, None),
+        ("GB-FH + DC over EF-LD (forward, added later)", COKLAT, "dc", None)]
 
 fig = plt.figure(figsize=(7.2, 9.8))
 gs = fig.add_gridspec(2, 2, height_ratios=[4.8, 1.9], hspace=0.3, wspace=0.08)
@@ -151,7 +151,7 @@ axc.set_yticks(range(len(BAG)))
 axc.set_yticklabels([b[0] for b in BAG])
 axc.set_ylim(len(BAG) - 0.5, -0.5)
 axc.set_xlim(0, 1)
-axc.set_xlabel("Share of gradient boosting's Brier skill over the raw calendar")
+axc.set_xlabel("Share of GB or GB-FH Brier skill over the raw calendar")
 axc.set_title("(c) Where the gain over the raw calendar comes from", loc="left")
 axc.legend(loc="lower center", bbox_to_anchor=(0.5, -0.48), ncol=3)
 h, l = fig.axes[0].get_legend_handles_labels()

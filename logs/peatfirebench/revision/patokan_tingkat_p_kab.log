@@ -1,0 +1,34 @@
+cek ap_cepat = sklearn: ok
+S1 2020: ambang dari 2012-2019
+S1 2021: ambang dari 2012-2020
+S1 2022: ambang dari 2012-2021
+S1 2023: ambang dari 2012-2022
+S1 2024: ambang dari 2012-2023
+S1 2025: ambang dari 2012-2024
+baris 35856; y kepekaan = y dihitung ulang: 1.0000
+baris per kabupaten (positif di tahun latih): 29376; EF-L kosong 0
+
+Prevalensi per lipatan (latih ambang tahun latih / latih ambang seluruh panel / uji tahun latih / uji seluruh panel):
+  2020: 7.38% / 9.68% / 2.09% / 2.88%
+  2021: 7.07% / 8.83% / 1.24% / 1.39%
+  2022: 6.84% / 8.00% / 0.89% / 0.89%
+  2023: 7.08% / 7.29% / 9.30% / 9.55%
+  2024: 7.06% / 7.50% / 2.79% / 3.10%
+  2025: 6.91% / 7.13% / 2.16% / 2.11%
+
+====================================================================================================
+P. y_kabupaten: ambang dari tahun latih, S1 2020-2025 (prevalensi 3.75%)
+====================================================================================================
+Pemeriksaan G2: BSS xgb atas kalender +0.3929  BSS rf atas kalender +0.3835  BSS ef1_tingkat atas kalender +0.3619
+
+P1 Pemecahan geser-tingkat atas kalender mentah: mentah / offset periode / per tahun; bagian [2 tahap]
+    xgb  mentah +0.3929  periode +0.1457  tahun +0.0424  bagian periode 0.63 [0.30, 0.95]  bagian tahun 0.26 [0.06, 0.45]  total 0.89 [0.72, 1.05]
+         per tahun mentah +0.437 +0.627 +0.719 +0.098 +0.169 +0.308  sesudah geser per tahun +0.051 +0.047 +0.085 +0.121 -0.051 +0.002
+    rf   mentah +0.3835  periode +0.1449  tahun +0.0319  bagian periode 0.62 [0.38, 0.85]  bagian tahun 0.29 [0.14, 0.47]  total 0.92 [0.81, 1.03]
+         per tahun mentah +0.468 +0.574 +0.688 +0.071 +0.158 +0.343  sesudah geser per tahun +0.050 +0.058 +0.047 +0.061 -0.033 +0.010
+  geser periode (logit) xgb -0.289  rf -0.532  kalender -1.140
+
+Deskriptif: MDD80 BSS atas EF-L (enam tahun, df 5), ambang tahun latih
+    xgb  atas EF-L +0.0486  MDD80 0.1228
+    rf   atas EF-L +0.0219  MDD80 0.1089
+selesai.
