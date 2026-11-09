@@ -1,0 +1,40 @@
+DC bulan lalu hilang 0.00% (diisi median kabupaten)
+
+M1 koefisien per lipatan (EF-L ulang | EF-D | EF-LD)
+  2020: EF-L +0.657 +0.705 | EF-D +0.662 DC +0.941 | EF-LD +0.679 nas +0.464 DC +0.665
+  2021: EF-L +0.686 +0.797 | EF-D +0.685 DC +1.007 | EF-LD +0.708 nas +0.544 DC +0.667
+  2022: EF-L +0.709 +0.862 | EF-D +0.699 DC +1.052 | EF-LD +0.729 nas +0.613 DC +0.654
+  2023: EF-L +0.730 +0.922 | EF-D +0.715 DC +1.122 | EF-LD +0.750 nas +0.655 DC +0.666
+  2024: EF-L +0.759 +0.949 | EF-D +0.740 DC +1.110 | EF-LD +0.778 nas +0.688 DC +0.656
+  2025: EF-L +0.776 +0.975 | EF-D +0.755 DC +1.141 | EF-LD +0.797 nas +0.717 DC +0.680
+O1 2020: dilatih 41,832 baris, 39 fitur
+O1 2021: dilatih 47,808 baris, 39 fitur
+O1 2022: dilatih 53,784 baris, 39 fitur
+O1 2023: dilatih 59,760 baris, 39 fitur
+O1 2024: dilatih 65,736 baris, 39 fitur
+O1 2025: dilatih 71,712 baris, 39 fitur
+
+y_gabungan: rujukan pasangan EF-3m; kabupaten 498; baris 35,856; EF-L ulang lawan tersimpan, selisih maks 1.11e-16
+
+O1 (a) rata-rata rasio [2 tahap] t95; (b) satu rasio [2 tahap]; (c) median, tahun > 0 (n = 6)
+  xgb           atas efld            (a) +0.0044 [-0.1362, +0.1203] t95 [-0.1738, +0.1826]  (b) -0.0088 [-0.1478, +0.1109]  (c) +0.0474 4/6  per tahun -0.309 +0.105 +0.168 +0.002 -0.033 +0.093
+  xgb_nasdc     atas efld            (a) +0.0350 [-0.0411, +0.1128] t95 [-0.0621, +0.1320]  (b) +0.0247 [-0.0481, +0.1038]  (c) +0.0412 5/6  per tahun -0.118 +0.103 +0.140 +0.006 +0.003 +0.077
+  xgb_nasdc     atas ef1_tingkat     (a) +0.0669 [-0.0055, +0.1486] t95 [-0.0341, +0.1679]  (b) +0.0538 [-0.0129, +0.1382]  (c) +0.0854 5/6  per tahun -0.084 +0.115 +0.192 +0.007 +0.061 +0.110
+  xgb_nasdc     atas klim_frek       (a) +0.2780 [+0.1549, +0.4324] t95 [+0.0834, +0.4726]  LOLOS  (b) +0.2774 [+0.1475, +0.4374]  (c) +0.2321 6/6  per tahun +0.236 +0.437 +0.560 +0.070 +0.137 +0.228
+  xgb_nasdc     atas rujukan_peluang (a) +0.2813 [+0.1585, +0.4342] t95 [+0.0864, +0.4762]  LOLOS  (b) +0.2804 [+0.1541, +0.4397]  (c) +0.2465 6/6  per tahun +0.236 +0.437 +0.560 +0.070 +0.128 +0.257
+  xgb_nasdc     atas xgb_nas         (a) +0.0002 [-0.0125, +0.0144] t95 [-0.0179, +0.0183]  (b) +0.0028 [-0.0117, +0.0178]  (c) -0.0020 3/6  per tahun +0.031 -0.018 -0.005 +0.004 -0.012 +0.001
+  xgb_nasdc     atas xgb             (a) +0.0217 [-0.0184, +0.0758] t95 [-0.0464, +0.0897]  (b) +0.0332 [-0.0149, +0.0912]  (c) +0.0006 3/6  per tahun +0.145 -0.002 -0.034 +0.003 +0.035 -0.017
+  xgb_nas       atas efld            (a) +0.0335 [-0.0542, +0.1197] t95 [-0.0796, +0.1466]  (b) +0.0220 [-0.0605, +0.1115]  (c) +0.0453 5/6  per tahun -0.155 +0.119 +0.144 +0.002 +0.015 +0.076
+
+O1 galat Monte Carlo: batas dua tahap per jalan (rata-rata rasio | satu rasio)
+  benih 2026 selesai
+  benih 1 selesai
+  benih 2 selesai
+  benih 3 selesai
+  benih 4 selesai
+  10.000 ulangan selesai
+  xgb_nasdc     atas efld             rata-rata rasio bawah -0.0441..-0.0411 semua > 0: False | satu rasio bawah -0.0481..-0.0442 semua > 0: False
+  xgb_nasdc     atas ef1_tingkat      rata-rata rasio bawah -0.0151..-0.0055 semua > 0: False | satu rasio bawah -0.0202..-0.0129 semua > 0: False
+  xgb_nasdc     atas klim_frek        rata-rata rasio bawah +0.1436..+0.1572 semua > 0: True | satu rasio bawah +0.1390..+0.1507 semua > 0: True
+  xgb_nasdc     atas rujukan_peluang  rata-rata rasio bawah +0.1460..+0.1587 semua > 0: True | satu rasio bawah +0.1398..+0.1553 semua > 0: True
+selesai.

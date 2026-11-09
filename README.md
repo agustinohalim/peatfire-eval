@@ -96,7 +96,7 @@ python patokan_nilai.py                            # Section 6.8 and Table 6: hi
 python patokan_fwi_komponen.py                     # Table 5: FWI System components (~1 h)
 ```
 
-### Revision analyses (versions 2.4.0 to 2.11.0)
+### Revision analyses (versions 2.4.0 to 2.11.1)
 
 The revised manuscript, *IndoFireBench: a district benchmark and reference forecasts for monthly fire
 forecasting in Indonesia* (the benchmark is named PeatFireBench in this
@@ -105,7 +105,7 @@ reference climatology computed from the training years only, on the same rows: t
 (MC, the reference of version 2.3.0), the share of training years in which the district exceeded
 its threshold in that calendar month (EF-1m) or in a three-month window (EF-3m), a probability
 climatology chosen per fold on training years (EF-P), and EF-1m adjusted with last month's national
-detection count (EF-L). The analyses ran in fifteen rounds (phases A to O; phase F in version 2.5.0, phase G in 2.6.0, phase H in 2.7.0, phases I to L in 2.8.0, phase M in 2.9.0, phase N in 2.10.0, phase O in 2.11.0). For each round the design
+detection count (EF-L). The analyses ran in fifteen rounds (phases A to O; phase F in version 2.5.0, phase G in 2.6.0, phase H in 2.7.0, phases I to L in 2.8.0, phase M in 2.9.0, phase N in 2.10.0, phase O in 2.11.0 and 2.11.1). For each round the design
 and the decision rules were written and committed before any script ran; `registration/` holds
 those records with their results (in Indonesian, `Hasil_Patokan_6.md` to `Hasil_Patokan_20.md`);
 `Hasil_Patokan_21.md` registers the evaluation of the 2026 season, with two dated addenda, and
@@ -129,8 +129,9 @@ with the GFWED Drought Code of December 2002 to December 2011 aggregated to dist
 for 2012-2025 (`DL_FIRE_NASIONAL/gfwed_komponen_MERRA2.CORRECTED_awal.csv`, from
 `gabung_gfwed_komponen.py --unduh MERRA2.CORRECTED --awal` and `--presip MERRA2.CORRECTED --awal`), splits
 the forward forecast's level-shift share into period and year, and gives sign and signed-rank tests over
-the forward years for both targets. Phase O refits gradient boosting on the forward MODIS forecast with the
-district Drought Code anomaly that EF-LD uses, and scores it over the four references with five bootstrap
+the forward years for both targets. Phase O refits gradient boosting with the district Drought Code anomaly that
+EF-LD uses, on the chronological VIIRS test years (`patokan_tingkat_o.py`, added in 2.11.1) and on the
+forward MODIS forecast (`patokan_modis_o.py`), and scores it over the four references with five bootstrap
 seeds, 10,000 draws and a moving-block year bootstrap; `gambar_inti_o.py` draws Figure 3 of the revised
 manuscript with that series. The 2026 evaluation (`Hasil_Patokan_21.md`) was registered on 9 November 2026,
 before standard-processing 2026 detections were released, and is to be run once with this code. The MODIS
@@ -218,7 +219,9 @@ python -u patokan_enso_m.py > DL_FIRE_NASIONAL/penuh/patokan_enso_m.log    # rea
 # phase N (Hasil_Patokan_19): drought forms and level share on the forward MODIS forecast
 python -u patokan_modis_n.py y_gabungan    > DL_FIRE_MODIS/patokan_modis_n_nas.log
 python -u patokan_modis_n.py y_kabupaten   > DL_FIRE_MODIS/patokan_modis_n_kab.log
-# phase O (Hasil_Patokan_20): gradient boosting given the district Drought Code, forward MODIS forecast
+# phase O (Hasil_Patokan_20): gradient boosting given the district Drought Code, VIIRS and forward MODIS
+python -u patokan_tingkat_o.py y_kabupaten > DL_FIRE_NASIONAL/penuh/patokan_tingkat_o_kab.log
+python -u patokan_tingkat_o.py y_gabungan  > DL_FIRE_NASIONAL/penuh/patokan_tingkat_o_nas.log
 python -u patokan_modis_o.py y_gabungan    > DL_FIRE_MODIS/patokan_modis_o_nas.log
 python -u patokan_modis_o.py y_kabupaten   > DL_FIRE_MODIS/patokan_modis_o_kab.log
 python gambar_inti_o.py                            # Figure 3 of the revised manuscript, with phases M to O
