@@ -117,3 +117,34 @@ mendahului musim api semua kabupaten. Perubahan satu-satunya: pendaftaran 2027 (
 kedua) dilakukan dengan stempel waktu publik **sebelum 1 Januari 2027**, bukan sebelum 1 Juni 2027. Ini hanya
 memajukan tanggal, jadi lebih ketat; aturan 2026 (R48(a)–(e), R48(f′)) tidak berubah. Penulis tetap belum melihat
 hitungan deteksi 2026.
+
+## Tambahan bertanggal keempat (10 Nov 2026, sesudah panel 25, masih sebelum data standar 2026)
+
+Pemicu: telaah internal pra-kirim kedua puluh lima (catatan telaah tidak dirilis): ramalan (ii) R48(f′) menuntut bagian
+tingkat per kabupaten ≥ 0,5, padahal menurut relasi fase Q (Hasil_Patokan_23) dan R (Hasil_Patokan_24) tingkat yang
+diambil hampir nol pada tahun yang lebih ramai dari tahun latih; untuk 2026 (El Niño kuat) (ii) jadi diharapkan gagal
+atau tak terdefinisi, sehingga tidak membedakan apa pun. R48(a)–(e) dan R48(f′) (i), (ii) tidak berubah dan tetap
+dilaporkan. Ditambah satu ramalan yang menguji relasi itu sendiri. Penulis tetap belum melihat hitungan deteksi 2026.
+
+**R48(f′)(iii) Ramalan relasi tingkat 2026, per kabupaten.** Dengan definisi persis R1 (Hasil_Patokan_24) pada fold
+2026 (ambang, kabupaten dan kalender dari tahun latih 2012–2025; GB benih 42): L₂₀₂₆ = BSS GB atas kalender mentah −
+BSS sesudah kedua prakiraan digeser ke laju teramati 2026; e₂₀₂₆ = logit(rata-rata kalender 2026) − logit(laju
+teramati 2026).
+- Bila e₂₀₂₆ ≤ 0 (kalender terlalu rendah): ramalan |L₂₀₂₆| ≤ 0,05. Dasarnya: keenam tahun dengan e < 0 (VIIRS 2023,
+  MODIS 2009, 2012, 2014, 2015, 2019) memberi L −0,036 sampai −0,007.
+- Bila e₂₀₂₆ > 0: ramalan L₂₀₂₆ di dalam selang prakiraan 95 % regresi L atas e pada tahun dengan e > 0 saja (VIIRS
+  lima tahun, MODIS maju tujuh tahun), intersep per rancangan, intersep VIIRS dipakai untuk 2026; selang prakiraan
+  OLS biasa dengan derajat bebas n − 3. Koefisien dihitung dari log R1 yang sudah ada
+  (`patokan_tingkat_r1_kab.log`, `patokan_modis_r_kab.log`) dengan `patokan_ramalan_2026.py`, dicatat di bawah
+  sebelum data 2026 diunduh.
+- Bila ramalan gagal, laporan menulis bahwa relasi tingkat tidak berulang pada 2026. Sasaran nasional tidak diramal
+  (bagiannya tak presisi, 0,57 [0,06, 0,77]).
+
+Koefisien (f0b9159 mendaftarkan aturan; skrip dijalankan 10 Nov 2026 sesudahnya, sebelum data 2026; log
+`DL_FIRE_NASIONAL/penuh/patokan_ramalan_2026.log`). Tahun dengan e > 0: n = 12 (VIIRS 5, MODIS 7), df 9.
+L̂ = +0,0342 + 0,2607 e (intersep VIIRS; MODIS −0,0399), kemiringan [+0,182, +0,339]; simpangan baku sisa s = 0,0559;
+t(0,975; 9) = 2,2622. Selang prakiraan: L̂ ± 2,2622 · s · √(1 + x₀ᵀ(XᵀX)⁻¹x₀), x₀ = (e, 1, 0), dengan
+(XᵀX)⁻¹ untuk (e, VIIRS, MODIS) = [[0,388023, −0,582034, −0,334753], [−0,582034, 1,073051, 0,502129],
+[−0,334753, 0,502129, 0,431653]]. Contoh: e = 0,5: +0,165 [+0,005, +0,324]; e = 1,0: +0,295 [+0,151, +0,439];
+e = 1,5: +0,425 [+0,287, +0,564]; e = 2,0: +0,556 [+0,412, +0,699]. Tahun dengan e ≤ 0: L −0,036 sampai −0,007, maks
+|L| 0,036, jadi batas 0,05.

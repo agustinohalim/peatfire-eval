@@ -100,6 +100,8 @@ repositori penulis; isi commit itu sendiri hanya dapat diperiksa di repositori p
 - `5ee3e4e` 2026-11-09T15:18:34+07:00 docs(kebakaran): add a dated addendum to the 2026 protocol before any 2026 data
 - `0f64423` 2026-11-09T16:32:49+07:00 docs(kebakaran): add a second dated addendum to the 2026 protocol before any 2026 data
 - `7a3dec9` 2026-11-09T19:01:30+07:00 docs(kebakaran): text round on panel 23 majors that need no new numbers (third dated addendum)
+- `f0b9159` 2026-11-10T11:29:24+07:00 docs(kebakaran): fourth dated addendum to the 2026 protocol, a conditional prediction of the fire-level relation
+- `a45aaf5` 2026-11-10T11:29:51+07:00 docs(kebakaran): record the coefficients of the conditional 2026 fire-level prediction
 
 ## Hasil_Patokan_22.md
 

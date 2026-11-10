@@ -1,0 +1,25 @@
+Tahun dengan e <= 0 (kalender terlalu rendah):
+  VIIRS 2023: L -0.023  e -0.302
+  MODIS 2009: L -0.036  e -0.155
+  MODIS 2012: L -0.024  e -0.033
+  MODIS 2014: L -0.007  e -0.364
+  MODIS 2015: L -0.018  e -0.753
+  MODIS 2019: L -0.009  e -0.207
+  rentang L [-0.036, -0.007]; maks |L| 0.036
+
+Tahun dengan e > 0: n = 12 (VIIRS 5, MODIS 7), df = 9
+  L = +0.0342 (VIIRS) / -0.0399 (MODIS) + 0.2607 e   kemiringan [+0.1820, +0.3394]
+  simpangan baku sisa 0.0559; t(0,975; 9) = 2.2622
+  (X'X)^-1 untuk [e, VIIRS, MODIS]:
+[[ 0.388023 -0.582034 -0.334753]
+ [-0.582034  1.073051  0.502129]
+ [-0.334753  0.502129  0.431653]]
+
+Selang prakiraan 95 % untuk tahun VIIRS baru:
+  e = 0.25: L +0.099 [-0.070, +0.269]
+  e = 0.50: L +0.165 [+0.005, +0.324]
+  e = 1.00: L +0.295 [+0.151, +0.439]
+  e = 1.50: L +0.425 [+0.287, +0.564]
+  e = 2.00: L +0.556 [+0.412, +0.699]
+  e = 2.50: L +0.686 [+0.527, +0.845]
+selesai.

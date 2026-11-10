@@ -108,7 +108,7 @@ climatology chosen per fold on training years (EF-P), and EF-1m adjusted with la
 detection count (EF-L). The analyses ran in eighteen rounds (phases A to R; phase F in version 2.5.0, phase G in 2.6.0, phase H in 2.7.0, phases I to L in 2.8.0, phase M in 2.9.0, phase N in 2.10.0, phase O in 2.11.0 and 2.11.1, phase P in 2.11.2, phase Q in 2.11.3, phase R in 2.11.4). For each round the design
 and the decision rules were written and committed before any script ran; `registration/` holds
 those records with their results (in Indonesian, `Hasil_Patokan_6.md` to `Hasil_Patokan_20.md` and `Hasil_Patokan_22.md` to `Hasil_Patokan_24.md`);
-`Hasil_Patokan_21.md` registers the evaluation of the 2026 season, with three dated addenda, and
+`Hasil_Patokan_21.md` registers the evaluation of the 2026 season, with four dated addenda, and
 `RIWAYAT_COMMIT.md` lists the commits of every record with their time stamps.
 Phase G tests EF-L on the MODIS years 2003-2011, which no earlier round had scored: the MODIS
 standard-processing archive (`MODIS_SP`) is downloaded with the same box and filter, and a panel is
@@ -138,7 +138,8 @@ decomposition on the chronological VIIRS test years with thresholds, evaluated d
 from the training years of each fold (the data of phase G2), instead of from the full panel. Phase Q
 (`patokan_tingkat_q.py`, `patokan_modis_q.py`) relates the fire level removed from each test year to the
 calendar's level error that year and repeats the two-stage intervals with provinces instead of districts
-resampled, on the VIIRS years with training-year thresholds and on the forward MODIS forecast. The 2026 evaluation (`Hasil_Patokan_21.md`) was registered on 9 November 2026,
+resampled, on the VIIRS years with training-year thresholds and on the forward MODIS forecast. The 2026 evaluation (`Hasil_Patokan_21.md`) was registered on 9 November 2026, with a fourth addendum on 10
+November whose prediction coefficients `patokan_ramalan_2026.py` computes from the phase R logs,
 before standard-processing 2026 detections were released, and is to be run once with this code. The MODIS
 data are not included; the scripts below rebuild them.
 The commit identifiers in them refer to the authors' working repository; header paragraphs that
@@ -245,6 +246,7 @@ python -u patokan_modis_r.py y_kabupaten    > DL_FIRE_MODIS/patokan_modis_r_kab.
 python -u patokan_modis_r.py y_gabungan     > DL_FIRE_MODIS/patokan_modis_r_nas.log
 python -u patokan_tingkat_r.py y_kabupaten  > DL_FIRE_NASIONAL/penuh/patokan_tingkat_r_kab.log
 python -u patokan_tingkat_r.py y_gabungan   > DL_FIRE_NASIONAL/penuh/patokan_tingkat_r_nas.log
+python patokan_ramalan_2026.py               > DL_FIRE_NASIONAL/penuh/patokan_ramalan_2026.log   # after the R1 runs
 python gambar_inti_o.py                            # Figure 3 of the revised manuscript, with phases M to O
 ```
 
