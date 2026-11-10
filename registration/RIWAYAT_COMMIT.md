@@ -120,3 +120,12 @@ repositori penulis; isi commit itu sendiri hanya dapat diperiksa di repositori p
 - `56051af` 2026-11-10T03:40:08+07:00 docs(kebakaran): pre-register IndoFireBench phase R before running
 - `84e9f5a` 2026-11-10T03:42:45+07:00 feat(kebakaran): add the phase R scripts for IndoFireBench before running them
 - `77aff0a` 2026-11-10T03:51:59+07:00 feat(kebakaran): IndoFireBench phase R results
+
+## Hasil_Patokan_25.md
+
+- `ed87d3d` 2026-11-10T11:38:20+07:00 docs(kebakaran): pre-register IndoFireBench phase S (training-year thresholds as the primary definition) before running
+- `8feb367` 2026-11-10T11:51:42+07:00 feat(kebakaran): phase S scripts (training-year thresholds for Tables 2, 4, 6) and their deviations, before running
+- `b21cb57` 2026-11-10T12:06:57+07:00 feat(kebakaran): phase S table script prints the GB minus EF-1m alert contrasts reported in Section 6.5 (deviation 8)
+- `64742b3` 2026-11-10T12:07:08+07:00 docs(kebakaran): record phase S deviation 8 (extra Section 6.5 contrasts) before the rerun
+- `402448b` 2026-11-10T12:09:00+07:00 feat(kebakaran): phase S equivalence, power and Holm script for Section 6.1 (deviation 9), before running
+- `56e3183` 2026-11-10T12:15:48+07:00 docs(kebakaran): phase S results — training-year thresholds change six minor verdicts, none the abstract depends on; no panel 26 under R57

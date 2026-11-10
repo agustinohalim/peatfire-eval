@@ -1,0 +1,50 @@
+DC bulan lalu hilang 0.00% (diisi median kabupaten)
+baris panel 77688; DC bulan lalu hilang 0.00% (diisi median kabupaten)
+y_kabupaten: rujukan pasangan EF-1m; panel 77,688 baris, tahun 2013-2025
+  2020: ambang dari 2012-2019; kalender, riwayat lokal MC, klimatologi + FWI (2 dtk)
+  2020: riwayat lokal EF-1m, GB riwayat api, FDRS (5 dtk)
+  2020: GB tersetel d2_n600_mcw1 (15 dtk)
+  2020: EF-P (ef3), laju konstan, EF-L, EF-D, EF-LD (15 dtk)
+  2020: GB + nasional, GB + nasional + DC (17 dtk)
+  2020: luar-lipatan tahun latih 7 tahun, 34,188 baris; EF-L latih 34,188 baris (23 dtk)
+  2021: ambang dari 2012-2020; kalender, riwayat lokal MC, klimatologi + FWI (24 dtk)
+  2021: riwayat lokal EF-1m, GB riwayat api, FDRS (26 dtk)
+  2021: GB tersetel d5_n600_mcw10 (37 dtk)
+  2021: EF-P (ef1_halus), laju konstan, EF-L, EF-D, EF-LD (38 dtk)
+  2021: GB + nasional, GB + nasional + DC (40 dtk)
+  2021: luar-lipatan tahun latih 8 tahun, 39,072 baris; EF-L latih 39,072 baris (47 dtk)
+  2022: ambang dari 2012-2021; kalender, riwayat lokal MC, klimatologi + FWI (48 dtk)
+  2022: riwayat lokal EF-1m, GB riwayat api, FDRS (51 dtk)
+  2022: GB tersetel d5_n600_mcw10 (64 dtk)
+  2022: EF-P (ef3), laju konstan, EF-L, EF-D, EF-LD (64 dtk)
+  2022: GB + nasional, GB + nasional + DC (66 dtk)
+  2022: luar-lipatan tahun latih 9 tahun, 44,064 baris; EF-L latih 44,064 baris (76 dtk)
+  2023: ambang dari 2012-2022; kalender, riwayat lokal MC, klimatologi + FWI (77 dtk)
+  2023: riwayat lokal EF-1m, GB riwayat api, FDRS (80 dtk)
+  2023: GB tersetel d5_n600_mcw1 (92 dtk)
+  2023: EF-P (ef3), laju konstan, EF-L, EF-D, EF-LD (93 dtk)
+  2023: GB + nasional, GB + nasional + DC (95 dtk)
+  2023: luar-lipatan tahun latih 10 tahun, 48,960 baris; EF-L latih 48,960 baris (107 dtk)
+  2024: ambang dari 2012-2023; kalender, riwayat lokal MC, klimatologi + FWI (108 dtk)
+  2024: riwayat lokal EF-1m, GB riwayat api, FDRS (111 dtk)
+  2024: GB tersetel d5_n150_mcw10 (123 dtk)
+  2024: EF-P (ef1_halus), laju konstan, EF-L, EF-D, EF-LD (124 dtk)
+  2024: GB + nasional, GB + nasional + DC (126 dtk)
+  2024: luar-lipatan tahun latih 11 tahun, 53,988 baris; EF-L latih 53,988 baris (139 dtk)
+  2025: ambang dari 2012-2024; kalender, riwayat lokal MC, klimatologi + FWI (140 dtk)
+  2025: riwayat lokal EF-1m, GB riwayat api, FDRS (143 dtk)
+  2025: GB tersetel d5_n600_mcw1 (158 dtk)
+  2025: EF-P (ef1_halus), laju konstan, EF-L, EF-D, EF-LD (158 dtk)
+  2025: GB + nasional, GB + nasional + DC (161 dtk)
+  2025: luar-lipatan tahun latih 12 tahun, 58,896 baris; EF-L latih 58,896 baris (176 dtk)
+baris uji (semua kabupaten) 35,856
+baris uji sesudah gabung berkas tersimpan 35,856
+tersimpan: DL_FIRE_NASIONAL\patokan_ambang_s_y_kabupaten.csv  baris 29,376, kabupaten 409, kolom prakiraan 33
+  2020: 4,884 baris, 407 kabupaten
+  2021: 4,884 baris, 407 kabupaten
+  2022: 4,896 baris, 408 kabupaten
+  2023: 4,896 baris, 408 kabupaten
+  2024: 4,908 baris, 409 kabupaten
+  2025: 4,908 baris, 409 kabupaten
+tersimpan: DL_FIRE_NASIONAL\patokan_ambang_s_y_kabupaten_latih.csv  baris 558,336 (efl 279,168, oof 279,168); 184 dtk
+selesai.

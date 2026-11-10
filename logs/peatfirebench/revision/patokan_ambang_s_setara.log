@@ -1,0 +1,85 @@
+cek ap_cepat = sklearn: ok
+====================================================================================================
+D1/D2 fase S. Kesetaraan (margin 0.05), selang tahun-kecil, bobot kejadian (S1 2020-2025, ambang tahun latih)
+====================================================================================================
+
+--- y_kabupaten, rujukan EF-1m: AP rujukan 0.247; 409 kabupaten
+  klimatologi               -0.134  2tahap95 [-0.206, -0.071]  t95 [-0.218, -0.049]  jk95 [-0.218, -0.049]  2tahap90 [-0.194, -0.081]  t90 [-0.200, -0.067]  p 0.010  MDD 0.115  thn-perlu -  tak-putus
+                            bobot kejadian -0.186 2tahap95 [-0.237, -0.089]
+  klim_frek                 -0.035  2tahap95 [-0.079, +0.003]  t95 [-0.078, +0.009]  jk95 [-0.078, +0.009]  2tahap90 [-0.071, -0.003]  t90 [-0.069, -0.000]  p 0.097  MDD 0.059  thn-perlu -  tak-putus
+                            bobot kejadian -0.011 2tahap95 [-0.081, +0.026]
+  persistence               -0.113  2tahap95 [-0.196, -0.035]  t95 [-0.213, -0.013]  jk95 [-0.213, -0.013]  2tahap90 [-0.186, -0.047]  t90 [-0.191, -0.034]  p 0.034  MDD 0.136  thn-perlu -  tak-putus
+                            bobot kejadian -0.179 2tahap95 [-0.238, -0.053]
+  seasonal_naive            -0.145  2tahap95 [-0.251, -0.055]  t95 [-0.281, -0.008]  jk95 [-0.281, -0.008]  2tahap90 [-0.230, -0.066]  t90 [-0.252, -0.037]  p 0.042  MDD 0.186  thn-perlu -  tak-putus
+                            bobot kejadian -0.251 2tahap95 [-0.347, -0.069]
+  rasio                     -0.140  2tahap95 [-0.228, -0.063]  t95 [-0.246, -0.034]  jk95 [-0.246, -0.034]  2tahap90 [-0.214, -0.077]  t90 [-0.223, -0.057]  p 0.020  MDD 0.144  thn-perlu -  tak-putus
+                            bobot kejadian -0.212 2tahap95 [-0.276, -0.079]
+  fwi                       -0.132  2tahap95 [-0.218, -0.055]  t95 [-0.242, -0.022]  jk95 [-0.242, -0.022]  2tahap90 [-0.205, -0.065]  t90 [-0.218, -0.046]  p 0.027  MDD 0.149  thn-perlu -  tak-putus
+                            bobot kejadian -0.214 2tahap95 [-0.291, -0.064]
+  fwi_persentil             -0.125  2tahap95 [-0.227, -0.024]  t95 [-0.259, +0.009]  jk95 [-0.259, +0.009]  2tahap90 [-0.215, -0.040]  t90 [-0.230, -0.020]  p 0.062  MDD 0.182  thn-perlu -  tak-putus
+                            bobot kejadian -0.222 2tahap95 [-0.301, -0.051]
+  fwi_logistik              -0.097  2tahap95 [-0.162, -0.035]  t95 [-0.160, -0.034]  jk95 [-0.160, -0.034]  2tahap90 [-0.151, -0.049]  t90 [-0.146, -0.047]  p 0.011  MDD 0.085  thn-perlu -  tak-putus
+                            bobot kejadian -0.128 2tahap95 [-0.175, -0.045]
+  klim_fwi                  -0.077  2tahap95 [-0.147, -0.017]  t95 [-0.144, -0.011]  jk95 [-0.144, -0.011]  2tahap90 [-0.134, -0.028]  t90 [-0.130, -0.025]  p 0.030  MDD 0.090  thn-perlu -  tak-putus
+                            bobot kejadian -0.088 2tahap95 [-0.156, -0.036]
+  logistik                  -0.131  2tahap95 [-0.203, -0.070]  t95 [-0.211, -0.051]  jk95 [-0.211, -0.051]  2tahap90 [-0.194, -0.080]  t90 [-0.193, -0.068]  p 0.008  MDD 0.108  thn-perlu -  tak-putus
+                            bobot kejadian -0.175 2tahap95 [-0.222, -0.089]
+  log_klim_jeda             -0.054  2tahap95 [-0.112, -0.009]  t95 [-0.100, -0.007]  jk95 [-0.100, -0.007]  2tahap90 [-0.104, -0.015]  t90 [-0.090, -0.017]  p 0.032  MDD 0.064  thn-perlu -  tak-putus
+                            bobot kejadian -0.053 2tahap95 [-0.119, -0.012]
+  log_ef1_jeda              +0.008  2tahap95 [-0.057, +0.072]  t95 [-0.049, +0.065]  jk95 [-0.049, +0.065]  2tahap90 [-0.046, +0.060]  t90 [-0.036, +0.053]  p 0.730  MDD 0.077  thn-perlu 356  tak-putus
+                            bobot kejadian -0.001 2tahap95 [-0.062, +0.062]
+    log_ef1_jeda ternormalisasi+0.008  2tahap95 [-0.059, +0.074]  t95 [-0.050, +0.066]  jk95 [-0.050, +0.066]  2tahap90 [-0.047, +0.061]  t90 [-0.038, +0.054]  p 0.738  MDD 0.079  thn-perlu 379  tak-putus
+  rf                        +0.031  2tahap95 [-0.026, +0.083]  t95 [-0.014, +0.076]  jk95 [-0.014, +0.076]  2tahap90 [-0.015, +0.073]  t90 [-0.004, +0.066]  p 0.138  MDD 0.061  thn-perlu 18  tak-putus
+                            bobot kejadian +0.043 2tahap95 [-0.030, +0.087]
+    rf ternormalisasi       +0.033  2tahap95 [-0.026, +0.086]  t95 [-0.015, +0.080]  jk95 [-0.015, +0.080]  2tahap90 [-0.015, +0.076]  t90 [-0.005, +0.070]  p 0.140  MDD 0.065  thn-perlu 18  tak-putus
+  xgb                       +0.028  2tahap95 [-0.048, +0.111]  t95 [-0.054, +0.110]  jk95 [-0.054, +0.110]  2tahap90 [-0.036, +0.096]  t90 [-0.036, +0.092]  p 0.418  MDD 0.111  thn-perlu 63  tak-putus
+                            bobot kejadian +0.030 2tahap95 [-0.055, +0.085]
+    xgb ternormalisasi      +0.029  2tahap95 [-0.049, +0.113]  t95 [-0.055, +0.114]  jk95 [-0.055, +0.114]  2tahap90 [-0.037, +0.100]  t90 [-0.037, +0.095]  p 0.411  MDD 0.114  thn-perlu 61  tak-putus
+  mlp                       -0.007  2tahap95 [-0.067, +0.057]  t95 [-0.056, +0.042]  jk95 [-0.056, +0.042]  2tahap90 [-0.057, +0.044]  t90 [-0.046, +0.031]  p 0.726  MDD 0.067  thn-perlu -  tak-putus
+                            bobot kejadian -0.017 2tahap95 [-0.073, +0.033]
+  xgb_setel                 +0.047  2tahap95 [-0.024, +0.111]  t95 [-0.016, +0.110]  jk95 [-0.016, +0.110]  2tahap90 [-0.013, +0.098]  t90 [-0.002, +0.097]  p 0.113  MDD 0.086  thn-perlu 15  tak-putus
+                            bobot kejadian +0.049 2tahap95 [-0.033, +0.096]
+
+--- y_gabungan, rujukan EF-3m: AP rujukan 0.694; 498 kabupaten
+  klimatologi               -0.230  2tahap95 [-0.309, -0.156]  t95 [-0.325, -0.135]  jk95 [-0.325, -0.135]  2tahap90 [-0.288, -0.168]  t90 [-0.304, -0.156]  p 0.002  MDD 0.129  thn-perlu -  tak-putus
+                            bobot kejadian -0.192 2tahap95 [-0.291, -0.128]
+  klim_frek1                -0.020  2tahap95 [-0.049, +0.004]  t95 [-0.048, +0.008]  jk95 [-0.048, +0.008]  2tahap90 [-0.044, -0.000]  t90 [-0.042, +0.002]  p 0.130  MDD 0.038  thn-perlu -  SETARA
+                            bobot kejadian -0.014 2tahap95 [-0.040, +0.002]
+  persistence               -0.153  2tahap95 [-0.218, -0.082]  t95 [-0.232, -0.075]  jk95 [-0.232, -0.075]  2tahap90 [-0.206, -0.093]  t90 [-0.215, -0.092]  p 0.004  MDD 0.106  thn-perlu -  tak-putus
+                            bobot kejadian -0.158 2tahap95 [-0.226, -0.086]
+  seasonal_naive            -0.139  2tahap95 [-0.213, -0.046]  t95 [-0.260, -0.018]  jk95 [-0.260, -0.018]  2tahap90 [-0.204, -0.057]  t90 [-0.234, -0.044]  p 0.032  MDD 0.165  thn-perlu -  tak-putus
+                            bobot kejadian -0.180 2tahap95 [-0.256, -0.063]
+  rasio                     -0.227  2tahap95 [-0.300, -0.159]  t95 [-0.314, -0.140]  jk95 [-0.314, -0.140]  2tahap90 [-0.282, -0.169]  t90 [-0.295, -0.159]  p 0.001  MDD 0.118  thn-perlu -  tak-putus
+                            bobot kejadian -0.205 2tahap95 [-0.285, -0.149]
+  fwi                       -0.501  2tahap95 [-0.578, -0.389]  t95 [-0.582, -0.419]  jk95 [-0.582, -0.419]  2tahap90 [-0.565, -0.404]  t90 [-0.564, -0.437]  p 0.000  MDD 0.110  thn-perlu -  tak-putus
+                            bobot kejadian -0.527 2tahap95 [-0.589, -0.409]
+  fwi_persentil             -0.567  2tahap95 [-0.629, -0.491]  t95 [-0.613, -0.521]  jk95 [-0.613, -0.521]  2tahap90 [-0.619, -0.503]  t90 [-0.603, -0.531]  p 0.000  MDD 0.062  thn-perlu -  tak-putus
+                            bobot kejadian -0.569 2tahap95 [-0.626, -0.497]
+  fwi_logistik              -0.495  2tahap95 [-0.552, -0.419]  t95 [-0.547, -0.443]  jk95 [-0.547, -0.443]  2tahap90 [-0.539, -0.432]  t90 [-0.536, -0.454]  p 0.000  MDD 0.071  thn-perlu -  tak-putus
+                            bobot kejadian -0.504 2tahap95 [-0.555, -0.432]
+  klim_fwi                  -0.250  2tahap95 [-0.341, -0.158]  t95 [-0.371, -0.130]  jk95 [-0.371, -0.130]  2tahap90 [-0.326, -0.171]  t90 [-0.345, -0.156]  p 0.003  MDD 0.164  thn-perlu -  tak-putus
+                            bobot kejadian -0.200 2tahap95 [-0.324, -0.119]
+  logistik                  -0.559  2tahap95 [-0.622, -0.491]  t95 [-0.609, -0.509]  jk95 [-0.609, -0.509]  2tahap90 [-0.612, -0.502]  t90 [-0.598, -0.520]  p 0.000  MDD 0.068  thn-perlu -  tak-putus
+                            bobot kejadian -0.551 2tahap95 [-0.616, -0.491]
+  log_klim_jeda             -0.019  2tahap95 [-0.065, +0.029]  t95 [-0.071, +0.034]  jk95 [-0.071, +0.034]  2tahap90 [-0.058, +0.021]  t90 [-0.060, +0.022]  p 0.399  MDD 0.071  thn-perlu -  tak-putus
+                            bobot kejadian -0.011 2tahap95 [-0.059, +0.032]
+  log_ef1_jeda              +0.026  2tahap95 [-0.017, +0.079]  t95 [-0.032, +0.083]  jk95 [-0.032, +0.083]  2tahap90 [-0.011, +0.071]  t90 [-0.019, +0.071]  p 0.300  MDD 0.078  thn-perlu 38  tak-putus
+                            bobot kejadian +0.020 2tahap95 [-0.019, +0.070]
+    log_ef1_jeda ternormalisasi+0.027  2tahap95 [-0.018, +0.082]  t95 [-0.033, +0.087]  jk95 [-0.033, +0.087]  2tahap90 [-0.012, +0.074]  t90 [-0.020, +0.074]  p 0.301  MDD 0.082  thn-perlu 38  tak-putus
+  rf                        +0.053  2tahap95 [+0.014, +0.101]  t95 [+0.003, +0.104]  jk95 [+0.003, +0.104]  2tahap90 [+0.020, +0.093]  t90 [+0.014, +0.093]  p 0.042  MDD 0.068  thn-perlu 9  UNGGUL
+                            bobot kejadian +0.043 2tahap95 [+0.011, +0.092]
+    rf ternormalisasi       +0.056  2tahap95 [+0.015, +0.106]  t95 [+0.004, +0.108]  jk95 [+0.004, +0.108]  2tahap90 [+0.021, +0.097]  t90 [+0.015, +0.097]  p 0.040  MDD 0.071  thn-perlu 9  UNGGUL
+  xgb                       +0.043  2tahap95 [+0.007, +0.089]  t95 [-0.002, +0.088]  jk95 [-0.002, +0.088]  2tahap90 [+0.012, +0.081]  t90 [+0.008, +0.078]  p 0.056  MDD 0.061  thn-perlu 10  tak-putus
+                            bobot kejadian +0.032 2tahap95 [+0.001, +0.081]
+    xgb ternormalisasi      +0.045  2tahap95 [+0.007, +0.092]  t95 [-0.001, +0.092]  jk95 [-0.001, +0.092]  2tahap90 [+0.012, +0.084]  t90 [+0.009, +0.081]  p 0.055  MDD 0.063  thn-perlu 10  tak-putus
+  mlp                       +0.031  2tahap95 [-0.005, +0.073]  t95 [-0.008, +0.071]  jk95 [-0.008, +0.071]  2tahap90 [+0.002, +0.066]  t90 [+0.000, +0.063]  p 0.097  MDD 0.054  thn-perlu 14  tak-putus
+                            bobot kejadian +0.021 2tahap95 [-0.008, +0.066]
+  xgb_setel                 +0.050  2tahap95 [+0.016, +0.091]  t95 [+0.010, +0.089]  jk95 [+0.010, +0.089]  2tahap90 [+0.021, +0.082]  t90 [+0.018, +0.081]  p 0.024  MDD 0.054  thn-perlu 7  UNGGUL
+                            bobot kejadian +0.039 2tahap95 [+0.010, +0.082]
+
+--- Himpunan konfirmatori (4 kontras), Holm atas p uji-t tahunan
+  y_gabungan   rf   p 0.0419  p Holm 0.1677  tidak
+  y_gabungan   xgb  p 0.0556  p Holm 0.1677  tidak
+  y_kabupaten  rf   p 0.1380  p Holm 0.2760  tidak
+  y_kabupaten  xgb  p 0.4182  p Holm 0.4182  tidak
+selesai.
