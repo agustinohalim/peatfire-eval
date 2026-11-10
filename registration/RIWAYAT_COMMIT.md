@@ -112,3 +112,9 @@ repositori penulis; isi commit itu sendiri hanya dapat diperiksa di repositori p
 - `c028252` 2026-11-09T18:57:38+07:00 docs(kebakaran): pre-register IndoFireBench phase Q before running
 - `3fa2052` 2026-11-09T18:58:49+07:00 feat(kebakaran): add the phase Q scripts for IndoFireBench before running them
 - `8b413d7` 2026-11-09T19:04:57+07:00 feat(kebakaran): IndoFireBench phase Q results
+
+## Hasil_Patokan_24.md
+
+- `56051af` 2026-11-10T03:40:08+07:00 docs(kebakaran): pre-register IndoFireBench phase R before running
+- `84e9f5a` 2026-11-10T03:42:45+07:00 feat(kebakaran): add the phase R scripts for IndoFireBench before running them
+- `77aff0a` 2026-11-10T03:51:59+07:00 feat(kebakaran): IndoFireBench phase R results

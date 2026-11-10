@@ -1,0 +1,51 @@
+DC bulan lalu hilang 0.00% (diisi median kabupaten)
+
+M1 koefisien per lipatan (EF-L ulang | EF-D | EF-LD)
+  2020: EF-L +0.657 +0.705 | EF-D +0.662 DC +0.941 | EF-LD +0.679 nas +0.464 DC +0.665
+  2021: EF-L +0.686 +0.797 | EF-D +0.685 DC +1.007 | EF-LD +0.708 nas +0.544 DC +0.667
+  2022: EF-L +0.709 +0.862 | EF-D +0.699 DC +1.052 | EF-LD +0.729 nas +0.613 DC +0.654
+  2023: EF-L +0.730 +0.922 | EF-D +0.715 DC +1.122 | EF-LD +0.750 nas +0.655 DC +0.666
+  2024: EF-L +0.759 +0.949 | EF-D +0.740 DC +1.110 | EF-LD +0.778 nas +0.688 DC +0.656
+  2025: EF-L +0.776 +0.975 | EF-D +0.755 DC +1.141 | EF-LD +0.797 nas +0.717 DC +0.680
+
+y_gabungan: rujukan pasangan EF-3m; kabupaten 498; baris 35,856; EF-L ulang lawan tersimpan, selisih maks 1.11e-16
+
+R2 y_gabungan: provinsi 34, kabupaten 498; 1.000 ulangan benih 2026
+  rujukan_peluang atas kalender  -0.0048  kabupaten [-0.0234, +0.0080]  provinsi [-0.0284, +0.0112]  tahun t [-0.0229, +0.0133]
+  ef1_tingkat    atas kalender  +0.2318  kabupaten [+0.1125, +0.3627]  provinsi [+0.1052, +0.3664]  tahun t [+0.0613, +0.4024]
+  efd            atas kalender  +0.1646  kabupaten [+0.0597, +0.2789]  provinsi [+0.0519, +0.2888]  tahun t [+0.0137, +0.3156]
+  efd            atas EF-P      +0.1686  kabupaten [+0.0669, +0.2848]  provinsi [+0.0546, +0.2952]  tahun t [+0.0183, +0.3189]
+  efd            atas EF-L      -0.0964  kabupaten [-0.1666, -0.0452]  provinsi [-0.1766, -0.0342]  tahun t [-0.1638, -0.0290]
+  efd            atas EF-LD     -0.1346  kabupaten [-0.1992, -0.0864]  provinsi [-0.2102, -0.0795]  tahun t [-0.2024, -0.0667]
+  efld           atas kalender  +0.2568  kabupaten [+0.1383, +0.3873]  provinsi [+0.1347, +0.3929]  tahun t [+0.0870, +0.4265]
+  efld           atas EF-P      +0.2605  kabupaten [+0.1456, +0.3901]  provinsi [+0.1374, +0.3947]  tahun t [+0.0924, +0.4285]
+  efld           atas EF-L      +0.0335  kabupaten [+0.0123, +0.0535]  provinsi [+0.0075, +0.0601]  tahun t [+0.0088, +0.0581]  provinsi 10.000 [+0.0071, +0.0602]
+  log_ef1_jeda   atas kalender  +0.2476  kabupaten [+0.1467, +0.3578]  provinsi [+0.1373, +0.3610]  tahun t [+0.1021, +0.3930]
+  log_ef1_jeda   atas EF-P      +0.2511  kabupaten [+0.1485, +0.3592]  provinsi [+0.1372, +0.3661]  tahun t [+0.1060, +0.3963]
+  log_ef1_jeda   atas EF-L      +0.0120  kabupaten [-0.0653, +0.0806]  provinsi [-0.0608, +0.0836]  tahun t [-0.0761, +0.1001]
+  log_ef1_jeda   atas EF-LD     -0.0237  kabupaten [-0.1142, +0.0540]  provinsi [-0.1100, +0.0629]  tahun t [-0.1323, +0.0848]
+  rf             atas kalender  +0.2711  kabupaten [+0.1478, +0.4239]  provinsi [+0.1410, +0.4219]  tahun t [+0.0770, +0.4651]
+  rf             atas EF-P      +0.2742  kabupaten [+0.1513, +0.4246]  provinsi [+0.1378, +0.4274]  tahun t [+0.0789, +0.4696]
+  rf             atas EF-L      +0.0577  kabupaten [-0.0002, +0.1266]  provinsi [-0.0110, +0.1305]  tahun t [-0.0225, +0.1379]
+  rf             atas EF-LD     +0.0254  kabupaten [-0.0325, +0.0925]  provinsi [-0.0423, +0.0950]  tahun t [-0.0498, +0.1005]
+  xgb            atas kalender  +0.2554  kabupaten [+0.1207, +0.4234]  provinsi [+0.1159, +0.4222]  tahun t [+0.0376, +0.4733]
+  xgb            atas EF-P      +0.2586  kabupaten [+0.1243, +0.4284]  provinsi [+0.1154, +0.4306]  tahun t [+0.0394, +0.4779]
+  xgb            atas EF-L      +0.0372  kabupaten [-0.0941, +0.1522]  provinsi [-0.1027, +0.1568]  tahun t [-0.1396, +0.2141]
+  xgb            atas EF-LD     +0.0044  kabupaten [-0.1362, +0.1203]  provinsi [-0.1351, +0.1251]  tahun t [-0.1738, +0.1826]
+  xgb_setel      atas kalender  +0.2794  kabupaten [+0.1585, +0.4320]  provinsi [+0.1434, +0.4388]  tahun t [+0.0781, +0.4807]
+  xgb_setel      atas EF-P      +0.2825  kabupaten [+0.1619, +0.4347]  provinsi [+0.1403, +0.4435]  tahun t [+0.0796, +0.4853]
+  xgb_setel      atas EF-L      +0.0690  kabupaten [-0.0175, +0.1604]  provinsi [-0.0293, +0.1649]  tahun t [-0.0528, +0.1908]
+  xgb_setel      atas EF-LD     +0.0372  kabupaten [-0.0548, +0.1291]  provinsi [-0.0603, +0.1308]  tahun t [-0.0820, +0.1564]
+  mlp            atas kalender  +0.1971  kabupaten [-0.0165, +0.4070]  provinsi [-0.0391, +0.4018]  tahun t [-0.1095, +0.5037]
+  mlp            atas EF-P      +0.2002  kabupaten [-0.0131, +0.4076]  provinsi [-0.0393, +0.4072]  tahun t [-0.1084, +0.5088]
+  mlp            atas EF-L      -0.0513  kabupaten [-0.3737, +0.1498]  provinsi [-0.4006, +0.1525]  tahun t [-0.4498, +0.3473]
+  mlp            atas EF-LD     -0.0868  kabupaten [-0.4170, +0.1156]  provinsi [-0.4474, +0.1170]  tahun t [-0.4949, +0.3213]
+  xgb_nas        atas kalender  +0.2769  kabupaten [+0.1556, +0.4355]  provinsi [+0.1438, +0.4328]  tahun t [+0.0789, +0.4749]
+  xgb_nas        atas EF-P      +0.2802  kabupaten [+0.1585, +0.4359]  provinsi [+0.1410, +0.4370]  tahun t [+0.0821, +0.4784]
+  xgb_nas        atas EF-L      +0.0654  kabupaten [-0.0155, +0.1539]  provinsi [-0.0290, +0.1592]  tahun t [-0.0508, +0.1817]
+  xgb_nas        atas EF-LD     +0.0335  kabupaten [-0.0542, +0.1197]  provinsi [-0.0600, +0.1259]  tahun t [-0.0796, +0.1466]
+  xgb_nasdc      atas kalender  +0.2780  kabupaten [+0.1549, +0.4324]  provinsi [+0.1465, +0.4320]  tahun t [+0.0834, +0.4726]
+  xgb_nasdc      atas EF-P      +0.2813  kabupaten [+0.1585, +0.4342]  provinsi [+0.1432, +0.4359]  tahun t [+0.0864, +0.4762]
+  xgb_nasdc      atas EF-L      +0.0669  kabupaten [-0.0055, +0.1486]  provinsi [-0.0150, +0.1554]  tahun t [-0.0341, +0.1679]
+  xgb_nasdc      atas EF-LD     +0.0350  kabupaten [-0.0411, +0.1128]  provinsi [-0.0486, +0.1208]  tahun t [-0.0621, +0.1320]
+selesai.

@@ -1,0 +1,49 @@
+DC bulan lalu hilang di baris panel 0 dari 137448 (diisi median kabupaten); kabupaten tanpa DC sama sekali 0
+MODIS/VIIRS 2012-2025 r 0.195; F bawaan 2; lantai dipakai 2; kabupaten 498; sasaran y_gabungan; rujukan pasangan ef3; benih [42, 1, 2, 3, 4, 5]
+cek ap_cepat = sklearn: ok
+
+====================================================================================================
+Q MODIS maju y_gabungan  lantai 2  (ambang dari tahun latih), n = 12
+====================================================================================================
+    koef 2008: EF-L +0.658 +0.582 | EF-D +0.652 DC +0.548 | EF-LD +0.660 nas +0.446 DC +0.290
+  R 2008: latih 5 tahun, 29,382 baris; uji 5,976, prevalensi 6.99%; EF-P ef1_halus
+    koef 2009: EF-L +0.677 +0.579 | EF-D +0.677 DC +0.618 | EF-LD +0.683 nas +0.376 DC +0.418
+  R 2009: latih 6 tahun, 35,358 baris; uji 5,976, prevalensi 11.43%; EF-P ef1_halus
+    koef 2010: EF-L +0.714 +0.565 | EF-D +0.716 DC +0.641 | EF-LD +0.722 nas +0.360 DC +0.454
+  R 2010: latih 7 tahun, 41,334 baris; uji 5,976, prevalensi 3.93%; EF-P ef1_halus
+    koef 2011: EF-L +0.720 +0.740 | EF-D +0.728 DC +0.829 | EF-LD +0.735 nas +0.414 DC +0.584
+  R 2011: latih 8 tahun, 47,310 baris; uji 5,976, prevalensi 9.99%; EF-P ef1_halus
+    koef 2012: EF-L +0.744 +0.742 | EF-D +0.749 DC +0.805 | EF-LD +0.758 nas +0.448 DC +0.557
+  R 2012: latih 9 tahun, 53,286 baris; uji 5,976, prevalensi 10.74%; EF-P ef1_halus
+    koef 2013: EF-L +0.767 +0.717 | EF-D +0.773 DC +0.790 | EF-LD +0.781 nas +0.424 DC +0.563
+  R 2013: latih 10 tahun, 59,262 baris; uji 5,976, prevalensi 7.95%; EF-P ef1_halus
+    koef 2014: EF-L +0.773 +0.647 | EF-D +0.785 DC +0.778 | EF-LD +0.790 nas +0.346 DC +0.603
+  R 2014: latih 11 tahun, 65,238 baris; uji 5,976, prevalensi 12.13%; EF-P ef1_halus
+    koef 2015: EF-L +0.783 +0.626 | EF-D +0.794 DC +0.775 | EF-LD +0.799 nas +0.328 DC +0.600
+  R 2015: latih 12 tahun, 71,214 baris; uji 5,976, prevalensi 13.72%; EF-P ef1_halus
+    koef 2016: EF-L +0.799 +0.707 | EF-D +0.811 DC +0.843 | EF-LD +0.817 nas +0.370 DC +0.636
+  R 2016: latih 13 tahun, 77,190 baris; uji 5,976, prevalensi 4.00%; EF-P ef1_halus
+    koef 2017: EF-L +0.807 +0.747 | EF-D +0.814 DC +0.862 | EF-LD +0.824 nas +0.449 DC +0.601
+  R 2017: latih 14 tahun, 83,166 baris; uji 5,976, prevalensi 3.95%; EF-P ef1_halus
+    koef 2018: EF-L +0.827 +0.793 | EF-D +0.827 DC +0.899 | EF-LD +0.843 nas +0.521 DC +0.584
+  R 2018: latih 15 tahun, 89,142 baris; uji 5,976, prevalensi 6.96%; EF-P ef1_halus
+    koef 2019: EF-L +0.839 +0.806 | EF-D +0.835 DC +0.896 | EF-LD +0.855 nas +0.558 DC +0.568
+  R 2019: latih 16 tahun, 95,118 baris; uji 5,976, prevalensi 10.27%; EF-P ef1_halus
+  (97 s) kabupaten 498
+
+R1 MODIS maju: L, e_k, e_m per tahun
+  2008: L +0.048  e_k +0.358  e_m +0.205  |e_k|-|e_m| +0.152
+  2009: L +0.018  e_k -0.146  e_m +0.001  |e_k|-|e_m| +0.145
+  2010: L +0.223  e_k +0.981  e_m +0.552  |e_k|-|e_m| +0.428
+  2011: L +0.000  e_k -0.008  e_m +0.009  |e_k|-|e_m| -0.001
+  2012: L +0.006  e_k -0.088  e_m +0.001  |e_k|-|e_m| +0.087
+  2013: L +0.038  e_k +0.253  e_m +0.068  |e_k|-|e_m| +0.185
+  2014: L +0.023  e_k -0.237  e_m -0.099  |e_k|-|e_m| +0.138
+  2015: L -0.000  e_k -0.357  e_m -0.266  |e_k|-|e_m| +0.091
+  2016: L +0.235  e_k +0.967  e_m +0.686  |e_k|-|e_m| +0.280
+  2017: L +0.327  e_k +0.979  e_m +0.480  |e_k|-|e_m| +0.499
+  2018: L +0.058  e_k +0.390  e_m +0.094  |e_k|-|e_m| +0.296
+  2019: L -0.010  e_k -0.057  e_m -0.124  |e_k|-|e_m| -0.068
+  (A) L atas |e_k|: kemiringan +0.3347 [+0.1992, +0.4105]  R2 dalam rancangan 0.725
+  (B) L atas |e_k| - |e_m|: kemiringan +0.4642 [+0.3793, +0.6310]  R2 dalam rancangan 0.866
+selesai.
