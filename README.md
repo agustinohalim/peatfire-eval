@@ -96,7 +96,7 @@ python patokan_nilai.py                            # Section 6.8 and Table 6: hi
 python patokan_fwi_komponen.py                     # Table 5: FWI System components (~1 h)
 ```
 
-### Revision analyses (versions 2.4.0 to 2.11.5)
+### Revision analyses (versions 2.4.0 to 2.11.6)
 
 The revised manuscript, *IndoFireBench: a district benchmark with reference forecasts for monthly fire
 prediction in Indonesia* (the benchmark is named PeatFireBench in this
@@ -105,9 +105,9 @@ reference climatology computed from the training years only, on the same rows: t
 (MC, the reference of version 2.3.0), the share of training years in which the district exceeded
 its threshold in that calendar month (EF-1m) or in a three-month window (EF-3m), a probability
 climatology chosen per fold on training years (EF-P), and EF-1m adjusted with last month's national
-detection count (EF-L). The analyses ran in nineteen rounds (phases A to S; phase F in version 2.5.0, phase G in 2.6.0, phase H in 2.7.0, phases I to L in 2.8.0, phase M in 2.9.0, phase N in 2.10.0, phase O in 2.11.0 and 2.11.1, phase P in 2.11.2, phase Q in 2.11.3, phase R in 2.11.4, phase S in 2.11.5). For each round the design
+detection count (EF-L). The analyses ran in twenty-one rounds (phases A to U; phase F in version 2.5.0, phase G in 2.6.0, phase H in 2.7.0, phases I to L in 2.8.0, phase M in 2.9.0, phase N in 2.10.0, phase O in 2.11.0 and 2.11.1, phase P in 2.11.2, phase Q in 2.11.3, phase R in 2.11.4, phase S in 2.11.5, phases T and U in 2.11.6). For each round the design
 and the decision rules were written and committed before any script ran; `registration/` holds
-those records with their results (in Indonesian, `Hasil_Patokan_6.md` to `Hasil_Patokan_20.md` and `Hasil_Patokan_22.md` to `Hasil_Patokan_25.md`);
+those records with their results (in Indonesian, `Hasil_Patokan_6.md` to `Hasil_Patokan_20.md` and `Hasil_Patokan_22.md` to `Hasil_Patokan_27.md`);
 `Hasil_Patokan_21.md` registers the evaluation of the 2026 season, with four dated addenda, and
 `RIWAYAT_COMMIT.md` lists the commits of every record with their time stamps.
 Phase G tests EF-L on the MODIS years 2003-2011, which no earlier round had scored: the MODIS
@@ -142,7 +142,12 @@ resampled, on the VIIRS years with training-year thresholds and on the forward M
 (`patokan_ambang_s.py`, `patokan_ambang_s_tabel.py`, `patokan_ambang_s_setara.py`) rescores every forecast of
 the chronological VIIRS tables (ranking, probability and ordinary-year alert value) with thresholds, evaluated
 districts and references from each fold's training years, the definition the revised manuscript now uses, and
-`gambar_inti_s.py` draws Figure 3 from those logs. The 2026 evaluation (`Hasil_Patokan_21.md`) was registered on 9 November 2026, with a fourth addendum on 10
+`gambar_inti_s.py` draws Figure 3 from those logs. Phase T (`patokan_iklim_t.py`, `patokan_iklim_t_modis.py`)
+adds two climate-state references, EF-E (the district calendar with last month's ONI and DMI) and EF-LE (EF-L
+with the same two indices), on the VIIRS years with training-year thresholds and on the forward MODIS forecast.
+Phase U (`patokan_iklim_u.py`, `patokan_iklim_u_modis.py`) gives the index terms one coefficient for each of
+four season-region cells (EF-ES, EF-LES) and re-scores every model-reference cell with Brier skill as one ratio,
+a two-stage interval with provinces resampled, and Holm's adjustment within each target-reference family. The 2026 evaluation (`Hasil_Patokan_21.md`) was registered on 9 November 2026, with a fourth addendum on 10
 November whose prediction coefficients `patokan_ramalan_2026.py` computes from the phase R logs,
 before standard-processing 2026 detections were released, and is to be run once with this code. The MODIS
 data are not included; the scripts below rebuild them.
@@ -260,6 +265,16 @@ python -u patokan_ambang_s.py y_gabungan         > DL_FIRE_NASIONAL/penuh/patoka
 python -u patokan_ambang_s_tabel.py y_gabungan   > DL_FIRE_NASIONAL/penuh/patokan_ambang_s_tabel_nas.log
 python -u patokan_ambang_s_setara.py             > DL_FIRE_NASIONAL/penuh/patokan_ambang_s_setara.log
 python gambar_inti_s.py                            # Figure 3 with training-year thresholds on VIIRS (current version)
+# phase T (Hasil_Patokan_26) and phase U (Hasil_Patokan_27): climate-state references, one ratio, provinces, Holm
+# (they read the phase S tables, so phase S runs first)
+python -u patokan_iklim_t.py y_kabupaten        > DL_FIRE_NASIONAL/penuh/patokan_iklim_t_kab.log
+python -u patokan_iklim_t.py y_gabungan         > DL_FIRE_NASIONAL/penuh/patokan_iklim_t_nas.log
+python -u patokan_iklim_t_modis.py y_kabupaten  > DL_FIRE_MODIS/patokan_iklim_t_modis_kab.log
+python -u patokan_iklim_t_modis.py y_gabungan   > DL_FIRE_MODIS/patokan_iklim_t_modis_nas.log
+python -u patokan_iklim_u.py y_kabupaten        > DL_FIRE_NASIONAL/penuh/patokan_iklim_u_kab.log
+python -u patokan_iklim_u.py y_gabungan         > DL_FIRE_NASIONAL/penuh/patokan_iklim_u_nas.log
+python -u patokan_iklim_u_modis.py y_kabupaten  > DL_FIRE_MODIS/patokan_iklim_u_modis_kab.log
+python -u patokan_iklim_u_modis.py y_gabungan   > DL_FIRE_MODIS/patokan_iklim_u_modis_nas.log
 ```
 
 The phase scripts read `patokan_revisi_prediksi.csv` and `patokan_revisi_oof.csv` from phase A,

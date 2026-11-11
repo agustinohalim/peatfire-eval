@@ -129,3 +129,13 @@ repositori penulis; isi commit itu sendiri hanya dapat diperiksa di repositori p
 - `64742b3` 2026-11-10T12:07:08+07:00 docs(kebakaran): record phase S deviation 8 (extra Section 6.5 contrasts) before the rerun
 - `402448b` 2026-11-10T12:09:00+07:00 feat(kebakaran): phase S equivalence, power and Holm script for Section 6.1 (deviation 9), before running
 - `56e3183` 2026-11-10T12:15:48+07:00 docs(kebakaran): phase S results — training-year thresholds change six minor verdicts, none the abstract depends on; no panel 26 under R57
+
+## Hasil_Patokan_26.md
+
+- `036a04b` 2026-11-11T15:02:58+07:00 docs(kebakaran): register phase T — climate-state references EF-E and EF-LE (lagged ONI, DMI)
+- `40bcebf` 2026-11-11T15:06:41+07:00 feat(kebakaran): phase T results — climate-state reference EF-E indistinguishable from EF-L by rule, learned models beat EF-E
+
+## Hasil_Patokan_27.md
+
+- `6eb44ef` 2026-11-11T15:51:21+07:00 docs(kebakaran): register phase U (seasonal-regional climate reference, pooled ratio, province clusters, Holm) before any run
+- `6cb96e4` 2026-11-11T15:56:52+07:00 feat(kebakaran): phase U results - seasonal-regional climate reference no better than EF-E; Holm removes 'beats the calendar' on VIIRS
